@@ -15,12 +15,28 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
         rel="stylesheet">
 
+    <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <!-- Site Header with Language Switcher -->
+    <header class="site-header">
+        <div class="container">
+            <a href="/" class="site-header__logo">Li Astrology</a>
+            <nav class="site-header__nav">
+                <a href="/" class="site-header__link" data-i18n="header.home">Главная</a>
+                <div class="lang-switcher">
+                    <select id="lang-select">
+                        <option value="uk">🇺🇦 Українська</option>
+                        <option value="ru">🇷🇺 Русский</option>
+                    </select>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-    <!-- Header -->
+    <!-- Course Header -->
     <header class="header">
         <div class="container">
             <div class="header__text">Углубленный курс</div>
@@ -432,13 +448,27 @@
 
     </main>
 
-    <footer class="footer">
+    <!-- Site Footer -->
+    <footer class="site-footer">
         <div class="container">
-            <p>&copy; 2026 Астрология с Анастасией.</p>
+            <div class="site-footer__content">
+                <div class="site-footer__brand">
+                    <div class="site-footer__logo">Li Astrology</div>
+                    <p class="site-footer__legal-name" data-i18n="footer.legal">ФОП Виноградов А.В.</p>
+                </div>
+                <div class="site-footer__links">
+                    <a href="/legal/privacy.html" class="site-footer__link" data-i18n="footer.privacy">Политика конфиденциальности</a>
+                    <a href="/legal/offer.html" class="site-footer__link" data-i18n="footer.offer">Публичная оферта</a>
+                </div>
+            </div>
+            <div class="site-footer__bottom">
+                <p class="site-footer__copyright" data-i18n="footer.copyright">© 2026 Li Astrology. Все права защищены.</p>
+            </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script src="../js/i18n.js"></script>
 </body>
 
 </html>
