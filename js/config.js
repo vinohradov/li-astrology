@@ -12,7 +12,7 @@ const CONFIG = {
 
     // Supabase
     SUPABASE_URL: 'https://plyofinxmwvwbintvqbx.supabase.co',
-    SUPABASE_ANON_KEY: 'sb_publishable_RvjwUMigftsBB-jg1VenHQ_beT_cZNx',
+    SUPABASE_ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBseW9maW54bXd2d2JpbnR2cWJ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg5NzI1MDQsImV4cCI6MjA4NDU0ODUwNH0.33Vps8a9w1zfh3s5y2lNiHAnbG-ABmc50tQjBxRgQqE',
 
     // Telegram Bot
     TELEGRAM_BOT_USERNAME: 'li_astrology_bot',

@@ -167,17 +167,26 @@ h5 {
     font-size: 1.5rem;
     /* Distinctly larger */
     padding: 25px 70px;
-    background: linear-gradient(135deg, #111 0%, #222 100%);
-    border: 1px solid var(--accent-color);
-    box-shadow: 0 10px 30px rgba(179, 135, 40, 0.3);
+
+    /* NEW VISUAL: Caramel-Gold Gradient */
+    /* Caramel body with Golden Light top */
+    background: linear-gradient(180deg, #F0C978 0%, #CC9245 100%);
+    color: #FFFFFF;
+    border: none;
+    box-shadow: 0 10px 30px rgba(204, 146, 69, 0.4);
+
     position: relative;
     overflow: hidden;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    /* Subtle text shadow for readability */
 }
 
 .button--buy:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(179, 135, 40, 0.4);
-    background: linear-gradient(135deg, #000 0%, #111 100%);
+    transform: translateY(-2px) scale(1.05);
+    /* Slight lift + Make bigger */
+    box-shadow: 0 20px 50px rgba(204, 146, 69, 0.6);
+    /* Larger, softer shadow */
+    /* No color change, just physical presence */
 }
 
 /* Sections generic */
@@ -232,7 +241,7 @@ ul {
 /* Dark Beige Large Bullet Points */
 .check-list li::before,
 .program-list li::before,
-.pricing-list li::before {
+.pricing-list:not(.check-list-emoji) li::before {
     content: '•';
     color: var(--bullet-color);
     position: absolute;
@@ -242,6 +251,16 @@ ul {
     font-size: 2rem;
     /* Large size */
     line-height: 1;
+}
+
+.check-list-emoji li {
+    padding-left: 0;
+    /* No padding needed for emojis as they are inline */
+}
+
+.check-list-emoji li::before {
+    display: none;
+    /* Hide the golden dot */
 }
 
 .cta-block {
@@ -325,7 +344,7 @@ ul {
 }
 
 .value-item {
-    background: #FFF;
+    background-color: #ffffff;
     padding: 30px;
     border-radius: 12px;
     border: 1px solid rgba(0, 0, 0, 0.05);
@@ -344,33 +363,107 @@ ul {
     margin-bottom: 15px;
 }
 
-.format-block {
-    background: #FFF;
-    border: 2px solid var(--accent-color);
-    padding: 40px;
-    margin: 60px auto;
-    max-width: 800px;
+/* Question / Format Block (Collapsible) */
+.questions-block {
     text-align: center;
-    border-radius: 4px;
-    /* More formal look */
-    position: relative;
+    margin: 60px auto 40px;
+    max-width: 700px;
+    /* Narrower for better readability */
+    padding: 0 20px;
 }
 
-.format-block::after {
-    content: '';
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    right: 5px;
-    bottom: 5px;
-    border: 1px solid rgba(191, 149, 63, 0.3);
-    pointer-events: none;
+.questions-title {
+    /* Override huge section title size */
+    font-size: 2rem !important;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    opacity: 0.9;
+    /* Slightly softer */
 }
 
-.format-block h3 {
-    color: #111;
-    margin: 20px 0 10px;
+.questions-details {
+    /* No border, no box */
 }
+
+.questions-summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    list-style: none;
+    border-bottom: 1px solid transparent;
+}
+
+/* Hide default marker in Safari */
+.questions-summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Custom Chevron Icon */
+.questions-summary::after {
+    content: '▼';
+    font-size: 0.7em;
+    transition: transform 0.3s ease;
+}
+
+.questions-details[open] .questions-summary::after {
+    transform: rotate(180deg);
+}
+
+.questions-summary:hover {
+    color: var(--accent-dark);
+    border-bottom-color: var(--accent-dark);
+}
+
+.questions-content {
+    margin-top: 30px;
+    text-align: left;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #444;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    /* Subtle separator */
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Keep internal formatting simple & elegant */
+.questions-content h3 {
+    color: #222;
+    margin: 25px 0 10px;
+    font-size: 1.1rem;
+    font-family: var(--font-heading);
+    letter-spacing: 0.5px;
+    border: none;
+    /* Remove underline from H3 */
+}
+
+.questions-content h3:first-child {
+    margin-top: 0;
+}
+
+.questions-content p {
+    margin-bottom: 15px;
+}
+
 
 .note {
     font-weight: 600;
@@ -382,8 +475,9 @@ ul {
 /* Pricing Grid */
 .pricing__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
+    /* Reduced min-width to 300px to better fit 3 on desktop */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
     align-items: start;
 }
 
@@ -428,6 +522,10 @@ ul {
     font-size: 0.8rem;
 }
 
+.pricing-card__content {
+    flex-grow: 1;
+}
+
 .pricing-card__title {
     font-size: 1.5rem;
     text-align: center;
@@ -460,7 +558,9 @@ ul {
 .what-gives {
     margin: 20px 0 10px;
     color: #000;
-    font-family: var(--font-heading);
+    /* Unify typography with body text */
+    font-family: var(--font-body);
+    font-weight: 700;
     font-size: 1.1rem;
 }
 
@@ -514,14 +614,54 @@ ul {
     border-radius: 10px;
 }
 
-.stats-list {
+/* About Stats */
+.about-stats-container {
     display: flex;
-    gap: 30px;
-    margin: 20px 0;
-    border-top: 1px solid #EEE;
-    border-bottom: 1px solid #EEE;
+    gap: 40px;
+    margin: 30px 0;
     padding: 20px 0;
+    border-top: 1px solid rgba(191, 149, 63, 0.2);
+    border-bottom: 1px solid rgba(191, 149, 63, 0.2);
 }
+
+.about-stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-dark);
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.about-intro {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.about-intro strong {
+    color: var(--accent-dark);
+}
+
+.about-philosophy {
+    font-style: italic;
+    border-left: 3px solid var(--accent-color);
+    padding-left: 15px;
+    color: #444;
+}
+
+
 
 .stats-list li {
     font-size: 0.9rem;
