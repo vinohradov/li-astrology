@@ -6,17 +6,25 @@
  */
 
 const LiqPay = {
+    /** Currently processing - prevents double clicks */
+    _processing: false,
+
     /**
      * Initialize payment for a product
      * @param {string} productId - Product ID from CONFIG.PRODUCTS
      */
     async pay(productId) {
+        if (this._processing) return;
+
         const product = CONFIG.PRODUCTS[productId];
         if (!product) {
             console.error('Product not found:', productId);
-            alert('Помилка: продукт не знайдено');
             return;
         }
+
+        // Set loading state on all buy buttons
+        this._processing = true;
+        this._setButtonsLoading(true);
 
         // Generate unique order ID
         const orderId = `${productId}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
@@ -60,8 +68,33 @@ const LiqPay = {
 
         } catch (error) {
             console.error('Payment error:', error);
-            alert('Помилка створення платежу. Спробуйте ще раз.');
+            this._processing = false;
+            this._setButtonsLoading(false);
+            const msg = (lang === 'ru')
+                ? 'Ошибка создания платежа. Попробуйте ещё раз.'
+                : 'Помилка створення платежу. Спробуйте ще раз.';
+            alert(msg);
         }
+    },
+
+    /**
+     * Set loading state on all buy buttons
+     */
+    _setButtonsLoading(loading) {
+        document.querySelectorAll('[data-liqpay-product]').forEach(btn => {
+            if (loading) {
+                btn.setAttribute('data-original-text', btn.textContent);
+                btn.classList.add('button--loading');
+                btn.style.pointerEvents = 'none';
+                btn.style.opacity = '0.7';
+            } else {
+                const original = btn.getAttribute('data-original-text');
+                if (original) btn.textContent = original;
+                btn.classList.remove('button--loading');
+                btn.style.pointerEvents = '';
+                btn.style.opacity = '';
+            }
+        });
     },
 
     /**

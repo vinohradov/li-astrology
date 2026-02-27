@@ -8,6 +8,8 @@
     <meta name="description"
         content="Професійні курси астрології від Анастасії. Інтенсив для початківців та поглиблений курс по трактуванню аспектів.">
 
+    <link rel="icon" type="image/svg+xml" href="images/li_logo_symbol.svg">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +26,10 @@
     <!-- Site Header -->
     <header class="site-header">
         <div class="container">
-            <a href="/" class="site-header__logo">Li Astrology</a>
+            <a href="/" class="site-header__logo">
+                <img src="images/li_logo_symbol.svg" alt="Li Astrology">
+                <span class="brand-text">Li Astrology</span>
+            </a>
             <nav class="site-header__nav">
                 <a href="/intensiv/" class="site-header__link" data-i18n="header.courses">Курси</a>
                 <div class="lang-switcher">
@@ -42,6 +47,13 @@
         <section class="home-hero">
             <h1 class="home-hero__title" data-i18n="home.title">Li Astrology</h1>
             <p class="home-hero__subtitle" data-i18n="home.subtitle">Професійні курси астрології від Анастасії</p>
+            <div class="home-hero__stats">
+                <span class="home-hero__stat" data-i18n="home.stats.experience">10+ років досвіду</span>
+                <span class="home-hero__stat-divider"></span>
+                <span class="home-hero__stat" data-i18n="home.stats.consultations">800+ консультацій</span>
+                <span class="home-hero__stat-divider"></span>
+                <span class="home-hero__stat" data-i18n="home.stats.courses">2 курси</span>
+            </div>
         </section>
 
         <!-- Courses Section -->
@@ -50,7 +62,8 @@
 
             <div class="courses-grid">
                 <!-- Intensiv Card -->
-                <article class="course-card">
+                <article class="course-card course-card--recommended">
+                    <div class="course-card__recommended-tag" data-i18n="home.recommendedStart">Рекомендований старт</div>
                     <span class="course-card__badge" data-i18n="home.intensiv.badge">Для початківців</span>
                     <div class="course-card__content">
                         <h3 class="course-card__title" data-i18n="home.intensiv.title">Інтенсив «Астрологія з 0»</h3>
@@ -102,8 +115,8 @@
                     <p class="site-footer__legal-name" data-i18n="footer.legal">ФОП Виноградов А.В.</p>
                 </div>
                 <div class="site-footer__links">
-                    <a href="/legal/privacy.html" class="site-footer__link"
-                        data-i18n="footer.privacy">Політика конфіденційності</a>
+                    <a href="/legal/privacy.html" class="site-footer__link" data-i18n="footer.privacy">Політика
+                        конфіденційності</a>
                     <a href="/legal/offer.html" class="site-footer__link" data-i18n="footer.offer">Публічна оферта</a>
                 </div>
             </div>

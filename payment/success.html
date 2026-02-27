@@ -7,6 +7,8 @@
     <title>Оплата успішна | Li Astrology</title>
     <meta name="robots" content="noindex, nofollow">
 
+    <link rel="icon" type="image/svg+xml" href="../images/li_logo_symbol.svg">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,6 +41,28 @@
             max-width: 500px;
             text-align: center;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .upsell-card {
+            max-width: 600px;
+            border: 2px solid var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upsell-badge {
+            display: inline-block;
+            background: #A83232;
+            /* Urgency Red */
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
         }
 
         .success-icon {
@@ -69,10 +93,25 @@
             background-clip: text;
         }
 
+        .upsell-title {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            line-height: 1.1;
+            color: #222;
+        }
+
         .success-subtitle {
             color: var(--text-color);
             opacity: 0.8;
             margin-bottom: 40px;
+        }
+
+        .upsell-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            color: #555;
         }
 
         .telegram-section {
@@ -132,7 +171,7 @@
         }
 
         .order-info {
-            background: rgba(0,0,0,0.03);
+            background: rgba(0, 0, 0, 0.03);
             border-radius: 8px;
             padding: 15px;
             margin-bottom: 20px;
@@ -142,6 +181,80 @@
         .order-info strong {
             color: var(--text-color);
         }
+
+        /* Upsell Specifics */
+        .upsell-product-box {
+            background: #F8F6F2;
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            text-align: left;
+            border: 1px solid #EBEBEB;
+        }
+
+        .upsell-product-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: #000;
+        }
+
+        .upsell-product-meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .upsell-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .upsell-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .upsell-price {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .price-current {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #888;
+            border: none;
+            padding: 10px;
+            font-size: 0.9rem;
+            text-decoration: underline;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn-secondary:hover {
+            color: #555;
+        }
+
+        .accent-btn {
+            width: 100%;
+            justify-content: center;
+        }
     </style>
 </head>
 
@@ -149,7 +262,10 @@
     <!-- Site Header -->
     <header class="site-header">
         <div class="container">
-            <a href="/" class="site-header__logo">Li Astrology</a>
+            <a href="/" class="site-header__logo">
+                <img src="../images/li_logo_symbol.svg" alt="Li Astrology">
+                <span class="brand-text">Li Astrology</span>
+            </a>
             <nav class="site-header__nav">
                 <a href="/" class="site-header__link" data-i18n="header.home">Головна</a>
                 <div class="lang-switcher">
@@ -163,25 +279,32 @@
     </header>
 
     <main>
-        <div class="success-card">
+        <!-- Standard Success View (Hidden if Upsell is active) -->
+        <div class="success-card" id="success-view" style="display: none;">
             <div class="success-icon">
-                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                </svg>
             </div>
 
             <h1 class="success-title" data-i18n="payment.success.title">Дякуємо за покупку!</h1>
             <p class="success-subtitle" data-i18n="payment.success.subtitle">Ваше замовлення успішно оплачено</p>
 
             <div class="order-info" id="order-info" style="display: none;">
-                <strong>Замовлення:</strong> <span id="order-id"></span>
+                <strong data-i18n="payment.success.orderLabel">Замовлення:</strong> <span id="order-id"></span>
             </div>
 
             <div class="telegram-section">
-                <h2 class="telegram-title" data-i18n="payment.success.telegram.title">Отримайте доступ до матеріалів</h2>
+                <h2 class="telegram-title" data-i18n="payment.success.telegram.title">Отримайте доступ до матеріалів
+                </h2>
                 <p class="telegram-description" data-i18n="payment.success.telegram.description">
                     Натисніть кнопку нижче, щоб перейти в Telegram і отримати доступ до курсу
                 </p>
                 <a href="#" id="telegram-link" class="telegram-button" data-i18n="payment.success.telegram.button">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.69-.52.36-1-.54-1.55-.57-.54-.03-1.37-.14-2.09-.27-.89-.16-1.6-.25-1.54-.78.03-.27.38-.55 1.04-.83 4.07-1.77 6.79-2.94 8.15-3.5 3.88-1.62 4.69-1.9 5.21-1.91.12 0 .37.03.54.17.14.12.18.28.2.45-.01.07.01.24-.01.37z"/></svg>
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.69-.52.36-1-.54-1.55-.57-.54-.03-1.37-.14-2.09-.27-.89-.16-1.6-.25-1.54-.78.03-.27.38-.55 1.04-.83 4.07-1.77 6.79-2.94 8.15-3.5 3.88-1.62 4.69-1.9 5.21-1.91.12 0 .37.03.54.17.14.12.18.28.2.45-.01.07.01.24-.01.37z" />
+                    </svg>
                     <span>Відкрити Telegram</span>
                 </a>
             </div>
@@ -189,6 +312,43 @@
             <p class="support-text" data-i18n="payment.success.support">
                 Якщо у вас виникли питання, зв'яжіться з нами
             </p>
+        </div>
+
+        <!-- UPSELL OFFER (Only for 'intensiv' buyers) -->
+        <div class="success-card upsell-card" id="upsell-view" style="display: none;">
+            <div class="success-mini-banner">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span data-i18n="payment.upsell.successBanner">Оплата пройшла успішно! Курс вже ваш.</span>
+            </div>
+
+            <div class="upsell-badge" data-i18n="payment.upsell.badge">Рекомендований наступний крок</div>
+
+            <h2 class="upsell-title" data-i18n="payment.upsell.title">Посильте свої знання</h2>
+            <p class="upsell-subtitle" data-i18n="payment.upsell.subtitle">Ви отримали фундамент («Азбука»). «Граматика» допоможе читати карту цілісно.
+            </p>
+
+            <div class="upsell-product-box">
+                <h3 class="upsell-product-title" data-i18n="payment.upsell.productTitle">Курс «Алгоритм трактування аспектів»</h3>
+                <p class="upsell-product-meta" data-i18n="payment.upsell.productMeta">Тариф Практичний [Відео + Методичка]</p>
+
+                <ul class="upsell-list">
+                    <li>✅ <span data-i18n="payment.upsell.feature1">Відео-розбори реальних карт (як я це роблю на практиці)</span></li>
+                    <li>✅ <span data-i18n="payment.upsell.feature2">Чіткий алгоритм, щоб не плутатись у лініях і символах</span></li>
+                    <li>✅ <span data-i18n="payment.upsell.feature3">Методичка (шпаргалка на все життя)</span></li>
+                </ul>
+
+                <div class="upsell-price">
+                    <span class="price-current" data-i18n="payment.upsell.price">1690 грн</span>
+                </div>
+            </div>
+
+            <button id="btn-buy-upsell" class="button apple-button accent-btn" data-i18n="payment.upsell.cta">
+                ДОДАТИ ДО ЗАМОВЛЕННЯ
+            </button>
+
+            <button id="btn-skip-upsell" class="btn-secondary" data-i18n="payment.upsell.skip">
+                Перейти до мого курсу
+            </button>
         </div>
     </main>
 
@@ -201,12 +361,14 @@
                     <p class="site-footer__legal-name" data-i18n="footer.legal">ФОП Виноградов А.В.</p>
                 </div>
                 <div class="site-footer__links">
-                    <a href="/legal/privacy.html" class="site-footer__link" data-i18n="footer.privacy">Політика конфіденційності</a>
+                    <a href="/legal/privacy.html" class="site-footer__link" data-i18n="footer.privacy">Політика
+                        конфіденційності</a>
                     <a href="/legal/offer.html" class="site-footer__link" data-i18n="footer.offer">Публічна оферта</a>
                 </div>
             </div>
             <div class="site-footer__bottom">
-                <p class="site-footer__copyright" data-i18n="footer.copyright">© 2026 Li Astrology. Всі права захищені.</p>
+                <p class="site-footer__copyright" data-i18n="footer.copyright">© 2026 Li Astrology. Всі права захищені.
+                </p>
             </div>
         </div>
     </footer>
@@ -214,34 +376,72 @@
     <!-- Scripts -->
     <script src="../js/config.js"></script>
     <script src="../js/analytics.js"></script>
+    <script src="../js/liqpay.js"></script>
     <script src="../js/i18n.js"></script>
     <script>
-        // Parse URL parameters
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const urlParams = new URLSearchParams(window.location.search);
             const orderId = urlParams.get('order_id');
             const product = urlParams.get('product');
 
-            // Show order ID if available
-            if (orderId) {
-                document.getElementById('order-info').style.display = 'block';
-                document.getElementById('order-id').textContent = orderId;
+            const successView = document.getElementById('success-view');
+            const upsellView = document.getElementById('upsell-view');
+            const orderInfo = document.getElementById('order-info');
+            const orderIdSpan = document.getElementById('order-id');
+            const telegramLink = document.getElementById('telegram-link');
+
+            // Fallback: if no params, show success view with generic message
+            if (!orderId && !product) {
+                successView.style.display = 'block';
+                telegramLink.href = `https://t.me/${CONFIG.TELEGRAM_BOT_USERNAME}`;
+                return;
             }
 
-            // Generate Telegram link
-            const telegramLink = document.getElementById('telegram-link');
-            if (orderId && product) {
-                telegramLink.href = `https://t.me/${CONFIG.TELEGRAM_BOT_USERNAME}?start=${orderId}`;
+            // Set Order Info
+            if (orderId) {
+                orderInfo.style.display = 'block';
+                orderIdSpan.textContent = orderId;
+            }
 
-                // Track successful purchase
+            // Set Telegram Link logic
+            if (orderId && product) {
                 const productConfig = CONFIG.PRODUCTS[product];
-                if (productConfig) {
+                if (productConfig && typeof Analytics !== 'undefined') {
                     Analytics.trackPurchaseComplete(orderId, product, productConfig.price);
                 }
+
+                telegramLink.href = `https://t.me/${CONFIG.TELEGRAM_BOT_USERNAME}?start=${orderId}`;
             } else {
-                // Fallback - just open bot
                 telegramLink.href = `https://t.me/${CONFIG.TELEGRAM_BOT_USERNAME}`;
             }
+
+            // --- UPSELL LOGIC ---
+            if (product === 'intensiv') {
+                upsellView.style.display = 'block';
+                successView.style.display = 'none';
+            } else {
+                upsellView.style.display = 'none';
+                successView.style.display = 'block';
+            }
+
+            // Upsell Button Handlers
+            document.getElementById('btn-buy-upsell').addEventListener('click', function () {
+                if (typeof LiqPay !== 'undefined') {
+                    LiqPay.pay('kurs-aspekty-2');
+                } else {
+                    const lang = (typeof i18n !== 'undefined') ? i18n.getLang() : 'uk';
+                    const msg = (lang === 'ru')
+                        ? 'Ошибка платёжной системы. Попробуйте позже.'
+                        : 'Помилка платіжної системи. Спробуйте пізніше.';
+                    alert(msg);
+                }
+            });
+
+            document.getElementById('btn-skip-upsell').addEventListener('click', function () {
+                upsellView.style.display = 'none';
+                successView.style.display = 'block';
+                window.scrollTo(0, 0);
+            });
         });
     </script>
 </body>

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Алгоритм трактовки аспектов | Анастасья</title>
+    <title>Алгоритм трактування аспектів | Анастасія</title>
     <meta name="description"
-        content="Углубленный курс по трактовке аспектов в натальной карте. Научитесь понимать и грамотно интерпретировать гороскоп.">
+        content="Поглиблений курс з трактування аспектів у натальній карті. Навчіться розуміти та грамотно інтерпретувати гороскоп.">
+
+    <link rel="icon" type="image/svg+xml" href="../images/li_logo_symbol.svg">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,9 +25,12 @@
     <!-- Site Header with Language Switcher -->
     <header class="site-header">
         <div class="container">
-            <a href="/" class="site-header__logo">Li Astrology</a>
+            <a href="/" class="site-header__logo">
+                <img src="../images/li_logo_symbol.svg" alt="Li Astrology">
+                <span class="brand-text">Li Astrology</span>
+            </a>
             <nav class="site-header__nav">
-                <a href="/" class="site-header__link" data-i18n="header.home">Главная</a>
+                <a href="/" class="site-header__link" data-i18n="header.home">Головна</a>
                 <div class="lang-switcher">
                     <select id="lang-select">
                         <option value="uk">🇺🇦 Українська</option>
@@ -38,9 +43,8 @@
 
     <!-- Course Header -->
     <header class="header">
-        <div class="container" style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-            <img src="images/logo.png" alt="Li Astrology Logo" style="height: 50px; width: auto;">
-            <div class="header__text">Углубленный курс</div>
+        <div class="container">
+            <div class="header__text" data-i18n="kurs.header">Поглиблений курс</div>
         </div>
     </header>
 
@@ -48,72 +52,99 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="container hero__container">
-                <h1 class="hero__title">АЛГОРИТМ ТРАКТОВКИ<br>АСПЕКТОВ <span
-                        style="display:block; font-size: 0.6em; margin-top: 10px;">в натальной карте</span></h1>
+                <h1 class="hero__title" data-i18n="kurs.hero.title" data-i18n-html="true">АЛГОРИТМ ТРАКТУВАННЯ<br>АСПЕКТІВ <span
+                        style="display:block; font-size: 0.6em; margin-top: 10px;" data-i18n="kurs.hero.subtitle">в натальній карті</span></h1>
 
                 <div class="hero__image-wrapper">
-                    <!-- Using hero.jpg -->
                     <img src="hero.jpg" alt="Astrology Author" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
-                <a href="#tariffs" class="button hero__button button--buy">КУПИТЬ</a>
+                <a href="#tariffs" class="button hero__button button--buy" data-i18n="kurs.hero.cta">КУПИТИ</a>
+                <div class="trust-badges">
+                    <span class="trust-badge">
+                        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                        <span data-i18n="common.securePayment">Безпечна оплата</span>
+                    </span>
+                    <span class="trust-badge">
+                        <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                        <span data-i18n="common.instantAccess">Миттєвий доступ</span>
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Block: For Intensive Graduates -->
+        <section class="section section--warm-welcome"
+            style="background: #FFFBF0; border-bottom: 1px solid var(--accent-color);">
+            <div class="container">
+                <div class="warm-message" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <span
+                        style="background: var(--accent-color); color: #000; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; text-transform: uppercase;"
+                        data-i18n="kurs.welcome.badge">Ідеальний наступний крок</span>
+                    <h2 class="section__title" style="margin-top: 15px; font-size: 2rem;" data-i18n="kurs.welcome.title" data-i18n-html="true">Ти вже знаєш Азбуку.<br>Час вивчити Граматику.</h2>
+                    <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; color: #444;">
+                        <span data-i18n="kurs.welcome.text1">На інтенсиві ви вивчили планети, знаки та доми. Це — деталі конструктора.</span><br>
+                        <strong data-i18n="kurs.welcome.text1bold">Аспекти — це інструкція, як ці деталі з'єднати.</strong>
+                    </p>
+                    <p style="margin-bottom: 25px;"><span data-i18n="kurs.welcome.text2">Без розуміння аспектів натальна карта — це просто набір розрізнених
+                        фактів. Аспекти роблять її</span> <strong data-i18n="kurs.welcome.text2bold">цілісною історією</strong>.</p>
+                </div>
             </div>
         </section>
 
         <!-- Results Section -->
         <section class="section section--results">
             <div class="container">
-                <h2 class="section__title">РЕЗУЛЬТАТЫ ПОСЛЕ ОБУЧЕНИЯ</h2>
+                <h2 class="section__title" data-i18n="kurs.results.title">РЕЗУЛЬТАТИ ПІСЛЯ НАВЧАННЯ</h2>
 
                 <div class="results-grid">
                     <div class="results-item">
-                        <h3>ВЫ ПОЙМЕТЕ:</h3>
+                        <h3 data-i18n="kurs.results.understand.title">ВИ ЗРОЗУМІЄТЕ:</h3>
                         <ul class="check-list">
-                            <li>свои глубинные потребности и мотивацию</li>
-                            <li>бессознательные установки, которые влияют на решения и отношения</li>
-                            <li>причины повторяющихся ситуаций и внутренних конфликтов</li>
+                            <li data-i18n="kurs.results.understand.items.0">свої глибинні потреби та мотивацію</li>
+                            <li data-i18n="kurs.results.understand.items.1">несвідомі установки, які впливають на рішення та стосунки</li>
+                            <li data-i18n="kurs.results.understand.items.2">причини ситуацій, що повторюються, та внутрішніх конфліктів</li>
                         </ul>
                     </div>
 
                     <div class="results-item">
-                        <h3>НАУЧИТЕСЬ ТРАКТОВАТЬ АСПЕКТЫ ПО ЧЁТКОМУ АЛГОРИТМУ:</h3>
-                        <p>Который применим к любой натальной карте — даже при сложных и нестандартных положениях.</p>
+                        <h3 data-i18n="kurs.results.algorithm.title">НАВЧИТЕСЬ ТРАКТУВАТИ АСПЕКТИ ЗА ЧІТКИМ АЛГОРИТМОМ:</h3>
+                        <p data-i18n="kurs.results.algorithm.description">Який застосовний до будь-якої натальної карти — навіть при складних і нестандартних положеннях.</p>
                     </div>
 
                     <div class="results-item">
-                        <h3>ПОЙМЕТЕ ЛОГИКУ АСПЕКТОВ:</h3>
-                        <p>Почему они проявляют себя именно так и какие процессы запускают в жизни человека.</p>
+                        <h3 data-i18n="kurs.results.logic.title">ЗРОЗУМІЄТЕ ЛОГІКУ АСПЕКТІВ:</h3>
+                        <p data-i18n="kurs.results.logic.description">Чому вони проявляють себе саме так і які процеси запускають у житті людини.</p>
                     </div>
 
                     <div class="results-item">
-                        <h3>НАУЧИТЕСЬ ПОНИМАТЬ И ГРАМОТНО ИНТЕРПРЕТИРОВАТЬ:</h3>
-                        <p>А не опираться на шаблонные трактовки из книг и таблиц.</p>
+                        <h3 data-i18n="kurs.results.interpret.title">НАВЧИТЕСЬ РОЗУМІТИ І ГРАМОТНО ІНТЕРПРЕТУВАТИ:</h3>
+                        <p data-i18n="kurs.results.interpret.description">А не спиратися на шаблонні трактування з книг і таблиць.</p>
                     </div>
                 </div>
 
                 <div class="cta-block">
-                    <p class="highlight-text">В отличие от длительной работы с психологом, натальная карта и аспекты
-                        позволяют быстро выявить ключевые внутренние процессы.
-                        <br>Вы сразу видите скрытые причины происходящего и понимаете, что именно влияет на ваши
-                        решения, состояния и жизненные сценарии.
+                    <p class="highlight-text" data-i18n="kurs.results.ctaHighlight">На відміну від тривалої роботи з психологом, натальна карта та аспекти
+                        дозволяють швидко виявити ключові внутрішні процеси.
+                        Ви одразу бачите приховані причини того, що відбувається, та розумієте, що саме впливає на ваші
+                        рішення, стани та життєві сценарії.
                     </p>
-                    <a href="#program" class="button">УЗНАТЬ ДЕТАЛЬНЕЕ</a>
+                    <a href="#program" class="button" data-i18n="kurs.results.ctaButton">ДІЗНАТИСЯ ДЕТАЛЬНІШЕ</a>
                 </div>
 
                 <div class="author-promise">
-                    <p>Я передам вам технику трактовки аспектов. С её помощью вы сможете трактовать аспекты уверенно и
-                        чётко.
-                        <br>Вы будете не просто брать готовые решения, а будете понимать, как каждый аспект работает
-                        изнутри.
+                    <p data-i18n="kurs.results.authorPromise">Я передам вам техніку трактування аспектів. З її допомогою ви зможете трактувати аспекти впевнено та
+                        чітко.
+                        Ви будете не просто брати готові рішення, а будете розуміти, як кожен аспект працює зсередини.
                     </p>
                 </div>
 
                 <div class="results-item centered">
-                    <h3>ПОЛУЧИТЕ МНОГО ПРАКТИЧЕСКИХ ПРИМЕРОВ:</h3>
-                    <p>Которые сформируют уверенность при анализе аспектов и закрепят ваши навыки</p>
+                    <h3 data-i18n="kurs.results.practicalExamples.title">ОТРИМАЄТЕ БАГАТО ПРАКТИЧНИХ ПРИКЛАДІВ:</h3>
+                    <p data-i18n="kurs.results.practicalExamples.description">Які сформують впевненість при аналізі аспектів та закріплять ваші навички</p>
                 </div>
 
                 <div class="cta-wrapper">
-                    <a href="#tariffs" class="button button--buy">КУПИТЬ</a>
+                    <a href="#tariffs" class="button button--buy" data-i18n="kurs.hero.cta">КУПИТИ</a>
                 </div>
             </div>
         </section>
@@ -121,73 +152,73 @@
         <!-- Syllabus Section -->
         <section class="section program" id="program">
             <div class="container">
-                <h2 class="section__title">СОДЕРЖАНИЕ</h2>
+                <h2 class="section__title" data-i18n="kurs.content.title">ЗМІСТ</h2>
                 <div class="accordion">
                     <div class="accordion__item">
-                        <button class="accordion__header">ЧАСТЬ 1: ВВЕДЕНИЕ <span class="icon">+</span></button>
+                        <button class="accordion__header"><span data-i18n="kurs.content.part1.title">ЧАСТИНА 1: ВСТУП</span> <span class="icon">+</span></button>
                         <div class="accordion__content">
                             <ul class="program-list">
-                                <li>Солнце и Луна - главные фигуры натальной карты</li>
-                                <li>Что важнее Луна или Солнце</li>
-                                <li>Почему важно постоянно работать с Солнцем и Луной</li>
-                                <li>Как Солнце и Луна ведут к реализации предназначения</li>
-                                <li>Знак зодиака vs аспект</li>
-                                <li>Немного об обучении аспектам</li>
+                                <li data-i18n="kurs.content.part1.items.0">Сонце і Місяць — головні фігури натальної карти</li>
+                                <li data-i18n="kurs.content.part1.items.1">Що важливіше Місяць чи Сонце</li>
+                                <li data-i18n="kurs.content.part1.items.2">Чому важливо постійно працювати з Сонцем і Місяцем</li>
+                                <li data-i18n="kurs.content.part1.items.3">Як Сонце і Місяць ведуть до реалізації призначення</li>
+                                <li data-i18n="kurs.content.part1.items.4">Знак зодіаку vs аспект</li>
+                                <li data-i18n="kurs.content.part1.items.5">Трохи про навчання аспектам</li>
                             </ul>
                         </div>
                     </div>
                     <div class="accordion__item">
-                        <button class="accordion__header">ЧАСТЬ 2: ТЕХНИКА ТРАКТОВКИ АСПЕКТОВ <span
+                        <button class="accordion__header"><span data-i18n="kurs.content.part2.title">ЧАСТИНА 2: ТЕХНІКА ТРАКТУВАННЯ АСПЕКТІВ</span> <span
                                 class="icon">+</span></button>
                         <div class="accordion__content">
                             <ul class="program-list">
-                                <li>Что такое аспекты</li>
-                                <li>Таланты, которыми наделяют аспекты</li>
-                                <li>Что такое орбис</li>
-                                <li>Допустимые орбисы</li>
-                                <li>5 мажорных аспектов: квадратура, оппозиция, трин, секстиль, соединение</li>
-                                <li>Напряжённые - это плохо? Гармоничные - хорошо?</li>
-                                <li>Сила аспекта</li>
-                                <li>Правила чтения аспектов</li>
-                                <li>Описание характера аспектов</li>
-                                <li>Цикл аспектов</li>
-                                <li>Сравнительная таблица аспектов</li>
-                                <li>Планета в сожжении</li>
-                                <li>Планета в шахте</li>
-                                <li>Важные нюансы при чтении аспектов</li>
+                                <li data-i18n="kurs.content.part2.items.0">Що таке аспекти</li>
+                                <li data-i18n="kurs.content.part2.items.1">Таланти, якими наділяють аспекти</li>
+                                <li data-i18n="kurs.content.part2.items.2">Що таке орбіс</li>
+                                <li data-i18n="kurs.content.part2.items.3">Допустимі орбіси</li>
+                                <li data-i18n="kurs.content.part2.items.4">5 мажорних аспектів: квадратура, опозиція, трин, секстиль, з'єднання</li>
+                                <li data-i18n="kurs.content.part2.items.5">Напружені — це погано? Гармонійні — добре?</li>
+                                <li data-i18n="kurs.content.part2.items.6">Сила аспекту</li>
+                                <li data-i18n="kurs.content.part2.items.7">Правила читання аспектів</li>
+                                <li data-i18n="kurs.content.part2.items.8">Опис характеру аспектів</li>
+                                <li data-i18n="kurs.content.part2.items.9">Цикл аспектів</li>
+                                <li data-i18n="kurs.content.part2.items.10">Порівняльна таблиця аспектів</li>
+                                <li data-i18n="kurs.content.part2.items.11">Планета в спаленні</li>
+                                <li data-i18n="kurs.content.part2.items.12">Планета в шахті</li>
+                                <li data-i18n="kurs.content.part2.items.13">Важливі нюанси при читанні аспектів</li>
                             </ul>
                         </div>
                     </div>
                     <div class="accordion__item">
-                        <button class="accordion__header">ЧАСТЬ 3: ТРАКТОВКИ АСПЕКТОВ К ЛИЧНЫМ ПЛАНЕТАМ <span
+                        <button class="accordion__header"><span data-i18n="kurs.content.part3.title">ЧАСТИНА 3: ТРАКТУВАННЯ АСПЕКТІВ ДО ОСОБИСТИХ ПЛАНЕТ</span> <span
                                 class="icon">+</span></button>
                         <div class="accordion__content">
                             <ul class="program-list">
-                                <li>Аспекты к Луне</li>
-                                <li>Аспекты к Солнцу</li>
-                                <li>Аспекты к Меркурию</li>
-                                <li>Аспекты к Венере</li>
-                                <li>Аспекты к Марсу</li>
+                                <li data-i18n="kurs.content.part3.items.0">Аспекти до Місяця</li>
+                                <li data-i18n="kurs.content.part3.items.1">Аспекти до Сонця</li>
+                                <li data-i18n="kurs.content.part3.items.2">Аспекти до Меркурія</li>
+                                <li data-i18n="kurs.content.part3.items.3">Аспекти до Венери</li>
+                                <li data-i18n="kurs.content.part3.items.4">Аспекти до Марса</li>
                             </ul>
                         </div>
                     </div>
                     <div class="accordion__item">
-                        <button class="accordion__header">ЧАСТЬ 4: РАБОТА С НАПРЯЖЁННЫМИ АСПЕКТАМИ <span
+                        <button class="accordion__header"><span data-i18n="kurs.content.part4.title">ЧАСТИНА 4: РОБОТА З НАПРУЖЕНИМИ АСПЕКТАМИ</span> <span
                                 class="icon">+</span></button>
                         <div class="accordion__content">
                             <ul class="program-list">
-                                <li>Компенсаторика и проработка: в чем разница?</li>
-                                <li>Уровни проработки</li>
-                                <li>Какие напряженные аспекты стоит прорабатывать, а какие нет</li>
-                                <li>Важное условие компенаторных действий</li>
-                                <li>Распространенные проблемы (зачатие / личная жизнь / здоровье) и как с ними грамотно
-                                    работать</li>
+                                <li data-i18n="kurs.content.part4.items.0">Компенсаторика та опрацювання: в чому різниця?</li>
+                                <li data-i18n="kurs.content.part4.items.1">Рівні опрацювання</li>
+                                <li data-i18n="kurs.content.part4.items.2">Які напружені аспекти варто опрацьовувати, а які ні</li>
+                                <li data-i18n="kurs.content.part4.items.3">Важлива умова компенсаторних дій</li>
+                                <li data-i18n="kurs.content.part4.items.4">Поширені проблеми (зачаття / особисте життя / здоров'я) та як з ними грамотно
+                                    працювати</li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="cta-wrapper">
-                    <a href="#tariffs" class="button button--buy">КУПИТЬ</a>
+                    <a href="#tariffs" class="button button--buy" data-i18n="kurs.hero.cta">КУПИТИ</a>
                 </div>
             </div>
         </section>
@@ -195,9 +226,8 @@
         <!-- Preview Section -->
         <section class="section section--preview">
             <div class="container">
-                <h2 class="section__title">КАК ВЫГЛЯДИТ ТРЕНИНГ И ЕГО НАПОЛНЕНИЕ</h2>
+                <h2 class="section__title" data-i18n="kurs.preview.title">ЯК ВИГЛЯДАЄ ТРЕНІНГ І ЙОГО НАПОВНЕННЯ</h2>
                 <div class="reviews-carousel pages-carousel">
-                    <!-- Pages Images from images/ -->
                     <img src="images/page_1.PNG" alt="Preview Page 1">
                     <img src="images/page_2.PNG" alt="Preview Page 2">
                     <img src="images/page_3.PNG" alt="Preview Page 3">
@@ -205,72 +235,59 @@
                     <img src="images/page_6.PNG" alt="Preview Page 6">
                     <img src="images/page_7.PNG" alt="Preview Page 7">
                 </div>
-                <div class="cta-wrapper">
-                    <a href="#tariffs" class="button button--buy">КУПИТЬ</a>
-                </div>
             </div>
         </section>
 
         <!-- Value Section -->
         <section class="section section--value">
             <div class="container">
-                <h2 class="section__title">ЦЕННОСТЬ И ПРЕИМУЩЕСТВА КУРСА:</h2>
+                <h2 class="section__title" data-i18n="kurs.value.title">ЦІННІСТЬ І ПЕРЕВАГИ КУРСУ:</h2>
 
                 <div class="value-grid">
                     <div class="value-item">
-                        <h3>Доступ в Telegram-бот:</h3>
-                        <p>после оплаты открывается учебное пространство с уроками. Смотрите в любое время и с любого
-                            устройства.</p>
+                        <h3 data-i18n="kurs.value.telegramAccess.title">Доступ в Telegram-бот:</h3>
+                        <p data-i18n="kurs.value.telegramAccess.description">після оплати відкривається навчальний простір з уроками. Дивіться в будь-який час і з будь-якого
+                            пристрою.</p>
                     </div>
                     <div class="value-item">
-                        <h3>Премиальный текстовый формат</h3>
-                        <p>с красивым дизайнерским оформлением. Пособие удобно читать с любого устройства или
-                            распечатать и использовать как книгу, к которой вы сможете возвращаться в любой момент.</p>
+                        <h3 data-i18n="kurs.value.format.title">Преміальний текстовий формат</h3>
+                        <p data-i18n="kurs.value.format.description">з гарним дизайнерським оформленням. Посібник зручно читати з будь-якого пристрою або
+                            роздрукувати та використовувати як книгу, до якої можна повернутися в будь-який момент.</p>
                     </div>
                     <div class="value-item">
-                        <h3>Доступ к материалам навсегда:</h3>
-                        <p>возвращайтесь к материалам в любой момент.</p>
+                        <h3 data-i18n="kurs.value.lifetime.title">Доступ до матеріалів назавжди:</h3>
+                        <p data-i18n="kurs.value.lifetime.description">повертайтесь до матеріалів у будь-який момент.</p>
                     </div>
                     <div class="value-item">
-                        <h3>Возможность использовать астрологию</h3>
-                        <p>как инструмент дополнительного дохода и помощи людям.</p>
+                        <h3 data-i18n="kurs.value.income.title">Можливість використовувати астрологію</h3>
+                        <p data-i18n="kurs.value.income.description">як інструмент додаткового доходу та допомоги людям.</p>
                     </div>
                     <div class="value-item">
-                        <h3>Сможете кратно повысить доход</h3>
-                        <p>и качество своих консультаций.</p>
+                        <h3 data-i18n="kurs.value.quality.title">Зможете кратно підвищити дохід</h3>
+                        <p data-i18n="kurs.value.quality.description">та якість своїх консультацій.</p>
                     </div>
-                </div>
-
-                <div class="cta-wrapper">
-                    <a href="#tariffs" class="button button--buy">КУПИТЬ</a>
                 </div>
 
                 <div class="questions-block">
-                    <h2 class="section__title questions-title">ОСТАЛИСЬ ВОПРОСЫ?</h2>
+                    <h2 class="section__title questions-title" data-i18n="kurs.value.questionsTitle">ЗАЛИШИЛИСЬ ПИТАННЯ?</h2>
 
                     <details class="questions-details">
-                        <summary class="questions-summary">узнать детальнее</summary>
+                        <summary class="questions-summary" data-i18n="kurs.value.questionsToggle">дізнатися детальніше</summary>
                         <div class="questions-content">
-                            <h3>📚 ФОРМАТ ОБУЧЕНИЯ</h3>
-                            <p>Весь перечисленный выше материал предоставляется в текстовом формате и входит во все
-                                тарифы,
-                                независимо от выбранного варианта участия.</p>
+                            <h3 data-i18n="kurs.value.questionsFormat">📚 ФОРМАТ НАВЧАННЯ</h3>
+                            <p data-i18n="kurs.value.questionsFormatText">Весь перелічений вище матеріал надається в текстовому форматі та входить у всі тарифи,
+                                незалежно від обраного варіанту участі.</p>
 
-                            <h3>🎥 Видео-уроки</h3>
-                            <p>являются дополнением к базовой программе и доступны в расширенных тарифах.</p>
+                            <h3 data-i18n="kurs.value.questionsVideo">🎥 Відео-уроки</h3>
+                            <p data-i18n="kurs.value.questionsVideoText">є доповненням до базової програми та доступні в розширених тарифах.</p>
 
-                            <p class="note">Программа рассчитана на самостоятельное изучение.<br>
-                                Обратная связь и индивидуальное сопровождение в тарифах не предусмотрены.</p>
+                            <p class="note" data-i18n="kurs.value.questionsNote">Програма розрахована на самостійне вивчення.
+                                Зворотній зв'язок та індивідуальний супровід у тарифах не передбачені.</p>
 
-                            <p>Материал структурирован пошагово и выстроен так, чтобы вы могли спокойно изучать его в
-                                удобном
-                                темпе и возвращаться к нужным разделам в любой момент.</p>
+                            <p data-i18n="kurs.value.questionsClosing">Матеріал структурований покроково та побудований так, щоб ви могли спокійно вивчати його в
+                                зручному темпі та повертатися до потрібних розділів у будь-який момент.</p>
                         </div>
                     </details>
-                </div>
-
-                <div class="cta-wrapper">
-                    <a href="#tariffs" class="button button--buy">КУПИТЬ</a>
                 </div>
             </div>
         </section>
@@ -278,88 +295,88 @@
         <!-- Pricing Section -->
         <section id="tariffs" class="section pricing">
             <div class="container">
-                <h2 class="section__title">ВЫБРАТЬ ТАРИФ</h2>
+                <h2 class="section__title" data-i18n="kurs.tariffs.title">ОБРАТИ ТАРИФ</h2>
                 <div class="pricing__grid">
                     <!-- Tariff 1: BASIC -->
                     <div class="pricing-card">
                         <div class="pricing-card__header">
-                            <h3 class="pricing-card__title">БАЗОВЫЙ</h3>
+                            <h3 class="pricing-card__title" data-i18n="kurs.tariffs.tariff1.title">БАЗОВИЙ</h3>
                         </div>
 
                         <div class="pricing-card__content">
-                            <p class="what-gives"><strong>Что даёт этот тариф:</strong></p>
+                            <p class="what-gives"><strong data-i18n="kurs.tariffs.whatGives">Що дає цей тариф:</strong></p>
                             <ul class="pricing-list check-list-emoji">
-                                <li>понимание природы аспектов;</li>
-                                <li>логику их работы;</li>
-                                <li>понятные схемы интерпретации и готовые трактовки.</li>
+                                <li data-i18n="kurs.tariffs.tariff1.items.0">розуміння природи аспектів;</li>
+                                <li data-i18n="kurs.tariffs.tariff1.items.1">логіку їх роботи;</li>
+                                <li data-i18n="kurs.tariffs.tariff1.items.2">зрозумілі схеми інтерпретації та готові трактування.</li>
                             </ul>
                         </div>
 
                         <div class="pricing-card__footer">
-                            <div class="pricing-card__price">1290 грн</div>
-                            <p class="pricing-note">после оплаты вы получаете доступ к самоучителю в текстовом формате и
-                                изучаете материал в удобном для себя темпе.</p>
-                            <a href="#" data-liqpay-product="kurs-aspekty-1" class="button button--buy">КУПИТЬ</a>
+                            <div class="pricing-card__price" data-i18n="kurs.tariffs.tariff1.price">1290 грн</div>
+                            <p class="pricing-note" data-i18n="kurs.tariffs.tariff1.note">після оплати ви отримуєте доступ до самовчителя в текстовому форматі та
+                                вивчаєте матеріал у зручному для себе темпі.</p>
+                            <a href="#" data-liqpay-product="kurs-aspekty-1" class="button button--buy" data-i18n="kurs.tariffs.tariff1.cta">КУПИТИ</a>
                         </div>
                     </div>
 
                     <!-- Tariff 2: PRACTICAL -->
                     <div class="pricing-card pricing-card--popular">
                         <div class="pricing-card__header">
-                            <h3 class="pricing-card__title">ПРАКТИЧЕСКИЙ</h3>
+                            <h3 class="pricing-card__title" data-i18n="kurs.tariffs.tariff2.title">ПРАКТИЧНИЙ</h3>
                         </div>
 
                         <div class="pricing-card__content">
-                            <p class="what-gives"><strong>Что даёт этот тариф:</strong></p>
+                            <p class="what-gives"><strong data-i18n="kurs.tariffs.whatGives">Що дає цей тариф:</strong></p>
                             <ul class="pricing-list check-list-emoji">
-                                <li>всё, что входит в Базовый + видео-практика на реальных картах</li>
-                                <li>сможете применять профессиональный алгоритм разбора в собственных консультациях</li>
-                                <li>демонстрация того, как аспект проявляется в жизни реального человека — сможете
-                                    распознавать проявления аспекта в запросах, ситуациях и историях клиентов</li>
-                                <li>пример консультации — как грамотно преподносить информацию клиенту, на что
-                                    опираться, что считать ключевым.</li>
+                                <li data-i18n="kurs.tariffs.tariff2.items.0">все, що входить у Базовий + відео-практика на реальних картах</li>
+                                <li data-i18n="kurs.tariffs.tariff2.items.1">зможете застосовувати професійний алгоритм розбору у власних консультаціях</li>
+                                <li data-i18n="kurs.tariffs.tariff2.items.2">демонстрація того, як аспект проявляється в житті реальної людини — зможете
+                                    розпізнавати прояви аспекту в запитах, ситуаціях та історіях клієнтів</li>
+                                <li data-i18n="kurs.tariffs.tariff2.items.3">приклад консультації — як грамотно подавати інформацію клієнту, на що
+                                    спиратися, що вважати ключовим.</li>
                             </ul>
                         </div>
 
                         <div class="pricing-card__footer">
-                            <div class="pricing-card__price">1690 грн</div>
-                            <p class="pricing-note">После оплаты вы получаете доступ к текстовому самоучителю и
-                                видео-урокам и изучаете материал в удобном для себя темпе.</p>
-                            <a href="#" data-liqpay-product="kurs-aspekty-2" class="button button--buy">КУПИТЬ</a>
+                            <div class="pricing-card__price" data-i18n="kurs.tariffs.tariff2.price">1690 грн</div>
+                            <p class="pricing-note" data-i18n="kurs.tariffs.tariff2.note">Після оплати ви отримуєте доступ до текстового самовчителя та
+                                відео-уроків і вивчаєте матеріал у зручному для себе темпі.</p>
+                            <a href="#" data-liqpay-product="kurs-aspekty-2" class="button button--buy" data-i18n="kurs.tariffs.tariff2.cta">КУПИТИ</a>
                         </div>
                     </div>
 
                     <!-- Tariff 3: PROFESSIONAL -->
                     <div class="pricing-card">
                         <div class="pricing-card__header">
-                            <h3 class="pricing-card__title">ПРОФЕССИОНАЛЬНЫЙ</h3>
+                            <h3 class="pricing-card__title" data-i18n="kurs.tariffs.tariff3.title">ПРОФЕСІЙНИЙ</h3>
                         </div>
 
                         <div class="pricing-card__content">
-                            <p class="what-gives"><strong>Что даёт этот тариф:</strong></p>
+                            <p class="what-gives"><strong data-i18n="kurs.tariffs.whatGives">Що дає цей тариф:</strong></p>
                             <ul class="pricing-list check-list-emoji">
-                                <li>всё, что входит в Практический</li>
-                                <li>эксклюзивный видео-урок «Тонкости компенсаторики и проработки в астрологии»</li>
-                                <li>понимание, как грамотно доносить информацию до клиента, на чем стоит делать акцент
+                                <li data-i18n="kurs.tariffs.tariff3.items.0">все, що входить у Практичний</li>
+                                <li data-i18n="kurs.tariffs.tariff3.items.1">ексклюзивний відео-урок «Тонкощі компенсаторики та опрацювання в астрології»</li>
+                                <li data-i18n="kurs.tariffs.tariff3.items.2">розуміння, як грамотно доносити інформацію до клієнта, на чому варто робити акцент
                                 </li>
-                                <li>рост доверия клиентов и ценности ваших консультаций</li>
+                                <li data-i18n="kurs.tariffs.tariff3.items.3">зростання довіри клієнтів та цінності ваших консультацій</li>
                             </ul>
 
                             <div class="bonus-block">
-                                <h4>В ПОДАРОК 🎁</h4>
+                                <h4 data-i18n="kurs.tariffs.tariff3.giftTitle">В ПОДАРУНОК 🎁</h4>
                                 <details class="questions-details">
-                                    <summary class="questions-summary" style="font-size: 0.9rem; margin-bottom: 10px;">
-                                        узнать детальнее</summary>
+                                    <summary class="questions-summary" style="font-size: 0.9rem; margin-bottom: 10px;"
+                                        data-i18n="kurs.tariffs.tariff3.giftToggle">дізнатися детальніше</summary>
                                     <div class="questions-content" style="margin-top: 10px; font-size: 0.9rem;">
                                         <ul class="check-list-emoji" style="padding:0; list-style:none;">
-                                            <li style="margin-bottom: 10px;">✔️ подкаст, который закрывает главный
-                                                негласный страх консультирующего астролога — страх ошибиться и навредить
-                                                клиенту.</li>
-                                            <li style="margin-bottom: 10px;">✔️ подкаст «Как соединить показатели карты
-                                                воедино? Как трактовать противоречия?»</li>
-                                            <li style="margin-bottom: 10px;">✔️ урок «Солнце и Луна» в натальной карте —
-                                                неклассическая, эксклюзивная информация, позволяющая работать с ядром
-                                                натальной карты на уровне, недоступном большинству специалистов.</li>
+                                            <li style="margin-bottom: 10px;" data-i18n="kurs.tariffs.tariff3.giftItems.0">✔️ подкаст, який закриває головний
+                                                негласний страх консультуючого астролога — страх помилитися та нашкодити
+                                                клієнту.</li>
+                                            <li style="margin-bottom: 10px;" data-i18n="kurs.tariffs.tariff3.giftItems.1">✔️ подкаст «Як з'єднати показники карти
+                                                воєдино? Як трактувати суперечності?»</li>
+                                            <li style="margin-bottom: 10px;" data-i18n="kurs.tariffs.tariff3.giftItems.2">✔️ урок «Сонце і Місяць» в натальній карті —
+                                                некласична, ексклюзивна інформація, що дозволяє працювати з ядром
+                                                натальної карти на рівні, недоступному більшості спеціалістів.</li>
                                         </ul>
                                     </div>
                                 </details>
@@ -367,10 +384,10 @@
                         </div>
 
                         <div class="pricing-card__footer">
-                            <div class="pricing-card__price">2790 грн</div>
-                            <p class="pricing-note">После оплаты вы получаете доступ к текстовому самоучителю,
-                                видео-урокам, подкастам и изучаете материал в удобном для себя темпе.</p>
-                            <a href="#" data-liqpay-product="kurs-aspekty-3" class="button button--buy">КУПИТЬ</a>
+                            <div class="pricing-card__price" data-i18n="kurs.tariffs.tariff3.price">2790 грн</div>
+                            <p class="pricing-note" data-i18n="kurs.tariffs.tariff3.note">Після оплати ви отримуєте доступ до текстового самовчителя,
+                                відео-уроків, подкастів і вивчаєте матеріал у зручному для себе темпі.</p>
+                            <a href="#" data-liqpay-product="kurs-aspekty-3" class="button button--buy" data-i18n="kurs.tariffs.tariff3.cta">КУПИТИ</a>
                         </div>
                     </div>
                 </div>
@@ -380,36 +397,31 @@
         <!-- About Author -->
         <section class="section about">
             <div class="container">
-                <h2 class="section__title">ОБО МНЕ</h2>
+                <h2 class="section__title" data-i18n="kurs.about.title">ПРО МЕНЕ</h2>
                 <div class="about__content">
                     <div class="about__text">
-                        <p class="about-intro">Меня зовут <strong>Анастасия Лисовская</strong>, я профессиональный
-                            астролог и
-                            преподаватель.</p>
-                        <p>Астрология часть моей жизни уже более <strong>10 лет</strong>.</p>
+                        <p class="about-intro" data-i18n="kurs.about.intro">Мене звати <strong>Анастасія Лісовська</strong>, я професійний
+                            астролог та викладач.</p>
+                        <p data-i18n="kurs.about.experience">Астрологія частина мого життя вже понад <strong>10 років</strong>.</p>
 
                         <div class="about-stats-container">
                             <div class="about-stat">
-                                <span class="stat-number">7 лет</span>
-                                <span class="stat-label">консультационной практики</span>
+                                <span class="stat-number" data-i18n="kurs.about.stat1number">7 років</span>
+                                <span class="stat-label" data-i18n="kurs.about.stat1label">консультаційної практики</span>
                             </div>
                             <div class="about-stat">
-                                <span class="stat-number">3000+</span>
-                                <span class="stat-label">индивидуальных консультаций</span>
+                                <span class="stat-number" data-i18n="kurs.about.stat2number">3000+</span>
+                                <span class="stat-label" data-i18n="kurs.about.stat2label">індивідуальних консультацій</span>
                             </div>
                         </div>
 
-                        <p class="about-philosophy">Я объясняю глубинный смысл астрологии <em>без мистики</em> и обучаю
-                            грамотно консультировать на практике.</p>
-                        <p>Со мной вы поймёте, что астрология — это невероятно интересная и логичная система, а уверенно
-                            консультировать гораздо проще, чем кажется, когда вы владеете теми навыками, которым я вас
-                            научу.</p>
+                        <p class="about-philosophy" data-i18n="kurs.about.philosophy">Я пояснюю глибинний сенс астрології <em>без містики</em> та навчаю
+                            грамотно консультувати на практиці.</p>
+                        <p data-i18n="kurs.about.closing">Зі мною ви зрозумієте, що астрологія — це неймовірно цікава та логічна система, а впевнено
+                            консультувати значно простіше, ніж здається, коли ви володієте тими навичками, яким я вас
+                            навчу.</p>
                     </div>
-                    <!-- Assuming there is an image for About section that matches reference style -->
                     <div class="about__image"></div>
-                </div>
-                <div class="cta-wrapper">
-                    <a href="#tariffs" class="button button--buy">КУПИТЬ</a>
                 </div>
             </div>
         </section>
@@ -417,17 +429,13 @@
         <!-- Reviews Section -->
         <section class="section">
             <div class="container">
-                <h2 class="section__title">ОТЗЫВЫ</h2>
+                <h2 class="section__title" data-i18n="kurs.reviews.title">ВІДГУКИ</h2>
                 <div class="reviews-carousel">
-                    <!-- Reviews from images/ -->
                     <img src="images/review_1.PNG" alt="Review 1">
                     <img src="images/review_2.PNG" alt="Review 2">
                     <img src="images/review_3.PNG" alt="Review 3">
                     <img src="images/rewview_4.PNG" alt="Review 4">
                     <img src="images/review_5.PNG" alt="Review 5">
-                </div>
-                <div class="cta-wrapper">
-                    <a href="#tariffs" class="button button--buy">КУПИТЬ</a>
                 </div>
             </div>
         </section>
@@ -443,23 +451,30 @@
                     <p class="site-footer__legal-name" data-i18n="footer.legal">ФОП Виноградов А.В.</p>
                 </div>
                 <div class="site-footer__links">
-                    <a href="/legal/privacy.html" class="site-footer__link" data-i18n="footer.privacy">Политика
-                        конфиденциальности</a>
-                    <a href="/legal/offer.html" class="site-footer__link" data-i18n="footer.offer">Публичная оферта</a>
+                    <a href="/legal/privacy.html" class="site-footer__link" data-i18n="footer.privacy">Політика
+                        конфіденційності</a>
+                    <a href="/legal/offer.html" class="site-footer__link" data-i18n="footer.offer">Публічна оферта</a>
                 </div>
             </div>
             <div class="site-footer__bottom">
-                <p class="site-footer__copyright" data-i18n="footer.copyright">© 2026 Li Astrology. Все права защищены.
+                <p class="site-footer__copyright" data-i18n="footer.copyright">© 2026 Li Astrology. Всі права захищені.
                 </p>
             </div>
         </div>
     </footer>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="sticky-mobile-cta">
+        <span class="sticky-price" data-i18n="home.course.price">від 1290 грн</span>
+        <a href="#tariffs" class="button" data-i18n="kurs.tariffs.title">ОБРАТИ ТАРИФ</a>
+    </div>
 
     <script src="../js/config.js"></script>
     <script src="../js/analytics.js"></script>
     <script src="../js/liqpay.js"></script>
     <script src="script.js"></script>
     <script src="../js/i18n.js"></script>
+    <script>document.body.classList.add('has-sticky-cta');</script>
 </body>
 
 </html>

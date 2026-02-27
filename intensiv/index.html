@@ -8,6 +8,8 @@
     <meta name="description"
         content="Твій легкий перший крок у світ астрології — навчання, після якого ти зможеш впевнено заробляти вже за 4 тижні.">
 
+    <link rel="icon" type="image/svg+xml" href="../images/li_logo_symbol.svg">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +25,10 @@
     <!-- Site Header with Language Switcher -->
     <header class="site-header">
         <div class="container">
-            <a href="/" class="site-header__logo">Li Astrology</a>
+            <a href="/" class="site-header__logo">
+                <img src="../images/li_logo_symbol.svg" alt="Li Astrology">
+                <span class="brand-text">Li Astrology</span>
+            </a>
             <nav class="site-header__nav">
                 <a href="/" class="site-header__link" data-i18n="header.home">Головна</a>
                 <div class="lang-switcher">
@@ -39,7 +44,7 @@
     <!-- Course Header -->
     <header class="header">
         <div class="container">
-            <div class="header__text">Старт 12 Січня</div>
+            <div class="header__text" data-i18n="intensiv.header">Доступ одразу після оплати</div>
         </div>
     </header>
 
@@ -47,53 +52,63 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="container hero__container">
-                <div class="hero__badge">490 грн</div>
-                <h1 class="hero__title">ІНТЕНСИВ<br>«АСТРОЛОГІЯ З 0»</h1>
-                <p class="hero__subtitle">Твій легкий перший крок у світ астрології — навчання, після якого ти зможеш
+                <div class="hero__badge" data-i18n="intensiv.hero.badge">490 грн</div>
+                <h1 class="hero__title" data-i18n="intensiv.hero.title" data-i18n-html>ІНТЕНСИВ<br>«АСТРОЛОГІЯ З 0»</h1>
+                <p class="hero__subtitle" data-i18n="intensiv.hero.subtitle">Твій легкий перший крок у світ астрології — навчання, після якого ти зможеш
                     впевнено заробляти вже за 4 тижні</p>
                 <div class="hero__image-wrapper">
                     <img src="hero_author_v2.jpg" alt="Astrology Author"
                         style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
-                <a href="#" data-liqpay-product="intensiv" class="button hero__button">ПРИДБАТИ ЗА 490 ГРН</a>
+                <a href="#" data-liqpay-product="intensiv" class="button hero__button" data-i18n="intensiv.hero.cta">ПРИДБАТИ ЗА 490 ГРН</a>
+                <div class="trust-badges">
+                    <span class="trust-badge">
+                        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                        <span data-i18n="common.securePayment">Безпечна оплата</span>
+                    </span>
+                    <span class="trust-badge">
+                        <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                        <span data-i18n="common.instantAccess">Миттєвий доступ</span>
+                    </span>
+                </div>
             </div>
         </section>
 
         <!-- For Ty Section -->
         <section class="section section--dark-alt">
             <div class="container">
-                <h2 class="section__title">ЦЕЙ ІНТЕНСИВ ДЛЯ ТЕБЕ, ЯКЩО ТИ…</h2>
+                <h2 class="section__title" data-i18n="intensiv.forYou.title">ЦЕЙ ІНТЕНСИВ ДЛЯ ТЕБЕ, ЯКЩО ТИ…</h2>
                 <div class="grid-list">
                     <div class="grid-card">
-                        <h3>Новачок</h3>
-                        <p>І знаєш про астрологію лише з книг та соцмереж.</p>
+                        <h3 data-i18n="intensiv.forYou.cards.beginner.title">Новачок</h3>
+                        <p data-i18n="intensiv.forYou.cards.beginner.description">І знаєш про астрологію лише з книг та соцмереж.</p>
                     </div>
                     <div class="grid-card">
-                        <h3>Маєш сумніви</h3>
-                        <p>Замислюєшся "чи підходить мені це?", "чи не занадто складно?", "чи вийде в мене?". Я створила
+                        <h3 data-i18n="intensiv.forYou.cards.doubts.title">Маєш сумніви</h3>
+                        <p data-i18n="intensiv.forYou.cards.doubts.description">Замислюєшся "чи підходить мені це?", "чи не занадто складно?", "чи вийде в мене?". Я створила
                             комфортний вхід у професію саме для тебе.</p>
                     </div>
                     <div class="grid-card">
-                        <h3>Мрієш про нову професію</h3>
-                        <p>Хочеш опанувати нову справу та почати займатись тим, що любиш.</p>
+                        <h3 data-i18n="intensiv.forYou.cards.newProfession.title">Мрієш про нову професію</h3>
+                        <p data-i18n="intensiv.forYou.cards.newProfession.description">Хочеш опанувати нову справу та почати займатись тим, що любиш.</p>
                     </div>
                     <div class="grid-card">
-                        <h3>Шукаєш відповіді</h3>
-                        <p>Хочеш самостійно знайти відповіді на свої питання, розібратись в собі та своїй місії.</p>
+                        <h3 data-i18n="intensiv.forYou.cards.seekingAnswers.title">Шукаєш відповіді</h3>
+                        <p data-i18n="intensiv.forYou.cards.seekingAnswers.description">Хочеш самостійно знайти відповіді на свої питання, розібратись в собі та своїй місії.</p>
                     </div>
                     <div class="grid-card">
-                        <h3>Бажаєш розвитку</h3>
-                        <p>Хочеш отримати додатковий дохід, допомагати людям та покращити стосунки з близькими.</p>
+                        <h3 data-i18n="intensiv.forYou.cards.development.title">Бажаєш розвитку</h3>
+                        <p data-i18n="intensiv.forYou.cards.development.description">Хочеш отримати додатковий дохід, допомагати людям та покращити стосунки з близькими.</p>
                     </div>
                     <div class="grid-card">
-                        <h3>Ти практик</h3>
-                        <p>Нумеролог, таролог, коуч, психолог — хочеш підсилити експертність та робити консультації
+                        <h3 data-i18n="intensiv.forYou.cards.practitioner.title">Ти практик</h3>
+                        <p data-i18n="intensiv.forYou.cards.practitioner.description">Нумеролог, таролог, коуч, психолог — хочеш підсилити експертність та робити консультації
                             глибшими.</p>
                     </div>
                 </div>
                 <div class="cta-wrapper">
-                    <p class="cta-text">Це навчання допоможе тобі підвищити дохід і впевненість у своїй практиці.</p>
-                    <a href="#" data-liqpay-product="intensiv" class="button">ПРИДБАТИ ЗА 490 ГРН</a>
+                    <p class="cta-text" data-i18n="intensiv.forYou.cta">Це навчання допоможе тобі підвищити дохід і впевненість у своїй практиці.</p>
+                    <a href="#" data-liqpay-product="intensiv" class="button" data-i18n="intensiv.hero.cta">ПРИДБАТИ ЗА 490 ГРН</a>
                 </div>
             </div>
         </section>
@@ -101,36 +116,33 @@
         <!-- Why Needed Section -->
         <section class="section">
             <div class="container">
-                <h2 class="section__title">ЧОМУ ТОБІ ПОТРІБЕН ЦЕЙ КУРС</h2>
+                <h2 class="section__title" data-i18n="intensiv.whyNeed.title">ЧОМУ ТОБІ ПОТРІБЕН ЦЕЙ КУРС</h2>
                 <ul class="check-list">
-                    <li>Ти побачиш, що астрологія — це логічна система, а не щось складне й недосяжне.</li>
-                    <li>Ти отримаєш усі повноцінні базові знання і зможеш консультувати близьких.</li>
-                    <li>Ти зекономиш багато часу та коштів у майбутньому, бо навчишся одразу аналізувати карту глибоко.
+                    <li data-i18n="intensiv.whyNeed.items.0">Ти побачиш, що астрологія — це логічна система, а не щось складне й недосяжне.</li>
+                    <li data-i18n="intensiv.whyNeed.items.1">Ти отримаєш усі повноцінні базові знання і зможеш консультувати близьких.</li>
+                    <li data-i18n="intensiv.whyNeed.items.2">Ти зекономиш багато часу та коштів у майбутньому, бо навчишся одразу аналізувати карту глибоко.
                     </li>
-                    <li>Зникне страх зробити щось не так — ми розберемо все детально.</li>
-                    <li>Зрозумієш, чи твоя це справа, без зайвих витрат.</li>
-                    <li>Зі мною ти переконаєшся, що консультувати легше, ніж здається.</li>
+                    <li data-i18n="intensiv.whyNeed.items.3">Зникне страх зробити щось не так — ми розберемо все детально.</li>
+                    <li data-i18n="intensiv.whyNeed.items.4">Зрозумієш, чи твоя це справа, без зайвих витрат.</li>
+                    <li data-i18n="intensiv.whyNeed.items.5">Зі мною ти переконаєшся, що консультувати легше, ніж здається.</li>
                 </ul>
-                <div class="cta-wrapper">
-                    <a href="#" data-liqpay-product="intensiv" class="button">ПРИДБАТИ ЗА 490 ГРН</a>
-                </div>
             </div>
         </section>
 
         <!-- About Me Section -->
         <section class="section about">
             <div class="container">
-                <h2 class="section__title">ПРО МЕНЕ</h2>
+                <h2 class="section__title" data-i18n="intensiv.about.title">ПРО МЕНЕ</h2>
                 <div class="about__content">
                     <div class="about__text">
-                        <h3>Анастасія</h3>
-                        <p class="subtitle">Професійний астролог</p>
+                        <h3 data-i18n="intensiv.about.name">Анастасія</h3>
+                        <p class="subtitle" data-i18n="intensiv.about.role">Професійний астролог</p>
                         <ul class="stats-list">
-                            <li><strong>10+ років</strong> астрологія частина мого життя</li>
-                            <li><strong>7 років</strong> консультаційної практики</li>
-                            <li><strong>800+</strong> індивідуальних консультацій</li>
+                            <li><strong data-i18n="intensiv.about.experience.years">10+ років</strong> <span data-i18n="intensiv.about.experience.yearsDesc">астрологія частина мого життя</span></li>
+                            <li><strong data-i18n="intensiv.about.experience.practice">7 років</strong> <span data-i18n="intensiv.about.experience.practiceDesc">консультаційної практики</span></li>
+                            <li><strong data-i18n="intensiv.about.experience.consultations">800+</strong> <span data-i18n="intensiv.about.experience.consultationsDesc">індивідуальних консультацій</span></li>
                         </ul>
-                        <p>Пояснюю глибинний сенс астрології без містики та навчаю грамотно консультувати на практиці.
+                        <p data-i18n="intensiv.about.description">Пояснюю глибинний сенс астрології без містики та навчаю грамотно консультувати на практиці.
                         </p>
                     </div>
                     <div class="about__image">
@@ -144,15 +156,15 @@
         <!-- Reviews Section -->
         <section class="section">
             <div class="container">
-                <h2 class="section__title">ВІДГУКИ</h2>
+                <h2 class="section__title" data-i18n="intensiv.reviews.title">ВІДГУКИ</h2>
                 <div class="reviews-carousel">
                     <!-- Review 1 -->
                     <div class="review-card">
                         <div class="review-header">
                             <div class="review-avatar"></div>
-                            <div class="review-user">olenka_sun</div>
+                            <div class="review-user" data-i18n="intensiv.reviews.review1.user">olenka_sun</div>
                         </div>
-                        <div class="review-bubble">
+                        <div class="review-bubble" data-i18n="intensiv.reviews.review1.text">
                             Привіт! Хочу подякувати за інтенсив 😍 Я нарешті зрозуміла свою натальну карту. Це просто
                             космос! Вже дивлюсь карти подруг, вони в шоці як все точно))
                         </div>
@@ -161,9 +173,9 @@
                     <div class="review-card">
                         <div class="review-header">
                             <div class="review-avatar"></div>
-                            <div class="review-user">marina.kravets</div>
+                            <div class="review-user" data-i18n="intensiv.reviews.review2.user">marina.kravets</div>
                         </div>
-                        <div class="review-bubble">
+                        <div class="review-bubble" data-i18n="intensiv.reviews.review2.text">
                             Анастасія, дякую за такі глибокі знання! 🙏 Раніше читала гороскопи і нічого не збувалось, а
                             тепер розумію механіку. Дуже логічна і структурована подача, без "води".
                         </div>
@@ -172,9 +184,9 @@
                     <div class="review-card">
                         <div class="review-header">
                             <div class="review-avatar"></div>
-                            <div class="review-user">tanya_design</div>
+                            <div class="review-user" data-i18n="intensiv.reviews.review3.user">tanya_design</div>
                         </div>
-                        <div class="review-bubble">
+                        <div class="review-bubble" data-i18n="intensiv.reviews.review3.text">
                             Курс перевершив очікування! 🔥 Думала буде складно, але ви так просто пояснюєте. Урок про
                             Сонце і Місяць — це взагалі інсайт на все життя. Рекомендую всім!
                         </div>
@@ -183,9 +195,9 @@
                     <div class="review-card">
                         <div class="review-header">
                             <div class="review-avatar"></div>
-                            <div class="review-user">julia_astro_begin</div>
+                            <div class="review-user" data-i18n="intensiv.reviews.review4.user">julia_astro_begin</div>
                         </div>
-                        <div class="review-bubble">
+                        <div class="review-bubble" data-i18n="intensiv.reviews.review4.text">
                             Це краща інвестиція в себе за цей рік ❤️ Вже провела першу міні-консультацію для сестри, ми
                             плакали від того, наскільки це про неї. Дякую вам!!
                         </div>
@@ -194,16 +206,13 @@
                     <div class="review-card">
                         <div class="review-header">
                             <div class="review-avatar"></div>
-                            <div class="review-user">kate.beauty</div>
+                            <div class="review-user" data-i18n="intensiv.reviews.review5.user">kate.beauty</div>
                         </div>
-                        <div class="review-bubble">
+                        <div class="review-bubble" data-i18n="intensiv.reviews.review5.text">
                             Дівчатка, це знахідка! ✨ Я завжди боялась почати, але після інтенсиву така впевненість
                             з'явилась. Матеріал дуже якісний, все по поличках. 10/10!
                         </div>
                     </div>
-                </div>
-                <div class="cta-wrapper">
-                    <a href="#" data-liqpay-product="intensiv" class="button">ПРИДБАТИ ЗА 490 ГРН</a>
                 </div>
             </div>
         </section>
@@ -211,48 +220,50 @@
         <!-- Program Section (Accordion) -->
         <section class="section program">
             <div class="container">
-                <h2 class="section__title">ПРОГРАМА ІНТЕНСИВУ</h2>
+                <h2 class="section__title" data-i18n="intensiv.program.title">ПРОГРАМА ІНТЕНСИВУ</h2>
                 <div class="accordion">
                     <div class="accordion__item">
-                        <button class="accordion__header">1. Вступ до астрології <span class="icon">+</span></button>
+                        <button class="accordion__header"><span data-i18n="intensiv.program.items.0.title">1. Вступ до астрології</span> <span class="icon">+</span></button>
                         <div class="accordion__content">
-                            <p>Історія астрології. Види астрології. Філософія астрології. Дуальність енергій. Рівні
+                            <p data-i18n="intensiv.program.items.0.content">Історія астрології. Види астрології. Філософія астрології. Дуальність енергій. Рівні
                                 проживання натальної карти. Основні правила роботи астролога.</p>
                         </div>
                     </div>
                     <div class="accordion__item">
-                        <button class="accordion__header">2. Стихії, хрести, знаки <span class="icon">+</span></button>
+                        <button class="accordion__header"><span data-i18n="intensiv.program.items.1.title">2. Стихії, хрести, знаки</span> <span class="icon">+</span></button>
                         <div class="accordion__content">
-                            <p>Навчаємося визначати темперамент людини і розуміти енергії знаків.<br>+ Тест<br>+ Домашнє
-                                завдання</p>
+                            <p data-i18n="intensiv.program.items.1.content">Навчаємося визначати темперамент людини і розуміти енергії знаків.
++ Тест
++ Домашнє завдання</p>
                         </div>
                     </div>
                     <div class="accordion__item">
-                        <button class="accordion__header">3. Дома (поля гороскопу) <span class="icon">+</span></button>
+                        <button class="accordion__header"><span data-i18n="intensiv.program.items.2.title">3. Дома (поля гороскопу)</span> <span class="icon">+</span></button>
                         <div class="accordion__content">
-                            <p>Поговоримо детально, що означає кожен з них і як застосувати ці знання в реальному житті.
+                            <p data-i18n="intensiv.program.items.2.content">Поговоримо детально, що означає кожен з них і як застосувати ці знання в реальному житті.
                             </p>
                         </div>
                     </div>
                     <div class="accordion__item">
-                        <button class="accordion__header">4. Елементи натальної карти. Як усе влаштовано <span
+                        <button class="accordion__header"><span data-i18n="intensiv.program.items.3.title">4. Елементи натальної карти. Як усе влаштовано</span> <span
                                 class="icon">+</span></button>
                         <div class="accordion__content">
-                            <p>Як визначати дім? Градуси, куспиди, планети, аспекти — алгоритм аналізу.<br>+ Тест<br>+
-                                Домашнє завдання</p>
+                            <p data-i18n="intensiv.program.items.3.content">Як визначати дім? Градуси, куспиди, планети, аспекти — алгоритм аналізу.
++ Тест
++ Домашнє завдання</p>
                         </div>
                     </div>
                     <div class="accordion__item">
-                        <button class="accordion__header">5. Хейт і критика астрології <span
+                        <button class="accordion__header"><span data-i18n="intensiv.program.items.4.title">5. Хейт і критика астрології</span> <span
                                 class="icon">+</span></button>
                         <div class="accordion__content">
-                            <p>Що робити, якщо близькі не приймають? Як реагувати на критику? Як не втратити мотивацію.
+                            <p data-i18n="intensiv.program.items.4.content">Що робити, якщо близькі не приймають? Як реагувати на критику? Як не втратити мотивацію.
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="cta-wrapper">
-                    <a href="#" data-liqpay-product="intensiv" class="button">ПРИДБАТИ ЗА 490 ГРН</a>
+                    <a href="#" data-liqpay-product="intensiv" class="button" data-i18n="intensiv.program.cta">ПРИДБАТИ ЗА 490 ГРН</a>
                 </div>
             </div>
         </section>
@@ -260,16 +271,16 @@
         <!-- Gift Section -->
         <section class="section gift">
             <div class="container">
-                <h2 class="section__title">ПОДАРУНОК 🎁</h2>
+                <h2 class="section__title" data-i18n="intensiv.gift.title">ПОДАРУНОК 🎁</h2>
                 <div class="gift-card">
-                    <h3>Урок «Сонце і Місяць» в натальній карті</h3>
-                    <p>Це — фундамент особистості та ключ до розуміння людини. Ви розберете ядро натальної карти: що
-                        формує характер, емоції та життєві сценарії.</p>
-                    <p>Це перший і головний урок повноцінного курсу — база, без якої неможлива професійна астрологія.
-                    </p>
-                </div>
-                <div class="cta-wrapper">
-                    <a href="#" data-liqpay-product="intensiv" class="button">ПРИДБАТИ ЗА 490 ГРН</a>
+                    <h3 data-i18n="intensiv.gift.lesson">Урок «Сонце і Місяць» в натальній карті</h3>
+                    <p><strong data-i18n="intensiv.gift.lessonIntro">Урок, після якого ви вже зможете проводити свої перші якісні платні консультації та
+                            відчути себе справжніми астрологами.</strong></p>
+                    <p data-i18n="intensiv.gift.description">Це — фундамент особистості та ключ до розуміння людини.</p>
+                    <p data-i18n="intensiv.gift.description2">На цьому уроці ви розберете ядро натальної карти: що формує характер, емоції, реакції та життєві
+                        сценарії.</p>
+                    <p data-i18n="intensiv.gift.description3">Зрозумієте, чому людина поводиться саме так, як проявляє любов, у чому має глибинні потреби та де
+                        її справжнє покликання й реалізація в соціумі.</p>
                 </div>
             </div>
         </section>
@@ -277,37 +288,37 @@
         <!-- Final Outcomes Section -->
         <section class="section section--dark-alt outcomes">
             <div class="container">
-                <h2 class="section__title">ВАШ РЕЗУЛЬТАТ</h2>
+                <h2 class="section__title" data-i18n="intensiv.results.title">ВАШ РЕЗУЛЬТАТ</h2>
 
                 <div class="outcomes__grid">
                     <div class="outcomes__item">
-                        <p>Пройшовши ці уроки, ви щонайменше ознайомитесь з філософією астрології, почнете краще
+                        <p data-i18n="intensiv.results.items.0">Пройшовши ці уроки, ви щонайменше ознайомитесь з філософією астрології, почнете краще
                             розуміти себе, людей навколо себе та причини їхньої поведінки.</p>
                     </div>
                     <div class="outcomes__item">
-                        <p>Ви навчитеся читати натальну карту з глибоким розумінням того, що означає кожен градус і
+                        <p data-i18n="intensiv.results.items.1">Ви навчитеся читати натальну карту з глибоким розумінням того, що означає кожен градус і
                             кожен символ, які тонкощі вони несуть.</p>
                     </div>
                     <div class="outcomes__item">
-                        <p>Ви ознайомитесь з тим, як астрологія може суттєво покращити якість вашого життя, якщо
+                        <p data-i18n="intensiv.results.items.2">Ви ознайомитесь з тим, як астрологія може суттєво покращити якість вашого життя, якщо
                             слідувати своєму призначенню.</p>
                     </div>
                 </div>
 
                 <div class="outcomes__serious">
-                    <h3>✨ ВАЖЛИВО</h3>
-                    <p>Поставтеся до цих уроків із повною серйозністю. Це не розважальний контент. Це навчання професії.
-                        Уроки фундаментальні, об’ємні та практичні.</p>
+                    <h3>✨ <span data-i18n="intensiv.results.important">ВАЖЛИВО</span></h3>
+                    <p data-i18n="intensiv.results.importantText">Поставтеся до цих уроків із повною серйозністю. Це не розважальний контент. Це навчання професії.
+                        Уроки фундаментальні, об'ємні та практичні.</p>
                 </div>
 
                 <div class="outcomes__final-note">
-                    <p>Наприкінці переднавчання на вас чекає приклад розбору натальної карти з використанням знань, які
+                    <p data-i18n="intensiv.results.finalNote">Наприкінці переднавчання на вас чекає приклад розбору натальної карти з використанням знань, які
                         я даю на повноцінному курсі «Астрологія з нуля до професії». Це дозволить вам побачити, як ви
                         навчитесь консультувати та зрозуміти, чи хочете ви продовжити навчання.</p>
                 </div>
 
                 <div class="cta-wrapper">
-                    <a href="#" data-liqpay-product="intensiv" class="button">ПРИДБАТИ ЗА 490 ГРН</a>
+                    <a href="#" data-liqpay-product="intensiv" class="button" data-i18n="intensiv.results.cta">ПРИДБАТИ ЗА 490 ГРН</a>
                 </div>
             </div>
         </section>
@@ -323,21 +334,30 @@
                     <p class="site-footer__legal-name" data-i18n="footer.legal">ФОП Виноградов А.В.</p>
                 </div>
                 <div class="site-footer__links">
-                    <a href="/legal/privacy.html" class="site-footer__link" data-i18n="footer.privacy">Політика конфіденційності</a>
+                    <a href="/legal/privacy.html" class="site-footer__link" data-i18n="footer.privacy">Політика
+                        конфіденційності</a>
                     <a href="/legal/offer.html" class="site-footer__link" data-i18n="footer.offer">Публічна оферта</a>
                 </div>
             </div>
             <div class="site-footer__bottom">
-                <p class="site-footer__copyright" data-i18n="footer.copyright">© 2026 Li Astrology. Всі права захищені.</p>
+                <p class="site-footer__copyright" data-i18n="footer.copyright">© 2026 Li Astrology. Всі права захищені.
+                </p>
             </div>
         </div>
     </footer>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="sticky-mobile-cta">
+        <span class="sticky-price" data-i18n="intensiv.stickyCta.price">490 грн</span>
+        <a href="#" data-liqpay-product="intensiv" class="button" data-i18n="intensiv.stickyCta.cta">ПРИДБАТИ</a>
+    </div>
 
     <script src="../js/config.js"></script>
     <script src="../js/analytics.js"></script>
     <script src="../js/liqpay.js"></script>
     <script src="script.js"></script>
     <script src="../js/i18n.js"></script>
+    <script>document.body.classList.add('has-sticky-cta');</script>
 </body>
 
 </html>
