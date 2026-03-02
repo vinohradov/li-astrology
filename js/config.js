@@ -22,30 +22,30 @@ const CONFIG = {
         'intensiv': {
             name_uk: 'Інтенсив «Астрологія з 0»',
             name_ru: 'Интенсив «Астрология с 0»',
-            price: 490,
+            price: 1199,
             currency: 'UAH',
             telegram_start: 'intensiv'
         },
-        'kurs-aspekty-1': {
-            name_uk: 'Тренінг по аспектах (текст)',
-            name_ru: 'Тренинг по аспектам (текст)',
+        'kurs-aspekty': {
+            name_uk: 'Алгоритм трактування аспектів',
+            name_ru: 'Алгоритм трактовки аспектов',
             price: 1290,
             currency: 'UAH',
-            telegram_start: 'kurs_tariff1'
+            telegram_start: 'kurs_aspekty'
         },
-        'kurs-aspekty-2': {
-            name_uk: 'Тренінг + відео-розбір',
-            name_ru: 'Тренинг + видео-разбор',
-            price: 1690,
+        'course-basic': {
+            name_uk: 'Курс «Професія астролог» — Для себе',
+            name_ru: 'Курс «Профессия астролог» — Для себя',
+            price: 6000,
             currency: 'UAH',
-            telegram_start: 'kurs_tariff2'
+            telegram_start: 'course_basic'
         },
-        'kurs-aspekty-3': {
-            name_uk: 'Професійний тариф',
-            name_ru: 'Профессиональный тариф',
-            price: 2790,
+        'course-advanced': {
+            name_uk: 'Курс «Професія астролог» — Для професійного консультування',
+            name_ru: 'Курс «Профессия астролог» — Для профессионального консультирования',
+            price: 12500,
             currency: 'UAH',
-            telegram_start: 'kurs_tariff3'
+            telegram_start: 'course_advanced'
         }
     },
 

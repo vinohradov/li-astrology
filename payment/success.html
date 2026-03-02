@@ -314,8 +314,8 @@
             </p>
         </div>
 
-        <!-- UPSELL OFFER (Only for 'intensiv' buyers) -->
-        <div class="success-card upsell-card" id="upsell-view" style="display: none;">
+        <!-- UPSELL OFFER (For 'intensiv' buyers) -->
+        <div class="success-card upsell-card" id="upsell-view-intensiv" style="display: none;">
             <div class="success-mini-banner">
                 <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
                 <span data-i18n="payment.upsell.successBanner">Оплата пройшла успішно! Курс вже ваш.</span>
@@ -323,30 +323,59 @@
 
             <div class="upsell-badge" data-i18n="payment.upsell.badge">Рекомендований наступний крок</div>
 
-            <h2 class="upsell-title" data-i18n="payment.upsell.title">Посильте свої знання</h2>
-            <p class="upsell-subtitle" data-i18n="payment.upsell.subtitle">Ви отримали фундамент («Азбука»). «Граматика» допоможе читати карту цілісно.
-            </p>
+            <h2 class="upsell-title" data-i18n="payment.upsell.title">Хочете стати професіоналом?</h2>
+            <p class="upsell-subtitle" data-i18n="payment.upsell.subtitle">Ви отримали фундамент. Повний курс допоможе стати професійним астрологом-консультантом.</p>
 
             <div class="upsell-product-box">
-                <h3 class="upsell-product-title" data-i18n="payment.upsell.productTitle">Курс «Алгоритм трактування аспектів»</h3>
-                <p class="upsell-product-meta" data-i18n="payment.upsell.productMeta">Тариф Практичний [Відео + Методичка]</p>
-
+                <h3 class="upsell-product-title" data-i18n="payment.upsell.courseTitle">Повний курс «Професія астролог»</h3>
+                <p class="upsell-product-meta" data-i18n="payment.upsell.courseMeta">12 уроків + бонус</p>
                 <ul class="upsell-list">
-                    <li>✅ <span data-i18n="payment.upsell.feature1">Відео-розбори реальних карт (як я це роблю на практиці)</span></li>
-                    <li>✅ <span data-i18n="payment.upsell.feature2">Чіткий алгоритм, щоб не плутатись у лініях і символах</span></li>
-                    <li>✅ <span data-i18n="payment.upsell.feature3">Методичка (шпаргалка на все життя)</span></li>
+                    <li>✅ <span data-i18n="payment.upsell.courseF1">12 повних уроків від основ до синтезу</span></li>
+                    <li>✅ <span data-i18n="payment.upsell.courseF2">Бонус: еталонний розбір натальної карти</span></li>
+                    <li>✅ <span data-i18n="payment.upsell.courseF3">Два тарифи: для себе або для професійного консультування</span></li>
                 </ul>
-
                 <div class="upsell-price">
-                    <span class="price-current" data-i18n="payment.upsell.price">1690 грн</span>
+                    <span class="price-current" data-i18n="payment.upsell.coursePrice">від 6 000 грн</span>
                 </div>
             </div>
 
-            <button id="btn-buy-upsell" class="button apple-button accent-btn" data-i18n="payment.upsell.cta">
-                ДОДАТИ ДО ЗАМОВЛЕННЯ
-            </button>
+            <a href="/course/" class="button apple-button accent-btn" data-i18n="payment.upsell.courseCta">ДІЗНАТИСЯ ПРО КУРС</a>
+
+            <div style="margin-top: 15px;">
+                <p style="font-size: 0.9rem; color: #888; margin-bottom: 10px;" data-i18n="payment.upsell.orAspekty">Або почніть з міні-курсу:</p>
+                <button id="btn-buy-upsell" class="button accent-btn" style="background: #333; font-size: 1rem; padding: 14px 30px;" data-i18n="payment.upsell.aspektyCta">
+                    АСПЕКТИ — 1 290 ГРН
+                </button>
+            </div>
 
             <button id="btn-skip-upsell" class="btn-secondary" data-i18n="payment.upsell.skip">
+                Перейти до мого курсу
+            </button>
+        </div>
+
+        <!-- UPSELL OFFER (For 'kurs-aspekty' buyers) -->
+        <div class="success-card upsell-card" id="upsell-view-aspekty" style="display: none;">
+            <div class="success-mini-banner">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span data-i18n="payment.upsell.successBanner">Оплата пройшла успішно! Курс вже ваш.</span>
+            </div>
+
+            <div class="upsell-badge" data-i18n="payment.upsell.badge">Рекомендований наступний крок</div>
+
+            <h2 class="upsell-title" data-i18n="payment.upsell.fullCourseTitle">Отримайте повний курс зі знижкою!</h2>
+            <p class="upsell-subtitle" data-i18n="payment.upsell.fullCourseSubtitle">Аспекти — це 1 із 12 уроків повного курсу. Вартість вашої покупки буде вирахувана через промокод у Telegram.</p>
+
+            <div class="upsell-product-box">
+                <h3 class="upsell-product-title" data-i18n="payment.upsell.courseTitle">Повний курс «Професія астролог»</h3>
+                <p class="upsell-product-meta" data-i18n="payment.upsell.courseMeta">12 уроків + бонус</p>
+                <div class="upsell-price">
+                    <span class="price-current" data-i18n="payment.upsell.coursePrice">від 6 000 грн</span>
+                </div>
+            </div>
+
+            <a href="/course/" class="button apple-button accent-btn" data-i18n="payment.upsell.courseCta">ДІЗНАТИСЯ ПРО КУРС</a>
+
+            <button class="btn-secondary" onclick="document.getElementById('upsell-view-aspekty').style.display='none'; document.getElementById('success-view').style.display='block'; window.scrollTo(0,0);" data-i18n="payment.upsell.skip">
                 Перейти до мого курсу
             </button>
         </div>
@@ -385,7 +414,8 @@
             const product = urlParams.get('product');
 
             const successView = document.getElementById('success-view');
-            const upsellView = document.getElementById('upsell-view');
+            const upsellIntensiv = document.getElementById('upsell-view-intensiv');
+            const upsellAspekty = document.getElementById('upsell-view-aspekty');
             const orderInfo = document.getElementById('order-info');
             const orderIdSpan = document.getElementById('order-id');
             const telegramLink = document.getElementById('telegram-link');
@@ -417,28 +447,31 @@
 
             // --- UPSELL LOGIC ---
             if (product === 'intensiv') {
-                upsellView.style.display = 'block';
+                upsellIntensiv.style.display = 'block';
+                successView.style.display = 'none';
+            } else if (product === 'kurs-aspekty') {
+                upsellAspekty.style.display = 'block';
                 successView.style.display = 'none';
             } else {
-                upsellView.style.display = 'none';
                 successView.style.display = 'block';
             }
 
-            // Upsell Button Handlers
+            // Upsell Button Handler — buy aspekty from intensiv upsell
             document.getElementById('btn-buy-upsell').addEventListener('click', function () {
                 if (typeof LiqPay !== 'undefined') {
-                    LiqPay.pay('kurs-aspekty-2');
+                    LiqPay.pay('kurs-aspekty');
                 } else {
-                    const lang = (typeof i18n !== 'undefined') ? i18n.getLang() : 'uk';
-                    const msg = (lang === 'ru')
+                    var lang = (typeof i18n !== 'undefined') ? i18n.getLang() : 'uk';
+                    var msg = (lang === 'ru')
                         ? 'Ошибка платёжной системы. Попробуйте позже.'
                         : 'Помилка платіжної системи. Спробуйте пізніше.';
                     alert(msg);
                 }
             });
 
+            // Skip upsell — go to success view
             document.getElementById('btn-skip-upsell').addEventListener('click', function () {
-                upsellView.style.display = 'none';
+                upsellIntensiv.style.display = 'none';
                 successView.style.display = 'block';
                 window.scrollTo(0, 0);
             });

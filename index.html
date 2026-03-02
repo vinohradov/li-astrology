@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Li Astrology | Професійні курси астрології</title>
+    <title>Li Astrology | Школа професійної астрології</title>
     <meta name="description"
-        content="Професійні курси астрології від Анастасії. Інтенсив для початківців та поглиблений курс по трактуванню аспектів.">
+        content="Школа професійної астрології від Анастасії. Від нуля до професіонала: інтенсив, міні-курс по аспектах, повний курс.">
 
     <link rel="icon" type="image/svg+xml" href="images/li_logo_symbol.svg">
 
@@ -19,7 +19,288 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/common.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-body);
+            line-height: 1.6;
+        }
 
+        /* ===== FOR WHOM ===== */
+        .for-whom {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .for-whom__title {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .for-whom__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .for-whom__card {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.05);
+            padding: 30px 25px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .for-whom__card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(214,189,150,0.15);
+        }
+        .for-whom__icon { font-size: 2rem; margin-bottom: 12px; }
+        .for-whom__card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        .for-whom__card p { font-size: 0.9rem; opacity: 0.8; }
+
+        /* ===== LEARNING PATH ===== */
+        .learning-path {
+            padding: 60px 20px 80px;
+            background: var(--gray-light);
+        }
+        .learning-path__title {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .learning-path__steps {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        .path-step {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            text-align: center;
+            position: relative;
+        }
+        .path-step__number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0 auto 15px;
+        }
+        .path-step__title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .path-step__price {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+        }
+        .path-step__desc {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        .path-arrow {
+            display: flex;
+            align-items: center;
+            padding-top: 15px;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            flex-shrink: 0;
+        }
+        @media (max-width: 768px) {
+            .path-arrow { display: none; }
+            .learning-path__steps { flex-direction: column; align-items: center; }
+        }
+
+        /* ===== PRODUCTS GRID (3 cards) ===== */
+        .products-section {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .products-section__title {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        /* ===== ABOUT AUTHOR (homepage) ===== */
+        .home-about {
+            padding: 80px 20px;
+            background: var(--gray-light);
+        }
+        .home-about__inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .home-about__image {
+            flex: 1;
+            min-width: 280px;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .home-about__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .home-about__text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .home-about__text h2 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .home-about__text h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            text-transform: none;
+        }
+        .home-about__text .subtitle {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        .home-about__stats {
+            display: flex;
+            gap: 30px;
+            margin: 20px 0;
+            padding: 15px 0;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+        .home-about__stat strong {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--text-color);
+        }
+        .home-about__stat span {
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .home-about__text p { font-size: 0.95rem; color: #555; line-height: 1.7; }
+
+        /* ===== FAQ ===== */
+        .faq-section {
+            padding: 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-section__title {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .faq-item {
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            padding: 20px 0;
+        }
+        .faq-item summary {
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 1.05rem;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            transition: transform 0.3s;
+        }
+        .faq-item[open] summary::after {
+            content: '−';
+        }
+        .faq-item .faq-answer {
+            padding-top: 12px;
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* ===== REVIEWS ===== */
+        .home-reviews {
+            padding: 60px 20px 80px;
+        }
+        .home-reviews__title {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 600px) {
+            .home-hero__title { font-size: 2.5rem; }
+            .products-grid { grid-template-columns: 1fr; }
+            .home-about__inner { flex-direction: column; }
+        }
+    </style>
 </head>
 
 <body>
@@ -31,7 +312,7 @@
                 <span class="brand-text">Li Astrology</span>
             </a>
             <nav class="site-header__nav">
-                <a href="/intensiv/" class="site-header__link" data-i18n="header.courses">Курси</a>
+                <a href="/course/" class="site-header__link" data-i18n="header.courses">Курси</a>
                 <div class="lang-switcher">
                     <select id="lang-select">
                         <option value="uk">🇺🇦 Українська</option>
@@ -46,30 +327,83 @@
         <!-- Hero Section -->
         <section class="home-hero">
             <h1 class="home-hero__title" data-i18n="home.title">Li Astrology</h1>
-            <p class="home-hero__subtitle" data-i18n="home.subtitle">Професійні курси астрології від Анастасії</p>
+            <p class="home-hero__subtitle" data-i18n="home.subtitle">Школа професійної астрології від Анастасії</p>
             <div class="home-hero__stats">
                 <span class="home-hero__stat" data-i18n="home.stats.experience">10+ років досвіду</span>
                 <span class="home-hero__stat-divider"></span>
                 <span class="home-hero__stat" data-i18n="home.stats.consultations">800+ консультацій</span>
                 <span class="home-hero__stat-divider"></span>
-                <span class="home-hero__stat" data-i18n="home.stats.courses">2 курси</span>
+                <span class="home-hero__stat" data-i18n="home.stats.courses">3 курси</span>
             </div>
         </section>
 
-        <!-- Courses Section -->
-        <section class="courses-section">
-            <h2 class="courses-section__title" data-i18n="home.chooseCourse">Оберіть курс</h2>
+        <!-- For Whom -->
+        <section class="for-whom">
+            <h2 class="for-whom__title" data-i18n="home.forWhom.title">Астрологія — це для тебе, якщо ти…</h2>
+            <div class="for-whom__grid">
+                <div class="for-whom__card">
+                    <div class="for-whom__icon">🔮</div>
+                    <h3 data-i18n="home.forWhom.card1.title">Хочеш зрозуміти себе</h3>
+                    <p data-i18n="home.forWhom.card1.text">Розібратися у своїй натальній карті та картах близьких</p>
+                </div>
+                <div class="for-whom__card">
+                    <div class="for-whom__icon">💼</div>
+                    <h3 data-i18n="home.forWhom.card2.title">Шукаєш нову професію</h3>
+                    <p data-i18n="home.forWhom.card2.text">Хочеш опанувати справу, яка приносить задоволення та дохід</p>
+                </div>
+                <div class="for-whom__card">
+                    <div class="for-whom__icon">📚</div>
+                    <h3 data-i18n="home.forWhom.card3.title">Вже практикуєш</h3>
+                    <p data-i18n="home.forWhom.card3.text">Але бракує системності та впевненості в аналізі карт</p>
+                </div>
+                <div class="for-whom__card">
+                    <div class="for-whom__icon">🎯</div>
+                    <h3 data-i18n="home.forWhom.card4.title">Хочеш консультувати</h3>
+                    <p data-i18n="home.forWhom.card4.text">Давати професійні консультації та заробляти на цьому</p>
+                </div>
+            </div>
+        </section>
 
-            <div class="courses-grid">
-                <!-- Intensiv Card -->
+        <!-- Learning Path -->
+        <section class="learning-path">
+            <h2 class="learning-path__title" data-i18n="home.path.title">Шлях навчання</h2>
+            <div class="learning-path__steps">
+                <div class="path-step">
+                    <div class="path-step__number">1</div>
+                    <div class="path-step__title" data-i18n="home.path.step1.title">Інтенсив</div>
+                    <div class="path-step__price">1 199 грн</div>
+                    <div class="path-step__desc" data-i18n="home.path.step1.desc">Перше знайомство з астрологією. 5 уроків за 4 тижні</div>
+                </div>
+                <div class="path-arrow">→</div>
+                <div class="path-step">
+                    <div class="path-step__number">2</div>
+                    <div class="path-step__title" data-i18n="home.path.step2.title">Аспекти</div>
+                    <div class="path-step__price">1 290 грн</div>
+                    <div class="path-step__desc" data-i18n="home.path.step2.desc">Поглиблення знань. Необов'язковий, але рекомендований крок</div>
+                </div>
+                <div class="path-arrow">→</div>
+                <div class="path-step">
+                    <div class="path-step__number">3</div>
+                    <div class="path-step__title" data-i18n="home.path.step3.title">Повний курс</div>
+                    <div class="path-step__price" data-i18n="home.path.step3.price">від 6 000 грн</div>
+                    <div class="path-step__desc" data-i18n="home.path.step3.desc">Від нуля до професіонала. 12 уроків + бонус</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products-section">
+            <h2 class="products-section__title" data-i18n="home.chooseCourse">Оберіть курс</h2>
+
+            <div class="products-grid">
+                <!-- Intensiv -->
                 <article class="course-card course-card--recommended">
                     <div class="course-card__recommended-tag" data-i18n="home.recommendedStart">Рекомендований старт</div>
                     <span class="course-card__badge" data-i18n="home.intensiv.badge">Для початківців</span>
                     <div class="course-card__content">
                         <h3 class="course-card__title" data-i18n="home.intensiv.title">Інтенсив «Астрологія з 0»</h3>
                         <p class="course-card__description" data-i18n="home.intensiv.description">
-                            Твій легкий перший крок у світ астрології — навчання, після якого ти зможеш впевнено
-                            консультувати вже за 4 тижні
+                            Твій перший крок у світ астрології — навчання, після якого ти зможеш впевнено консультувати вже за 4 тижні
                         </p>
                         <ul class="course-card__features">
                             <li data-i18n="home.intensiv.features.f1">5 уроків</li>
@@ -77,32 +411,142 @@
                             <li data-i18n="home.intensiv.features.f3">Подарунок: урок «Сонце і Місяць»</li>
                         </ul>
                         <div class="course-card__footer">
-                            <span class="course-card__price" data-i18n="home.intensiv.price">490 грн</span>
+                            <span class="course-card__price" data-i18n="home.intensiv.price">1 199 грн</span>
                             <a href="/intensiv/" class="course-card__cta" data-i18n="home.intensiv.cta">Детальніше</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Course Card -->
+                <!-- Aspekty -->
                 <article class="course-card">
-                    <span class="course-card__badge" data-i18n="home.course.badge">Поглиблений</span>
+                    <span class="course-card__badge" data-i18n="home.aspekty.badge">Поглиблений</span>
                     <div class="course-card__content">
-                        <h3 class="course-card__title" data-i18n="home.course.title">Алгоритм трактування аспектів</h3>
-                        <p class="course-card__description" data-i18n="home.course.description">
-                            Поглиблений курс для тих, хто хоче навчитися професійно трактувати аспекти в натальній карті
+                        <h3 class="course-card__title" data-i18n="home.aspekty.title">Алгоритм трактування аспектів</h3>
+                        <p class="course-card__description" data-i18n="home.aspekty.description">
+                            Міні-курс для тих, хто хоче навчитися професійно трактувати аспекти в натальній карті
                         </p>
                         <ul class="course-card__features">
-                            <li data-i18n="home.course.features.f1">4 частини</li>
-                            <li data-i18n="home.course.features.f2">Техніка трактування</li>
-                            <li data-i18n="home.course.features.f3">Практичні приклади</li>
+                            <li data-i18n="home.aspekty.features.f1">4 частини</li>
+                            <li data-i18n="home.aspekty.features.f2">Техніка трактування</li>
+                            <li data-i18n="home.aspekty.features.f3">Практичні приклади</li>
                         </ul>
                         <div class="course-card__footer">
-                            <span class="course-card__price" data-i18n="home.course.price">від 1290 грн</span>
-                            <a href="/kurs-aspekty/" class="course-card__cta" data-i18n="home.course.cta">Детальніше</a>
+                            <span class="course-card__price" data-i18n="home.aspekty.price">1 290 грн</span>
+                            <a href="/kurs-aspekty/" class="course-card__cta" data-i18n="home.aspekty.cta">Детальніше</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Full Course -->
+                <article class="course-card">
+                    <span class="course-card__badge" data-i18n="home.fullCourse.badge">Професія</span>
+                    <div class="course-card__content">
+                        <h3 class="course-card__title" data-i18n="home.fullCourse.title">Професія астролог</h3>
+                        <p class="course-card__description" data-i18n="home.fullCourse.description">
+                            Повний курс від нуля до професіонала. 12 уроків + бонус. Два тарифи: для себе та для професійного консультування
+                        </p>
+                        <ul class="course-card__features">
+                            <li data-i18n="home.fullCourse.features.f1">12 уроків + бонус</li>
+                            <li data-i18n="home.fullCourse.features.f2">2 тарифи</li>
+                            <li data-i18n="home.fullCourse.features.f3">Сертифікат (тариф Для профі)</li>
+                        </ul>
+                        <div class="course-card__footer">
+                            <span class="course-card__price" data-i18n="home.fullCourse.price">від 6 000 грн</span>
+                            <a href="/course/" class="course-card__cta" data-i18n="home.fullCourse.cta">Детальніше</a>
                         </div>
                     </div>
                 </article>
             </div>
+        </section>
+
+        <!-- About Author -->
+        <section class="home-about">
+            <div class="home-about__inner">
+                <div class="home-about__image">
+                    <img src="intensiv/about_author.jpg" alt="Анастасія">
+                </div>
+                <div class="home-about__text">
+                    <h2 data-i18n="home.about.title">Про автора</h2>
+                    <h3 data-i18n="home.about.name">Анастасія Лісовська</h3>
+                    <p class="subtitle" data-i18n="home.about.role">Професійний астролог та викладач</p>
+                    <div class="home-about__stats">
+                        <div class="home-about__stat">
+                            <strong>10+</strong>
+                            <span data-i18n="home.about.stat1">років досвіду</span>
+                        </div>
+                        <div class="home-about__stat">
+                            <strong>800+</strong>
+                            <span data-i18n="home.about.stat2">консультацій</span>
+                        </div>
+                    </div>
+                    <p data-i18n="home.about.text">Пояснюю глибинний сенс астрології без містики та навчаю грамотно консультувати на практиці. Зі мною ви зрозумієте, що астрологія — це логічна система, а консультувати простіше, ніж здається.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews -->
+        <section class="home-reviews">
+            <h2 class="home-reviews__title" data-i18n="home.reviews.title">Відгуки</h2>
+            <div class="reviews-carousel">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar"></div>
+                        <div class="review-user" data-i18n="intensiv.reviews.review1.user">olenka_sun</div>
+                    </div>
+                    <div class="review-bubble" data-i18n="intensiv.reviews.review1.text">
+                        Привіт! Хочу подякувати за інтенсив. Я нарешті зрозуміла свою натальну карту. Це просто космос! Вже дивлюсь карти подруг, вони в шоці як все точно))
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar"></div>
+                        <div class="review-user" data-i18n="intensiv.reviews.review2.user">marina.kravets</div>
+                    </div>
+                    <div class="review-bubble" data-i18n="intensiv.reviews.review2.text">
+                        Анастасія, дякую за такі глибокі знання! Раніше читала гороскопи і нічого не збувалось, а тепер розумію механіку. Дуже логічна і структурована подача, без "води".
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar"></div>
+                        <div class="review-user" data-i18n="intensiv.reviews.review3.user">tanya_design</div>
+                    </div>
+                    <div class="review-bubble" data-i18n="intensiv.reviews.review3.text">
+                        Курс перевершив очікування! Думала буде складно, але ви так просто пояснюєте. Урок про Сонце і Місяць — це взагалі інсайт на все життя. Рекомендую всім!
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar"></div>
+                        <div class="review-user" data-i18n="intensiv.reviews.review4.user">julia_astro_begin</div>
+                    </div>
+                    <div class="review-bubble" data-i18n="intensiv.reviews.review4.text">
+                        Це краща інвестиція в себе за цей рік. Вже провела першу міні-консультацію для сестри, ми плакали від того, наскільки це про неї. Дякую вам!!
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section">
+            <h2 class="faq-section__title" data-i18n="home.faq.title">Часті запитання</h2>
+
+            <details class="faq-item">
+                <summary data-i18n="home.faq.q1">Чи потрібні попередні знання з астрології?</summary>
+                <div class="faq-answer" data-i18n="home.faq.a1">Ні! Інтенсив створений саме для початківців. Ми починаємо з нуля і крок за кроком вивчаємо всі основи.</div>
+            </details>
+            <details class="faq-item">
+                <summary data-i18n="home.faq.q2">З чого краще почати?</summary>
+                <div class="faq-answer" data-i18n="home.faq.a2">Рекомендуємо почати з Інтенсиву «Астрологія з 0» — це ваш перший крок, після якого ви зрозумієте, чи хочете продовжувати навчання.</div>
+            </details>
+            <details class="faq-item">
+                <summary data-i18n="home.faq.q3">Як довго є доступ до матеріалів?</summary>
+                <div class="faq-answer" data-i18n="home.faq.a3">Доступ до всіх матеріалів — назавжди. Ви можете повертатися до уроків у будь-який час.</div>
+            </details>
+            <details class="faq-item">
+                <summary data-i18n="home.faq.q4">Чим відрізняються тарифи повного курсу?</summary>
+                <div class="faq-answer" data-i18n="home.faq.a4">Тариф «Для себе» включає всі 12 уроків + бонус. Тариф «Для професійного консультування» додатково включає зворотній зв'язок від автора, блок «Як консультувати» та сертифікат.</div>
+            </details>
         </section>
     </main>
 
