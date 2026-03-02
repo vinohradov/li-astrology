@@ -1,5 +1,5 @@
 :root {
-    --bg-color: #FCFBF4;
+    --bg-color: #FEFDF9;
     --text-color: #1A1A1A;
     --accent-color: #D4AF37;
     --accent-dark: #AA6C39;
@@ -10,7 +10,7 @@
     --button-bg: #111111;
     --button-text: #FFFFFF;
     --card-shadow: 0 15px 40px -10px rgba(191, 149, 63, 0.15);
-    --gray-light: #F2EFE9;
+    --gray-light: #F7F5F0;
     --font-heading: 'Cormorant Infant', serif;
     --font-body: 'Poppins', sans-serif;
 }
@@ -153,9 +153,9 @@ h1, h2, h3, h4 {
     background: transparent;
     border: none;
     text-align: left;
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -171,7 +171,7 @@ h1, h2, h3, h4 {
     padding: 0 25px;
     background: #FFFEFA;
 }
-.accordion__content p { padding-bottom: 20px; color: #555; font-size: 1rem; }
+.accordion__content p { padding-bottom: 20px; color: #555; font-size: 0.95rem; font-family: 'Inter', sans-serif; }
 
 /* Highlighted lesson (Aspekty) */
 .accordion__item--highlighted {
