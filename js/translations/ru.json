@@ -10,6 +10,9 @@
   },
   "header": {
     "home": "Главная",
+    "intensiv": "Интенсив",
+    "aspekty": "Аспекты",
+    "course": "Курс",
     "courses": "Курсы",
     "about": "О нас"
   },
