@@ -5,7 +5,7 @@
 
 :root {
     /* Colors */
-    --bg-color: #FCFBF4;
+    --bg-color: #FEFEFA;
     --text-color: #1A1A1A;
     --accent-color: #D6BD96;
     --accent-bg: #8E7676;
@@ -274,6 +274,19 @@
     opacity: 0.8;
     max-width: 500px;
     margin: 0 auto;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.home-hero__taglines {
+    max-width: 500px;
+    margin: 15px auto 0;
+}
+.home-hero__taglines p {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    opacity: 0.65;
+    line-height: 1.8;
 }
 
 .home-hero__stats {
@@ -346,13 +359,13 @@
 
 .course-card__badge {
     display: inline-block;
-    background: var(--gold-gradient);
-    color: #1A1A1A;
-    padding: 6px 16px;
-    font-size: 0.75rem;
-    font-weight: 600;
+    background: #C6A96B;
+    color: #FFFFFF;
+    padding: 5px 14px;
+    font-size: 0.7rem;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.08em;
     margin: 20px 20px 0;
     border-radius: 20px;
     align-self: flex-start;
@@ -366,7 +379,7 @@
 }
 
 .course-card__title {
-    font-family: var(--font-heading);
+    font-family: 'Inter', sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 12px;
@@ -414,7 +427,7 @@
 }
 
 .course-card__price {
-    font-family: var(--font-heading);
+    font-family: 'Inter', sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
     color: var(--text-color);

@@ -292,7 +292,7 @@ h1, h2, h3, h4 {
 }
 .tariff-card__footer { text-align: center; }
 .tariff-card__price {
-    font-family: var(--font-heading);
+    font-family: 'Inter', sans-serif;
     font-size: 2.5rem;
     font-weight: 700;
     color: var(--accent-dark);

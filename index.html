@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap"
         rel="stylesheet">
 
     <!-- Styles -->
@@ -63,7 +63,7 @@
         }
         .for-whom__icon { font-size: 2rem; margin-bottom: 12px; }
         .for-whom__card h3 {
-            font-family: var(--font-heading);
+            font-family: 'Inter', sans-serif;
             font-size: 1.2rem;
             margin-bottom: 8px;
         }
@@ -113,19 +113,20 @@
             margin: 0 auto 15px;
         }
         .path-step__title {
-            font-family: var(--font-heading);
+            font-family: 'Inter', sans-serif;
             font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 5px;
         }
         .path-step__price {
-            font-family: var(--font-heading);
+            font-family: 'Inter', sans-serif;
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--accent-color);
             margin-bottom: 8px;
         }
         .path-step__desc {
+            font-family: 'Inter', sans-serif;
             font-size: 0.9rem;
             opacity: 0.7;
         }
@@ -211,8 +212,8 @@
         }
         .home-about__text .subtitle {
             font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            text-transform: none;
+            letter-spacing: 0;
             color: #888;
             margin-bottom: 20px;
         }
@@ -329,11 +330,16 @@
         <!-- Hero Section -->
         <section class="home-hero">
             <h1 class="home-hero__title" data-i18n="home.title">Li Astrology</h1>
-            <p class="home-hero__subtitle" data-i18n="home.subtitle">Школа професійної астрології від Анастасії</p>
+            <p class="home-hero__subtitle" data-i18n="home.subtitle">ШКОЛА ПРОФЕСІЙНОЇ АСТРОЛОГІЇ</p>
+            <div class="home-hero__taglines">
+                <p data-i18n="home.tagline1">Навчання астрології від новачка до професіонала</p>
+                <p data-i18n="home.tagline2">Підвищення астрологічної кваліфікації</p>
+                <p data-i18n="home.tagline3">Саморозвиток, робота з почуттями та мисленням</p>
+            </div>
             <div class="home-hero__stats">
                 <span class="home-hero__stat" data-i18n="home.stats.experience">10+ років досвіду</span>
                 <span class="home-hero__stat-divider"></span>
-                <span class="home-hero__stat" data-i18n="home.stats.consultations">800+ консультацій</span>
+                <span class="home-hero__stat" data-i18n="home.stats.consultations">3000+ консультацій</span>
                 <span class="home-hero__stat-divider"></span>
                 <span class="home-hero__stat" data-i18n="home.stats.courses">3 курси</span>
             </div>
@@ -379,13 +385,6 @@
                 <div class="path-arrow">→</div>
                 <div class="path-step">
                     <div class="path-step__number">2</div>
-                    <div class="path-step__title" data-i18n="home.path.step2.title">Аспекти</div>
-                    <div class="path-step__price">1 290 грн</div>
-                    <div class="path-step__desc" data-i18n="home.path.step2.desc">Поглиблення знань. Необов'язковий, але рекомендований крок</div>
-                </div>
-                <div class="path-arrow">→</div>
-                <div class="path-step">
-                    <div class="path-step__number">3</div>
                     <div class="path-step__title" data-i18n="home.path.step3.title">Повний курс</div>
                     <div class="path-step__price" data-i18n="home.path.step3.price">від 6 000 грн</div>
                     <div class="path-step__desc" data-i18n="home.path.step3.desc">Від нуля до професіонала. 12 уроків + бонус</div>
@@ -477,7 +476,7 @@
                             <span data-i18n="home.about.stat1">років досвіду</span>
                         </div>
                         <div class="home-about__stat">
-                            <strong>800+</strong>
+                            <strong>3000+</strong>
                             <span data-i18n="home.about.stat2">консультацій</span>
                         </div>
                     </div>
