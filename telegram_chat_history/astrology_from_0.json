@@ -1,0 +1,3453 @@
+{
+ "name": "Астрология с 0 // курс",
+ "type": "private_channel",
+ "id": 3703088871,
+ "messages": [
+  {
+   "id": 1,
+   "type": "service",
+   "date": "2026-03-12T21:15:04",
+   "date_unixtime": "1773324904",
+   "actor": "Астрология с 0 // курс",
+   "actor_id": "channel3703088871",
+   "action": "create_channel",
+   "title": "Астрология с 0 // курс",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 2,
+   "type": "service",
+   "date": "2026-03-12T21:15:37",
+   "date_unixtime": "1773324937",
+   "actor": "Астрология с 0 // курс",
+   "actor_id": "channel3703088871",
+   "action": "edit_group_photo",
+   "photo": "(File not included. Change data exporting settings to download.)",
+   "photo_file_size": 74640,
+   "width": 640,
+   "height": 640,
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 3,
+   "type": "message",
+   "date": "2026-03-12T21:17:00",
+   "date_unixtime": "1773325020",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    "Добро пожаловать, мои дорогие 🕊️\n",
+    {
+     "type": "italic",
+     "text": "Спасибо за ваше доверие!"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Добро пожаловать, мои дорогие 🕊️\n"
+    },
+    {
+     "type": "italic",
+     "text": "Спасибо за ваше доверие!"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "type": "message",
+   "date": "2026-03-12T21:18:17",
+   "date_unixtime": "1773325097",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    "Это обучение создано с целью ",
+    {
+     "type": "italic",
+     "text": "влюбить вас в астрологию"
+    },
+    " и помочь каждой сформировать ",
+    {
+     "type": "bold",
+     "text": "более объёмное и глубокое видение мира и себя в нём."
+    },
+    "\n\nЗдесь вы сможете:\n— найти ",
+    {
+     "type": "bold",
+     "text": "ответы на важные для вас вопросы"
+    },
+    "\n— посмотреть на собственную жизнь как на ",
+    {
+     "type": "bold",
+     "text": "целостную, многогранную систему "
+    },
+    "🪷\n\nНастраивайтесь на работу. ",
+    {
+     "type": "bold",
+     "text": "Мы начинаем важный этап!"
+    },
+    "\n\nС любовью, Анастасия ❤️"
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Это обучение создано с целью "
+    },
+    {
+     "type": "italic",
+     "text": "влюбить вас в астрологию"
+    },
+    {
+     "type": "plain",
+     "text": " и помочь каждой сформировать "
+    },
+    {
+     "type": "bold",
+     "text": "более объёмное и глубокое видение мира и себя в нём."
+    },
+    {
+     "type": "plain",
+     "text": "\n\nЗдесь вы сможете:\n— найти "
+    },
+    {
+     "type": "bold",
+     "text": "ответы на важные для вас вопросы"
+    },
+    {
+     "type": "plain",
+     "text": "\n— посмотреть на собственную жизнь как на "
+    },
+    {
+     "type": "bold",
+     "text": "целостную, многогранную систему "
+    },
+    {
+     "type": "plain",
+     "text": "🪷\n\nНастраивайтесь на работу. "
+    },
+    {
+     "type": "bold",
+     "text": "Мы начинаем важный этап!"
+    },
+    {
+     "type": "plain",
+     "text": "\n\nС любовью, Анастасия ❤️"
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "type": "message",
+   "date": "2026-03-12T21:18:55",
+   "date_unixtime": "1773325135",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    {
+     "type": "bold",
+     "text": "КАК БУДЕТ ПРОХОДИТЬ ОБУЧЕНИЕ:"
+    },
+    "\n\n✨ Все уроки вы получаете сразу, а проходите в удобном для себя темпе\n\n✨ Доступ к курсу у вас остаётся навсегда"
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "КАК БУДЕТ ПРОХОДИТЬ ОБУЧЕНИЕ:"
+    },
+    {
+     "type": "plain",
+     "text": "\n\n✨ Все уроки вы получаете сразу, а проходите в удобном для себя темпе\n\n✨ Доступ к курсу у вас остаётся навсегда"
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "type": "message",
+   "date": "2026-03-12T21:19:08",
+   "date_unixtime": "1773325148",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    "⏰ Пока открывается доступ, приглашаю вас подписаться на мой Instagram. \n\n",
+    {
+     "type": "link",
+     "text": "https://www.instagram.com/li_astrology_?igsh=YjVhcGU3djl6eW53"
+    },
+    "\n\nЭто творческое и духовное пространство, где я делюсь полезными материалами и профессиональными наблюдениями, чтобы жить красиво и с удовольствием, в согласии с собой 🪔✨\n\n",
+    {
+     "type": "italic",
+     "text": "Обязательно подписывайтесь и делитесь своими впечатлениями "
+    },
+    "💌"
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "⏰ Пока открывается доступ, приглашаю вас подписаться на мой Instagram. \n\n"
+    },
+    {
+     "type": "link",
+     "text": "https://www.instagram.com/li_astrology_?igsh=YjVhcGU3djl6eW53"
+    },
+    {
+     "type": "plain",
+     "text": "\n\nЭто творческое и духовное пространство, где я делюсь полезными материалами и профессиональными наблюдениями, чтобы жить красиво и с удовольствием, в согласии с собой 🪔✨\n\n"
+    },
+    {
+     "type": "italic",
+     "text": "Обязательно подписывайтесь и делитесь своими впечатлениями "
+    },
+    {
+     "type": "plain",
+     "text": "💌"
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "type": "message",
+   "date": "2026-03-12T21:19:20",
+   "date_unixtime": "1773325160",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    "🎁 Мои дорогие, пусть эти подарки ",
+    {
+     "type": "bold",
+     "text": "станут поддержкой на вашем пути."
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "🎁 Мои дорогие, пусть эти подарки "
+    },
+    {
+     "type": "bold",
+     "text": "станут поддержкой на вашем пути."
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "type": "message",
+   "date": "2026-03-12T21:19:47",
+   "date_unixtime": "1773325187",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Хочу помогать людям .mp3",
+   "file_size": 35106240,
+   "media_type": "audio_file",
+   "mime_type": "audio/mpeg",
+   "duration_seconds": 877,
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 9,
+   "type": "message",
+   "date": "2026-03-12T21:20:11",
+   "date_unixtime": "1773325211",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "О книгах.mp3",
+   "file_size": 5201280,
+   "media_type": "audio_file",
+   "mime_type": "audio/mpeg",
+   "duration_seconds": 130,
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 10,
+   "type": "message",
+   "date": "2026-03-12T21:21:19",
+   "date_unixtime": "1773325279",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Критика.mp3",
+   "file_size": 46555200,
+   "media_type": "audio_file",
+   "mime_type": "audio/mpeg",
+   "duration_seconds": 1163,
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 11,
+   "type": "message",
+   "date": "2026-03-12T21:21:39",
+   "date_unixtime": "1773325299",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    "Как построить натальную карту; выбор программы для построения карты.\n\n",
+    {
+     "type": "bold",
+     "text": "Sotis "
+    },
+    "полностью достаточно для работы; при желании можно использовать и программу ",
+    {
+     "type": "bold",
+     "text": "ZET"
+    },
+    ".\n\n⬇️ ",
+    {
+     "type": "italic",
+     "text": "методички ниже"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Как построить натальную карту; выбор программы для построения карты.\n\n"
+    },
+    {
+     "type": "bold",
+     "text": "Sotis "
+    },
+    {
+     "type": "plain",
+     "text": "полностью достаточно для работы; при желании можно использовать и программу "
+    },
+    {
+     "type": "bold",
+     "text": "ZET"
+    },
+    {
+     "type": "plain",
+     "text": ".\n\n⬇️ "
+    },
+    {
+     "type": "italic",
+     "text": "методички ниже"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 12,
+   "type": "message",
+   "date": "2026-03-12T21:22:00",
+   "date_unixtime": "1773325320",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Как_построить_натальную_карту.pdf",
+   "file_size": 26189309,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 13055,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 13,
+   "type": "message",
+   "date": "2026-03-12T21:22:12",
+   "date_unixtime": "1773325332",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "ZET.pdf",
+   "file_size": 20351765,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 10032,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 14,
+   "type": "message",
+   "date": "2026-03-12T21:22:40",
+   "date_unixtime": "1773325360",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Урок 1.mp4",
+   "file_size": 710119649,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5063,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 1528,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    {
+     "type": "bold",
+     "text": "УРОК 1 "
+    },
+    "\n— правила обучения и базовые принципы философии астрологии. \n\n⬇️ ",
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "УРОК 1 "
+    },
+    {
+     "type": "plain",
+     "text": "\n— правила обучения и базовые принципы философии астрологии. \n\n⬇️ "
+    },
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 15,
+   "type": "message",
+   "date": "2026-03-12T21:22:58",
+   "date_unixtime": "1773325378",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "урок 1.pdf",
+   "file_size": 1330199,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 23126,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 16,
+   "type": "message",
+   "date": "2026-03-12T21:23:25",
+   "date_unixtime": "1773325405",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "ЗЗ чистовик.mp4",
+   "file_size": 1151859402,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5024,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 2824,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    {
+     "type": "bold",
+     "text": "УРОК 2"
+    },
+    "\n— как знаки зодиака образуют единый цикл развития."
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "УРОК 2"
+    },
+    {
+     "type": "plain",
+     "text": "\n— как знаки зодиака образуют единый цикл развития."
+    }
+   ]
+  },
+  {
+   "id": 17,
+   "type": "message",
+   "date": "2026-03-12T21:23:50",
+   "date_unixtime": "1773325430",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Урок 2 (часть 2).mp4",
+   "file_size": 197299917,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5033,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 613,
+   "width": 1280,
+   "height": 720,
+   "text": "— оси знаков зодиака.",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "— оси знаков зодиака."
+    }
+   ]
+  },
+  {
+   "id": 18,
+   "type": "message",
+   "date": "2026-03-12T21:24:53",
+   "date_unixtime": "1773325493",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Стихии.mp4",
+   "file_size": 613918442,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5048,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 1333,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    {
+     "type": "bold",
+     "text": "стихии в натальной карте:"
+    },
+    "\n\n",
+    {
+     "type": "italic",
+     "text": "• что дает знание стихий \n• связки стихий \n• ключевые психологические характеристики каждой стихии"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "стихии в натальной карте:"
+    },
+    {
+     "type": "plain",
+     "text": "\n\n"
+    },
+    {
+     "type": "italic",
+     "text": "• что дает знание стихий \n• связки стихий \n• ключевые психологические характеристики каждой стихии"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 19,
+   "type": "message",
+   "date": "2026-03-12T21:24:59",
+   "date_unixtime": "1773325499",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Кресты.mp4",
+   "file_size": 438532962,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5065,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 944,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    {
+     "type": "bold",
+     "text": "значение крестов в натальной карте: "
+    },
+    "\n\n",
+    {
+     "type": "italic",
+     "text": "• чем кресты отличаются от стихий \n• описание крестов \n• тонкости и скорость реакции каждого креста\n\n"
+    },
+    "⬇️ ",
+    {
+     "type": "italic",
+     "text": "методички ниже"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "значение крестов в натальной карте: "
+    },
+    {
+     "type": "plain",
+     "text": "\n\n"
+    },
+    {
+     "type": "italic",
+     "text": "• чем кресты отличаются от стихий \n• описание крестов \n• тонкости и скорость реакции каждого креста\n\n"
+    },
+    {
+     "type": "plain",
+     "text": "⬇️ "
+    },
+    {
+     "type": "italic",
+     "text": "методички ниже"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 20,
+   "type": "message",
+   "date": "2026-03-12T21:25:29",
+   "date_unixtime": "1773325529",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "урок 2.pdf",
+   "file_size": 1550593,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 16643,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 21,
+   "type": "message",
+   "date": "2026-03-12T21:25:51",
+   "date_unixtime": "1773325551",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Стихии и кресты .pdf",
+   "file_size": 17114295,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 11347,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 22,
+   "type": "message",
+   "date": "2026-03-12T21:26:01",
+   "date_unixtime": "1773325561",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    {
+     "type": "italic",
+     "text": "Домашнее задание и ответы для самопроверки:"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "italic",
+     "text": "Домашнее задание и ответы для самопроверки:"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 23,
+   "type": "message",
+   "date": "2026-03-12T21:26:20",
+   "date_unixtime": "1773325580",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "ДЗ - Знаки, Кресты, Стихии.pdf",
+   "file_size": 244642,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 4138,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 24,
+   "type": "message",
+   "date": "2026-03-12T21:27:01",
+   "date_unixtime": "1773325621",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "элементы карты.mp4",
+   "file_size": 781244327,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5061,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 2020,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    {
+     "type": "bold",
+     "text": "УРОК 3 "
+    },
+    "\n— элементы карты"
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "УРОК 3 "
+    },
+    {
+     "type": "plain",
+     "text": "\n— элементы карты"
+    }
+   ]
+  },
+  {
+   "id": 25,
+   "type": "message",
+   "date": "2026-03-12T21:27:21",
+   "date_unixtime": "1773325641",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "элменты .mp4",
+   "file_size": 250304380,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5040,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 830,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    "— нюансы элементов натальной карты\n\n⬇️ ",
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "— нюансы элементов натальной карты\n\n⬇️ "
+    },
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 26,
+   "type": "message",
+   "date": "2026-03-12T21:27:50",
+   "date_unixtime": "1773325670",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "урок 3.pdf",
+   "file_size": 2225164,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 20404,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 27,
+   "type": "message",
+   "date": "2026-03-12T21:28:04",
+   "date_unixtime": "1773325684",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    {
+     "type": "italic",
+     "text": "Домашнее задание и ответы для самопроверки:"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "italic",
+     "text": "Домашнее задание и ответы для самопроверки:"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 28,
+   "type": "message",
+   "date": "2026-03-12T21:28:14",
+   "date_unixtime": "1773325694",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "ДЗ - Элементы карты.pdf",
+   "file_size": 416407,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 9763,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 29,
+   "type": "message",
+   "date": "2026-03-12T21:28:30",
+   "date_unixtime": "1773325710",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Asc.mp3",
+   "file_size": 27136320,
+   "media_type": "audio_file",
+   "mime_type": "audio/mpeg",
+   "duration_seconds": 678,
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 30,
+   "type": "message",
+   "date": "2026-03-12T21:29:13",
+   "date_unixtime": "1773325753",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Урок (5).mp4",
+   "file_size": 567829979,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5043,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 1768,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    {
+     "type": "bold",
+     "text": "ПОДАРОК 🎁 \n\nУрок «Солнце и Луна» в натальной карте"
+    },
+    "\n",
+    {
+     "type": "bold",
+     "text": "\nВ этом уроке мы погорим о:"
+    },
+    "\n\n• ",
+    {
+     "type": "italic",
+     "text": "что такое «ядро личности» в астрологии и почему Солнце и Луна — это фундамент психики человека "
+    },
+    "\n\n• ",
+    {
+     "type": "italic",
+     "text": "почему люди видят один и тот же мир по-разному "
+    },
+    "\n\n• ",
+    {
+     "type": "italic",
+     "text": "Солнце как «сердце» натальной карты"
+    },
+    "\n\n• ",
+    {
+     "type": "italic",
+     "text": "о чем говорит реакция на анализ Солнца человека и как с этим работать "
+    },
+    "\n\n• ",
+    {
+     "type": "italic",
+     "text": "как читать методичку так, чтобы овладеть синтезом, а не копировать готовые трактовки"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "ПОДАРОК 🎁 \n\nУрок «Солнце и Луна» в натальной карте"
+    },
+    {
+     "type": "plain",
+     "text": "\n"
+    },
+    {
+     "type": "bold",
+     "text": "\nВ этом уроке мы погорим о:"
+    },
+    {
+     "type": "plain",
+     "text": "\n\n• "
+    },
+    {
+     "type": "italic",
+     "text": "что такое «ядро личности» в астрологии и почему Солнце и Луна — это фундамент психики человека "
+    },
+    {
+     "type": "plain",
+     "text": "\n\n• "
+    },
+    {
+     "type": "italic",
+     "text": "почему люди видят один и тот же мир по-разному "
+    },
+    {
+     "type": "plain",
+     "text": "\n\n• "
+    },
+    {
+     "type": "italic",
+     "text": "Солнце как «сердце» натальной карты"
+    },
+    {
+     "type": "plain",
+     "text": "\n\n• "
+    },
+    {
+     "type": "italic",
+     "text": "о чем говорит реакция на анализ Солнца человека и как с этим работать "
+    },
+    {
+     "type": "plain",
+     "text": "\n\n• "
+    },
+    {
+     "type": "italic",
+     "text": "как читать методичку так, чтобы овладеть синтезом, а не копировать готовые трактовки"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 31,
+   "type": "message",
+   "date": "2026-03-12T21:29:46",
+   "date_unixtime": "1773325786",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Луна.mp3",
+   "file_size": 5136960,
+   "media_type": "audio_file",
+   "mime_type": "audio/mpeg",
+   "duration_seconds": 128,
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 32,
+   "type": "message",
+   "date": "2026-03-12T21:30:11",
+   "date_unixtime": "1773325811",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Солнце и Луна практика .mp4",
+   "file_size": 339719784,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5043,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 730,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    "— практика на реальных картах: ",
+    {
+     "type": "bold",
+     "text": "Солнце"
+    },
+    " и ",
+    {
+     "type": "bold",
+     "text": "Луна\n\n"
+    },
+    "⬇️ ",
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "— практика на реальных картах: "
+    },
+    {
+     "type": "bold",
+     "text": "Солнце"
+    },
+    {
+     "type": "plain",
+     "text": " и "
+    },
+    {
+     "type": "bold",
+     "text": "Луна\n\n"
+    },
+    {
+     "type": "plain",
+     "text": "⬇️ "
+    },
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 33,
+   "type": "message",
+   "date": "2026-03-12T21:30:34",
+   "date_unixtime": "1773325834",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "урок 4.pdf",
+   "file_size": 1667718,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 22148,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 34,
+   "type": "message",
+   "date": "2026-03-12T21:30:44",
+   "date_unixtime": "1773325844",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    {
+     "type": "italic",
+     "text": "Домашнее задание и ответы для самопроверки:"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "italic",
+     "text": "Домашнее задание и ответы для самопроверки:"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 35,
+   "type": "message",
+   "date": "2026-03-12T21:30:55",
+   "date_unixtime": "1773325855",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "ДЗ - Солнце и Луна.pdf",
+   "file_size": 348968,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 11270,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 36,
+   "type": "message",
+   "date": "2026-03-12T21:31:19",
+   "date_unixtime": "1773325879",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Карта действий.mp4",
+   "file_size": 643846765,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5058,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 1386,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    {
+     "type": "bold",
+     "text": "Как создать свою первую консультацию: структура, смысл и честный маркетинг"
+    },
+    "\n\n",
+    {
+     "type": "italic",
+     "text": "• как на основе уже полученных знаний построить первую платную консультацию \n\n• как структурировать подачу материала \n\n• почему не нужно ждать идеального момента, чтобы работать с клиентами"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "Как создать свою первую консультацию: структура, смысл и честный маркетинг"
+    },
+    {
+     "type": "plain",
+     "text": "\n\n"
+    },
+    {
+     "type": "italic",
+     "text": "• как на основе уже полученных знаний построить первую платную консультацию \n\n• как структурировать подачу материала \n\n• почему не нужно ждать идеального момента, чтобы работать с клиентами"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 37,
+   "type": "message",
+   "date": "2026-03-12T21:31:53",
+   "date_unixtime": "1773325913",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "ИД .mp4",
+   "file_size": 876177626,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5067,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 1886,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    {
+     "type": "bold",
+     "text": "Бонусный урок "
+    },
+    "— ",
+    {
+     "type": "bold",
+     "text": "как стать идеальным астрологом и грамотно консультировать:"
+    },
+    "\n\n",
+    {
+     "type": "italic",
+     "text": "• образ «идеального астролога» \n\n• разнице между знаниями и реальным консультированием \n\n• 2 типа учеников \n\n• ошибки как неизбежная часть роста и профессионального мастерства \n\n• как выглядит блестящая конструкция"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "Бонусный урок "
+    },
+    {
+     "type": "plain",
+     "text": "— "
+    },
+    {
+     "type": "bold",
+     "text": "как стать идеальным астрологом и грамотно консультировать:"
+    },
+    {
+     "type": "plain",
+     "text": "\n\n"
+    },
+    {
+     "type": "italic",
+     "text": "• образ «идеального астролога» \n\n• разнице между знаниями и реальным консультированием \n\n• 2 типа учеников \n\n• ошибки как неизбежная часть роста и профессионального мастерства \n\n• как выглядит блестящая конструкция"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 38,
+   "type": "message",
+   "date": "2026-03-12T21:32:29",
+   "date_unixtime": "1773325949",
+   "edited": "2026-03-12T21:38:37",
+   "edited_unixtime": "1773326317",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "меркурий.mp4",
+   "file_size": 396622242,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5046,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 893,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    {
+     "type": "bold",
+     "text": "УРОК 5"
+    },
+    "\n— личные планеты (Меркурий, Венера, Марс)"
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "УРОК 5"
+    },
+    {
+     "type": "plain",
+     "text": "\n— личные планеты (Меркурий, Венера, Марс)"
+    }
+   ]
+  },
+  {
+   "id": 81,
+   "type": "message",
+   "date": "2026-03-13T16:45:36",
+   "date_unixtime": "1773395136",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "венера.mp4",
+   "file_size": 124283063,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5026,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 401,
+   "width": 1280,
+   "height": 720,
+   "text": "— Венера",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "— Венера"
+    }
+   ]
+  },
+  {
+   "id": 82,
+   "type": "message",
+   "date": "2026-03-13T16:45:42",
+   "date_unixtime": "1773395142",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "марс чистовик.mp4",
+   "file_size": 264640184,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5070,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 568,
+   "width": 1280,
+   "height": 720,
+   "text": "— Марс",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "— Марс"
+    }
+   ]
+  },
+  {
+   "id": 83,
+   "type": "message",
+   "date": "2026-03-13T16:47:23",
+   "date_unixtime": "1773395243",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "ретро чистовик.mp4",
+   "file_size": 271875801,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5021,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 939,
+   "width": 1280,
+   "height": 720,
+   "text": "— ретроградность личных планет",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "— ретроградность личных планет"
+    }
+   ]
+  },
+  {
+   "id": 84,
+   "type": "message",
+   "date": "2026-03-13T16:47:51",
+   "date_unixtime": "1773395271",
+   "edited": "2026-03-13T16:48:04",
+   "edited_unixtime": "1773395284",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Мерк Венера Марс .mp4",
+   "file_size": 571013660,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5068,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 1228,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    "— практика на реальных картах: ",
+    {
+     "type": "bold",
+     "text": "Меркурий, Венера, Марс\n\n"
+    },
+    "⬇️ ",
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "— практика на реальных картах: "
+    },
+    {
+     "type": "bold",
+     "text": "Меркурий, Венера, Марс\n\n"
+    },
+    {
+     "type": "plain",
+     "text": "⬇️ "
+    },
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 85,
+   "type": "message",
+   "date": "2026-03-13T16:48:29",
+   "date_unixtime": "1773395309",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "урок 5.pdf",
+   "file_size": 2218891,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 19424,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 86,
+   "type": "message",
+   "date": "2026-03-13T16:48:49",
+   "date_unixtime": "1773395329",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    {
+     "type": "italic",
+     "text": "Домашнее задание и ответы для самопроверки:"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "italic",
+     "text": "Домашнее задание и ответы для самопроверки:"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 87,
+   "type": "message",
+   "date": "2026-03-13T16:48:59",
+   "date_unixtime": "1773395339",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "ДЗ - Мерк, Венера, Марс.pdf",
+   "file_size": 265515,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 11669,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 88,
+   "type": "message",
+   "date": "2026-03-13T16:49:22",
+   "date_unixtime": "1773395362",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Юпитер.mp4",
+   "file_size": 612190305,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5058,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 1317,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    {
+     "type": "bold",
+     "text": "УРОК 6"
+    },
+    "\n— социальные планеты (Юпитер и Сатурн)"
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "УРОК 6"
+    },
+    {
+     "type": "plain",
+     "text": "\n— социальные планеты (Юпитер и Сатурн)"
+    }
+   ]
+  },
+  {
+   "id": 89,
+   "type": "message",
+   "date": "2026-03-13T16:49:55",
+   "date_unixtime": "1773395395",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Сатурн.mp4",
+   "file_size": 284440890,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5059,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 611,
+   "width": 1280,
+   "height": 720,
+   "text": "— Сатурн",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "— Сатурн"
+    }
+   ]
+  },
+  {
+   "id": 90,
+   "type": "message",
+   "date": "2026-03-13T16:50:04",
+   "date_unixtime": "1773395404",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Фрустрация.mp3",
+   "file_size": 17033280,
+   "media_type": "audio_file",
+   "mime_type": "audio/mpeg",
+   "duration_seconds": 425,
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 91,
+   "type": "message",
+   "date": "2026-03-13T16:50:11",
+   "date_unixtime": "1773395411",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Аскеза.mp3",
+   "file_size": 23296320,
+   "media_type": "audio_file",
+   "mime_type": "audio/mpeg",
+   "duration_seconds": 582,
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 92,
+   "type": "message",
+   "date": "2026-03-13T16:50:45",
+   "date_unixtime": "1773395445",
+   "edited": "2026-03-13T16:51:01",
+   "edited_unixtime": "1773395461",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "новый проект.mp4",
+   "file_size": 283740339,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5049,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 1069,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    "— практика на реальных картах: ",
+    {
+     "type": "bold",
+     "text": "Сатурн"
+    },
+    " и ",
+    {
+     "type": "bold",
+     "text": "Юпитер\n\n"
+    },
+    "⬇️ ",
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "— практика на реальных картах: "
+    },
+    {
+     "type": "bold",
+     "text": "Сатурн"
+    },
+    {
+     "type": "plain",
+     "text": " и "
+    },
+    {
+     "type": "bold",
+     "text": "Юпитер\n\n"
+    },
+    {
+     "type": "plain",
+     "text": "⬇️ "
+    },
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 93,
+   "type": "message",
+   "date": "2026-03-13T16:51:23",
+   "date_unixtime": "1773395483",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "урок 6.pdf",
+   "file_size": 1266003,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 22285,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 94,
+   "type": "message",
+   "date": "2026-03-13T16:51:35",
+   "date_unixtime": "1773395495",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    {
+     "type": "italic",
+     "text": "Домашнее задание и ответы для самопроверки:"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "italic",
+     "text": "Домашнее задание и ответы для самопроверки:"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 95,
+   "type": "message",
+   "date": "2026-03-13T16:51:47",
+   "date_unixtime": "1773395507",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "ДЗ - Юпитер и Сатурн.pdf",
+   "file_size": 404699,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 10485,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 96,
+   "type": "message",
+   "date": "2026-03-13T16:53:51",
+   "date_unixtime": "1773395631",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Нептун.mp4",
+   "file_size": 397273342,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5060,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 854,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    {
+     "type": "bold",
+     "text": "УРОК 7 "
+    },
+    "\n— высшие планеты (Уран, Нептун, Плутон)"
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "УРОК 7 "
+    },
+    {
+     "type": "plain",
+     "text": "\n— высшие планеты (Уран, Нептун, Плутон)"
+    }
+   ]
+  },
+  {
+   "id": 97,
+   "type": "message",
+   "date": "2026-03-13T16:53:58",
+   "date_unixtime": "1773395638",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Уран Нептун.mp4",
+   "file_size": 352748478,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5060,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 759,
+   "width": 1280,
+   "height": 720,
+   "text": "— Нептун",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "— Нептун"
+    }
+   ]
+  },
+  {
+   "id": 98,
+   "type": "message",
+   "date": "2026-03-13T16:54:03",
+   "date_unixtime": "1773395643",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Плутон.mp4",
+   "file_size": 310467372,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5065,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 668,
+   "width": 1280,
+   "height": 720,
+   "text": "— Плутон",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "— Плутон"
+    }
+   ]
+  },
+  {
+   "id": 99,
+   "type": "message",
+   "date": "2026-03-13T16:57:03",
+   "date_unixtime": "1773395823",
+   "edited": "2026-03-13T16:57:21",
+   "edited_unixtime": "1773395841",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "ПУН практика.mp4",
+   "file_size": 478985403,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5056,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 1047,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    "— практика на реальных картах: ",
+    {
+     "type": "bold",
+     "text": "Уран, Нептун, Плутон\n\n"
+    },
+    "⬇️ ",
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "— практика на реальных картах: "
+    },
+    {
+     "type": "bold",
+     "text": "Уран, Нептун, Плутон\n\n"
+    },
+    {
+     "type": "plain",
+     "text": "⬇️ "
+    },
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 100,
+   "type": "message",
+   "date": "2026-03-13T16:57:40",
+   "date_unixtime": "1773395860",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "урок 7.pdf",
+   "file_size": 1229137,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 21225,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 101,
+   "type": "message",
+   "date": "2026-03-13T16:57:54",
+   "date_unixtime": "1773395874",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    {
+     "type": "italic",
+     "text": "Домашнее задание и ответы для самопроверки:"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "italic",
+     "text": "Домашнее задание и ответы для самопроверки:"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 102,
+   "type": "message",
+   "date": "2026-03-13T16:58:08",
+   "date_unixtime": "1773395888",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "ДЗ - Уран, Нептун, Плутон.pdf",
+   "file_size": 830378,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 10969,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 103,
+   "type": "message",
+   "date": "2026-03-13T17:36:37",
+   "date_unixtime": "1773398197",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    {
+     "type": "bold",
+     "text": "УРОК 8 "
+    },
+    "\n— дома и обстоятельства жизни \n\n(видео-урок по данной теме не предусмотрен — вся необходимая информация подробно изложена у методичке ниже). \n\n⬇️ ",
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "УРОК 8 "
+    },
+    {
+     "type": "plain",
+     "text": "\n— дома и обстоятельства жизни \n\n(видео-урок по данной теме не предусмотрен — вся необходимая информация подробно изложена у методичке ниже). \n\n⬇️ "
+    },
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 104,
+   "type": "message",
+   "date": "2026-03-13T17:36:53",
+   "date_unixtime": "1773398213",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "урок 8.pdf",
+   "file_size": 923564,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 18862,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 105,
+   "type": "message",
+   "date": "2026-03-13T17:37:02",
+   "date_unixtime": "1773398222",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    {
+     "type": "italic",
+     "text": "Домашнее задание и ответы для самопроверки:"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "italic",
+     "text": "Домашнее задание и ответы для самопроверки:"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 106,
+   "type": "message",
+   "date": "2026-03-13T17:37:19",
+   "date_unixtime": "1773398239",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "ДЗ - Дома и их значения.pdf",
+   "file_size": 233591,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 12123,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 107,
+   "type": "message",
+   "date": "2026-03-13T17:37:39",
+   "date_unixtime": "1773398259",
+   "edited": "2026-03-13T17:38:00",
+   "edited_unixtime": "1773398280",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "УПРАВИТЕЛИ.mp4",
+   "file_size": 344999095,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5054,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 742,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    {
+     "type": "bold",
+     "text": "УРОК 9 \n"
+    },
+    "— управители домов\n\n⬇️ ",
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "УРОК 9 \n"
+    },
+    {
+     "type": "plain",
+     "text": "— управители домов\n\n⬇️ "
+    },
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 108,
+   "type": "message",
+   "date": "2026-03-13T17:38:14",
+   "date_unixtime": "1773398294",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "урок 9.pdf",
+   "file_size": 1144949,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 17506,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 109,
+   "type": "message",
+   "date": "2026-03-13T17:38:18",
+   "date_unixtime": "1773398298",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    {
+     "type": "italic",
+     "text": "Домашнее задание и ответы для самопроверки:"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "italic",
+     "text": "Домашнее задание и ответы для самопроверки:"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 110,
+   "type": "message",
+   "date": "2026-03-13T17:38:34",
+   "date_unixtime": "1773398314",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "ДЗ - Управители знаков и домов.pdf",
+   "file_size": 413900,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 10517,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 111,
+   "type": "message",
+   "date": "2026-03-13T20:25:43",
+   "date_unixtime": "1773408343",
+   "edited": "2026-03-13T20:26:16",
+   "edited_unixtime": "1773408376",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "аспекты .mp4",
+   "file_size": 506459863,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5061,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 1352,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    {
+     "type": "bold",
+     "text": "УРОК 10"
+    },
+    "\n",
+    {
+     "type": "bold",
+     "text": "\nАспекты; самый важный нюанс интерпретации карты:"
+    },
+    "\n\n— базовые принципы, типы аспектов и логика их взаимодействия.\n",
+    {
+     "type": "bold",
+     "text": "\n"
+    },
+    "⬇️ ",
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "УРОК 10"
+    },
+    {
+     "type": "plain",
+     "text": "\n"
+    },
+    {
+     "type": "bold",
+     "text": "\nАспекты; самый важный нюанс интерпретации карты:"
+    },
+    {
+     "type": "plain",
+     "text": "\n\n— базовые принципы, типы аспектов и логика их взаимодействия.\n"
+    },
+    {
+     "type": "bold",
+     "text": "\n"
+    },
+    {
+     "type": "plain",
+     "text": "⬇️ "
+    },
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 112,
+   "type": "message",
+   "date": "2026-03-13T20:33:53",
+   "date_unixtime": "1773408833",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Самоучитель по аспектам.pdf",
+   "file_size": 60419648,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 19111,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 113,
+   "type": "message",
+   "date": "2026-03-13T20:34:21",
+   "date_unixtime": "1773408861",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Аспекты солнца и луны.pdf",
+   "file_size": 70132484,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 12062,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 114,
+   "type": "message",
+   "date": "2026-03-13T20:34:41",
+   "date_unixtime": "1773408881",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Аспекты_к_другим_личным_планетам_.pdf",
+   "file_size": 41934439,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 13018,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 115,
+   "type": "message",
+   "date": "2026-03-16T16:57:27",
+   "date_unixtime": "1773655047",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Компенсаторика.mp4",
+   "file_size": 200563702,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5051,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 930,
+   "width": 1280,
+   "height": 720,
+   "text": "— компенсаторика и проработка в астрологии",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "— компенсаторика и проработка в астрологии"
+    }
+   ]
+  },
+  {
+   "id": 116,
+   "type": "message",
+   "date": "2026-03-16T16:58:37",
+   "date_unixtime": "1773655117",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Джоли.mp4",
+   "file_size": 319794745,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5067,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 688,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    {
+     "type": "bold",
+     "text": "Видео-пример разбора карты на предмет аспектов: \n"
+    },
+    "\n• ",
+    {
+     "type": "italic",
+     "text": "с чего начинать анализ аспектов"
+    },
+    "\n\n• ",
+    {
+     "type": "italic",
+     "text": "как аспекты оказывают влияние на сценарий построения отношений "
+    },
+    "\n\n• ",
+    {
+     "type": "italic",
+     "text": "как с помощью аспектов увидеть родительскую модель семьи и как она влияет на построение отношений в будущем "
+    },
+    "\n\n• ",
+    {
+     "type": "italic",
+     "text": "какие показатели в карте могут  разрушить отношения"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "Видео-пример разбора карты на предмет аспектов: \n"
+    },
+    {
+     "type": "plain",
+     "text": "\n• "
+    },
+    {
+     "type": "italic",
+     "text": "с чего начинать анализ аспектов"
+    },
+    {
+     "type": "plain",
+     "text": "\n\n• "
+    },
+    {
+     "type": "italic",
+     "text": "как аспекты оказывают влияние на сценарий построения отношений "
+    },
+    {
+     "type": "plain",
+     "text": "\n\n• "
+    },
+    {
+     "type": "italic",
+     "text": "как с помощью аспектов увидеть родительскую модель семьи и как она влияет на построение отношений в будущем "
+    },
+    {
+     "type": "plain",
+     "text": "\n\n• "
+    },
+    {
+     "type": "italic",
+     "text": "какие показатели в карте могут  разрушить отношения"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 117,
+   "type": "message",
+   "date": "2026-03-16T16:58:47",
+   "date_unixtime": "1773655127",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "мадонна.mp4",
+   "file_size": 701587628,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5066,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 1510,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    {
+     "type": "bold",
+     "text": "Видео-пример разбора карты на предмет аспектов: \n"
+    },
+    "\n• ",
+    {
+     "type": "italic",
+     "text": "как опираться на свои сильные стороны при трактовке карты "
+    },
+    "\n\n• ",
+    {
+     "type": "italic",
+     "text": "пошаговая инструкция: как определить какой аспект сильнее "
+    },
+    "\n\n• ",
+    {
+     "type": "italic",
+     "text": "если планета в аспекте с узлами "
+    },
+    "\n\n• ",
+    {
+     "type": "italic",
+     "text": "практика консультирования: какие рекомендации мы даем клиенту и как мы доносим информацию "
+    },
+    "\n\n• ",
+    {
+     "type": "italic",
+     "text": "итог урока: на реальных примерах вы увидите, как один и тот же аспект может проявляться по-разному и как конкретно с этим можно работать на практике"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "Видео-пример разбора карты на предмет аспектов: \n"
+    },
+    {
+     "type": "plain",
+     "text": "\n• "
+    },
+    {
+     "type": "italic",
+     "text": "как опираться на свои сильные стороны при трактовке карты "
+    },
+    {
+     "type": "plain",
+     "text": "\n\n• "
+    },
+    {
+     "type": "italic",
+     "text": "пошаговая инструкция: как определить какой аспект сильнее "
+    },
+    {
+     "type": "plain",
+     "text": "\n\n• "
+    },
+    {
+     "type": "italic",
+     "text": "если планета в аспекте с узлами "
+    },
+    {
+     "type": "plain",
+     "text": "\n\n• "
+    },
+    {
+     "type": "italic",
+     "text": "практика консультирования: какие рекомендации мы даем клиенту и как мы доносим информацию "
+    },
+    {
+     "type": "plain",
+     "text": "\n\n• "
+    },
+    {
+     "type": "italic",
+     "text": "итог урока: на реальных примерах вы увидите, как один и тот же аспект может проявляться по-разному и как конкретно с этим можно работать на практике"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 118,
+   "type": "message",
+   "date": "2026-03-16T17:15:31",
+   "date_unixtime": "1773656131",
+   "edited": "2026-03-16T17:16:58",
+   "edited_unixtime": "1773656218",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Работа с противоречиями.mp4",
+   "file_size": 482134071,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5051,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 1037,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    {
+     "type": "bold",
+     "text": "УРОК 11\n\nКак соединить все показатели воедино; как работать с противоречиями в карте: "
+    },
+    {
+     "type": "italic",
+     "text": "\n\n• стратегии работы с противоречиями для начинающих и опытных астрологов \n\n• 6 практических способов нивелирования противоречий \n\n• противоречия как норма человеческой психики и поведения"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "УРОК 11\n\nКак соединить все показатели воедино; как работать с противоречиями в карте: "
+    },
+    {
+     "type": "italic",
+     "text": "\n\n• стратегии работы с противоречиями для начинающих и опытных астрологов \n\n• 6 практических способов нивелирования противоречий \n\n• противоречия как норма человеческой психики и поведения"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 119,
+   "type": "message",
+   "date": "2026-03-16T17:28:51",
+   "date_unixtime": "1773656931",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    {
+     "type": "bold",
+     "text": "Мы подходим к финалу нашего обучения, и я собрала для вас методички, которые охватывают ключевые темы курса, — чтобы у вас под рукой всегда была вся необходимая информация при синтезе карты."
+    },
+    "\n\n⬇️ ",
+    {
+     "type": "italic",
+     "text": "методички ниже"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "Мы подходим к финалу нашего обучения, и я собрала для вас методички, которые охватывают ключевые темы курса, — чтобы у вас под рукой всегда была вся необходимая информация при синтезе карты."
+    },
+    {
+     "type": "plain",
+     "text": "\n\n⬇️ "
+    },
+    {
+     "type": "italic",
+     "text": "методички ниже"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 124,
+   "type": "message",
+   "date": "2026-03-16T17:51:44",
+   "date_unixtime": "1773658304",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Особенности планет.pdf",
+   "file_size": 109606,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 16638,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 125,
+   "type": "message",
+   "date": "2026-03-16T18:42:11",
+   "date_unixtime": "1773661331",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Система экзальтации.pdf",
+   "file_size": 70395,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 12780,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 126,
+   "type": "message",
+   "date": "2026-03-16T18:57:40",
+   "date_unixtime": "1773662260",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Сила домов, планет, аспектов.pdf",
+   "file_size": 99171,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 9772,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 128,
+   "type": "message",
+   "date": "2026-03-16T19:18:38",
+   "date_unixtime": "1773663518",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Гармоничность и напряженность.pdf",
+   "file_size": 51659,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 6710,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 129,
+   "type": "message",
+   "date": "2026-03-16T19:21:34",
+   "date_unixtime": "1773663694",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Нюансы интерпретации.pdf",
+   "file_size": 61006,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 7891,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 130,
+   "type": "message",
+   "date": "2026-03-16T19:23:40",
+   "date_unixtime": "1773663820",
+   "edited": "2026-03-16T19:23:49",
+   "edited_unixtime": "1773663829",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "кармические узлы 1.mp4",
+   "file_size": 283255866,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5063,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 826,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    {
+     "type": "bold",
+     "text": "УРОК 12"
+    },
+    "\n— кармические узлы и предназначение"
+   ],
+   "text_entities": [
+    {
+     "type": "bold",
+     "text": "УРОК 12"
+    },
+    {
+     "type": "plain",
+     "text": "\n— кармические узлы и предназначение"
+    }
+   ]
+  },
+  {
+   "id": 131,
+   "type": "message",
+   "date": "2026-03-16T19:24:14",
+   "date_unixtime": "1773663854",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "звезды пример.mp4",
+   "file_size": 168587381,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5063,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 368,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    "— практика на реальных картах: ",
+    {
+     "type": "bold",
+     "text": "кармические узлы "
+    },
+    "и ",
+    {
+     "type": "bold",
+     "text": "примеры известных людей"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "— практика на реальных картах: "
+    },
+    {
+     "type": "bold",
+     "text": "кармические узлы "
+    },
+    {
+     "type": "plain",
+     "text": "и "
+    },
+    {
+     "type": "bold",
+     "text": "примеры известных людей"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 132,
+   "type": "message",
+   "date": "2026-03-16T19:24:22",
+   "date_unixtime": "1773663862",
+   "edited": "2026-03-16T19:24:51",
+   "edited_unixtime": "1773663891",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "ПП.mp4",
+   "file_size": 813079555,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 5066,
+   "media_type": "video_file",
+   "mime_type": "video/mp4",
+   "duration_seconds": 1750,
+   "width": 1280,
+   "height": 720,
+   "text": [
+    "— практика на реальных картах: ",
+    {
+     "type": "bold",
+     "text": "кармические узлы "
+    },
+    "и ",
+    {
+     "type": "bold",
+     "text": "предназначение\n\n"
+    },
+    "⬇️ ",
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "— практика на реальных картах: "
+    },
+    {
+     "type": "bold",
+     "text": "кармические узлы "
+    },
+    {
+     "type": "plain",
+     "text": "и "
+    },
+    {
+     "type": "bold",
+     "text": "предназначение\n\n"
+    },
+    {
+     "type": "plain",
+     "text": "⬇️ "
+    },
+    {
+     "type": "italic",
+     "text": "методичка ниже"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 133,
+   "type": "message",
+   "date": "2026-03-16T19:27:43",
+   "date_unixtime": "1773664063",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Кармические узлы.pdf",
+   "file_size": 19873513,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 14673,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 134,
+   "type": "message",
+   "date": "2026-03-16T20:22:56",
+   "date_unixtime": "1773667376",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Пример разбора карты.pdf",
+   "file_size": 307161,
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "thumbnail_file_size": 14449,
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 135,
+   "type": "message",
+   "date": "2026-03-16T20:43:15",
+   "date_unixtime": "1773668595",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    {
+     "type": "italic",
+     "text": "И вот мы с вами добрались до финального аккорда нашего обучения "
+    },
+    "❤️\n\nЯ долго думала, чем завершить этот путь, прежде чем я отпущу вас ",
+    {
+     "type": "bold",
+     "text": "в самостоятельное плавание."
+    },
+    "\n\nПланеты, дома, аспекты, анализ карты — всё это лишь ",
+    {
+     "type": "bold",
+     "text": "инструменты."
+    },
+    "\nОднако качество вашей консультационной практики в гораздо большей степени определяется ",
+    {
+     "type": "bold",
+     "text": "не техническим мастерством"
+    },
+    ", а тем, ",
+    {
+     "type": "bold",
+     "text": "из какого внутреннего состояния вы работаете."
+    },
+    "\n\nЗаписала для вас подкаст о том, ",
+    {
+     "type": "bold",
+     "text": "с чем рано или поздно столкнётся каждый астролог."
+    },
+    " И о том, ",
+    {
+     "type": "bold",
+     "text": "как пройти через это достойно — с любовью к себе и к своим клиентам."
+    },
+    "\n\nЭто моё ",
+    {
+     "type": "bold",
+     "text": "финальное напутствие каждому из вас"
+    },
+    " 🎁"
+   ],
+   "text_entities": [
+    {
+     "type": "italic",
+     "text": "И вот мы с вами добрались до финального аккорда нашего обучения "
+    },
+    {
+     "type": "plain",
+     "text": "❤️\n\nЯ долго думала, чем завершить этот путь, прежде чем я отпущу вас "
+    },
+    {
+     "type": "bold",
+     "text": "в самостоятельное плавание."
+    },
+    {
+     "type": "plain",
+     "text": "\n\nПланеты, дома, аспекты, анализ карты — всё это лишь "
+    },
+    {
+     "type": "bold",
+     "text": "инструменты."
+    },
+    {
+     "type": "plain",
+     "text": "\nОднако качество вашей консультационной практики в гораздо большей степени определяется "
+    },
+    {
+     "type": "bold",
+     "text": "не техническим мастерством"
+    },
+    {
+     "type": "plain",
+     "text": ", а тем, "
+    },
+    {
+     "type": "bold",
+     "text": "из какого внутреннего состояния вы работаете."
+    },
+    {
+     "type": "plain",
+     "text": "\n\nЗаписала для вас подкаст о том, "
+    },
+    {
+     "type": "bold",
+     "text": "с чем рано или поздно столкнётся каждый астролог."
+    },
+    {
+     "type": "plain",
+     "text": " И о том, "
+    },
+    {
+     "type": "bold",
+     "text": "как пройти через это достойно — с любовью к себе и к своим клиентам."
+    },
+    {
+     "type": "plain",
+     "text": "\n\nЭто моё "
+    },
+    {
+     "type": "bold",
+     "text": "финальное напутствие каждому из вас"
+    },
+    {
+     "type": "plain",
+     "text": " 🎁"
+    }
+   ]
+  },
+  {
+   "id": 136,
+   "type": "message",
+   "date": "2026-03-16T20:43:49",
+   "date_unixtime": "1773668629",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "Ответсвенность.mp3",
+   "file_size": 19409328,
+   "media_type": "audio_file",
+   "mime_type": "audio/mpeg",
+   "duration_seconds": 1397,
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 138,
+   "type": "message",
+   "date": "2026-03-17T17:03:35",
+   "date_unixtime": "1773741815",
+   "edited": "2026-03-17T17:04:15",
+   "edited_unixtime": "1773741855",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    {
+     "type": "italic",
+     "text": "Астрология не ограничивается рамками одного курса!"
+    },
+    "✨\n\nПоэтому я подготовила для вас ",
+    {
+     "type": "bold",
+     "text": "список рекомендуемой астрологической литературы"
+    },
+    " 📚\n\nЭти книги помогут\n",
+    {
+     "type": "bold",
+     "text": "расширить мировоззрение"
+    },
+    ",\n",
+    {
+     "type": "bold",
+     "text": "усилить глубину вашего анализа "
+    },
+    "и помогут начать формировать ",
+    {
+     "type": "bold",
+     "text": "свой собственный стиль в консультационной практике."
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "italic",
+     "text": "Астрология не ограничивается рамками одного курса!"
+    },
+    {
+     "type": "plain",
+     "text": "✨\n\nПоэтому я подготовила для вас "
+    },
+    {
+     "type": "bold",
+     "text": "список рекомендуемой астрологической литературы"
+    },
+    {
+     "type": "plain",
+     "text": " 📚\n\nЭти книги помогут\n"
+    },
+    {
+     "type": "bold",
+     "text": "расширить мировоззрение"
+    },
+    {
+     "type": "plain",
+     "text": ",\n"
+    },
+    {
+     "type": "bold",
+     "text": "усилить глубину вашего анализа "
+    },
+    {
+     "type": "plain",
+     "text": "и помогут начать формировать "
+    },
+    {
+     "type": "bold",
+     "text": "свой собственный стиль в консультационной практике."
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 139,
+   "type": "message",
+   "date": "2026-03-17T17:04:45",
+   "date_unixtime": "1773741885",
+   "edited": "2026-03-17T17:17:42",
+   "edited_unixtime": "1773742662",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    "— ",
+    {
+     "type": "bold",
+     "text": "Александр Колесников"
+    },
+    " — ",
+    {
+     "type": "italic",
+     "text": "«Астрология. Самоучитель»"
+    },
+    "\n— ",
+    {
+     "type": "bold",
+     "text": "Александр Колесников"
+    },
+    " —  \n",
+    {
+     "type": "italic",
+     "text": "«Лунные Узлы. Как понять прошлое и предвидеть будущее»"
+    },
+    "\n— ",
+    {
+     "type": "bold",
+     "text": "Феликс Величко"
+    },
+    " — ",
+    {
+     "type": "italic",
+     "text": "«Энциклопедия важнейших аспектов»"
+    },
+    "\n— ",
+    {
+     "type": "bold",
+     "text": "Чарльз Картер"
+    },
+    " — ",
+    {
+     "type": "italic",
+     "text": "«Книга аспектов»"
+    },
+    "\n— ",
+    {
+     "type": "bold",
+     "text": "Стивен Арройо"
+    },
+    " — ",
+    {
+     "type": "italic",
+     "text": "«Астрология, психология, четыре стихии»"
+    },
+    "\n— ",
+    {
+     "type": "bold",
+     "text": "Бернадетт Брэди"
+    },
+    " — ",
+    {
+     "type": "italic",
+     "text": "«Предсказательная астрология. Орёл и жаворонок»"
+    },
+    "\n— ",
+    {
+     "type": "bold",
+     "text": "Алексей Агафонов"
+    },
+    " — ",
+    {
+     "type": "italic",
+     "text": "«Прогностическая астрология. Теория»"
+    },
+    "\n— ",
+    {
+     "type": "bold",
+     "text": "Константин Дараган"
+    },
+    " — ",
+    {
+     "type": "italic",
+     "text": "«Транзиты. Краткое руководство по технике транзитного прогнозирования»"
+    },
+    "\n— ",
+    {
+     "type": "bold",
+     "text": "Константин Дараган"
+    },
+    " — ",
+    {
+     "type": "italic",
+     "text": "«Астрология трансформации личности»\n"
+    },
+    "— ",
+    {
+     "type": "bold",
+     "text": "Константин Дараган"
+    },
+    " — ",
+    {
+     "type": "italic",
+     "text": "«Астрология любви и брака»"
+    },
+    "\n— ",
+    {
+     "type": "bold",
+     "text": "Константин Дараган"
+    },
+    " — ",
+    {
+     "type": "italic",
+     "text": "«Профессиональная астрология»"
+    },
+    "\n— ",
+    {
+     "type": "bold",
+     "text": "Бенджамин Дайкс"
+    },
+    " — ",
+    {
+     "type": "italic",
+     "text": "«Традиционная астрология в современном мире»"
+    },
+    "\n— ",
+    {
+     "type": "bold",
+     "text": "Александр Саплин"
+    },
+    " — ",
+    {
+     "type": "italic",
+     "text": "«История астрологии с древнейших времён до наших дней»"
+    },
+    "\n— ",
+    {
+     "type": "bold",
+     "text": "Левин и Голоушкин"
+    },
+    " — ",
+    {
+     "type": "italic",
+     "text": "«Аргументы против астрологии и почему они не работают»"
+    },
+    "\n— ",
+    {
+     "type": "bold",
+     "text": "Томас Мур"
+    },
+    " — ",
+    {
+     "type": "italic",
+     "text": "«Планеты внутри нас»"
+    },
+    "\n",
+    {
+     "type": "italic",
+     "text": "— "
+    },
+    {
+     "type": "bold",
+     "text": "Бейджент Майкл "
+    },
+    {
+     "type": "italic",
+     "text": "— «Мировая астрология»"
+    },
+    "\n",
+    {
+     "type": "italic",
+     "text": "— "
+    },
+    {
+     "type": "bold",
+     "text": "Августина Семенко "
+    },
+    {
+     "type": "italic",
+     "text": "— «Иерархии циклов»"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "— "
+    },
+    {
+     "type": "bold",
+     "text": "Александр Колесников"
+    },
+    {
+     "type": "plain",
+     "text": " — "
+    },
+    {
+     "type": "italic",
+     "text": "«Астрология. Самоучитель»"
+    },
+    {
+     "type": "plain",
+     "text": "\n— "
+    },
+    {
+     "type": "bold",
+     "text": "Александр Колесников"
+    },
+    {
+     "type": "plain",
+     "text": " —  \n"
+    },
+    {
+     "type": "italic",
+     "text": "«Лунные Узлы. Как понять прошлое и предвидеть будущее»"
+    },
+    {
+     "type": "plain",
+     "text": "\n— "
+    },
+    {
+     "type": "bold",
+     "text": "Феликс Величко"
+    },
+    {
+     "type": "plain",
+     "text": " — "
+    },
+    {
+     "type": "italic",
+     "text": "«Энциклопедия важнейших аспектов»"
+    },
+    {
+     "type": "plain",
+     "text": "\n— "
+    },
+    {
+     "type": "bold",
+     "text": "Чарльз Картер"
+    },
+    {
+     "type": "plain",
+     "text": " — "
+    },
+    {
+     "type": "italic",
+     "text": "«Книга аспектов»"
+    },
+    {
+     "type": "plain",
+     "text": "\n— "
+    },
+    {
+     "type": "bold",
+     "text": "Стивен Арройо"
+    },
+    {
+     "type": "plain",
+     "text": " — "
+    },
+    {
+     "type": "italic",
+     "text": "«Астрология, психология, четыре стихии»"
+    },
+    {
+     "type": "plain",
+     "text": "\n— "
+    },
+    {
+     "type": "bold",
+     "text": "Бернадетт Брэди"
+    },
+    {
+     "type": "plain",
+     "text": " — "
+    },
+    {
+     "type": "italic",
+     "text": "«Предсказательная астрология. Орёл и жаворонок»"
+    },
+    {
+     "type": "plain",
+     "text": "\n— "
+    },
+    {
+     "type": "bold",
+     "text": "Алексей Агафонов"
+    },
+    {
+     "type": "plain",
+     "text": " — "
+    },
+    {
+     "type": "italic",
+     "text": "«Прогностическая астрология. Теория»"
+    },
+    {
+     "type": "plain",
+     "text": "\n— "
+    },
+    {
+     "type": "bold",
+     "text": "Константин Дараган"
+    },
+    {
+     "type": "plain",
+     "text": " — "
+    },
+    {
+     "type": "italic",
+     "text": "«Транзиты. Краткое руководство по технике транзитного прогнозирования»"
+    },
+    {
+     "type": "plain",
+     "text": "\n— "
+    },
+    {
+     "type": "bold",
+     "text": "Константин Дараган"
+    },
+    {
+     "type": "plain",
+     "text": " — "
+    },
+    {
+     "type": "italic",
+     "text": "«Астрология трансформации личности»\n"
+    },
+    {
+     "type": "plain",
+     "text": "— "
+    },
+    {
+     "type": "bold",
+     "text": "Константин Дараган"
+    },
+    {
+     "type": "plain",
+     "text": " — "
+    },
+    {
+     "type": "italic",
+     "text": "«Астрология любви и брака»"
+    },
+    {
+     "type": "plain",
+     "text": "\n— "
+    },
+    {
+     "type": "bold",
+     "text": "Константин Дараган"
+    },
+    {
+     "type": "plain",
+     "text": " — "
+    },
+    {
+     "type": "italic",
+     "text": "«Профессиональная астрология»"
+    },
+    {
+     "type": "plain",
+     "text": "\n— "
+    },
+    {
+     "type": "bold",
+     "text": "Бенджамин Дайкс"
+    },
+    {
+     "type": "plain",
+     "text": " — "
+    },
+    {
+     "type": "italic",
+     "text": "«Традиционная астрология в современном мире»"
+    },
+    {
+     "type": "plain",
+     "text": "\n— "
+    },
+    {
+     "type": "bold",
+     "text": "Александр Саплин"
+    },
+    {
+     "type": "plain",
+     "text": " — "
+    },
+    {
+     "type": "italic",
+     "text": "«История астрологии с древнейших времён до наших дней»"
+    },
+    {
+     "type": "plain",
+     "text": "\n— "
+    },
+    {
+     "type": "bold",
+     "text": "Левин и Голоушкин"
+    },
+    {
+     "type": "plain",
+     "text": " — "
+    },
+    {
+     "type": "italic",
+     "text": "«Аргументы против астрологии и почему они не работают»"
+    },
+    {
+     "type": "plain",
+     "text": "\n— "
+    },
+    {
+     "type": "bold",
+     "text": "Томас Мур"
+    },
+    {
+     "type": "plain",
+     "text": " — "
+    },
+    {
+     "type": "italic",
+     "text": "«Планеты внутри нас»"
+    },
+    {
+     "type": "plain",
+     "text": "\n"
+    },
+    {
+     "type": "italic",
+     "text": "— "
+    },
+    {
+     "type": "bold",
+     "text": "Бейджент Майкл "
+    },
+    {
+     "type": "italic",
+     "text": "— «Мировая астрология»"
+    },
+    {
+     "type": "plain",
+     "text": "\n"
+    },
+    {
+     "type": "italic",
+     "text": "— "
+    },
+    {
+     "type": "bold",
+     "text": "Августина Семенко "
+    },
+    {
+     "type": "italic",
+     "text": "— «Иерархии циклов»"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 140,
+   "type": "message",
+   "date": "2026-03-17T17:05:00",
+   "date_unixtime": "1773741900",
+   "from": "Астрология с 0 // курс",
+   "from_id": "channel3703088871",
+   "text": [
+    {
+     "type": "italic",
+     "text": "Мои дорогие "
+    },
+    "💛\n\n",
+    {
+     "type": "bold",
+     "text": "Курс закончился, а наша с вами коммуникация будет продолжаться на этом канале "
+    },
+    "✨\n\nИнформации на курсе много и, возможно, она не уляжется у вас сразу. Это вполне нормально! \n",
+    {
+     "type": "bold",
+     "text": "Для этого, кстати, доступ к курсу остается у вас навсегда."
+    },
+    "\n\nОбязательно пересматривайте уроки по потребности! \n\nНу а я иногда буду отправлять сюда полезные дополнительные материалы, промокоды на скидки, и остальные хорошие новости  🫶"
+   ],
+   "text_entities": [
+    {
+     "type": "italic",
+     "text": "Мои дорогие "
+    },
+    {
+     "type": "plain",
+     "text": "💛\n\n"
+    },
+    {
+     "type": "bold",
+     "text": "Курс закончился, а наша с вами коммуникация будет продолжаться на этом канале "
+    },
+    {
+     "type": "plain",
+     "text": "✨\n\nИнформации на курсе много и, возможно, она не уляжется у вас сразу. Это вполне нормально! \n"
+    },
+    {
+     "type": "bold",
+     "text": "Для этого, кстати, доступ к курсу остается у вас навсегда."
+    },
+    {
+     "type": "plain",
+     "text": "\n\nОбязательно пересматривайте уроки по потребности! \n\nНу а я иногда буду отправлять сюда полезные дополнительные материалы, промокоды на скидки, и остальные хорошие новости  🫶"
+    }
+   ]
+  }
+ ]
+}

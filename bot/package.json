@@ -1,0 +1,27 @@
+{
+  "name": "li-astrology-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot for Li Astrology course platform",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "import": "tsx scripts/import-course.ts"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "dotenv": "^17.4.2",
+    "express": "^4.18.0",
+    "grammy": "^1.21.0",
+    "node-cron": "^3.0.3",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.0",
+    "@types/node": "^20.0.0",
+    "@types/node-cron": "^3.0.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0"
+  }
+}
