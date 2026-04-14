@@ -1,0 +1,838 @@
+{
+  "name": "Аспекты // базовый",
+  "type": "private_channel",
+  "id": 3735057617,
+  "messages": [
+    {
+      "id": 1,
+      "type": "service",
+      "date": "2026-03-13T17:57:39",
+      "date_unixtime": "1773399459",
+      "actor": "Аспекты // базовый",
+      "actor_id": "channel3735057617",
+      "action": "create_channel",
+      "title": "Аспекты // база",
+      "text": "",
+      "text_entities": []
+    },
+    {
+      "id": 2,
+      "type": "message",
+      "date": "2026-03-13T17:58:01",
+      "date_unixtime": "1773399481",
+      "from": "Аспекты // базовый",
+      "from_id": "channel3735057617",
+      "text": [
+        "Добро пожаловать, мои дорогие 🕊️\n",
+        {
+          "type": "italic",
+          "text": "Спасибо за ваше доверие!"
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "plain",
+          "text": "Добро пожаловать, мои дорогие 🕊️\n"
+        },
+        {
+          "type": "italic",
+          "text": "Спасибо за ваше доверие!"
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "message",
+      "date": "2026-03-13T17:58:16",
+      "date_unixtime": "1773399496",
+      "from": "Аспекты // базовый",
+      "from_id": "channel3735057617",
+      "text": [
+        "Это обучение создано с целью ",
+        {
+          "type": "italic",
+          "text": "влюбить вас в астрологию"
+        },
+        " и помочь каждой сформировать ",
+        {
+          "type": "bold",
+          "text": "более объёмное и глубокое видение мира и себя в нём."
+        },
+        "\n\nЗдесь вы сможете:\n— найти ",
+        {
+          "type": "bold",
+          "text": "ответы на важные для вас вопросы"
+        },
+        "\n— посмотреть на собственную жизнь как на ",
+        {
+          "type": "bold",
+          "text": "целостную, многогранную систему "
+        },
+        "🪷\n\nНастраивайтесь на работу. ",
+        {
+          "type": "bold",
+          "text": "Мы начинаем важный этап!"
+        },
+        "\n\nС любовью, Анастасия ❤️"
+      ],
+      "text_entities": [
+        {
+          "type": "plain",
+          "text": "Это обучение создано с целью "
+        },
+        {
+          "type": "italic",
+          "text": "влюбить вас в астрологию"
+        },
+        {
+          "type": "plain",
+          "text": " и помочь каждой сформировать "
+        },
+        {
+          "type": "bold",
+          "text": "более объёмное и глубокое видение мира и себя в нём."
+        },
+        {
+          "type": "plain",
+          "text": "\n\nЗдесь вы сможете:\n— найти "
+        },
+        {
+          "type": "bold",
+          "text": "ответы на важные для вас вопросы"
+        },
+        {
+          "type": "plain",
+          "text": "\n— посмотреть на собственную жизнь как на "
+        },
+        {
+          "type": "bold",
+          "text": "целостную, многогранную систему "
+        },
+        {
+          "type": "plain",
+          "text": "🪷\n\nНастраивайтесь на работу. "
+        },
+        {
+          "type": "bold",
+          "text": "Мы начинаем важный этап!"
+        },
+        {
+          "type": "plain",
+          "text": "\n\nС любовью, Анастасия ❤️"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "message",
+      "date": "2026-03-13T17:58:39",
+      "date_unixtime": "1773399519",
+      "from": "Аспекты // базовый",
+      "from_id": "channel3735057617",
+      "text": [
+        {
+          "type": "bold",
+          "text": "КАК БУДЕТ ПРОХОДИТЬ ОБУЧЕНИЕ:"
+        },
+        "\n\n✨ Все уроки вы получаете сразу, а проходите в удобном для себя темпе\n\n✨ Доступ к курсу у вас остаётся навсегда"
+      ],
+      "text_entities": [
+        {
+          "type": "bold",
+          "text": "КАК БУДЕТ ПРОХОДИТЬ ОБУЧЕНИЕ:"
+        },
+        {
+          "type": "plain",
+          "text": "\n\n✨ Все уроки вы получаете сразу, а проходите в удобном для себя темпе\n\n✨ Доступ к курсу у вас остаётся навсегда"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "message",
+      "date": "2026-03-13T17:58:56",
+      "date_unixtime": "1773399536",
+      "from": "Аспекты // базовый",
+      "from_id": "channel3735057617",
+      "text": [
+        "⏰ Пока открывается доступ, приглашаю вас подписаться на мой Instagram. \n\n",
+        {
+          "type": "link",
+          "text": "https://www.instagram.com/li_astrology_?igsh=YjVhcGU3djl6eW53"
+        },
+        "\n\nЭто творческое и духовное пространство, где я делюсь полезными материалами и профессиональными наблюдениями, чтобы жить красиво и с удовольствием, в согласии с собой 🪔✨\n\n",
+        {
+          "type": "italic",
+          "text": "Обязательно подписывайтесь и делитесь своими впечатлениями"
+        },
+        " 💌"
+      ],
+      "text_entities": [
+        {
+          "type": "plain",
+          "text": "⏰ Пока открывается доступ, приглашаю вас подписаться на мой Instagram. \n\n"
+        },
+        {
+          "type": "link",
+          "text": "https://www.instagram.com/li_astrology_?igsh=YjVhcGU3djl6eW53"
+        },
+        {
+          "type": "plain",
+          "text": "\n\nЭто творческое и духовное пространство, где я делюсь полезными материалами и профессиональными наблюдениями, чтобы жить красиво и с удовольствием, в согласии с собой 🪔✨\n\n"
+        },
+        {
+          "type": "italic",
+          "text": "Обязательно подписывайтесь и делитесь своими впечатлениями"
+        },
+        {
+          "type": "plain",
+          "text": " 💌"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "message",
+      "date": "2026-03-13T18:03:17",
+      "date_unixtime": "1773399797",
+      "from": "Аспекты // базовый",
+      "from_id": "channel3735057617",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "аспекты .mp4",
+      "file_size": 506459863,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 5061,
+      "media_type": "video_file",
+      "mime_type": "video/mp4",
+      "duration_seconds": 1352,
+      "width": 1280,
+      "height": 720,
+      "text": [
+        {
+          "type": "bold",
+          "text": "Аспекты; самый важный нюанс интерпретации:"
+        },
+        "\n\n— базовые принципы, типы аспектов и логика их взаимодействия.\n",
+        {
+          "type": "bold",
+          "text": "\n"
+        },
+        "⬇️ ",
+        {
+          "type": "italic",
+          "text": "методичка ниже"
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "bold",
+          "text": "Аспекты; самый важный нюанс интерпретации:"
+        },
+        {
+          "type": "plain",
+          "text": "\n\n— базовые принципы, типы аспектов и логика их взаимодействия.\n"
+        },
+        {
+          "type": "bold",
+          "text": "\n"
+        },
+        {
+          "type": "plain",
+          "text": "⬇️ "
+        },
+        {
+          "type": "italic",
+          "text": "методичка ниже"
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ],
+      "_file_id": "BAACAgIAAyEFAATfeMFYAAMGadyR1DNBS6LcOs7jijO54k2sNJgAAtd-AALdqwlKM43rDi9yoHI7BA",
+      "_file_unique_id": "AgAD134AAt2rCUo",
+      "_file_name": "аспекты .mp4",
+      "_file_size": 506459863,
+      "_mime_type": "video/mp4",
+      "_duration": 1352
+    },
+    {
+      "id": 7,
+      "type": "message",
+      "date": "2026-03-13T18:04:20",
+      "date_unixtime": "1773399860",
+      "from": "Аспекты // базовый",
+      "from_id": "channel3735057617",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "Самоучитель по аспектам.pdf",
+      "file_size": 60419648,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 19111,
+      "mime_type": "application/pdf",
+      "text": "",
+      "text_entities": [],
+      "_file_id": "BQACAgIAAyEFAATeoHTRAAMHadyTBKxzxh7pZNp7jCPQoPq5ZzwAAs6UAAJkJqBJv5_Qy_pRYGQ7BA",
+      "_file_unique_id": "AgADzpQAAmQmoEk",
+      "_file_name": "Самоучитель по аспектам.pdf",
+      "_file_size": 60419648,
+      "_mime_type": "application/pdf",
+      "_duration": null
+    },
+    {
+      "id": 8,
+      "type": "message",
+      "date": "2026-03-13T18:04:46",
+      "date_unixtime": "1773399886",
+      "from": "Аспекты // базовый",
+      "from_id": "channel3735057617",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "Аспекты солнца и луны.pdf",
+      "file_size": 70132484,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 12062,
+      "mime_type": "application/pdf",
+      "text": "",
+      "text_entities": [],
+      "_file_id": "BQACAgIAAyEFAATeoHTRAAMIadyTBo-laSqrFuQlnPUwTDxc2qkAAtGUAAJkJqBJLQJ1b6swW4c7BA",
+      "_file_unique_id": "AgAD0ZQAAmQmoEk",
+      "_file_name": "Аспекты солнца и луны.pdf",
+      "_file_size": 70132484,
+      "_mime_type": "application/pdf",
+      "_duration": null
+    },
+    {
+      "id": 9,
+      "type": "message",
+      "date": "2026-03-13T18:05:06",
+      "date_unixtime": "1773399906",
+      "from": "Аспекты // базовый",
+      "from_id": "channel3735057617",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "Аспекты_к_другим_личным_планетам_.pdf",
+      "file_size": 41934439,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 13018,
+      "mime_type": "application/pdf",
+      "text": "",
+      "text_entities": [],
+      "_file_id": "BQACAgIAAyEFAATeoHTRAAMJadyTCChy4lw8PPg-PgwAAfoJKbvtAALUlAACZCagSdqGaWimuPHhOwQ",
+      "_file_unique_id": "AgAD1JQAAmQmoEk",
+      "_file_name": "Аспекты_к_другим_личным_планетам_.pdf",
+      "_file_size": 41934439,
+      "_mime_type": "application/pdf",
+      "_duration": null
+    },
+    {
+      "id": 11,
+      "type": "service",
+      "date": "2026-03-13T18:08:03",
+      "date_unixtime": "1773400083",
+      "actor": "Аспекты // базовый",
+      "actor_id": "channel3735057617",
+      "action": "edit_group_title",
+      "title": "Аспекты // базовый",
+      "text": "",
+      "text_entities": []
+    },
+    {
+      "id": 12,
+      "type": "message",
+      "date": "2026-03-13T20:10:11",
+      "date_unixtime": "1773407411",
+      "edited": "2026-03-13T20:31:31",
+      "edited_unixtime": "1773408691",
+      "from": "Аспекты // базовый",
+      "from_id": "channel3735057617",
+      "text": [
+        "✨ ",
+        {
+          "type": "bold",
+          "text": "Мои дорогие, наше обучение по теме аспектов подошло к завершению.\n\n🔓"
+        },
+        {
+          "type": "italic",
+          "text": "Продолжение этой темы доступно в полноценном курсе. "
+        },
+        "\n\nЗа это время вы успели познакомиться со мной, с моим подходом, с глубиной и качеством материала, который я даю. \n\n",
+        {
+          "type": "italic",
+          "text": "Вы увидели на практике, как я работаю, как объясняю, что считаю важным."
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "plain",
+          "text": "✨ "
+        },
+        {
+          "type": "bold",
+          "text": "Мои дорогие, наше обучение по теме аспектов подошло к завершению.\n\n🔓"
+        },
+        {
+          "type": "italic",
+          "text": "Продолжение этой темы доступно в полноценном курсе. "
+        },
+        {
+          "type": "plain",
+          "text": "\n\nЗа это время вы успели познакомиться со мной, с моим подходом, с глубиной и качеством материала, который я даю. \n\n"
+        },
+        {
+          "type": "italic",
+          "text": "Вы увидели на практике, как я работаю, как объясняю, что считаю важным."
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "type": "message",
+      "date": "2026-03-13T20:10:26",
+      "date_unixtime": "1773407426",
+      "edited": "2026-03-13T20:29:39",
+      "edited_unixtime": "1773408579",
+      "from": "Аспекты // базовый",
+      "from_id": "channel3735057617",
+      "text": [
+        "И вот теперь ",
+        {
+          "type": "bold",
+          "text": "самое интересное только начинается"
+        },
+        " 🪐❤️‍🔥🪩⬇️\n\n",
+        {
+          "type": "bold",
+          "text": "В полном курсе вас ждёт: "
+        },
+        "\n\n— ",
+        {
+          "type": "bold",
+          "text": "базовые принципы "
+        },
+        "философии астрологии \n— ",
+        {
+          "type": "bold",
+          "text": "знаки зодиака:"
+        },
+        " единый цикл развития \n— ",
+        {
+          "type": "bold",
+          "text": "стихии и кресты;"
+        },
+        " темперамент человека \n— ",
+        {
+          "type": "bold",
+          "text": "значение домов и управителей "
+        },
+        "\n— ",
+        {
+          "type": "bold",
+          "text": "значение Асцендента "
+        },
+        "\n— ",
+        {
+          "type": "bold",
+          "text": "значение всех элементов натальной карты "
+        },
+        "\n—",
+        {
+          "type": "bold",
+          "text": " ядро личности: "
+        },
+        "Солнце и Луна \n— ",
+        {
+          "type": "bold",
+          "text": "личные планеты: "
+        },
+        "Меркурий, Венера, Марс\n— ",
+        {
+          "type": "bold",
+          "text": "социальные планеты"
+        },
+        ": Юпитер и Сатурн\n—",
+        {
+          "type": "bold",
+          "text": " высшие планеты"
+        },
+        ": Уран, Нептун, Плутон\n— ",
+        {
+          "type": "bold",
+          "text": "особые положения планет "
+        },
+        {
+          "type": "italic",
+          "text": "(ретроградность, сожжение, стеллиумы и др.)"
+        },
+        "\n— ",
+        {
+          "type": "bold",
+          "text": "аспекты"
+        },
+        " \n— ",
+        {
+          "type": "bold",
+          "text": "кармические показатели и предназначение"
+        },
+        "\n— ",
+        {
+          "type": "bold",
+          "text": "компенсаторика и проработка гороскопа"
+        },
+        "\n—",
+        {
+          "type": "bold",
+          "text": " синтез карты и работа с противоречиями"
+        },
+        "\n— ",
+        {
+          "type": "bold",
+          "text": "эталонный разбор натальной карты"
+        },
+        " \n— ",
+        {
+          "type": "bold",
+          "text": "готовый письменный шаблон разбора \n"
+        },
+        "— и, конечно же, ",
+        {
+          "type": "bold",
+          "text": "много практических видеоразборов на реальных картах \n"
+        },
+        "— ",
+        {
+          "type": "italic",
+          "text": "а также полезные подкасты\n"
+        },
+        "— ",
+        {
+          "type": "italic",
+          "text": "список астрологической литературы и рекомендуемых книг к прочтению (для новичков и продолжающих"
+        },
+        ") ",
+        {
+          "type": "italic",
+          "text": "\n\n"
+        },
+        "— ",
+        {
+          "type": "bold",
+          "text": "домашние задания к каждому уроку"
+        },
+        "\n— ",
+        {
+          "type": "italic",
+          "text": "ответы для самопроверки"
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "plain",
+          "text": "И вот теперь "
+        },
+        {
+          "type": "bold",
+          "text": "самое интересное только начинается"
+        },
+        {
+          "type": "plain",
+          "text": " 🪐❤️‍🔥🪩⬇️\n\n"
+        },
+        {
+          "type": "bold",
+          "text": "В полном курсе вас ждёт: "
+        },
+        {
+          "type": "plain",
+          "text": "\n\n— "
+        },
+        {
+          "type": "bold",
+          "text": "базовые принципы "
+        },
+        {
+          "type": "plain",
+          "text": "философии астрологии \n— "
+        },
+        {
+          "type": "bold",
+          "text": "знаки зодиака:"
+        },
+        {
+          "type": "plain",
+          "text": " единый цикл развития \n— "
+        },
+        {
+          "type": "bold",
+          "text": "стихии и кресты;"
+        },
+        {
+          "type": "plain",
+          "text": " темперамент человека \n— "
+        },
+        {
+          "type": "bold",
+          "text": "значение домов и управителей "
+        },
+        {
+          "type": "plain",
+          "text": "\n— "
+        },
+        {
+          "type": "bold",
+          "text": "значение Асцендента "
+        },
+        {
+          "type": "plain",
+          "text": "\n— "
+        },
+        {
+          "type": "bold",
+          "text": "значение всех элементов натальной карты "
+        },
+        {
+          "type": "plain",
+          "text": "\n—"
+        },
+        {
+          "type": "bold",
+          "text": " ядро личности: "
+        },
+        {
+          "type": "plain",
+          "text": "Солнце и Луна \n— "
+        },
+        {
+          "type": "bold",
+          "text": "личные планеты: "
+        },
+        {
+          "type": "plain",
+          "text": "Меркурий, Венера, Марс\n— "
+        },
+        {
+          "type": "bold",
+          "text": "социальные планеты"
+        },
+        {
+          "type": "plain",
+          "text": ": Юпитер и Сатурн\n—"
+        },
+        {
+          "type": "bold",
+          "text": " высшие планеты"
+        },
+        {
+          "type": "plain",
+          "text": ": Уран, Нептун, Плутон\n— "
+        },
+        {
+          "type": "bold",
+          "text": "особые положения планет "
+        },
+        {
+          "type": "italic",
+          "text": "(ретроградность, сожжение, стеллиумы и др.)"
+        },
+        {
+          "type": "plain",
+          "text": "\n— "
+        },
+        {
+          "type": "bold",
+          "text": "аспекты"
+        },
+        {
+          "type": "plain",
+          "text": " \n— "
+        },
+        {
+          "type": "bold",
+          "text": "кармические показатели и предназначение"
+        },
+        {
+          "type": "plain",
+          "text": "\n— "
+        },
+        {
+          "type": "bold",
+          "text": "компенсаторика и проработка гороскопа"
+        },
+        {
+          "type": "plain",
+          "text": "\n—"
+        },
+        {
+          "type": "bold",
+          "text": " синтез карты и работа с противоречиями"
+        },
+        {
+          "type": "plain",
+          "text": "\n— "
+        },
+        {
+          "type": "bold",
+          "text": "эталонный разбор натальной карты"
+        },
+        {
+          "type": "plain",
+          "text": " \n— "
+        },
+        {
+          "type": "bold",
+          "text": "готовый письменный шаблон разбора \n"
+        },
+        {
+          "type": "plain",
+          "text": "— и, конечно же, "
+        },
+        {
+          "type": "bold",
+          "text": "много практических видеоразборов на реальных картах \n"
+        },
+        {
+          "type": "plain",
+          "text": "— "
+        },
+        {
+          "type": "italic",
+          "text": "а также полезные подкасты\n"
+        },
+        {
+          "type": "plain",
+          "text": "— "
+        },
+        {
+          "type": "italic",
+          "text": "список астрологической литературы и рекомендуемых книг к прочтению (для новичков и продолжающих"
+        },
+        {
+          "type": "plain",
+          "text": ") "
+        },
+        {
+          "type": "italic",
+          "text": "\n\n"
+        },
+        {
+          "type": "plain",
+          "text": "— "
+        },
+        {
+          "type": "bold",
+          "text": "домашние задания к каждому уроку"
+        },
+        {
+          "type": "plain",
+          "text": "\n— "
+        },
+        {
+          "type": "italic",
+          "text": "ответы для самопроверки"
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "type": "message",
+      "date": "2026-03-13T20:10:46",
+      "date_unixtime": "1773407446",
+      "from": "Аспекты // базовый",
+      "from_id": "channel3735057617",
+      "text": [
+        "Если вы чувствуете, что хотите продолжить — ",
+        {
+          "type": "bold",
+          "text": "тарифы и"
+        },
+        " ",
+        {
+          "type": "bold",
+          "text": "доступ к следующим урокам — по кнопке ниже"
+        },
+        ". \n\n",
+        {
+          "type": "italic",
+          "text": "После оплаты всё откроется автоматически"
+        },
+        {
+          "type": "bold",
+          "text": " ❤️"
+        },
+        "🗝️"
+      ],
+      "text_entities": [
+        {
+          "type": "plain",
+          "text": "Если вы чувствуете, что хотите продолжить — "
+        },
+        {
+          "type": "bold",
+          "text": "тарифы и"
+        },
+        {
+          "type": "plain",
+          "text": " "
+        },
+        {
+          "type": "bold",
+          "text": "доступ к следующим урокам — по кнопке ниже"
+        },
+        {
+          "type": "plain",
+          "text": ". \n\n"
+        },
+        {
+          "type": "italic",
+          "text": "После оплаты всё откроется автоматически"
+        },
+        {
+          "type": "bold",
+          "text": " ❤️"
+        },
+        {
+          "type": "plain",
+          "text": "🗝️"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "type": "message",
+      "date": "2026-03-13T20:10:54",
+      "date_unixtime": "1773407454",
+      "from": "Аспекты // базовый",
+      "from_id": "channel3735057617",
+      "text": [
+        {
+          "type": "bold",
+          "text": "[Получить полный курс →]"
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "bold",
+          "text": "[Получить полный курс →]"
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ]
+    }
+  ]
+}

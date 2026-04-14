@@ -1,0 +1,46 @@
+[
+  {
+    "messageId": 6,
+    "mediaType": "video_file",
+    "fileId": "BAACAgIAAyEFAATfeMFYAAMGadyR1DNBS6LcOs7jijO54k2sNJgAAtd-AALdqwlKM43rDi9yoHI7BA",
+    "fileUniqueId": "AgAD134AAt2rCUo",
+    "fileName": "аспекты .mp4",
+    "fileSize": 506459863,
+    "mimeType": "video/mp4",
+    "duration": 1352,
+    "textPreview": "Аспекты; самый важный нюанс интерпретации:\n\n— базовые принципы, типы аспектов и логика их взаимодейс"
+  },
+  {
+    "messageId": 7,
+    "mediaType": "file",
+    "fileId": "BQACAgIAAyEFAATeoHTRAAMHadyTBKxzxh7pZNp7jCPQoPq5ZzwAAs6UAAJkJqBJv5_Qy_pRYGQ7BA",
+    "fileUniqueId": "AgADzpQAAmQmoEk",
+    "fileName": "Самоучитель по аспектам.pdf",
+    "fileSize": 60419648,
+    "mimeType": "application/pdf",
+    "duration": null,
+    "textPreview": ""
+  },
+  {
+    "messageId": 8,
+    "mediaType": "file",
+    "fileId": "BQACAgIAAyEFAATeoHTRAAMIadyTBo-laSqrFuQlnPUwTDxc2qkAAtGUAAJkJqBJLQJ1b6swW4c7BA",
+    "fileUniqueId": "AgAD0ZQAAmQmoEk",
+    "fileName": "Аспекты солнца и луны.pdf",
+    "fileSize": 70132484,
+    "mimeType": "application/pdf",
+    "duration": null,
+    "textPreview": ""
+  },
+  {
+    "messageId": 9,
+    "mediaType": "file",
+    "fileId": "BQACAgIAAyEFAATeoHTRAAMJadyTCChy4lw8PPg-PgwAAfoJKbvtAALUlAACZCagSdqGaWimuPHhOwQ",
+    "fileUniqueId": "AgAD1JQAAmQmoEk",
+    "fileName": "Аспекты_к_другим_личным_планетам_.pdf",
+    "fileSize": 41934439,
+    "mimeType": "application/pdf",
+    "duration": null,
+    "textPreview": ""
+  }
+]

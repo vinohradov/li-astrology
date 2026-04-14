@@ -1,0 +1,1770 @@
+{
+  "name": "Intensive //",
+  "type": "private_channel",
+  "id": 3122135614,
+  "messages": [
+    {
+      "id": 1,
+      "type": "service",
+      "date": "2026-03-12T20:34:49",
+      "date_unixtime": "1773322489",
+      "actor": "Intensive //",
+      "actor_id": "channel3122135614",
+      "action": "create_channel",
+      "title": "Intensive",
+      "text": "",
+      "text_entities": []
+    },
+    {
+      "id": 2,
+      "type": "service",
+      "date": "2026-03-12T20:34:50",
+      "date_unixtime": "1773322490",
+      "actor": "Intensive //",
+      "actor_id": "channel3122135614",
+      "action": "edit_group_photo",
+      "photo": "(File not included. Change data exporting settings to download.)",
+      "photo_file_size": 101845,
+      "width": 640,
+      "height": 640,
+      "text": "",
+      "text_entities": []
+    },
+    {
+      "id": 3,
+      "type": "message",
+      "date": "2026-03-12T20:35:18",
+      "date_unixtime": "1773322518",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "text": [
+        "Добро пожаловать, мои дорогие 🕊️\n",
+        {
+          "type": "italic",
+          "text": "Спасибо за ваше доверие!"
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "plain",
+          "text": "Добро пожаловать, мои дорогие 🕊️\n"
+        },
+        {
+          "type": "italic",
+          "text": "Спасибо за ваше доверие!"
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "message",
+      "date": "2026-03-12T20:35:34",
+      "date_unixtime": "1773322534",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "text": [
+        "Это обучение создано с целью ",
+        {
+          "type": "italic",
+          "text": "влюбить вас в астрологию"
+        },
+        " и помочь каждой сформировать ",
+        {
+          "type": "bold",
+          "text": "более объёмное и глубокое видение мира и себя в нём."
+        },
+        "\n\nЗдесь вы сможете:\n— найти ",
+        {
+          "type": "bold",
+          "text": "ответы на важные для вас вопросы"
+        },
+        "\n— посмотреть на собственную жизнь как на ",
+        {
+          "type": "bold",
+          "text": "целостную, многогранную систему "
+        },
+        "🪷\n\nНастраивайтесь на работу. ",
+        {
+          "type": "bold",
+          "text": "Мы начинаем важный этап!"
+        },
+        "\n\nС любовью, Анастасия ❤️"
+      ],
+      "text_entities": [
+        {
+          "type": "plain",
+          "text": "Это обучение создано с целью "
+        },
+        {
+          "type": "italic",
+          "text": "влюбить вас в астрологию"
+        },
+        {
+          "type": "plain",
+          "text": " и помочь каждой сформировать "
+        },
+        {
+          "type": "bold",
+          "text": "более объёмное и глубокое видение мира и себя в нём."
+        },
+        {
+          "type": "plain",
+          "text": "\n\nЗдесь вы сможете:\n— найти "
+        },
+        {
+          "type": "bold",
+          "text": "ответы на важные для вас вопросы"
+        },
+        {
+          "type": "plain",
+          "text": "\n— посмотреть на собственную жизнь как на "
+        },
+        {
+          "type": "bold",
+          "text": "целостную, многогранную систему "
+        },
+        {
+          "type": "plain",
+          "text": "🪷\n\nНастраивайтесь на работу. "
+        },
+        {
+          "type": "bold",
+          "text": "Мы начинаем важный этап!"
+        },
+        {
+          "type": "plain",
+          "text": "\n\nС любовью, Анастасия ❤️"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "message",
+      "date": "2026-03-12T20:35:48",
+      "date_unixtime": "1773322548",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "text": [
+        {
+          "type": "bold",
+          "text": "КАК БУДЕТ ПРОХОДИТЬ ОБУЧЕНИЕ:"
+        },
+        "\n\n✨ Все уроки вы получаете сразу, а проходите в удобном для себя темпе\n\n✨ Доступ к курсу у вас остаётся навсегда"
+      ],
+      "text_entities": [
+        {
+          "type": "bold",
+          "text": "КАК БУДЕТ ПРОХОДИТЬ ОБУЧЕНИЕ:"
+        },
+        {
+          "type": "plain",
+          "text": "\n\n✨ Все уроки вы получаете сразу, а проходите в удобном для себя темпе\n\n✨ Доступ к курсу у вас остаётся навсегда"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "message",
+      "date": "2026-03-12T20:36:02",
+      "date_unixtime": "1773322562",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "text": [
+        "⏰ Пока открывается доступ, приглашаю вас подписаться на мой Instagram. \n\n",
+        {
+          "type": "link",
+          "text": "https://www.instagram.com/li_astrology_?igsh=YjVhcGU3djl6eW53"
+        },
+        "\n\nЭто творческое и духовное пространство, где я делюсь полезными материалами и профессиональными наблюдениями, чтобы жить красиво и с удовольствием, в согласии с собой 🪔✨\n\n",
+        {
+          "type": "italic",
+          "text": "Обязательно подписывайтесь и делитесь своими впечатлениями "
+        },
+        "💌"
+      ],
+      "text_entities": [
+        {
+          "type": "plain",
+          "text": "⏰ Пока открывается доступ, приглашаю вас подписаться на мой Instagram. \n\n"
+        },
+        {
+          "type": "link",
+          "text": "https://www.instagram.com/li_astrology_?igsh=YjVhcGU3djl6eW53"
+        },
+        {
+          "type": "plain",
+          "text": "\n\nЭто творческое и духовное пространство, где я делюсь полезными материалами и профессиональными наблюдениями, чтобы жить красиво и с удовольствием, в согласии с собой 🪔✨\n\n"
+        },
+        {
+          "type": "italic",
+          "text": "Обязательно подписывайтесь и делитесь своими впечатлениями "
+        },
+        {
+          "type": "plain",
+          "text": "💌"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "message",
+      "date": "2026-03-12T20:36:15",
+      "date_unixtime": "1773322575",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "text": [
+        "🎁 Мои дорогие, пусть эти подарки ",
+        {
+          "type": "bold",
+          "text": "станут поддержкой на вашем пути."
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "plain",
+          "text": "🎁 Мои дорогие, пусть эти подарки "
+        },
+        {
+          "type": "bold",
+          "text": "станут поддержкой на вашем пути."
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "message",
+      "date": "2026-03-12T20:36:42",
+      "date_unixtime": "1773322602",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "Хочу помогать людям .mp3",
+      "file_size": 35106240,
+      "media_type": "audio_file",
+      "mime_type": "audio/mpeg",
+      "duration_seconds": 877,
+      "text": "",
+      "text_entities": [],
+      "_file_id": "CQACAgIAAyEFAATfeMFYAAMVadyR6KsXB1nMdYvpGH2EMWL-T3cAAh2HAAJTpZBLaKWQfCejkqk7BA",
+      "_file_unique_id": "AgADHYcAAlOlkEs",
+      "_file_name": "Хочу помогать людям .mp3",
+      "_file_size": 35106240,
+      "_mime_type": "audio/mpeg",
+      "_duration": 877
+    },
+    {
+      "id": 9,
+      "type": "message",
+      "date": "2026-03-12T20:37:21",
+      "date_unixtime": "1773322641",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "О книгах.mp3",
+      "file_size": 5201280,
+      "media_type": "audio_file",
+      "mime_type": "audio/mpeg",
+      "duration_seconds": 130,
+      "text": "",
+      "text_entities": [],
+      "_file_id": "CQACAgIAAyEFAAS6GAI-AAMJadyTcDrMOu5aF3kqykLg4E9s-8kAAqWSAALsZMFIFNS8nbd2xso7BA",
+      "_file_unique_id": "AgADpZIAAuxkwUg",
+      "_file_name": "О книгах.mp3",
+      "_file_size": 5201280,
+      "_mime_type": "audio/mpeg",
+      "_duration": 130
+    },
+    {
+      "id": 10,
+      "type": "message",
+      "date": "2026-03-12T20:38:04",
+      "date_unixtime": "1773322684",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "Критика.mp3",
+      "file_size": 46555200,
+      "media_type": "audio_file",
+      "mime_type": "audio/mpeg",
+      "duration_seconds": 1163,
+      "text": "",
+      "text_entities": [],
+      "_file_id": "CQACAgIAAyEFAAS6GAI-AAMKadyTcqqyAlOVj7MkqeaRjt7sCH4AAo2MAALfqNFLRMzYcvtJvgY7BA",
+      "_file_unique_id": "AgADjYwAAt-o0Us",
+      "_file_name": "Критика.mp3",
+      "_file_size": 46555200,
+      "_mime_type": "audio/mpeg",
+      "_duration": 1163
+    },
+    {
+      "id": 11,
+      "type": "message",
+      "date": "2026-03-12T20:38:27",
+      "date_unixtime": "1773322707",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "text": [
+        "Как построить натальную карту; выбор программы для построения карты.\n\n",
+        {
+          "type": "bold",
+          "text": "Sotis "
+        },
+        "полностью достаточно для работы; при желании можно использовать и программу ",
+        {
+          "type": "bold",
+          "text": "ZET"
+        },
+        ".\n\n⬇️ ",
+        {
+          "type": "italic",
+          "text": "методички ниже"
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "plain",
+          "text": "Как построить натальную карту; выбор программы для построения карты.\n\n"
+        },
+        {
+          "type": "bold",
+          "text": "Sotis "
+        },
+        {
+          "type": "plain",
+          "text": "полностью достаточно для работы; при желании можно использовать и программу "
+        },
+        {
+          "type": "bold",
+          "text": "ZET"
+        },
+        {
+          "type": "plain",
+          "text": ".\n\n⬇️ "
+        },
+        {
+          "type": "italic",
+          "text": "методички ниже"
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "type": "message",
+      "date": "2026-03-12T20:38:46",
+      "date_unixtime": "1773322726",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "Как_построить_натальную_карту.pdf",
+      "file_size": 26189309,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 13055,
+      "mime_type": "application/pdf",
+      "text": "",
+      "text_entities": [],
+      "_file_id": "BQACAgIAAyEFAAS6GAI-AAMMadyTc_XFbAwPgNOAAUDmCZ5A_8IAAvOXAAIkCplJKkrHzQ359ik7BA",
+      "_file_unique_id": "AgAD85cAAiQKmUk",
+      "_file_name": "Как_построить_натальную_карту.pdf",
+      "_file_size": 26189309,
+      "_mime_type": "application/pdf",
+      "_duration": null
+    },
+    {
+      "id": 13,
+      "type": "message",
+      "date": "2026-03-12T20:38:58",
+      "date_unixtime": "1773322738",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "ZET.pdf",
+      "file_size": 20351765,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 10032,
+      "mime_type": "application/pdf",
+      "text": "",
+      "text_entities": [],
+      "_file_id": "BQACAgIAAyEFAAS6GAI-AAMNadyTdTH7wPDJrb-UjLP2y9dj6jgAAvWXAAIkCplJUIR-JLSbvyQ7BA",
+      "_file_unique_id": "AgAD9ZcAAiQKmUk",
+      "_file_name": "ZET.pdf",
+      "_file_size": 20351765,
+      "_mime_type": "application/pdf",
+      "_duration": null
+    },
+    {
+      "id": 14,
+      "type": "message",
+      "date": "2026-03-12T20:40:51",
+      "date_unixtime": "1773322851",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "Урок 1.mp4",
+      "file_size": 710119649,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 5063,
+      "media_type": "video_file",
+      "mime_type": "video/mp4",
+      "duration_seconds": 1528,
+      "width": 1280,
+      "height": 720,
+      "text": [
+        {
+          "type": "bold",
+          "text": "УРОК 1 "
+        },
+        "\n— правила обучения и базовые принципы философии астрологии. \n\n⬇️ ",
+        {
+          "type": "italic",
+          "text": "методичка ниже"
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "bold",
+          "text": "УРОК 1 "
+        },
+        {
+          "type": "plain",
+          "text": "\n— правила обучения и базовые принципы философии астрологии. \n\n⬇️ "
+        },
+        {
+          "type": "italic",
+          "text": "методичка ниже"
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ],
+      "_file_id": "BAACAgIAAyEFAAS6GAI-AAMOadyTdrl57SFpSYg4l57Qbj8trRkAArCVAALAhXBJccH9R50u9pc7BA",
+      "_file_unique_id": "AgADsJUAAsCFcEk",
+      "_file_name": "Урок 1.mp4",
+      "_file_size": 710119649,
+      "_mime_type": "video/mp4",
+      "_duration": 1528
+    },
+    {
+      "id": 15,
+      "type": "message",
+      "date": "2026-03-12T20:41:16",
+      "date_unixtime": "1773322876",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "урок 1.pdf",
+      "file_size": 1330199,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 23126,
+      "mime_type": "application/pdf",
+      "text": "",
+      "text_entities": [],
+      "_file_id": "BQACAgIAAyEFAAS6GAI-AAMPadyTeLz-4kZ0jOsNIUqNEdXOVJAAAgSYAAIkCplJIyIOlkhEuEI7BA",
+      "_file_unique_id": "AgADBJgAAiQKmUk",
+      "_file_name": "урок 1.pdf",
+      "_file_size": 1330199,
+      "_mime_type": "application/pdf",
+      "_duration": null
+    },
+    {
+      "id": 16,
+      "type": "message",
+      "date": "2026-03-12T20:42:13",
+      "date_unixtime": "1773322933",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "ЗЗ чистовик.mp4",
+      "file_size": 1151859402,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 5024,
+      "media_type": "video_file",
+      "mime_type": "video/mp4",
+      "duration_seconds": 2824,
+      "width": 1280,
+      "height": 720,
+      "text": [
+        {
+          "type": "bold",
+          "text": "УРОК 2"
+        },
+        "\n— как знаки зодиака образуют единый цикл развития."
+      ],
+      "text_entities": [
+        {
+          "type": "bold",
+          "text": "УРОК 2"
+        },
+        {
+          "type": "plain",
+          "text": "\n— как знаки зодиака образуют единый цикл развития."
+        }
+      ],
+      "_file_id": "BAACAgIAAyEFAAS6GAI-AAMQadyTenIubxrE1EWG2kUfSY9fdugAAlOQAALZrTBKM4S4aNmuVI47BA",
+      "_file_unique_id": "AgADU5AAAtmtMEo",
+      "_file_name": "ЗЗ чистовик.mp4",
+      "_file_size": 1151859402,
+      "_mime_type": "video/mp4",
+      "_duration": 2824
+    },
+    {
+      "id": 17,
+      "type": "message",
+      "date": "2026-03-12T20:43:18",
+      "date_unixtime": "1773322998",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "Урок 2 (часть 2).mp4",
+      "file_size": 197299917,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 5033,
+      "media_type": "video_file",
+      "mime_type": "video/mp4",
+      "duration_seconds": 613,
+      "width": 1280,
+      "height": 720,
+      "text": "— оси знаков зодиака.",
+      "text_entities": [
+        {
+          "type": "plain",
+          "text": "— оси знаков зодиака."
+        }
+      ],
+      "_file_id": "BAACAgIAAyEFAAS6GAI-AAMRadyTe3RAasCKSAZ-wtTsMlpQn44AAo-BAAJxElFJ6E_0r-bpckA7BA",
+      "_file_unique_id": "AgADj4EAAnESUUk",
+      "_file_name": "Урок 2 (часть 2).mp4",
+      "_file_size": 197299917,
+      "_mime_type": "video/mp4",
+      "_duration": 613
+    },
+    {
+      "id": 18,
+      "type": "message",
+      "date": "2026-03-12T20:44:18",
+      "date_unixtime": "1773323058",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "Стихии.mp4",
+      "file_size": 613918442,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 5048,
+      "media_type": "video_file",
+      "mime_type": "video/mp4",
+      "duration_seconds": 1333,
+      "width": 1280,
+      "height": 720,
+      "text": [
+        {
+          "type": "bold",
+          "text": "стихии в натальной карте:"
+        },
+        "\n\n",
+        {
+          "type": "italic",
+          "text": "• что дает знание стихий \n• связки стихий \n• ключевые психологические характеристики каждой стихии"
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "bold",
+          "text": "стихии в натальной карте:"
+        },
+        {
+          "type": "plain",
+          "text": "\n\n"
+        },
+        {
+          "type": "italic",
+          "text": "• что дает знание стихий \n• связки стихий \n• ключевые психологические характеристики каждой стихии"
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ],
+      "_file_id": "BAACAgIAAyEFAAS6GAI-AAMSadyTfdXods4C7NITm4dbcTO7DHUAAh2PAAJTpYhLDtEFQagvkPs7BA",
+      "_file_unique_id": "AgADHY8AAlOliEs",
+      "_file_name": "Стихии.mp4",
+      "_file_size": 613918442,
+      "_mime_type": "video/mp4",
+      "_duration": 1333
+    },
+    {
+      "id": 19,
+      "type": "message",
+      "date": "2026-03-12T20:44:24",
+      "date_unixtime": "1773323064",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "Кресты.mp4",
+      "file_size": 438532962,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 5065,
+      "media_type": "video_file",
+      "mime_type": "video/mp4",
+      "duration_seconds": 944,
+      "width": 1280,
+      "height": 720,
+      "text": [
+        {
+          "type": "bold",
+          "text": "значение крестов в натальной карте: "
+        },
+        "\n\n",
+        {
+          "type": "italic",
+          "text": "• чем кресты отличаются от стихий \n• описание крестов \n• тонкости и скорость реакции каждого креста\n\n"
+        },
+        "⬇️ ",
+        {
+          "type": "italic",
+          "text": "методички ниже"
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "bold",
+          "text": "значение крестов в натальной карте: "
+        },
+        {
+          "type": "plain",
+          "text": "\n\n"
+        },
+        {
+          "type": "italic",
+          "text": "• чем кресты отличаются от стихий \n• описание крестов \n• тонкости и скорость реакции каждого креста\n\n"
+        },
+        {
+          "type": "plain",
+          "text": "⬇️ "
+        },
+        {
+          "type": "italic",
+          "text": "методички ниже"
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ],
+      "_file_id": "BAACAgIAAyEFAAS6GAI-AAMTadyTfjbpzKLErg12UlJZrrkhcCEAAhCRAAJTpYhLXkya89i4C0g7BA",
+      "_file_unique_id": "AgADEJEAAlOliEs",
+      "_file_name": "Кресты.mp4",
+      "_file_size": 438532962,
+      "_mime_type": "video/mp4",
+      "_duration": 944
+    },
+    {
+      "id": 20,
+      "type": "message",
+      "date": "2026-03-12T20:45:27",
+      "date_unixtime": "1773323127",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "урок 2.pdf",
+      "file_size": 1550593,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 16643,
+      "mime_type": "application/pdf",
+      "text": "",
+      "text_entities": [],
+      "_file_id": "BQACAgIAAyEFAAS6GAI-AAMUadyTgINMAtp7jxs1_dVAbWJFNTIAAhKYAAIkCplJcYtJ7y6bCDU7BA",
+      "_file_unique_id": "AgADEpgAAiQKmUk",
+      "_file_name": "урок 2.pdf",
+      "_file_size": 1550593,
+      "_mime_type": "application/pdf",
+      "_duration": null
+    },
+    {
+      "id": 21,
+      "type": "message",
+      "date": "2026-03-12T20:45:44",
+      "date_unixtime": "1773323144",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "Стихии и кресты .pdf",
+      "file_size": 17114295,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 11347,
+      "mime_type": "application/pdf",
+      "text": "",
+      "text_entities": [],
+      "_file_id": "BQACAgIAAyEFAAS6GAI-AAMVadyTgoILARBI-CLVDKcUQdiDOucAAhSYAAIkCplJQgVu7tQ8c4w7BA",
+      "_file_unique_id": "AgADFJgAAiQKmUk",
+      "_file_name": "Стихии и кресты .pdf",
+      "_file_size": 17114295,
+      "_mime_type": "application/pdf",
+      "_duration": null
+    },
+    {
+      "id": 22,
+      "type": "message",
+      "date": "2026-03-12T20:52:24",
+      "date_unixtime": "1773323544",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "text": [
+        {
+          "type": "italic",
+          "text": "Домашнее задание и ответы для самопроверки:"
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "italic",
+          "text": "Домашнее задание и ответы для самопроверки:"
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "type": "message",
+      "date": "2026-03-12T20:57:55",
+      "date_unixtime": "1773323875",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "ДЗ - Знаки, Кресты, Стихии.pdf",
+      "file_size": 244642,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 4138,
+      "mime_type": "application/pdf",
+      "text": "",
+      "text_entities": [],
+      "_file_id": "BQACAgIAAyEFAAS6GAI-AAMXadyTg1phXR8aMbUKHSZ1AeikxiEAAjSYAAIkCplJP25cYMWuOcQ7BA",
+      "_file_unique_id": "AgADNJgAAiQKmUk",
+      "_file_name": "ДЗ - Знаки, Кресты, Стихии.pdf",
+      "_file_size": 244642,
+      "_mime_type": "application/pdf",
+      "_duration": null
+    },
+    {
+      "id": 24,
+      "type": "message",
+      "date": "2026-03-12T20:59:51",
+      "date_unixtime": "1773323991",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "элементы карты.mp4",
+      "file_size": 781244327,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 5061,
+      "media_type": "video_file",
+      "mime_type": "video/mp4",
+      "duration_seconds": 2020,
+      "width": 1280,
+      "height": 720,
+      "text": [
+        {
+          "type": "bold",
+          "text": "УРОК 3 "
+        },
+        "\n— элементы карты"
+      ],
+      "text_entities": [
+        {
+          "type": "bold",
+          "text": "УРОК 3 "
+        },
+        {
+          "type": "plain",
+          "text": "\n— элементы карты"
+        }
+      ],
+      "_file_id": "BAACAgIAAyEFAAS6GAI-AAMYadyTheTVXl_3nJ6ECfbiWHpV2CQAAmOPAALBdlFKQhBMHG69A807BA",
+      "_file_unique_id": "AgADY48AAsF2UUo",
+      "_file_name": "элементы карты.mp4",
+      "_file_size": 781244327,
+      "_mime_type": "video/mp4",
+      "_duration": 2020
+    },
+    {
+      "id": 25,
+      "type": "message",
+      "date": "2026-03-12T21:00:24",
+      "date_unixtime": "1773324024",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "элменты .mp4",
+      "file_size": 250304380,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 5040,
+      "media_type": "video_file",
+      "mime_type": "video/mp4",
+      "duration_seconds": 830,
+      "width": 1280,
+      "height": 720,
+      "text": [
+        "— нюансы элементов натальной карты\n\n⬇️ ",
+        {
+          "type": "italic",
+          "text": "методичка ниже"
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "plain",
+          "text": "— нюансы элементов натальной карты\n\n⬇️ "
+        },
+        {
+          "type": "italic",
+          "text": "методичка ниже"
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ],
+      "_file_id": "BAACAgIAAyEFAAS6GAI-AAMZadyTh-QBRCFeZ_VC-4KtfYhBdR0AAhKRAAJ7fmlKX-frPGKQu_k7BA",
+      "_file_unique_id": "AgADEpEAAnt-aUo",
+      "_file_name": "элменты .mp4",
+      "_file_size": 250304380,
+      "_mime_type": "video/mp4",
+      "_duration": 830
+    },
+    {
+      "id": 26,
+      "type": "message",
+      "date": "2026-03-12T21:00:59",
+      "date_unixtime": "1773324059",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "урок 3.pdf",
+      "file_size": 2225164,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 20404,
+      "mime_type": "application/pdf",
+      "text": "",
+      "text_entities": [],
+      "_file_id": "BQACAgIAAyEFAAS6GAI-AAMaadyTiJOr8L9Y9pYZLvGsyYiPtEkAAjqYAAIkCplJzawW2x6Egcw7BA",
+      "_file_unique_id": "AgADOpgAAiQKmUk",
+      "_file_name": "урок 3.pdf",
+      "_file_size": 2225164,
+      "_mime_type": "application/pdf",
+      "_duration": null
+    },
+    {
+      "id": 27,
+      "type": "message",
+      "date": "2026-03-12T21:01:44",
+      "date_unixtime": "1773324104",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "text": [
+        {
+          "type": "italic",
+          "text": "Домашнее задание и ответы для самопроверки:"
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "italic",
+          "text": "Домашнее задание и ответы для самопроверки:"
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "type": "message",
+      "date": "2026-03-12T21:02:02",
+      "date_unixtime": "1773324122",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "ДЗ - Элементы карты.pdf",
+      "file_size": 416407,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 9763,
+      "mime_type": "application/pdf",
+      "text": "",
+      "text_entities": [],
+      "_file_id": "BQACAgIAAyEFAAS6GAI-AAMcadyTihrf981GXOg11JMFi385yr0AAj-YAAIkCplJm3q-BKL3jO87BA",
+      "_file_unique_id": "AgADP5gAAiQKmUk",
+      "_file_name": "ДЗ - Элементы карты.pdf",
+      "_file_size": 416407,
+      "_mime_type": "application/pdf",
+      "_duration": null
+    },
+    {
+      "id": 29,
+      "type": "message",
+      "date": "2026-03-12T21:03:16",
+      "date_unixtime": "1773324196",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "Asc.mp3",
+      "file_size": 27136320,
+      "media_type": "audio_file",
+      "mime_type": "audio/mpeg",
+      "duration_seconds": 678,
+      "text": "",
+      "text_entities": [],
+      "_file_id": "CQACAgIAAyEFAAS6GAI-AAMdadyTiy9rgXbc_T7w7rFk9JtDr6wAAv2ZAAKdtUlJOpvIJuE6HoE7BA",
+      "_file_unique_id": "AgAD_ZkAAp21SUk",
+      "_file_name": "Asc.mp3",
+      "_file_size": 27136320,
+      "_mime_type": "audio/mpeg",
+      "_duration": 678
+    },
+    {
+      "id": 30,
+      "type": "message",
+      "date": "2026-03-12T21:04:14",
+      "date_unixtime": "1773324254",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "Урок (5).mp4",
+      "file_size": 567829979,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 5043,
+      "media_type": "video_file",
+      "mime_type": "video/mp4",
+      "duration_seconds": 1768,
+      "width": 1280,
+      "height": 720,
+      "text": [
+        {
+          "type": "bold",
+          "text": "ПОДАРОК 🎁 \n\nУрок «Солнце и Луна» в натальной карте"
+        },
+        "\n",
+        {
+          "type": "bold",
+          "text": "\nВ этом уроке мы погорим о:"
+        },
+        "\n\n• ",
+        {
+          "type": "italic",
+          "text": "что такое «ядро личности» в астрологии и почему Солнце и Луна — это фундамент психики человека "
+        },
+        "\n\n• ",
+        {
+          "type": "italic",
+          "text": "почему люди видят один и тот же мир по-разному "
+        },
+        "\n\n• ",
+        {
+          "type": "italic",
+          "text": "Солнце как «сердце» натальной карты"
+        },
+        "\n\n• ",
+        {
+          "type": "italic",
+          "text": "о чем говорит реакция на анализ Солнца человека и как с этим работать "
+        },
+        "\n\n• ",
+        {
+          "type": "italic",
+          "text": "как читать методичку так, чтобы овладеть синтезом, а не копировать готовые трактовки"
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "bold",
+          "text": "ПОДАРОК 🎁 \n\nУрок «Солнце и Луна» в натальной карте"
+        },
+        {
+          "type": "plain",
+          "text": "\n"
+        },
+        {
+          "type": "bold",
+          "text": "\nВ этом уроке мы погорим о:"
+        },
+        {
+          "type": "plain",
+          "text": "\n\n• "
+        },
+        {
+          "type": "italic",
+          "text": "что такое «ядро личности» в астрологии и почему Солнце и Луна — это фундамент психики человека "
+        },
+        {
+          "type": "plain",
+          "text": "\n\n• "
+        },
+        {
+          "type": "italic",
+          "text": "почему люди видят один и тот же мир по-разному "
+        },
+        {
+          "type": "plain",
+          "text": "\n\n• "
+        },
+        {
+          "type": "italic",
+          "text": "Солнце как «сердце» натальной карты"
+        },
+        {
+          "type": "plain",
+          "text": "\n\n• "
+        },
+        {
+          "type": "italic",
+          "text": "о чем говорит реакция на анализ Солнца человека и как с этим работать "
+        },
+        {
+          "type": "plain",
+          "text": "\n\n• "
+        },
+        {
+          "type": "italic",
+          "text": "как читать методичку так, чтобы овладеть синтезом, а не копировать готовые трактовки"
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ],
+      "_file_id": "BAACAgIAAyEFAATfeMFYAAMLadyR3Ovm4EwJRjlN2Ul36qG5jb0AAmCBAAJxElFJTsLj7LSsJxo7BA",
+      "_file_unique_id": "AgADYIEAAnESUUk",
+      "_file_name": "Урок (5).mp4",
+      "_file_size": 567829979,
+      "_mime_type": "video/mp4",
+      "_duration": 1768
+    },
+    {
+      "id": 31,
+      "type": "message",
+      "date": "2026-03-12T21:05:02",
+      "date_unixtime": "1773324302",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "Луна.mp3",
+      "file_size": 5136960,
+      "media_type": "audio_file",
+      "mime_type": "audio/mpeg",
+      "duration_seconds": 128,
+      "text": "",
+      "text_entities": [],
+      "_file_id": "CQACAgIAAyEFAATfeMFYAAMMadyR3smwBsXtpWecTGq3IeDFAAEBAAKjigACU6WIS8mtpWl0hGvbOwQ",
+      "_file_unique_id": "AgADo4oAAlOliEs",
+      "_file_name": "Луна.mp3",
+      "_file_size": 5136960,
+      "_mime_type": "audio/mpeg",
+      "_duration": 128
+    },
+    {
+      "id": 32,
+      "type": "message",
+      "date": "2026-03-12T21:05:54",
+      "date_unixtime": "1773324354",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "Солнце и Луна практика .mp4",
+      "file_size": 339719784,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 5043,
+      "media_type": "video_file",
+      "mime_type": "video/mp4",
+      "duration_seconds": 730,
+      "width": 1280,
+      "height": 720,
+      "text": [
+        "— практика на реальных картах: ",
+        {
+          "type": "bold",
+          "text": "Солнце"
+        },
+        " и ",
+        {
+          "type": "bold",
+          "text": "Луна\n\n"
+        },
+        "⬇️ ",
+        {
+          "type": "italic",
+          "text": "методичка ниже"
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "plain",
+          "text": "— практика на реальных картах: "
+        },
+        {
+          "type": "bold",
+          "text": "Солнце"
+        },
+        {
+          "type": "plain",
+          "text": " и "
+        },
+        {
+          "type": "bold",
+          "text": "Луна\n\n"
+        },
+        {
+          "type": "plain",
+          "text": "⬇️ "
+        },
+        {
+          "type": "italic",
+          "text": "методичка ниже"
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ],
+      "_file_id": "BAACAgIAAyEFAATfeMFYAAMNadyR38DqKTakSJX9WYU30n2QRR4AAgOQAAImWOFIWqR-wN-yfP07BA",
+      "_file_unique_id": "AgADA5AAAiZY4Ug",
+      "_file_name": "Солнце и Луна практика .mp4",
+      "_file_size": 339719784,
+      "_mime_type": "video/mp4",
+      "_duration": 730
+    },
+    {
+      "id": 33,
+      "type": "message",
+      "date": "2026-03-12T21:06:29",
+      "date_unixtime": "1773324389",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "урок 4.pdf",
+      "file_size": 1667718,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 22148,
+      "mime_type": "application/pdf",
+      "text": "",
+      "text_entities": [],
+      "_file_id": "BQACAgIAAyEFAAS6GAI-AAMhadyTkslxsf4CfnnbSybzpuHCfbYAAkWYAAIkCplJ9IGUayYKECU7BA",
+      "_file_unique_id": "AgADRZgAAiQKmUk",
+      "_file_name": "урок 4.pdf",
+      "_file_size": 1667718,
+      "_mime_type": "application/pdf",
+      "_duration": null
+    },
+    {
+      "id": 34,
+      "type": "message",
+      "date": "2026-03-12T21:06:36",
+      "date_unixtime": "1773324396",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "text": [
+        {
+          "type": "italic",
+          "text": "Домашнее задание и ответы для самопроверки:"
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "italic",
+          "text": "Домашнее задание и ответы для самопроверки:"
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "type": "message",
+      "date": "2026-03-12T21:06:47",
+      "date_unixtime": "1773324407",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "ДЗ - Солнце и Луна.pdf",
+      "file_size": 348968,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 11270,
+      "mime_type": "application/pdf",
+      "text": "",
+      "text_entities": [],
+      "_file_id": "BQACAgIAAyEFAAS6GAI-AAMjadyTlIrXV4dswjjZT9DiEAABRE8RAAJGmAACJAqZSYlhEZAilZllOwQ",
+      "_file_unique_id": "AgADRpgAAiQKmUk",
+      "_file_name": "ДЗ - Солнце и Луна.pdf",
+      "_file_size": 348968,
+      "_mime_type": "application/pdf",
+      "_duration": null
+    },
+    {
+      "id": 36,
+      "type": "message",
+      "date": "2026-03-12T21:07:53",
+      "date_unixtime": "1773324473",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "Карта действий.mp4",
+      "file_size": 643846765,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 5058,
+      "media_type": "video_file",
+      "mime_type": "video/mp4",
+      "duration_seconds": 1386,
+      "width": 1280,
+      "height": 720,
+      "text": [
+        {
+          "type": "bold",
+          "text": "Как создать свою первую консультацию: структура, смысл и честный маркетинг"
+        },
+        "\n\n",
+        {
+          "type": "italic",
+          "text": "• как на основе уже полученных знаний построить первую платную консультацию \n\n• как структурировать подачу материала \n\n• почему не нужно ждать идеального момента, чтобы работать с клиентами"
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "bold",
+          "text": "Как создать свою первую консультацию: структура, смысл и честный маркетинг"
+        },
+        {
+          "type": "plain",
+          "text": "\n\n"
+        },
+        {
+          "type": "italic",
+          "text": "• как на основе уже полученных знаний построить первую платную консультацию \n\n• как структурировать подачу материала \n\n• почему не нужно ждать идеального момента, чтобы работать с клиентами"
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ],
+      "_file_id": "BAACAgIAAyEFAAS6GAI-AAMkadyTli8Mt39PiA3OmLPhFoi493kAAlSPAALsZMFIOHlZP8jEZ_U7BA",
+      "_file_unique_id": "AgADVI8AAuxkwUg",
+      "_file_name": "Карта действий.mp4",
+      "_file_size": 643846765,
+      "_mime_type": "video/mp4",
+      "_duration": 1386
+    },
+    {
+      "id": 37,
+      "type": "message",
+      "date": "2026-03-12T21:08:27",
+      "date_unixtime": "1773324507",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "file": "(File not included. Change data exporting settings to download.)",
+      "file_name": "ИД .mp4",
+      "file_size": 876177626,
+      "thumbnail": "(File not included. Change data exporting settings to download.)",
+      "thumbnail_file_size": 5067,
+      "media_type": "video_file",
+      "mime_type": "video/mp4",
+      "duration_seconds": 1886,
+      "width": 1280,
+      "height": 720,
+      "text": [
+        {
+          "type": "bold",
+          "text": "Бонусный урок "
+        },
+        "— ",
+        {
+          "type": "bold",
+          "text": "как стать идеальным астрологом и грамотно консультировать:"
+        },
+        "\n\n",
+        {
+          "type": "italic",
+          "text": "• образ «идеального астролога» \n\n• разнице между знаниями и реальным консультированием \n\n• 2 типа учеников \n\n• ошибки как неизбежная часть роста и профессионального мастерства \n\n• как выглядит блестящая конструкция"
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "bold",
+          "text": "Бонусный урок "
+        },
+        {
+          "type": "plain",
+          "text": "— "
+        },
+        {
+          "type": "bold",
+          "text": "как стать идеальным астрологом и грамотно консультировать:"
+        },
+        {
+          "type": "plain",
+          "text": "\n\n"
+        },
+        {
+          "type": "italic",
+          "text": "• образ «идеального астролога» \n\n• разнице между знаниями и реальным консультированием \n\n• 2 типа учеников \n\n• ошибки как неизбежная часть роста и профессионального мастерства \n\n• как выглядит блестящая конструкция"
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ],
+      "_file_id": "BAACAgIAAyEFAATfeMFYAAMUadyR53f-TmdUfNc5pUDbhJ1kde8AAhSSAAKvaXhLt8WKE9e46nM7BA",
+      "_file_unique_id": "AgADFJIAAq9peEs",
+      "_file_name": "ИД .mp4",
+      "_file_size": 876177626,
+      "_mime_type": "video/mp4",
+      "_duration": 1886
+    },
+    {
+      "id": 39,
+      "type": "message",
+      "date": "2026-03-12T21:09:19",
+      "date_unixtime": "1773324559",
+      "edited": "2026-03-12T21:09:58",
+      "edited_unixtime": "1773324598",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "text": [
+        "✨ ",
+        {
+          "type": "bold",
+          "text": "Мои дорогие, наше предобучение подошло к завершению."
+        },
+        "\n\nЗа это время вы успели познакомиться со мной, с моим подходом, с глубиной и качеством материала, который я даю. \n\n",
+        {
+          "type": "italic",
+          "text": "Вы увидели на практике, как я работаю, как объясняю, что считаю важным."
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "plain",
+          "text": "✨ "
+        },
+        {
+          "type": "bold",
+          "text": "Мои дорогие, наше предобучение подошло к завершению."
+        },
+        {
+          "type": "plain",
+          "text": "\n\nЗа это время вы успели познакомиться со мной, с моим подходом, с глубиной и качеством материала, который я даю. \n\n"
+        },
+        {
+          "type": "italic",
+          "text": "Вы увидели на практике, как я работаю, как объясняю, что считаю важным."
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "type": "message",
+      "date": "2026-03-12T21:11:15",
+      "date_unixtime": "1773324675",
+      "edited": "2026-03-18T16:33:27",
+      "edited_unixtime": "1773826407",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "text": [
+        "И вот теперь ",
+        {
+          "type": "bold",
+          "text": "самое интересное только начинается"
+        },
+        " 🪐❤️‍🔥🪩⬇️\n\n",
+        {
+          "type": "bold",
+          "text": "В полном курсе вас ждёт: "
+        },
+        "\n\n— ",
+        {
+          "type": "bold",
+          "text": "личные планеты: "
+        },
+        "Меркурий, Венера, Марс\n— ",
+        {
+          "type": "bold",
+          "text": "социальные планеты"
+        },
+        ": Юпитер и Сатурн\n—",
+        {
+          "type": "bold",
+          "text": " высшие планеты"
+        },
+        ": Уран, Нептун, Плутон\n— ",
+        {
+          "type": "bold",
+          "text": "особые положения планет "
+        },
+        {
+          "type": "italic",
+          "text": "(ретроградность, сожжение, стеллиумы и др.)"
+        },
+        "\n— ",
+        {
+          "type": "bold",
+          "text": "кармические показатели и предназначение"
+        },
+        "\n— ",
+        {
+          "type": "bold",
+          "text": "аспекты планет и их трактовка"
+        },
+        "\n— ",
+        {
+          "type": "bold",
+          "text": "компенсаторика и проработка гороскопа\n"
+        },
+        "—",
+        {
+          "type": "bold",
+          "text": " синтез карты и работа с противоречиями"
+        },
+        "\n— ",
+        {
+          "type": "bold",
+          "text": "эталонный разбор натальной карты"
+        },
+        " \n— ",
+        {
+          "type": "bold",
+          "text": "готовый письменный шаблон разбора "
+        },
+        "\n— и, конечно же, ",
+        {
+          "type": "bold",
+          "text": "много практических видеоразборов на реальных картах \n"
+        },
+        "— ",
+        {
+          "type": "italic",
+          "text": "а также полезные подкасты\n"
+        },
+        "— ",
+        {
+          "type": "italic",
+          "text": "список астрологической литературы и рекомендуемых книг к прочтению (для новичков и продолжающих"
+        },
+        ") ",
+        {
+          "type": "italic",
+          "text": "\n\n"
+        },
+        "— ",
+        {
+          "type": "bold",
+          "text": "домашние задания к каждому уроку"
+        },
+        "\n— ",
+        {
+          "type": "italic",
+          "text": "ответы для самопроверки"
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "plain",
+          "text": "И вот теперь "
+        },
+        {
+          "type": "bold",
+          "text": "самое интересное только начинается"
+        },
+        {
+          "type": "plain",
+          "text": " 🪐❤️‍🔥🪩⬇️\n\n"
+        },
+        {
+          "type": "bold",
+          "text": "В полном курсе вас ждёт: "
+        },
+        {
+          "type": "plain",
+          "text": "\n\n— "
+        },
+        {
+          "type": "bold",
+          "text": "личные планеты: "
+        },
+        {
+          "type": "plain",
+          "text": "Меркурий, Венера, Марс\n— "
+        },
+        {
+          "type": "bold",
+          "text": "социальные планеты"
+        },
+        {
+          "type": "plain",
+          "text": ": Юпитер и Сатурн\n—"
+        },
+        {
+          "type": "bold",
+          "text": " высшие планеты"
+        },
+        {
+          "type": "plain",
+          "text": ": Уран, Нептун, Плутон\n— "
+        },
+        {
+          "type": "bold",
+          "text": "особые положения планет "
+        },
+        {
+          "type": "italic",
+          "text": "(ретроградность, сожжение, стеллиумы и др.)"
+        },
+        {
+          "type": "plain",
+          "text": "\n— "
+        },
+        {
+          "type": "bold",
+          "text": "кармические показатели и предназначение"
+        },
+        {
+          "type": "plain",
+          "text": "\n— "
+        },
+        {
+          "type": "bold",
+          "text": "аспекты планет и их трактовка"
+        },
+        {
+          "type": "plain",
+          "text": "\n— "
+        },
+        {
+          "type": "bold",
+          "text": "компенсаторика и проработка гороскопа\n"
+        },
+        {
+          "type": "plain",
+          "text": "—"
+        },
+        {
+          "type": "bold",
+          "text": " синтез карты и работа с противоречиями"
+        },
+        {
+          "type": "plain",
+          "text": "\n— "
+        },
+        {
+          "type": "bold",
+          "text": "эталонный разбор натальной карты"
+        },
+        {
+          "type": "plain",
+          "text": " \n— "
+        },
+        {
+          "type": "bold",
+          "text": "готовый письменный шаблон разбора "
+        },
+        {
+          "type": "plain",
+          "text": "\n— и, конечно же, "
+        },
+        {
+          "type": "bold",
+          "text": "много практических видеоразборов на реальных картах \n"
+        },
+        {
+          "type": "plain",
+          "text": "— "
+        },
+        {
+          "type": "italic",
+          "text": "а также полезные подкасты\n"
+        },
+        {
+          "type": "plain",
+          "text": "— "
+        },
+        {
+          "type": "italic",
+          "text": "список астрологической литературы и рекомендуемых книг к прочтению (для новичков и продолжающих"
+        },
+        {
+          "type": "plain",
+          "text": ") "
+        },
+        {
+          "type": "italic",
+          "text": "\n\n"
+        },
+        {
+          "type": "plain",
+          "text": "— "
+        },
+        {
+          "type": "bold",
+          "text": "домашние задания к каждому уроку"
+        },
+        {
+          "type": "plain",
+          "text": "\n— "
+        },
+        {
+          "type": "italic",
+          "text": "ответы для самопроверки"
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "type": "message",
+      "date": "2026-03-12T21:11:44",
+      "date_unixtime": "1773324704",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "text": [
+        "Если вы чувствуете, что хотите продолжить — ",
+        {
+          "type": "bold",
+          "text": "тарифы и"
+        },
+        " ",
+        {
+          "type": "bold",
+          "text": "доступ к следующим урокам — по кнопке ниже"
+        },
+        ". \n\n",
+        {
+          "type": "italic",
+          "text": "После оплаты всё откроется автоматически"
+        },
+        {
+          "type": "bold",
+          "text": " ❤️"
+        },
+        "🗝️"
+      ],
+      "text_entities": [
+        {
+          "type": "plain",
+          "text": "Если вы чувствуете, что хотите продолжить — "
+        },
+        {
+          "type": "bold",
+          "text": "тарифы и"
+        },
+        {
+          "type": "plain",
+          "text": " "
+        },
+        {
+          "type": "bold",
+          "text": "доступ к следующим урокам — по кнопке ниже"
+        },
+        {
+          "type": "plain",
+          "text": ". \n\n"
+        },
+        {
+          "type": "italic",
+          "text": "После оплаты всё откроется автоматически"
+        },
+        {
+          "type": "bold",
+          "text": " ❤️"
+        },
+        {
+          "type": "plain",
+          "text": "🗝️"
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "type": "message",
+      "date": "2026-03-12T21:11:59",
+      "date_unixtime": "1773324719",
+      "from": "Intensive //",
+      "from_id": "channel3122135614",
+      "text": [
+        {
+          "type": "bold",
+          "text": "[Получить полный курс →]"
+        },
+        ""
+      ],
+      "text_entities": [
+        {
+          "type": "bold",
+          "text": "[Получить полный курс →]"
+        },
+        {
+          "type": "plain",
+          "text": ""
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "type": "service",
+      "date": "2026-03-12T21:17:53",
+      "date_unixtime": "1773325073",
+      "actor": "Intensive //",
+      "actor_id": "channel3122135614",
+      "action": "edit_group_title",
+      "title": "Intensive // Астрология с 0",
+      "text": "",
+      "text_entities": []
+    },
+    {
+      "id": 44,
+      "type": "service",
+      "date": "2026-03-12T21:18:35",
+      "date_unixtime": "1773325115",
+      "actor": "Intensive //",
+      "actor_id": "channel3122135614",
+      "action": "edit_group_title",
+      "title": "Intensive //",
+      "text": "",
+      "text_entities": []
+    }
+  ]
+}
