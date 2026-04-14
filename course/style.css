@@ -86,6 +86,19 @@ h1, h2, h3, h4 {
     box-shadow: 0 20px 50px rgba(204, 146, 69, 0.6);
     background: linear-gradient(180deg, #F0C978 0%, #CC9245 100%);
 }
+.button--disabled {
+    background: linear-gradient(180deg, #d9d9d9 0%, #9a9a9a 100%);
+    color: #fff;
+    box-shadow: none;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.85;
+}
+.button--disabled:hover {
+    transform: none;
+    box-shadow: none;
+    background: linear-gradient(180deg, #d9d9d9 0%, #9a9a9a 100%);
+}
 
 /* ===== HERO ===== */
 .course-hero {

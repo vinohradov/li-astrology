@@ -1,69 +1,236 @@
-// Li Astrology - Create Payment Edge Function
-// Generates signed LiqPay payment data
+// Li Astrology — Create Payment Edge Function
+// Provider-agnostic entry point. Currently implements WayForPay.
+// Called from web frontend and from Telegram bot.
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
-import { encode as base64Encode } from 'https://deno.land/std@0.168.0/encoding/base64.ts'
-import { crypto } from 'https://deno.land/std@0.168.0/crypto/mod.ts'
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+import { createHmac } from 'node:crypto'
 
-const LIQPAY_PUBLIC_KEY = Deno.env.get('LIQPAY_PUBLIC_KEY') || ''
-const LIQPAY_PRIVATE_KEY = Deno.env.get('LIQPAY_PRIVATE_KEY') || ''
+const SUPABASE_URL = Deno.env.get('SUPABASE_URL')!
+const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
+
+const WAYFORPAY_MERCHANT_ACCOUNT = Deno.env.get('WAYFORPAY_MERCHANT_ACCOUNT') || 'test_merch_n1'
+const WAYFORPAY_SECRET_KEY       = Deno.env.get('WAYFORPAY_SECRET_KEY')       || 'flk3409refn54t54t*FNJRET'
+const WAYFORPAY_DOMAIN_NAME      = Deno.env.get('WAYFORPAY_DOMAIN_NAME')      || 'li-astrology.com.ua'
+const SITE_URL                   = Deno.env.get('SITE_URL')                   || 'https://li-astrology.com.ua'
+const TELEGRAM_BOT_USERNAME      = Deno.env.get('TELEGRAM_BOT_USERNAME')      || 'li_astrology_bot'
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+}
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
+
+interface CreatePaymentRequest {
+  provider: 'wayforpay' // | 'monobank' (Phase 3)
+  product_slug: string
+  source: 'web' | 'bot'
+  telegram_user_id?: number
+  customer_email?: string
+  customer_phone?: string
+  customer_name?: string
+  promo_code?: string
+}
+
+interface Promotion {
+  id: string
+  code: string
+  course_id: string | null
+  discount_pct: number | null
+  discount_abs: number | null
+  valid_from: string
+  valid_until: string | null
+  max_uses: number | null
+  times_used: number
+}
+
+async function validateAndConsumePromo(
+  code: string,
+  courseId: string,
+  priceKopiykas: number,
+): Promise<{ promo: Promotion; discountKopiykas: number } | null> {
+  const { data: promo } = await supabase
+    .from('promotions')
+    .select('*')
+    .eq('code', code.toUpperCase())
+    .lte('valid_from', new Date().toISOString())
+    .single<Promotion>()
+
+  if (!promo) return null
+  if (promo.valid_until && new Date(promo.valid_until) < new Date()) return null
+  if (promo.max_uses !== null && promo.times_used >= promo.max_uses) return null
+  if (promo.course_id && promo.course_id !== courseId) return null
+
+  let discountKopiykas = 0
+  if (promo.discount_pct) discountKopiykas = Math.round(priceKopiykas * (promo.discount_pct / 100))
+  else if (promo.discount_abs) discountKopiykas = Math.min(promo.discount_abs, priceKopiykas)
+
+  await supabase
+    .from('promotions')
+    .update({ times_used: promo.times_used + 1 })
+    .eq('id', promo.id)
+
+  return { promo, discountKopiykas }
+}
+
+function hmacMd5(key: string, data: string): string {
+  return createHmac('md5', key).update(data, 'utf8').digest('hex')
+}
+
+function makeOrderId(source: string, slug: string): string {
+  const ts = Date.now()
+  const rand = Math.random().toString(36).slice(2, 8)
+  return `${source}-${slug}-${ts}-${rand}`
+}
+
+async function createWfpInvoice(params: {
+  orderReference: string
+  amount: number
+  productName: string
+  customerEmail?: string
+  customerPhone?: string
+  returnUrl: string
+  serviceUrl: string
+}) {
+  const orderDate = Math.floor(Date.now() / 1000)
+
+  const signatureFields = [
+    WAYFORPAY_MERCHANT_ACCOUNT,
+    WAYFORPAY_DOMAIN_NAME,
+    params.orderReference,
+    orderDate,
+    params.amount,
+    'UAH',
+    params.productName,
+    1,
+    params.amount,
+  ].join(';')
+
+  const merchantSignature = hmacMd5(WAYFORPAY_SECRET_KEY, signatureFields)
+
+  const body = {
+    transactionType: 'CREATE_INVOICE',
+    merchantAccount: WAYFORPAY_MERCHANT_ACCOUNT,
+    merchantAuthType: 'SimpleSignature',
+    merchantDomainName: WAYFORPAY_DOMAIN_NAME,
+    merchantSignature,
+    apiVersion: 1,
+    language: 'UA',
+    serviceUrl: params.serviceUrl,
+    returnUrl: params.returnUrl,
+    orderReference: params.orderReference,
+    orderDate,
+    amount: params.amount,
+    currency: 'UAH',
+    productName: [params.productName],
+    productCount: [1],
+    productPrice: [params.amount],
+    clientEmail: params.customerEmail,
+    clientPhone: params.customerPhone,
+  }
+
+  const res = await fetch('https://api.wayforpay.com/api', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  })
+
+  const payload = await res.json()
+  if (payload.reasonCode !== 1100) {
+    throw new Error(`WFP invoice failed: ${payload.reasonCode} ${payload.reason}`)
+  }
+  return payload as { invoiceUrl: string; qrCode?: string }
 }
 
 serve(async (req) => {
-  // Handle CORS preflight
-  if (req.method === 'OPTIONS') {
-    return new Response('ok', { headers: corsHeaders })
+  if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders })
+  if (req.method !== 'POST') {
+    return new Response('Method not allowed', { status: 405, headers: corsHeaders })
   }
 
   try {
-    const { order_id, product_id, amount, currency, description, result_url, server_url } = await req.json()
+    const body = await req.json() as CreatePaymentRequest
 
-    // Validate required fields
-    if (!order_id || !amount || !description) {
-      return new Response(
-        JSON.stringify({ error: 'Missing required fields' }),
-        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      )
+    if (!body.provider || !body.product_slug || !body.source) {
+      return json({ error: 'provider, product_slug and source are required' }, 400)
+    }
+    if (body.provider !== 'wayforpay') {
+      return json({ error: `provider ${body.provider} not supported yet` }, 400)
+    }
+    if (body.source !== 'web' && body.source !== 'bot') {
+      return json({ error: 'source must be web or bot' }, 400)
     }
 
-    // Create LiqPay payment data
-    const paymentData = {
-      public_key: LIQPAY_PUBLIC_KEY,
-      version: '3',
-      action: 'pay',
-      amount: amount,
-      currency: currency || 'UAH',
-      description: description,
-      order_id: order_id,
-      result_url: result_url,
-      server_url: server_url,
-      language: 'uk'
+    const { data: course, error: courseErr } = await supabase
+      .from('courses')
+      .select('id, slug, title, price_uah, is_active')
+      .eq('slug', body.product_slug)
+      .single()
+
+    if (courseErr || !course) return json({ error: 'course not found' }, 404)
+    if (!course.is_active) return json({ error: 'course not active' }, 400)
+
+    let priceKopiykas = course.price_uah
+    let appliedPromoCode: string | null = null
+    if (body.promo_code) {
+      const applied = await validateAndConsumePromo(body.promo_code, course.id, priceKopiykas)
+      if (!applied) return json({ error: 'promo invalid' }, 400)
+      priceKopiykas -= applied.discountKopiykas
+      appliedPromoCode = applied.promo.code
     }
 
-    // Encode data to base64
-    const jsonString = JSON.stringify(paymentData)
-    const data = base64Encode(new TextEncoder().encode(jsonString))
+    const amountUah = Math.floor(priceKopiykas / 100)
+    const orderId = makeOrderId(body.source, course.slug)
+    const returnUrl = body.source === 'web'
+      ? `${SITE_URL}/payment/success.html?order_id=${orderId}&product=${course.slug}`
+      : `https://t.me/${TELEGRAM_BOT_USERNAME}?start=${orderId}`
+    const serviceUrl = `${SUPABASE_URL}/functions/v1/wfp-callback`
 
-    // Create signature: base64(sha1(private_key + data + private_key))
-    const signString = LIQPAY_PRIVATE_KEY + data + LIQPAY_PRIVATE_KEY
-    const signBytes = new TextEncoder().encode(signString)
-    const hashBuffer = await crypto.subtle.digest('SHA-1', signBytes)
-    const signature = base64Encode(new Uint8Array(hashBuffer))
+    const { error: insertErr } = await supabase.from('payments').insert({
+      order_id: orderId,
+      provider: 'wayforpay',
+      status: 'pending',
+      course_slug: course.slug,
+      amount: amountUah,
+      currency: 'UAH',
+      telegram_user_id: body.telegram_user_id ?? null,
+      customer_email: body.customer_email ?? null,
+      customer_phone: body.customer_phone ?? null,
+      customer_name: body.customer_name ?? null,
+      source: body.source,
+      promo_code: appliedPromoCode,
+    })
+    if (insertErr) {
+      console.error('payments insert failed', insertErr)
+      return json({ error: 'db insert failed' }, 500)
+    }
 
-    return new Response(
-      JSON.stringify({ data, signature }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    )
+    const invoice = await createWfpInvoice({
+      orderReference: orderId,
+      amount: amountUah,
+      productName: course.title,
+      customerEmail: body.customer_email,
+      customerPhone: body.customer_phone,
+      returnUrl,
+      serviceUrl,
+    })
 
-  } catch (error) {
-    console.error('Error creating payment:', error)
-    return new Response(
-      JSON.stringify({ error: 'Internal server error' }),
-      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    )
+    return json({
+      order_id: orderId,
+      invoice_url: invoice.invoiceUrl,
+      qr_code: invoice.qrCode,
+    })
+  } catch (err) {
+    console.error('create-payment error', err)
+    return json({ error: err instanceof Error ? err.message : 'internal error' }, 500)
   }
 })
+
+function json(body: unknown, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+  })
+}

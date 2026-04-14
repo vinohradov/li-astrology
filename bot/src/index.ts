@@ -12,7 +12,6 @@ import { registerPurchaseHandler } from './handlers/purchase.js';
 import { registerSupportHandler } from './handlers/support.js';
 import { registerSettingsHandler } from './handlers/settings.js';
 import { registerAdminCommands } from './admin/commands.js';
-import { createLiqPayWebhook } from './payments/webhook.js';
 import { startScheduler } from './jobs/scheduler.js';
 
 async function main() {
@@ -35,19 +34,14 @@ async function main() {
   // Error handler
   bot.catch(errorHandler(bot));
 
-  // Express server for LiqPay webhook
+  // Express server — kept only for Railway health checks.
+  // Payment webhooks live in Supabase Edge Functions now (wfp-callback, mono-callback).
   const app = express();
-  app.use(express.urlencoded({ extended: true }));
-  app.use(express.json());
-
-  app.post('/webhook/liqpay', createLiqPayWebhook(bot));
-
   app.get('/health', (_req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
   });
-
   app.listen(config.PORT, () => {
-    console.log(`Express server listening on port ${config.PORT}`);
+    console.log(`Health server listening on port ${config.PORT}`);
   });
 
   // Cron jobs

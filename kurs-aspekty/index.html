@@ -299,30 +299,60 @@
             <div class="container">
                 <h2 class="section__title" data-i18n="kurs.tariffs.title">ПРИДБАТИ</h2>
 
-                <div class="pricing-single">
-                    <div class="pricing-card pricing-card--popular">
+                <div class="pricing-duo">
+                    <!-- Basic tariff -->
+                    <div class="pricing-card">
                         <div class="pricing-card__header">
-                            <h3 class="pricing-card__title" data-i18n="kurs.tariffs.singleTitle">АЛГОРИТМ ТРАКТУВАННЯ АСПЕКТІВ</h3>
+                            <h3 class="pricing-card__title" data-i18n="kurs.tariffs.basic.title">Аспекти — Базовий тариф</h3>
+                            <p class="pricing-card__subtitle" data-i18n="kurs.tariffs.basic.subtitle">Самостійне вивчення з готовими матеріалами</p>
                         </div>
 
                         <div class="pricing-card__content">
                             <p class="what-gives"><strong data-i18n="kurs.tariffs.whatGives">Що ви отримаєте:</strong></p>
                             <ul class="pricing-list check-list-emoji">
-                                <li data-i18n="kurs.tariffs.single.items.0">✔️ Розуміння природи аспектів та логіку їх роботи</li>
-                                <li data-i18n="kurs.tariffs.single.items.1">✔️ Зрозумілі схеми інтерпретації та готові трактування</li>
-                                <li data-i18n="kurs.tariffs.single.items.2">✔️ Відео-практика на реальних картах</li>
-                                <li data-i18n="kurs.tariffs.single.items.3">✔️ Професійний алгоритм розбору для консультацій</li>
-                                <li data-i18n="kurs.tariffs.single.items.4">✔️ Доступ до матеріалів назавжди</li>
+                                <li data-i18n="kurs.tariffs.basic.items.0">✔️ Типи аспектів та логіка їх взаємодії</li>
+                                <li data-i18n="kurs.tariffs.basic.items.1">✔️ PDF-самовчитель по трактуванню аспектів</li>
+                                <li data-i18n="kurs.tariffs.basic.items.2">✔️ Посібник «Аспекти Сонця і Місяця»</li>
+                                <li data-i18n="kurs.tariffs.basic.items.3">✔️ Посібник «Аспекти особистих планет»</li>
+                                <li data-i18n="kurs.tariffs.basic.items.4">✔️ Доступ до матеріалів назавжди</li>
                             </ul>
                         </div>
 
                         <div class="pricing-card__footer">
-                            <div class="pricing-card__price" data-i18n="kurs.tariffs.singlePrice">1 290 грн</div>
-                            <p class="pricing-note" data-i18n="kurs.tariffs.singleNote">Після оплати ви отримуєте миттєвий доступ через Telegram та вивчаєте матеріал у зручному для себе темпі.</p>
-                            <a href="#" data-liqpay-product="kurs-aspekty" class="button button--buy" data-i18n="kurs.tariffs.singleCta">ПРИДБАТИ ЗА 1 290 ГРН</a>
+                            <div class="pricing-card__price" data-i18n="kurs.tariffs.basic.price">1 290 грн</div>
+                            <a href="#" data-product="aspekty-basic" class="button button--buy" data-i18n="kurs.tariffs.basic.cta">ПРИДБАТИ ЗА 1 290 ГРН</a>
+                        </div>
+                    </div>
+
+                    <!-- Pro tariff -->
+                    <div class="pricing-card pricing-card--popular">
+                        <div class="popular-badge" data-i18n="kurs.tariffs.pro.badge">Рекомендуємо</div>
+                        <div class="pricing-card__header">
+                            <h3 class="pricing-card__title" data-i18n="kurs.tariffs.pro.title">Аспекти — Професійний тариф</h3>
+                            <p class="pricing-card__subtitle" data-i18n="kurs.tariffs.pro.subtitle">Поглиблений курс з відео-розборами та практикою</p>
+                        </div>
+
+                        <div class="pricing-card__content">
+                            <p class="what-gives"><strong data-i18n="kurs.tariffs.whatGives">Що ви отримаєте:</strong></p>
+                            <ul class="pricing-list check-list-emoji">
+                                <li data-i18n="kurs.tariffs.pro.items.0">✔️ <strong>Все, що в Базовому тарифі</strong></li>
+                                <li data-i18n="kurs.tariffs.pro.items.1">✔️ Відео-розбори реальних натальних карт (ч.1 та ч.2)</li>
+                                <li data-i18n="kurs.tariffs.pro.items.2">✔️ Практика: Сонце і Місяць у натальній карті</li>
+                                <li data-i18n="kurs.tariffs.pro.items.3">✔️ Компенсаторика і проробка аспектів</li>
+                                <li data-i18n="kurs.tariffs.pro.items.4">✔️ Стратегії роботи з протиріччями в карті</li>
+                                <li data-i18n="kurs.tariffs.pro.items.5">✔️ Бонус-модуль «Ідеальний астролог» — як грамотно консультувати</li>
+                                <li data-i18n="kurs.tariffs.pro.items.6">✔️ Доступ до матеріалів назавжди</li>
+                            </ul>
+                        </div>
+
+                        <div class="pricing-card__footer">
+                            <div class="pricing-card__price" data-i18n="kurs.tariffs.pro.price">2 790 грн</div>
+                            <a href="#" data-product="aspekty-pro" class="button button--buy" data-i18n="kurs.tariffs.pro.cta">ПРИДБАТИ ЗА 2 790 ГРН</a>
                         </div>
                     </div>
                 </div>
+
+                <p class="pricing-note pricing-note--center" data-i18n="kurs.tariffs.note">Після оплати ви отримуєте миттєвий доступ через Telegram та вивчаєте матеріал у зручному для себе темпі.</p>
 
                 <!-- Upsell to Full Course -->
                 <div class="course-upsell">
@@ -411,13 +441,13 @@
 
     <!-- Sticky Mobile CTA -->
     <div class="sticky-mobile-cta">
-        <span class="sticky-price">1 290 грн</span>
-        <a href="#tariffs" class="button" data-i18n="kurs.tariffs.singleCta">ПРИДБАТИ ЗА 1 290 ГРН</a>
+        <span class="sticky-price" data-i18n="kurs.tariffs.stickyPrice">від 1 290 грн</span>
+        <a href="#tariffs" class="button" data-i18n="kurs.tariffs.stickyCta">ОБРАТИ ТАРИФ</a>
     </div>
 
     <script src="../js/config.js"></script>
     <script src="../js/analytics.js"></script>
-    <script src="../js/liqpay.js"></script>
+    <script src="../js/payment.js"></script>
     <script src="script.js"></script>
     <script src="../js/i18n.js"></script>
     <script>document.body.classList.add('has-sticky-cta');</script>

@@ -691,10 +691,45 @@ ul {
     margin-top: 50px;
 }
 
-/* Single Pricing Layout */
+/* Single Pricing Layout (deprecated) */
 .pricing-single {
     max-width: 500px;
     margin: 0 auto 50px;
+}
+
+/* Two-tariff Layout */
+.pricing-duo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto 30px;
+    align-items: stretch;
+}
+
+@media (max-width: 720px) {
+    .pricing-duo {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .pricing-card--popular {
+        transform: none;
+    }
+}
+
+.pricing-card__subtitle {
+    text-align: center;
+    color: #777;
+    font-size: 0.95rem;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.pricing-note--center {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    padding: 0 20px;
 }
 
 /* Course Upsell Block */

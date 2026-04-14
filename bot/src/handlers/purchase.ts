@@ -2,9 +2,9 @@ import { Bot, InlineKeyboard } from 'grammy';
 import { BotContext } from '../bot.js';
 import { uk } from '../locales/uk.js';
 import { getCourseById } from '../db/courses.js';
-import { validatePromo, calculateDiscount, incrementPromoUsage } from '../db/promotions.js';
+import { validatePromo, calculateDiscount } from '../db/promotions.js';
 import { formatPrice } from '../utils/format.js';
-import { createPaymentLink } from '../payments/liqpay.js';
+import { createWayForPayInvoice } from '../payments/wayforpay.js';
 import { cleanAndSend } from '../utils/chat.js';
 
 export function registerPurchaseHandler(bot: Bot<BotContext>) {
@@ -16,20 +16,25 @@ export function registerPurchaseHandler(bot: Bot<BotContext>) {
     const course = await getCourseById(courseId);
     if (!course) return;
 
-    const orderId = `${userId}_${course.slug}_${Date.now()}`;
-    const paymentUrl = createPaymentLink({
-      orderId,
-      amount: course.price_uah / 100,
-      description: course.title,
-      productId: course.slug,
-    });
+    try {
+      const { invoiceUrl } = await createWayForPayInvoice({
+        courseSlug: course.slug,
+        telegramUserId: userId,
+      });
 
-    await cleanAndSend(ctx, uk.purchase.payViaLink, {
-      reply_markup: new InlineKeyboard()
-        .url(uk.purchase.payButton, paymentUrl)
-        .row()
-        .text(uk.common.back, `catalog_detail:${courseId}`),
-    });
+      await cleanAndSend(ctx, uk.purchase.payViaLink, {
+        reply_markup: new InlineKeyboard()
+          .url(uk.purchase.payButton, invoiceUrl)
+          .row()
+          .text(uk.common.back, `catalog_detail:${courseId}`),
+      });
+    } catch (err) {
+      console.error('create invoice failed', err);
+      await cleanAndSend(ctx, uk.purchase.error, {
+        reply_markup: new InlineKeyboard()
+          .text(uk.common.back, `catalog_detail:${courseId}`),
+      });
+    }
   });
 
   bot.callbackQuery(/^promo:(.+)$/, async (ctx) => {
@@ -75,22 +80,27 @@ export function registerPurchaseHandler(bot: Bot<BotContext>) {
     const newPrice = course.price_uah - discount;
     const pct = promo.discount_pct ?? Math.round((discount / course.price_uah) * 100);
 
-    await incrementPromoUsage(promo.id);
-
     const userId = ctx.from!.id;
-    const orderId = `${userId}_${course.slug}_promo_${Date.now()}`;
-    const paymentUrl = createPaymentLink({
-      orderId,
-      amount: newPrice / 100,
-      description: `${course.title} (знижка ${pct}%)`,
-      productId: course.slug,
-    });
 
-    await cleanAndSend(ctx, uk.promo.applied(pct, formatPrice(newPrice)), {
-      reply_markup: new InlineKeyboard()
-        .url(uk.purchase.payButton, paymentUrl)
-        .row()
-        .text(uk.common.home, 'home'),
-    });
+    try {
+      const { invoiceUrl } = await createWayForPayInvoice({
+        courseSlug: course.slug,
+        telegramUserId: userId,
+        promoCode: code,
+      });
+
+      await cleanAndSend(ctx, uk.promo.applied(pct, formatPrice(newPrice)), {
+        reply_markup: new InlineKeyboard()
+          .url(uk.purchase.payButton, invoiceUrl)
+          .row()
+          .text(uk.common.home, 'home'),
+      });
+    } catch (err) {
+      console.error('create invoice failed', err);
+      await cleanAndSend(ctx, uk.purchase.error, {
+        reply_markup: new InlineKeyboard()
+          .text(uk.common.home, 'home'),
+      });
+    }
   });
 }

@@ -1,0 +1,14 @@
+# Supabase Edge Functions config
+# Generated for per-function JWT settings. Apply via `supabase functions deploy`
+# or the Supabase dashboard (Edge Functions → function → Settings).
+
+[functions.create-payment]
+verify_jwt = true
+
+[functions.wfp-callback]
+# WayForPay does not send JWT — we verify its HMAC_MD5 signature inside.
+verify_jwt = false
+
+[functions.mono-callback]
+# Monobank sends an X-Sign ECDSA signature in the header, not a JWT.
+verify_jwt = false

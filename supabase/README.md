@@ -1,86 +1,58 @@
 # Supabase Setup Guide
 
-## 1. Create Database Schema
+The website and Telegram bot share one Supabase project. Schema lives in two files:
 
-Go to [Supabase SQL Editor](https://supabase.com/dashboard/project/plyofinxmwvwbintvqbx/sql) and run the contents of `schema.sql`.
+- `../bot/schema.sql` — core tables (`bot_users`, `courses`, `lessons`, `user_courses`, `promotions`, `bot_sessions`)
+- `migrations/0001_payments.sql` — provider-agnostic `payments` table (replaces the old `purchases`)
 
-## 2. Set Environment Variables
+## 1. Apply schema
 
-Go to [Edge Functions Settings](https://supabase.com/dashboard/project/plyofinxmwvwbintvqbx/settings/functions) and add these secrets:
+1. Open [SQL Editor](https://supabase.com/dashboard/project/plyofinxmwvwbintvqbx/sql)
+2. Run `../bot/schema.sql` (if not yet applied)
+3. Run `migrations/0001_payments.sql`
+
+## 2. Edge Functions env vars
+
+[Edge Functions → Settings](https://supabase.com/dashboard/project/plyofinxmwvwbintvqbx/settings/functions) — add:
 
 ```
-LIQPAY_PUBLIC_KEY=sandbox_i21449002699
-LIQPAY_PRIVATE_KEY=sandbox_oMGV3eHK1O5vnvY4CXJKhaRkjJSxMqdssflJE7TY
-TELEGRAM_BOT_TOKEN=8496882517:AAEouUsgceTT3YBZfRD7cTQQjfV5B6AsM5k
-CHANNEL_INTENSIV=-100xxxxxxxxxx
-CHANNEL_KURS_T1=-100xxxxxxxxxx
-CHANNEL_KURS_T2=-100xxxxxxxxxx
-CHANNEL_KURS_T3=-100xxxxxxxxxx
+TELEGRAM_BOT_TOKEN=<bot token from @BotFather>
+TELEGRAM_BOT_USERNAME=li_astrology_bot
+SITE_URL=https://li-astrology.com.ua
+
+# WayForPay — leave empty to use sandbox defaults (test_merch_n1)
+WAYFORPAY_MERCHANT_ACCOUNT=
+WAYFORPAY_SECRET_KEY=
+WAYFORPAY_DOMAIN_NAME=li-astrology.com.ua
 ```
 
-**Note:** Replace channel IDs after creating private Telegram channels.
+`SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are injected automatically.
 
 ## 3. Deploy Edge Functions
 
-Install Supabase CLI:
 ```bash
 npm install -g supabase
-```
-
-Login and link project:
-```bash
 supabase login
 supabase link --project-ref plyofinxmwvwbintvqbx
-```
 
-Deploy functions:
-```bash
 supabase functions deploy create-payment
-supabase functions deploy liqpay-callback
-supabase functions deploy telegram-bot
+supabase functions deploy wfp-callback --no-verify-jwt
 ```
 
-## 4. Set Up Telegram Webhook
+`--no-verify-jwt` on `wfp-callback` because WayForPay doesn't send a Supabase JWT; signature is verified inside the function via HMAC_MD5.
 
-After deploying, set the webhook for your bot:
+## 4. Payment flow
 
-```bash
-curl -X POST "https://api.telegram.org/bot8496882517:AAEouUsgceTT3YBZfRD7cTQQjfV5B6AsM5k/setWebhook" \
-  -H "Content-Type: application/json" \
-  -d '{"url": "https://plyofinxmwvwbintvqbx.supabase.co/functions/v1/telegram-bot"}'
 ```
+Web:  lander → payment.js → create-payment → WFP → wfp-callback → payments.status=paid
+      → user clicks "Open Telegram" → bot /start {order_id} → grants user_courses
 
-## 5. Create Telegram Channels
-
-1. Create 4 private channels in Telegram:
-   - Li Astrology Intensiv (for intensiv product)
-   - Li Astrology Kurs T1 (for tariff 1)
-   - Li Astrology Kurs T2 (for tariff 2)
-   - Li Astrology Kurs T3 (for tariff 3)
-
-2. Add @li_astrology_bot as admin to all channels
-
-3. Get channel IDs:
-   - Forward a message from each channel to @userinfobot
-   - Copy the "Id" value (negative number like -1001234567890)
-
-4. Update environment variables with channel IDs
-
-## 6. Test the Flow
-
-1. Open the website and click "Buy"
-2. Complete payment (sandbox mode)
-3. You should be redirected to success page
-4. Click "Open Telegram" button
-5. Bot should send you the channel invite link
+Bot:  inline "Buy" → create-payment (telegram_user_id known) → WFP link →
+      wfp-callback → payments.status=paid + user_courses + Telegram notify
+```
 
 ## Troubleshooting
 
-### Check Edge Function Logs
-Go to [Functions](https://supabase.com/dashboard/project/plyofinxmwvwbintvqbx/functions) and click on a function to see logs.
-
-### Check Database
-Go to [Table Editor](https://supabase.com/dashboard/project/plyofinxmwvwbintvqbx/editor) and check the `purchases` table.
-
-### Test Telegram Bot
-Send `/start` to @li_astrology_bot - should get welcome message.
+- **Function logs**: [Functions dashboard](https://supabase.com/dashboard/project/plyofinxmwvwbintvqbx/functions)
+- **Payments table**: [Table Editor](https://supabase.com/dashboard/project/plyofinxmwvwbintvqbx/editor) → `payments`
+- **Bot logs**: Railway project dashboard
