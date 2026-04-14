@@ -3,6 +3,8 @@ import Layout from '@/layouts/Layout.astro';
 import PaymentButton from '@/components/PaymentButton.astro';
 import SectionHeader from '@/components/SectionHeader.astro';
 import ProgramAccordion from '@/components/ProgramAccordion.tsx';
+import InstagramReview from '@/components/InstagramReview.astro';
+import type { InstagramReviewData } from '@/components/InstagramReview.astro';
 import { products } from '@/config/site';
 
 const p = products.intensiv;
@@ -58,12 +60,76 @@ const program = [
   },
 ];
 
-const reviews = [
-  { name: 'olenka_sun', text: 'Хочу подякувати за інтенсив 😍 Нарешті зрозуміла свою натальну карту. Вже дивлюсь карти подруг — вони в шоці як все точно!' },
-  { name: 'marina.kravets', text: 'Дякую за такі глибокі знання 🙏 Раніше читала гороскопи — нічого не збувалось, а тепер розумію механіку. Структуровано, без «води».' },
-  { name: 'tanya_design', text: 'Курс перевершив очікування 🔥 Думала буде складно, але Анастасія так просто пояснює. Урок «Сонце і Місяць» — інсайт на все життя.' },
-  { name: 'julia_astro_begin', text: 'Це краща інвестиція в себе за цей рік ❤️ Провела першу міні-консультацію для сестри — ми плакали, наскільки це про неї.' },
-  { name: 'kate.beauty', text: 'Дівчатка, це знахідка ✨ Завжди боялась почати, але після інтенсиву з\'явилась така впевненість. Матеріал дуже якісний.' },
+const reviews: InstagramReviewData[] = [
+  {
+    handle: '@olenka_sun',
+    messages: [
+      {
+        text: `Настуся, доброго вечора 🌙
+Щойно пройшла інтенсив і не можу не написати!
+Я від початку сумнівалась чи потягну, бо астрологія завжди здавалась мені чимось складним…
+А тут все так спокійно і по поличках 🙏
+Вже третій день дивлюся карти подруг, вони в шоці як точно все 😅
+Дякую вам щиро ❤️`,
+        reactions: ['❤️'],
+      },
+    ],
+  },
+  {
+    handle: '@marina.kravets',
+    messages: [
+      {
+        text: `Доброго дня!
+Купила інтенсив і хочу сказати - це не курс, це перезавантаження 🤍
+Я роками читала гороскопи в інсті, розчаровувалась, думала «ну це все не працює».
+А тут нарешті зрозуміла механіку!! Ніякої «води», все структуровано, все можна застосувати одразу.
+Особливо урок про Сонце і Місяць - це інсайт на все життя.
+Дякую Дякую Дякую 🙏`,
+      },
+    ],
+  },
+  {
+    handle: '@tanya_design',
+    messages: [
+      { text: 'Вітаю , Анастасія)\nПройшла ваш інтенсив «Астрологія з 0»' },
+      {
+        text: `знаєте що вразило найбільше — як ви подаєте складні речі простою мовою
+без понтів, без магії, без «кармічних долгів»`,
+      },
+      {
+        text: `Просто логіка і повага до людини
+це те, чого мені бракувало років 10 🫶`,
+        reactions: ['❤️'],
+      },
+    ],
+  },
+  {
+    handle: '@julia_astro_begin',
+    messages: [
+      {
+        text: `Анастасіє, доброго ранку ☀️
+Хочу написати подяку за інтенсив.
+Я купувала щоб просто «спробувати», думала може піде, може ні.
+А потім була перша мініконсультація для сестри і ми з нею пів години плакали, бо все так точно про неї…
+Тепер дивлюся на астрологію зовсім іншими очима!
+Дякую, що відкрили цей світ 🌙❤️`,
+        edited: true,
+        reactions: ['❤️'],
+      },
+    ],
+  },
+  {
+    handle: '@kate.beauty',
+    messages: [
+      {
+        text: `Ваш бонус-урок по Сонцю і Місяцю 😍😍😍
+це окрема любов`,
+        reactions: ['❤️'],
+      },
+      { text: 'я його вже втретє пересматрюю, стільки нюансів щоразу бачу нових' },
+      { text: 'дякую що є 🫶' },
+    ],
+  },
 ];
 ---
 
@@ -309,26 +375,18 @@ const reviews = [
         </p>
       </div>
 
-      <div class="mt-16 flex gap-6 overflow-x-auto pb-8 [scrollbar-width:thin]">
+      <div class="mt-16 flex gap-6 overflow-x-auto pb-12 pt-4 [scrollbar-width:thin]">
         {reviews.map((r, i) => (
-          <figure class:list={[
-            'w-[320px] shrink-0 rounded-3xl border border-ink/5 bg-cream p-8 shadow-[0_20px_50px_-20px_rgba(15,10,30,0.15)] transition hover:-translate-y-1 hover:shadow-[0_30px_60px_-20px_rgba(15,10,30,0.25)] md:w-[380px]',
-            i % 2 === 1 && 'md:translate-y-6',
-          ]}>
-            <div class="mb-5 flex items-center gap-3">
-              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-gold-bright to-gold-deep text-sm font-semibold text-ink">
-                {r.name.charAt(0).toUpperCase()}
-              </div>
-              <div>
-                <div class="text-sm font-medium text-ink">@{r.name}</div>
-                <div class="text-[10px] uppercase tracking-[0.3em] text-gold-deep">Випускниця</div>
-              </div>
-            </div>
-            <div class="mb-2 font-display text-4xl leading-none text-gold/40">“</div>
-            <blockquote class="text-base leading-relaxed text-ink-muted">{r.text}</blockquote>
-          </figure>
+          <InstagramReview
+            review={r}
+            class={i % 2 === 1 ? 'md:translate-y-6' : ''}
+          />
         ))}
       </div>
+
+      <p class="mt-2 text-center text-xs uppercase tracking-[0.3em] text-ink-muted/70">
+        ✦ Справжні повідомлення з Instagram ✦
+      </p>
     </div>
   </section>
 

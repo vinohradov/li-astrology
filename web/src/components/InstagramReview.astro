@@ -1,0 +1,111 @@
+---
+export interface ReviewBubble {
+  text: string;
+  edited?: boolean;
+  reactions?: string[];
+}
+
+export interface InstagramReviewData {
+  handle: string;
+  avatarGradient?: [string, string];
+  messages: ReviewBubble[];
+}
+
+interface Props {
+  review: InstagramReviewData;
+  class?: string;
+}
+
+const { review, class: className = '' } = Astro.props;
+
+// Default gradient picked from a palette seeded by the handle so each card
+// gets its own consistent avatar color.
+const palette: Array<[string, string]> = [
+  ['#f09433', '#dc2743'],
+  ['#bc1888', '#833ab4'],
+  ['#405de6', '#5851db'],
+  ['#feda75', '#fa7e1e'],
+  ['#c13584', '#e1306c'],
+  ['#833ab4', '#fd1d1d'],
+];
+const pickPalette = (seed: string) => {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) | 0;
+  return palette[Math.abs(h) % palette.length];
+};
+const [c1, c2] = review.avatarGradient ?? pickPalette(review.handle);
+const initial = review.handle.replace(/^@/, '').charAt(0).toUpperCase();
+---
+
+<figure
+  class:list={[
+    'relative flex w-[340px] shrink-0 flex-col overflow-hidden rounded-[28px] border border-ink/10 bg-white shadow-[0_20px_50px_-20px_rgba(15,10,30,0.22)] transition hover:-translate-y-1 hover:shadow-[0_30px_60px_-20px_rgba(15,10,30,0.3)] md:w-[380px]',
+    className,
+  ]}
+  style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;"
+>
+  <!-- DM header (Instagram-like) -->
+  <header class="flex items-center gap-3 border-b border-ink/5 px-5 py-3.5">
+    <div
+      class="flex h-9 w-9 items-center justify-center rounded-full text-sm font-semibold text-white"
+      style={`background: linear-gradient(135deg, ${c1}, ${c2});`}
+      aria-hidden="true"
+    >
+      {initial}
+    </div>
+    <div class="flex min-w-0 flex-1 flex-col">
+      <span class="truncate text-[13px] font-semibold text-ink">{review.handle}</span>
+      <span class="text-[11px] text-ink-muted">Активний(а) нещодавно</span>
+    </div>
+    <svg class="h-4 w-4 text-ink-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </header>
+
+  <!-- DM message thread -->
+  <div class="flex flex-1 flex-col gap-1.5 px-4 py-5">
+    {review.messages.map((m, idx) => {
+      const prev = review.messages[idx - 1];
+      const next = review.messages[idx + 1];
+      const hasPrev = !!prev;
+      const hasNext = !!next;
+      // Tight radius between consecutive bubbles (same sender).
+      const topLeft = hasPrev ? 'rounded-tl-md' : 'rounded-tl-[22px]';
+      const bottomLeft = hasNext ? 'rounded-bl-md' : 'rounded-bl-[22px]';
+      return (
+        <div class="flex max-w-full flex-col items-start">
+          <div
+            class:list={[
+              'relative max-w-[85%] whitespace-pre-line break-words bg-[#f0f0f0] px-3.5 py-2 text-[14.5px] leading-[1.35] text-[#262626] rounded-tr-[22px] rounded-br-[22px]',
+              topLeft,
+              bottomLeft,
+            ]}
+          >
+            {m.text}
+            {m.reactions && m.reactions.length > 0 && (
+              <span class="absolute -bottom-2.5 right-3 inline-flex items-center gap-0.5 rounded-full bg-white px-1.5 py-0.5 text-[11px] shadow-[0_2px_6px_rgba(0,0,0,0.12)] ring-1 ring-black/5">
+                {m.reactions.map((r) => <span>{r}</span>)}
+              </span>
+            )}
+          </div>
+          {m.edited && (
+            <span class="mt-1 ml-1 text-[10px] text-ink-muted">Відредаговано</span>
+          )}
+        </div>
+      );
+    })}
+  </div>
+
+  <!-- DM footer (composer look, visual only) -->
+  <footer class="mx-4 mb-4 mt-1 flex items-center gap-2 rounded-full border border-ink/10 px-4 py-2 text-[12px] text-ink-muted/80">
+    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M8 14s1.5 2 4 2 4-2 4-2" stroke-linecap="round" />
+      <line x1="9" y1="9" x2="9.01" y2="9" stroke-linecap="round" />
+      <line x1="15" y1="9" x2="15.01" y2="9" stroke-linecap="round" />
+    </svg>
+    <span class="flex-1">Повідомлення…</span>
+    <span class="text-[13px]">🎤</span>
+    <span class="text-[13px]">🖼️</span>
+  </footer>
+</figure>

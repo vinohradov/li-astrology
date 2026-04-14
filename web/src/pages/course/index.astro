@@ -2,6 +2,8 @@
 import Layout from '@/layouts/Layout.astro';
 import SectionHeader from '@/components/SectionHeader.astro';
 import ProgramAccordion from '@/components/ProgramAccordion.tsx';
+import InstagramReview from '@/components/InstagramReview.astro';
+import type { InstagramReviewData } from '@/components/InstagramReview.astro';
 import { products, site } from '@/config/site';
 
 const basic = products['astro-z-0'];
@@ -78,12 +80,86 @@ const proItems = [
   'Доступ до матеріалів назавжди',
 ];
 
-const reviews = [
-  { name: 'sophia_astro', text: 'Пройшла повний курс — і вперше в житті бачу систему, а не набір окремих символів 🪷 Відчуття, ніби отримала другу мову для опису себе.' },
-  { name: 'nataly_k', text: 'Я таролог з 5-річним стажем, але після курсу зрозуміла, скільки глибини було поза полем ✨ Тепер додаю астрологічний рівень у кожну консультацію.' },
-  { name: 'olia_cheers', text: 'Тариф «Для профі» — це чесно топ 🔥 Зворотний зв\'язок від Анастасії — найцінніше. Вона не відповідає шаблонами, вона реально дивиться твою роботу.' },
-  { name: 'milena_star', text: 'Курс структурований так, що нічого не розсипається в голові. Кожен урок — цеглина. Наприкінці — будинок, у який я сама заходжу щодня ❤️' },
-  { name: 'darya_lo', text: 'Найкраща інвестиція за останні роки. Я перестала боятися консультувати — і вже взяла перших оплачуваних клієнтів через 2 місяці після курсу.' },
+const reviews: InstagramReviewData[] = [
+  {
+    handle: '@sophia_astro',
+    messages: [
+      {
+        text: `Доброго дня, Анастасія 🤍
+Завершила повний курс і тільки тепер усвідомлюю масштаб того, що отримала.
+12 уроків - це не просто інформація. Це цілісна система, де кожен елемент стоїть на своєму місці.
+Раніше я бачила натальну карту як пазл з безліччю шматочків… а тепер бачу людину за нею!!
+Це інша реальність професії. Дякую вам щиро ❤️`,
+        reactions: ['❤️'],
+      },
+    ],
+  },
+  {
+    handle: '@nataly_k',
+    messages: [
+      { text: 'Анастасія, доброго ранку)\nЯ таролог з 5 річним досвідом, вчилась у різних шкіл' },
+      {
+        text: `ваш курс - це просто окремий рівень подачі.
+Настільки глибоко і системно, я в захваті 🙏
+Тепер додаю астрологічний розбір в кожну консультацію - клієнти в шоці як точно все`,
+        reactions: ['❤️'],
+      },
+    ],
+  },
+  {
+    handle: '@olia_cheers',
+    messages: [
+      {
+        text: `Вітаю!
+Хочу подякувати за тариф «Для профі».
+Ваш зворотний звʼязок - це те, за що немає ціни 🔥
+Ви реально дивитеся ДЗ, пишете персональні коментарі, розбираєте мої помилки.
+Я не зустрічала такого в жодній онлайн-школі, чесно.
+Брала курс щоб зрозуміти себе, а вийшла з нього астрологом))`,
+        edited: true,
+        reactions: ['❤️'],
+      },
+    ],
+  },
+  {
+    handle: '@milena_star',
+    messages: [
+      {
+        text: `Анастасіє, доброго дня ☺️
+Дивлюсь на свою карту і нарешті все склалося.
+Курс структурований так, що нічого не розсипається в голові - кожен урок ніби цеглина,
+а в кінці виходить будинок, в який заходиш і почуваєшся вдома 🏡`,
+        reactions: ['❤️'],
+      },
+    ],
+  },
+  {
+    handle: '@darya_lo',
+    messages: [
+      { text: 'Хочу написати вам величезну подяку 🙏' },
+      { text: 'почала брати перших платних клієнтів' },
+      { text: 'через 2 місяці після курсу!!' },
+      { text: 'боялась років пʼять взяти гроші за консультацію' },
+      { text: 'а тут якось само прийшло розуміння що я дійсно можу' },
+      { text: 'щиро дякую за знання і впевненість ✨', reactions: ['❤️'] },
+    ],
+  },
+  {
+    handle: '@alina_ua',
+    messages: [
+      {
+        text: `Настю, доброго вечора!
+Написала вам вже після того як отримала сертифікат )))
+В руках тримаю і плачу, чесно.
+Бо це не просто папірець - це мій новий шлях.
+Ніколи не думала, що в 34 можна перевідкрити себе в новій професії…
+Дякую за віру в нас і за цю програму ❤️
+Ви справжня 🫶`,
+        edited: true,
+        reactions: ['❤️'],
+      },
+    ],
+  },
 ];
 
 const faqs = [
@@ -525,26 +601,18 @@ const faqs = [
         </p>
       </div>
 
-      <div class="mt-16 flex gap-6 overflow-x-auto pb-8 [scrollbar-width:thin]">
+      <div class="mt-16 flex gap-6 overflow-x-auto pb-12 pt-4 [scrollbar-width:thin]">
         {reviews.map((r, i) => (
-          <figure class:list={[
-            'w-[320px] shrink-0 rounded-3xl border border-ink/5 bg-cream p-8 shadow-[0_20px_50px_-20px_rgba(15,10,30,0.15)] transition hover:-translate-y-1 hover:shadow-[0_30px_60px_-20px_rgba(15,10,30,0.25)] md:w-[380px]',
-            i % 2 === 1 && 'md:translate-y-6',
-          ]}>
-            <div class="mb-5 flex items-center gap-3">
-              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-gold-bright to-gold-deep text-sm font-semibold text-ink">
-                {r.name.charAt(0).toUpperCase()}
-              </div>
-              <div>
-                <div class="text-sm font-medium text-ink">@{r.name}</div>
-                <div class="text-[10px] uppercase tracking-[0.3em] text-gold-deep">Випускниця</div>
-              </div>
-            </div>
-            <div class="mb-2 font-display text-4xl leading-none text-gold/40">“</div>
-            <blockquote class="text-base leading-relaxed text-ink-muted">{r.text}</blockquote>
-          </figure>
+          <InstagramReview
+            review={r}
+            class={i % 2 === 1 ? 'md:translate-y-6' : ''}
+          />
         ))}
       </div>
+
+      <p class="mt-2 text-center text-xs uppercase tracking-[0.3em] text-ink-muted/70">
+        ✦ Справжні повідомлення з Instagram ✦
+      </p>
     </div>
   </section>
 

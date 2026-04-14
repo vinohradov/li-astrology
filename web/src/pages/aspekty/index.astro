@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import PaymentButton from '@/components/PaymentButton.astro';
 import SectionHeader from '@/components/SectionHeader.astro';
 import ProgramAccordion from '@/components/ProgramAccordion.tsx';
+import InstagramReview from '@/components/InstagramReview.astro';
 import { products } from '@/config/site';
 
 const basic = products['aspekty-basic'];
@@ -52,12 +53,103 @@ const program = [
   { num: '🎁', title: 'Бонус: ідеальний астролог', text: 'Як грамотно доносити інформацію, на чому робити акцент, як будувати довіру. Входить у Професійний тариф.' },
 ];
 
-const reviews = [
-  { name: 'liliya_tarot', text: 'Я тарологиня, і після курсу почала додавати астрологічний розбір до консультацій — клієнти в захваті ✨ Саме аспекти дають ту глибину, якої бракувало.' },
-  { name: 'olha.astro', text: 'Професійний тариф — топ 🔥 Відео-розбори реальних карт змінили моє розуміння. Тепер я не просто описую аспекти, а бачу людину.' },
-  { name: 'anna_inner', text: 'Купила базовий, через тиждень доплатила до професійного — настільки чітко Анастасія пояснює. Матеріал на рівні закордонних шкіл.' },
-  { name: 'marichka_k', text: 'Бонус-урок «Ідеальний астролог» — це окрема любов ❤️ Отримала відповіді на страхи, з якими мучилась роками.' },
-  { name: 'dasha_l', text: 'Найкраща інвестиція в професію. Рекомендую навіть практикуючим астрологам — нові кути, нові глибини.' },
+import type { InstagramReviewData } from '@/components/InstagramReview.astro';
+
+const reviews: InstagramReviewData[] = [
+  {
+    handle: '@olha.astro',
+    messages: [
+      {
+        text: `Це моя найкраща інвестиція у професію. Дуже рекомендую навіть практикуючим астрологам. Професійний тариф - просто топ 🔥
+
+Відео-розбори реальних карт змінили моє уявлення про консультацію!! Тепер я бачу не просто набір аспектів, я бачу за ними людину і знаю, як з нею працювати. Щиро вдячна за такі знання 🫶`,
+      },
+    ],
+  },
+  {
+    handle: '@anna_inner',
+    messages: [
+      {
+        text: `Купляла базовий тариф, через тиждень доплатила до професійного. Настільки все чітко пояснюється. Матеріал на найвищому рівні!
+А бонус-урок «Ідеальний астролог» - це моя окрема любов! ❤️
+Отримала відповіді на усі свої питання, і позбувалась страхів, які мучали мене роками.`,
+      },
+    ],
+  },
+  {
+    handle: '@liliya_tarot',
+    messages: [
+      {
+        text: `Доброго дня! Придбала у вас навчання по аспектам., хочу сказати що
+Ви Вчитель з великої літери! Грамотний і неординарний. Не можу не відмітити , який у вас глибокий підхід до стандартних трактувань, які рідко хто розкриває такою повною мірою. Я вражена!
+Неймовірно рада що знайшла ваші уроки. Дякую Настю
+Тепер хочу до вас на повноцінне навчання астрології, розкажіть будь ласка деталі )`,
+        reactions: ['❤️'],
+      },
+    ],
+  },
+  {
+    handle: '@marichka_k',
+    messages: [
+      {
+        text: `Анастасія, доброго вечора
+Хочу написати вам відгук по навчанню)
+Велика подяка вам за посібник і такі чудові, зрозумілі відеоуроки. Вас дуже приємно слухати 🥰
+В інтернеті дуже багато матеріалів на цю тему, але так детально, мудро, доступно і з такою кількістю прикладів - інформацію доносять до учнів одиниці.
+Я по-новому подивилася на астрологію завдяки вам❤️
+Дякую!`,
+        reactions: ['❤️'],
+      },
+    ],
+  },
+  {
+    handle: '@dasha_l',
+    messages: [
+      {
+        text: `Вітаю , Анастасія☺️
+Хотіла подякувати вам за навчання по аспектам
+У Вас неперевершена подача матеріалу.
+Я ще не всі уроки пройшла, але вже зараз захотіла написати вам подяку. Трішки пізніше напишу вам розгорнутий відгук 🫶 ❤️`,
+        reactions: ['❤️'],
+      },
+    ],
+  },
+  {
+    handle: '@yulia_s',
+    messages: [
+      {
+        text: `Анастасія, доброго дня)
+Хочу вам особисто подякувати за такий шикарний посібник 😍
+Я собі вже все роздрукувала ☺️
+Ще ніколи не зустрічала настільки якісного матеріалу на цю тему. Я в захваті від вашої подачі інформації!! ✨
+Також хочу подякувати вам за вашу віддачу і за те, як щедро ви ділитеся своїми знаннями та досвідом! 🙏🙏🙏`,
+        edited: true,
+        reactions: ['❤️'],
+      },
+      {
+        text: 'безмежно радію, що знайшла вас!',
+        reactions: ['❤️'],
+      },
+    ],
+  },
+  {
+    handle: '@kate.beauty',
+    messages: [
+      {
+        text: `Добрий день, Анастасія ! 😊
+Я купляла у вас навчання по аспектам)
+Насамперед хотіла б подякувати Вам за таку чудову подачу інформації, за продукт, який Ви створили - це просто шедевр! 👏`,
+        reactions: ['❤️'],
+      },
+      { text: 'настільки все чітко і по ділу' },
+      {
+        text: `я в захваті від посібника, його візуального оформлення, наповнення та мудрості вашої подачі`,
+        reactions: ['❤️'],
+      },
+      { text: 'це те, що я шукала' },
+      { text: 'Браво! 👏👏👏' },
+    ],
+  },
 ];
 ---
 
@@ -362,26 +454,18 @@ const reviews = [
         </p>
       </div>
 
-      <div class="mt-16 flex gap-6 overflow-x-auto pb-8 [scrollbar-width:thin]">
+      <div class="mt-16 flex gap-6 overflow-x-auto pb-12 pt-4 [scrollbar-width:thin]">
         {reviews.map((r, i) => (
-          <figure class:list={[
-            'w-[320px] shrink-0 rounded-3xl border border-ink/5 bg-cream p-8 shadow-[0_20px_50px_-20px_rgba(15,10,30,0.15)] transition hover:-translate-y-1 hover:shadow-[0_30px_60px_-20px_rgba(15,10,30,0.25)] md:w-[380px]',
-            i % 2 === 1 && 'md:translate-y-6',
-          ]}>
-            <div class="mb-5 flex items-center gap-3">
-              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-gold-bright to-gold-deep text-sm font-semibold text-ink">
-                {r.name.charAt(0).toUpperCase()}
-              </div>
-              <div>
-                <div class="text-sm font-medium text-ink">@{r.name}</div>
-                <div class="text-[10px] uppercase tracking-[0.3em] text-gold-deep">Випускниця</div>
-              </div>
-            </div>
-            <div class="mb-2 font-display text-4xl leading-none text-gold/40">“</div>
-            <blockquote class="text-base leading-relaxed text-ink-muted">{r.text}</blockquote>
-          </figure>
+          <InstagramReview
+            review={r}
+            class={i % 2 === 1 ? 'md:translate-y-6' : ''}
+          />
         ))}
       </div>
+
+      <p class="mt-2 text-center text-xs uppercase tracking-[0.3em] text-ink-muted/70">
+        ✦ Справжні повідомлення з Instagram ✦
+      </p>
     </div>
   </section>
 
