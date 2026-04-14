@@ -1,0 +1,398 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PaymentButton from '@/components/PaymentButton.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import ProgramAccordion from '@/components/ProgramAccordion.tsx';
+import { products } from '@/config/site';
+
+const basic = products['aspekty-basic'];
+const pro = products['aspekty-pro'];
+
+const whyAspects = [
+  {
+    title: 'Серце натальної карти',
+    text: 'Аспекти показують, як планети реально взаємодіють між собою — без них карта залишається списком фактів.',
+  },
+  {
+    title: 'Ключ до характеру',
+    text: 'Протиріччя, сильні сторони, компенсації, тіньові реакції — усе це зашито в аспектах.',
+  },
+  {
+    title: 'Професійний рівень',
+    text: 'Консультації без аспектів — поверхневі. Саме аспекти дають глибину, яку цінують клієнти.',
+  },
+];
+
+const basicItems = [
+  '✔️ Типи аспектів та логіка їх взаємодії',
+  '✔️ PDF-самовчитель по трактуванню аспектів',
+  '✔️ Посібник «Аспекти Сонця і Місяця»',
+  '✔️ Посібник «Аспекти особистих планет»',
+  '✔️ Доступ до матеріалів назавжди',
+];
+
+const proItems = [
+  '✔️ Все, що входить у Базовий тариф',
+  '✔️ Відео-розбори реальних натальних карт (ч.1 та ч.2)',
+  '✔️ Практика: Сонце і Місяць у натальній карті',
+  '✔️ Компенсаторика і проробка аспектів',
+  '✔️ Стратегії роботи з протиріччями в карті',
+  '✔️ Бонус-модуль «Ідеальний астролог» — як грамотно консультувати',
+  '✔️ Доступ до матеріалів назавжди',
+];
+
+const program = [
+  { num: '01', title: 'Аспекти: базові принципи', text: 'Типи аспектів (мажорні, мінорні), логіка їх взаємодії, орбіси, рівні прояву. Фундамент, з якого будується все інше.' },
+  { num: '📄', title: 'Матеріали: самовчитель + довідники', text: 'PDF-самовчитель по трактуванню аспектів. Посібники «Аспекти Сонця і Місяця» та «Аспекти особистих планет». Входять у Базовий тариф.' },
+  { num: '02', title: 'Компенсаторика і проробка', text: 'Як працювати з «незручними» аспектами. Стратегії компенсації, напрямки росту замість страху й провини.' },
+  { num: '03', title: 'Сонце і Місяць у натальній карті', text: 'Ядро особистості — як аспекти до світил формують характер, емоції, реакції. Практика на реальних картах.' },
+  { num: '04', title: 'Розбір карти: аспекти (ч.1)', text: 'З чого починати аналіз аспектів, як оцінити їхній вплив на особистість у цілому.' },
+  { num: '05', title: 'Розбір карти: аспекти (ч.2)', text: 'Як спиратися на сильні сторони при трактуванні. Практичні приклади й підходи.' },
+  { num: '06', title: 'Протиріччя в карті', text: 'Коли карта показує взаємовиключні тенденції. Як поєднати показники й виробити стратегію для клієнта.' },
+  { num: '🎁', title: 'Бонус: ідеальний астролог', text: 'Як грамотно доносити інформацію, на чому робити акцент, як будувати довіру. Входить у Професійний тариф.' },
+];
+
+const reviews = [
+  { name: 'liliya_tarot', text: 'Я тарологиня, і після курсу почала додавати астрологічний розбір до консультацій — клієнти в захваті ✨ Саме аспекти дають ту глибину, якої бракувало.' },
+  { name: 'olha.astro', text: 'Професійний тариф — топ 🔥 Відео-розбори реальних карт змінили моє розуміння. Тепер я не просто описую аспекти, а бачу людину.' },
+  { name: 'anna_inner', text: 'Купила базовий, через тиждень доплатила до професійного — настільки чітко Анастасія пояснює. Матеріал на рівні закордонних шкіл.' },
+  { name: 'marichka_k', text: 'Бонус-урок «Ідеальний астролог» — це окрема любов ❤️ Отримала відповіді на страхи, з якими мучилась роками.' },
+  { name: 'dasha_l', text: 'Найкраща інвестиція в професію. Рекомендую навіть практикуючим астрологам — нові кути, нові глибини.' },
+];
+---
+
+<Layout
+  title="Аспекти натальної карти — Li Astrology"
+  description="Навчися трактувати аспекти у натальній карті. Два тарифи: базовий самовчитель та професійний з відео-розборами. Від Анастасії Лісовської."
+>
+  <!-- HERO -->
+  <section class="relative isolate min-h-screen overflow-hidden gradient-night text-cream">
+    <div class="noise-overlay absolute inset-0"></div>
+
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <div class="absolute top-[18%] right-[8%] text-6xl text-gold-bright/12 animate-[float_12s_ease-in-out_infinite]" style="font-family: serif;">△</div>
+      <div class="absolute top-[50%] left-[6%] text-5xl text-gold-bright/12 animate-[float_10s_ease-in-out_infinite_0.6s]" style="font-family: serif;">□</div>
+      <div class="absolute bottom-[20%] right-[30%] text-7xl text-gold-bright/10 animate-[float_14s_ease-in-out_infinite_1.4s]" style="font-family: serif;">✶</div>
+      <div class="absolute top-[30%] left-[40%] text-4xl text-gold-bright/12 animate-[float_9s_ease-in-out_infinite_2s]" style="font-family: serif;">✧</div>
+    </div>
+
+    <!-- Radial glow -->
+    <div aria-hidden="true" class="absolute right-0 top-0 h-full w-[55%] bg-[radial-gradient(ellipse_at_center,rgba(232,201,135,0.14)_0%,transparent_65%)]"></div>
+
+    <div class="relative mx-auto flex min-h-screen max-w-7xl items-center px-6 pt-32 pb-24 md:px-10 md:pt-40">
+      <div class="grid w-full gap-16 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-24">
+        <div class="relative z-10 order-2 lg:order-1">
+          <div class="mb-8 flex items-center gap-3 text-xs uppercase tracking-[0.4em] text-gold-bright/80">
+            <span class="h-px w-10 bg-gold-bright/60"></span>
+            <span>Глибина натальної карти</span>
+          </div>
+
+          <!-- Price badge -->
+          <div class="mb-8 inline-flex items-baseline gap-2 rounded-full border border-gold-bright/40 bg-white/5 px-5 py-2 backdrop-blur">
+            <span class="text-xs uppercase tracking-widest text-gold-bright/80">Від</span>
+            <span class="font-display text-xl text-cream">{basic.priceLabel}</span>
+          </div>
+
+          <h1 class="font-display text-[clamp(2.75rem,6.5vw,5.75rem)] leading-[0.98] tracking-tight text-balance">
+            Аспекти —<br/>
+            <em class="gradient-text-gold font-display italic">серце</em> натальної карти.
+          </h1>
+
+          <p class="mt-8 max-w-lg text-base leading-relaxed text-cream/70 md:text-lg">
+            Курс для тих, хто хоче бачити людину в карті, а не перелік символів. Два тарифи — від самостійного вивчення до професійного рівня з відео-розборами.
+          </p>
+
+          <div class="mt-12 flex flex-wrap items-center gap-4">
+            <a href="#tariffs" class="group relative inline-flex items-center gap-3 rounded-full bg-gold-bright px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-ink transition duration-300 hover:bg-gold">
+              <span>Обрати тариф</span>
+              <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#program" class="text-xs uppercase tracking-[0.3em] text-cream/60 underline-offset-[6px] hover:text-cream hover:underline">
+              Програма курсу
+            </a>
+          </div>
+
+          <!-- Trust row -->
+          <div class="mt-16 flex flex-wrap items-center gap-8 text-xs uppercase tracking-[0.25em] text-cream/50">
+            <div class="flex items-center gap-2">
+              <svg class="h-4 w-4 text-gold-bright" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+              Безпечна оплата
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="h-4 w-4 text-gold-bright" viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              Миттєвий доступ
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="h-4 w-4 text-gold-bright" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Доступ назавжди
+            </div>
+          </div>
+        </div>
+
+        <!-- Minimalist aspect composition: two circles + 3 aspect lines + planetary nodes -->
+        <div class="relative order-1 flex items-center justify-center self-center lg:order-2 lg:justify-end">
+          <div class="relative h-[260px] w-[260px] sm:h-[320px] sm:w-[320px] lg:h-[440px] lg:w-[440px]">
+            <div aria-hidden="true" class="absolute inset-6 rounded-full bg-[radial-gradient(circle,rgba(232,201,135,0.2)_0%,transparent_65%)] blur-2xl"></div>
+
+            <svg viewBox="-110 -110 220 220" class="relative h-full w-full animate-[float_22s_ease-in-out_infinite]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <!-- Outer ring -->
+            <circle cx="0" cy="0" r="98" fill="none" stroke="#c9a25a" stroke-width="0.5" stroke-opacity="0.8" />
+            <circle cx="0" cy="0" r="85" fill="none" stroke="#c9a25a" stroke-width="0.3" stroke-opacity="0.5" />
+
+            <!-- 12 faint tick marks -->
+            {Array.from({ length: 12 }).map((_, i) => {
+              const a = (i * 30 - 90) * Math.PI / 180;
+              return (
+                <line
+                  x1={Math.cos(a) * 85}
+                  y1={Math.sin(a) * 85}
+                  x2={Math.cos(a) * 98}
+                  y2={Math.sin(a) * 98}
+                  stroke="#c9a25a"
+                  stroke-width="0.3"
+                  stroke-opacity="0.45"
+                />
+              );
+            })}
+
+            <!-- Three example aspect lines between planetary nodes (clean, not overlapping) -->
+            <line x1="0" y1="-72" x2="62" y2="36" stroke="#e8c987" stroke-width="0.9" stroke-opacity="0.85" />
+            <line x1="62" y1="36" x2="-62" y2="36" stroke="#e8c987" stroke-width="0.9" stroke-opacity="0.85" />
+            <line x1="-62" y1="36" x2="0" y2="-72" stroke="#e8c987" stroke-width="0.9" stroke-opacity="0.85" />
+
+            <!-- Planetary nodes with halos -->
+            <circle cx="0" cy="-72" r="6" fill="#0b0a12" stroke="#e8c987" stroke-width="1" />
+            <text x="0" y="-70" text-anchor="middle" dominant-baseline="middle" fill="#e8c987" font-size="7" font-family="serif">☉</text>
+
+            <circle cx="62" cy="36" r="6" fill="#0b0a12" stroke="#e8c987" stroke-width="1" />
+            <text x="62" y="38" text-anchor="middle" dominant-baseline="middle" fill="#e8c987" font-size="7" font-family="serif">☽</text>
+
+            <circle cx="-62" cy="36" r="6" fill="#0b0a12" stroke="#e8c987" stroke-width="1" />
+            <text x="-62" y="38" text-anchor="middle" dominant-baseline="middle" fill="#e8c987" font-size="7" font-family="serif">♀</text>
+
+            <!-- Center marker -->
+            <circle cx="0" cy="0" r="2" fill="#e8c987" />
+          </svg>
+
+            <div class="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] uppercase tracking-[0.4em] text-gold-bright/70">
+              ✦ Aspectus ✦
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY ASPECTS — cream editorial -->
+  <section class="relative py-28 md:py-40">
+    <div class="mx-auto max-w-6xl px-6 md:px-10">
+      <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <SectionHeader
+          eyebrow="Чому аспекти"
+          title="Без аспектів<br/>карта <em class='gradient-text-gold font-display italic'>мовчить</em>."
+        />
+        <p class="max-w-md text-base leading-relaxed text-ink-muted md:text-right">
+          Знати знаки й доми — це азбука. Аспекти — це синтаксис. Саме вони перетворюють набір символів у живу історію людини.
+        </p>
+      </div>
+
+      <div class="mt-16 grid gap-6 md:grid-cols-3">
+        {whyAspects.map((w, i) => (
+          <div class="group relative overflow-hidden rounded-3xl border border-ink/5 bg-cream p-10 transition hover:border-gold/40">
+            <div class="mb-5 font-display text-2xl text-gold-deep">{String(i + 1).padStart(2, '0')}</div>
+            <h3 class="font-display text-2xl leading-tight">{w.title}</h3>
+            <p class="mt-4 text-base leading-relaxed text-ink-muted">{w.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TARIFFS — centrepiece, dark to highlight -->
+  <section id="tariffs" class="relative overflow-hidden py-28 md:py-40 gradient-night text-cream">
+    <div class="noise-overlay absolute inset-0 opacity-[0.03]"></div>
+    <div aria-hidden="true" class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(232,201,135,0.12)_0%,transparent_60%)]"></div>
+
+    <div class="relative mx-auto max-w-6xl px-6 md:px-10">
+      <SectionHeader
+        eyebrow="Тарифи"
+        title="Обери свою<br/><em class='gradient-text-gold font-display italic'>глибину</em>"
+        align="center"
+      />
+      <p class="mx-auto mt-6 max-w-2xl text-center text-cream/70">
+        Два шляхи до одного результату — розуміння аспектів. Обирай формат, який ближчий тобі.
+      </p>
+
+      <div class="mt-16 grid gap-6 md:grid-cols-2 lg:gap-8">
+        <!-- BASIC tariff -->
+        <article class="group relative flex flex-col rounded-[2rem] border border-cream/10 bg-white/[0.03] p-10 backdrop-blur-sm transition hover:border-cream/25">
+          <div class="flex items-center gap-2 text-[10px] uppercase tracking-[0.35em] text-cream/50">
+            <span class="h-px w-6 bg-cream/30"></span>
+            <span>Самостійно</span>
+          </div>
+
+          <h3 class="mt-6 font-display text-4xl leading-tight">{basic.title}</h3>
+          <p class="mt-3 text-sm text-cream/60">{basic.tagline}</p>
+
+          <ul class="mt-8 flex-1 space-y-3 text-sm text-cream/80">
+            {basicItems.map((it) => (
+              <li class="flex items-start gap-3 leading-relaxed">
+                <span class="mt-1 inline-block h-1 w-1 shrink-0 rounded-full bg-gold-bright"></span>
+                <span set:html={it.replace('✔️ ', '')} />
+              </li>
+            ))}
+          </ul>
+
+          <div class="mt-10 flex items-end justify-between border-t border-cream/10 pt-8">
+            <div>
+              <div class="text-[10px] uppercase tracking-widest text-cream/50">Вартість</div>
+              <div class="font-display text-4xl text-cream">{basic.priceLabel}</div>
+            </div>
+            <PaymentButton slug="aspekty-basic" label="Придбати" size="md" variant="outline-cream" />
+          </div>
+        </article>
+
+        <!-- PRO tariff — highlighted -->
+        <article id="pro" class="group relative flex flex-col overflow-hidden rounded-[2rem] border-2 border-gold-bright/70 bg-linear-to-br from-gold-bright/10 via-transparent to-gold-deep/10 p-10 shadow-[0_30px_80px_-20px_rgba(232,201,135,0.25)]">
+          <!-- Popular badge -->
+          <div class="absolute right-6 top-6 rounded-full bg-gold-bright px-4 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-ink">
+            Рекомендуємо
+          </div>
+
+          <div class="flex items-center gap-2 text-[10px] uppercase tracking-[0.35em] text-gold-bright">
+            <span class="h-px w-6 bg-gold-bright/60"></span>
+            <span>З практикою</span>
+          </div>
+
+          <h3 class="mt-6 font-display text-4xl leading-tight">{pro.title}</h3>
+          <p class="mt-3 text-sm text-cream/70">{pro.tagline}</p>
+
+          <ul class="mt-8 flex-1 space-y-3 text-sm text-cream/90">
+            {proItems.map((it, i) => (
+              <li class="flex items-start gap-3 leading-relaxed">
+                <span class="mt-1 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-gold-bright"></span>
+                <span class:list={[i === 0 && 'font-semibold text-cream']} set:html={it.replace('✔️ ', '')} />
+              </li>
+            ))}
+          </ul>
+
+          <div class="mt-10 flex items-end justify-between border-t border-gold-bright/30 pt-8">
+            <div>
+              <div class="text-[10px] uppercase tracking-widest text-gold-bright/80">Вартість</div>
+              <div class="font-display text-4xl gradient-text-gold">{pro.priceLabel}</div>
+            </div>
+            <PaymentButton slug="aspekty-pro" label="Придбати" size="md" variant="primary" />
+          </div>
+        </article>
+      </div>
+
+      <p class="mt-12 text-center text-xs uppercase tracking-[0.3em] text-cream/40">
+        Доступ до матеріалів назавжди · Миттєва доставка через Telegram
+      </p>
+    </div>
+  </section>
+
+  <!-- PROGRAM — light, accordion -->
+  <section id="program" class="relative py-28 md:py-40">
+    <div class="mx-auto max-w-5xl px-6 md:px-10">
+      <SectionHeader
+        eyebrow="Програма"
+        title="Що ти <em class='gradient-text-gold font-display italic'>вивчиш</em><br/>на курсі"
+        align="center"
+      />
+      <p class="mx-auto mt-6 max-w-xl text-center text-ink-muted">
+        Базовий тариф включає уроки 1–3. Професійний — всі шість, плюс бонус-модуль.
+      </p>
+
+      <div class="mt-16">
+        <ProgramAccordion items={program} client:load />
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOMES — editorial gold card -->
+  <section class="relative overflow-hidden py-28 md:py-40 bg-cream-dim/60">
+    <div aria-hidden="true" class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(232,201,135,0.18)_0%,transparent_70%)]"></div>
+
+    <div class="relative mx-auto max-w-5xl px-6 md:px-10">
+      <div class="relative overflow-hidden rounded-[2.5rem] border border-gold/30 bg-cream-soft p-10 md:p-20">
+        <div aria-hidden="true" class="absolute left-6 top-6 h-10 w-10 border-l border-t border-gold/40"></div>
+        <div aria-hidden="true" class="absolute right-6 top-6 h-10 w-10 border-r border-t border-gold/40"></div>
+        <div aria-hidden="true" class="absolute left-6 bottom-6 h-10 w-10 border-l border-b border-gold/40"></div>
+        <div aria-hidden="true" class="absolute right-6 bottom-6 h-10 w-10 border-r border-b border-gold/40"></div>
+        <div aria-hidden="true" class="absolute right-12 top-12 text-7xl text-gold/10 animate-[float_10s_ease-in-out_infinite]" style="font-family: serif;">△</div>
+
+        <div class="relative text-center">
+          <div class="mb-6 inline-flex items-center gap-3 text-xs uppercase tracking-[0.4em] text-gold-deep">
+            <span class="h-px w-8 bg-gold"></span>
+            <span>Твій результат</span>
+            <span class="h-px w-8 bg-gold"></span>
+          </div>
+
+          <h2 class="font-display text-[clamp(2.25rem,5vw,4rem)] leading-[1.05] text-balance">
+            Після курсу ти <em class="gradient-text-gold font-display italic">бачиш</em><br/>
+            людину в карті.
+          </h2>
+
+          <p class="mx-auto mt-10 max-w-2xl text-lg leading-relaxed text-ink-muted">
+            Ти читаєш аспекти не як «+» і «−», а як динаміку особистості. Розумієш, чому саме так людина реагує, де її сила, а де точка росту. Можеш вести клієнта через протиріччя — без шаблонів і страхів.
+          </p>
+
+          <div class="mt-12 flex flex-wrap items-center justify-center gap-4">
+            <PaymentButton slug="aspekty-basic" label="Базовий за 1 290 грн" variant="outline-cream" class="!text-ink !border-ink/30 hover:!border-ink/60" />
+            <PaymentButton slug="aspekty-pro" label="Професійний за 2 790 грн" variant="secondary" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS — light -->
+  <section class="relative overflow-hidden py-28 md:py-40">
+    <div aria-hidden="true" class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(201,162,90,0.08),transparent_55%)]"></div>
+
+    <div class="relative mx-auto max-w-7xl px-6 md:px-10">
+      <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <SectionHeader
+          eyebrow="Відгуки"
+          title="Те, що <em class='gradient-text-gold font-display italic'>лишається</em><br/>після курсу"
+        />
+        <p class="max-w-sm text-sm leading-relaxed text-ink-muted md:text-right">
+          Повідомлення від випускниць, які вже практикують з аспектами.
+        </p>
+      </div>
+
+      <div class="mt-16 flex gap-6 overflow-x-auto pb-8 [scrollbar-width:thin]">
+        {reviews.map((r, i) => (
+          <figure class:list={[
+            'w-[320px] shrink-0 rounded-3xl border border-ink/5 bg-cream p-8 shadow-[0_20px_50px_-20px_rgba(15,10,30,0.15)] transition hover:-translate-y-1 hover:shadow-[0_30px_60px_-20px_rgba(15,10,30,0.25)] md:w-[380px]',
+            i % 2 === 1 && 'md:translate-y-6',
+          ]}>
+            <div class="mb-5 flex items-center gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-gold-bright to-gold-deep text-sm font-semibold text-ink">
+                {r.name.charAt(0).toUpperCase()}
+              </div>
+              <div>
+                <div class="text-sm font-medium text-ink">@{r.name}</div>
+                <div class="text-[10px] uppercase tracking-[0.3em] text-gold-deep">Випускниця</div>
+              </div>
+            </div>
+            <div class="mb-2 font-display text-4xl leading-none text-gold/40">“</div>
+            <blockquote class="text-base leading-relaxed text-ink-muted">{r.text}</blockquote>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky mobile CTA -->
+  <div class="fixed inset-x-0 bottom-0 z-40 flex items-center justify-between gap-3 border-t border-ink/10 bg-cream/95 px-5 py-3 backdrop-blur md:hidden">
+    <div>
+      <div class="text-[10px] uppercase tracking-widest text-ink-muted">від</div>
+      <div class="font-display text-xl">1 290 грн</div>
+    </div>
+    <a href="#tariffs" class="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-cream">
+      Обрати тариф
+    </a>
+  </div>
+</Layout>

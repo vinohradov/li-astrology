@@ -1,0 +1,67 @@
+---
+import { site } from '@/config/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="relative overflow-hidden gradient-night text-cream">
+  <div class="noise-overlay absolute inset-0 opacity-[0.03]"></div>
+
+  <!-- Ornamental top divider: gold hairline broken by centered glyph -->
+  <div aria-hidden="true" class="relative mx-auto flex max-w-7xl items-center gap-6 px-6 pt-16 md:px-10">
+    <span class="h-px flex-1 bg-linear-to-r from-transparent via-gold/40 to-gold/20"></span>
+    <span class="font-display text-xl text-gold-bright">✦</span>
+    <span class="h-px flex-1 bg-linear-to-l from-transparent via-gold/40 to-gold/20"></span>
+  </div>
+
+  <div class="relative mx-auto max-w-7xl px-6 pt-16 pb-10 md:px-10">
+    <div class="grid gap-16 md:grid-cols-[1.5fr_1fr_1fr]">
+      <div>
+        <div class="flex items-center gap-3">
+          <img src="/images/li_logo_symbol.svg" alt={site.name} class="h-10 w-10 invert" />
+          <span class="font-display text-2xl tracking-wide">Li Astrology</span>
+        </div>
+        <p class="mt-6 max-w-sm text-sm leading-relaxed text-cream/70">
+          Астрологія як мова розуміння себе. Курси та інтенсиви від Анастасії Лісовської — без містики та езотеричних шаблонів.
+        </p>
+        <div class="mt-8 flex gap-4">
+          <a href={site.bot.url} target="_blank" rel="noopener" class="group flex items-center gap-2 text-sm text-cream/80 transition hover:text-gold-bright">
+            <span>Telegram</span>
+            <svg class="h-3 w-3 transition group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href={site.instagram} target="_blank" rel="noopener" class="group flex items-center gap-2 text-sm text-cream/80 transition hover:text-gold-bright">
+            <span>Instagram</span>
+            <svg class="h-3 w-3 transition group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="text-xs uppercase tracking-[0.25em] text-gold-bright">Курси</div>
+        <ul class="mt-6 space-y-3 text-sm text-cream/80">
+          <li><a href="/intensiv/" class="transition hover:text-cream">Інтенсив «Астрологія з 0»</a></li>
+          <li><a href="/aspekty/" class="transition hover:text-cream">Алгоритм трактування аспектів</a></li>
+          <li><a href="/course/" class="transition hover:text-cream">Повний курс</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="text-xs uppercase tracking-[0.25em] text-gold-bright">Правова інформація</div>
+        <ul class="mt-6 space-y-3 text-sm text-cream/80">
+          <li><a href="/legal/offer/" class="transition hover:text-cream">Публічна оферта</a></li>
+          <li><a href="/legal/refund/" class="transition hover:text-cream">Умови повернення</a></li>
+          <li><a href="/legal/privacy/" class="transition hover:text-cream">Політика конфіденційності</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-20 flex flex-col items-start gap-2 border-t border-cream/10 pt-8 text-xs text-cream/50 md:flex-row md:items-center md:justify-between">
+      <div>© {year} {site.name}. {site.legal.entity}</div>
+      <div class="flex items-center gap-2 font-display tracking-[0.3em] uppercase text-cream/40">
+        <span>Made with</span>
+        <span class="text-gold-bright">✦</span>
+        <span>in Ukraine</span>
+      </div>
+    </div>
+  </div>
+</footer>

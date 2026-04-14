@@ -1,0 +1,343 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import PaymentButton from '@/components/PaymentButton.astro';
+import SectionHeader from '@/components/SectionHeader.astro';
+import ProgramAccordion from '@/components/ProgramAccordion.tsx';
+import { products } from '@/config/site';
+
+const p = products.intensiv;
+
+const audience = [
+  { title: 'Новачок', text: 'Знаєш про астрологію лише з книжок та соцмереж.', glyph: '♈' },
+  { title: 'Сумніваєшся', text: '«Чи підходить мені?», «чи вийде?» — я створила комфортний вхід.', glyph: '♋' },
+  { title: 'Шукаєш нову професію', text: 'Хочеш опанувати справу, яка приносить дохід та задоволення.', glyph: '♌' },
+  { title: 'Шукаєш відповіді', text: 'Хочеш самостійно розібратися в собі й у своїх питаннях.', glyph: '♍' },
+  { title: 'Прагнеш розвитку', text: 'Хочеш допомагати людям і покращити стосунки з близькими.', glyph: '♎' },
+  { title: 'Вже практик', text: 'Нумеролог, таролог, коуч — підсилиш експертність і глибину.', glyph: '♏' },
+];
+
+const whyNeed = [
+  'Ти побачиш, що астрологія — логічна система, а не щось складне й недосяжне.',
+  'Отримаєш повноцінні базові знання і зможеш консультувати близьких.',
+  'Зекономиш час і кошти — навчишся одразу аналізувати карту глибоко.',
+  'Зникне страх зробити щось не так — ми розберемо все детально.',
+  'Зрозумієш, чи твоя це справа, без зайвих витрат.',
+  'Переконаєшся, що консультувати легше, ніж здається.',
+];
+
+const program = [
+  {
+    num: '01',
+    title: 'Філософія астрології',
+    text: 'Правила навчання та базові принципи. Дуальність енергій, рівні проживання натальної карти, роль астролога.',
+  },
+  {
+    num: '02',
+    title: 'Знаки зодіаку',
+    text: 'Цикл розвитку, осі знаків, стихії та хрести. Як визначати темперамент людини. + тест + домашнє завдання.',
+  },
+  {
+    num: '03',
+    title: 'Елементи натальної карти',
+    text: 'Градуси, куспіди, планети, аспекти. Покроковий алгоритм аналізу карти. + домашнє завдання.',
+  },
+  {
+    num: '🎁',
+    title: 'Подарунок: Сонце і Місяць',
+    text: 'Ядро особистості — що формує характер, емоції, життєві реакції. Практика на реальних картах + домашнє завдання.',
+  },
+  {
+    num: '04',
+    title: 'Як створити першу консультацію',
+    text: 'Структура сесії, сенс і чесний маркетинг. З чого починати, щоб не почуватися самозванцем.',
+  },
+  {
+    num: '05',
+    title: 'Бонус: ідеальний астролог',
+    text: 'Як грамотно консультувати — довіра, етика, акценти. Від чого залежить, чи повернеться до тебе клієнт.',
+  },
+];
+
+const reviews = [
+  { name: 'olenka_sun', text: 'Хочу подякувати за інтенсив 😍 Нарешті зрозуміла свою натальну карту. Вже дивлюсь карти подруг — вони в шоці як все точно!' },
+  { name: 'marina.kravets', text: 'Дякую за такі глибокі знання 🙏 Раніше читала гороскопи — нічого не збувалось, а тепер розумію механіку. Структуровано, без «води».' },
+  { name: 'tanya_design', text: 'Курс перевершив очікування 🔥 Думала буде складно, але Анастасія так просто пояснює. Урок «Сонце і Місяць» — інсайт на все життя.' },
+  { name: 'julia_astro_begin', text: 'Це краща інвестиція в себе за цей рік ❤️ Провела першу міні-консультацію для сестри — ми плакали, наскільки це про неї.' },
+  { name: 'kate.beauty', text: 'Дівчатка, це знахідка ✨ Завжди боялась почати, але після інтенсиву з\'явилась така впевненість. Матеріал дуже якісний.' },
+];
+---
+
+<Layout
+  title="Інтенсив «Астрологія з 0» — Li Astrology"
+  description="Легкий перший крок у світ натальної карти. 5 уроків + бонус від Анастасії Лісовської. Доступ назавжди за 1 199 грн."
+>
+  <!-- HERO -->
+  <section class="relative isolate min-h-screen overflow-hidden gradient-night text-cream">
+    <div class="noise-overlay absolute inset-0"></div>
+
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <div class="absolute top-[20%] left-[10%] text-5xl text-gold-bright/12 animate-[float_11s_ease-in-out_infinite]" style="font-family: serif;">✦</div>
+      <div class="absolute top-[55%] right-[12%] text-7xl text-gold-bright/10 animate-[float_14s_ease-in-out_infinite_0.8s]" style="font-family: serif;">☽</div>
+      <div class="absolute bottom-[15%] left-[40%] text-4xl text-gold-bright/12 animate-[float_9s_ease-in-out_infinite_2s]" style="font-family: serif;">✧</div>
+    </div>
+
+    <!-- Radial glow -->
+    <div aria-hidden="true" class="absolute right-0 top-0 h-full w-[55%] bg-[radial-gradient(ellipse_at_center,rgba(232,201,135,0.14)_0%,transparent_65%)]"></div>
+
+    <div class="relative mx-auto flex min-h-screen max-w-7xl items-center px-6 pt-32 pb-24 md:px-10 md:pt-40">
+      <div class="grid w-full gap-16 lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-24">
+        <div class="relative z-10">
+          <div class="mb-8 flex items-center gap-3 text-xs uppercase tracking-[0.4em] text-gold-bright/80">
+            <span class="h-px w-10 bg-gold-bright/60"></span>
+            <span>Перший крок</span>
+          </div>
+
+          <!-- Price badge -->
+          <div class="mb-8 inline-flex items-baseline gap-2 rounded-full border border-gold-bright/40 bg-white/5 px-5 py-2 backdrop-blur">
+            <span class="text-xs uppercase tracking-widest text-gold-bright/80">Вартість</span>
+            <span class="font-display text-xl text-cream">{p.priceLabel}</span>
+          </div>
+
+          <h1 class="font-display text-[clamp(2.75rem,6.5vw,5.75rem)] leading-[0.98] tracking-tight text-balance">
+            Інтенсив<br/>
+            <em class="gradient-text-gold font-display italic whitespace-nowrap">«Астрологія&nbsp;з&nbsp;0»</em>
+          </h1>
+
+          <p class="mt-8 max-w-lg text-base leading-relaxed text-cream/70 md:text-lg">
+            Твій легкий перший крок у світ натальної карти. 5 уроків + бонус, після яких ти зможеш впевнено читати карту своєї родини та подруг.
+          </p>
+
+          <div class="mt-12 flex flex-wrap items-center gap-4">
+            <PaymentButton slug="intensiv" label="Придбати за 1 199 грн" variant="primary" />
+            <a href="#program" class="text-xs uppercase tracking-[0.3em] text-cream/60 underline-offset-[6px] hover:text-cream hover:underline">
+              Програма уроків
+            </a>
+          </div>
+
+          <!-- Trust row -->
+          <div class="mt-16 flex flex-wrap items-center gap-8 text-xs uppercase tracking-[0.25em] text-cream/50">
+            <div class="flex items-center gap-2">
+              <svg class="h-4 w-4 text-gold-bright" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+              Безпечна оплата
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="h-4 w-4 text-gold-bright" viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              Миттєвий доступ
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="h-4 w-4 text-gold-bright" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Доступ назавжди
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -inset-4 rounded-[2rem] bg-linear-to-br from-gold-bright/25 via-transparent to-plum-deep/50 blur-2xl"></div>
+          <div class="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-cream/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)]">
+            <img src="/images/hero_author_v2.jpg" alt="Анастасія Лісовська" class="h-full w-full object-cover" width="800" height="1000" />
+            <div class="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-plum-deep/80 to-transparent"></div>
+          </div>
+          <div aria-hidden="true" class="absolute -left-3 -top-3 h-8 w-8 border-l border-t border-gold-bright/60"></div>
+          <div aria-hidden="true" class="absolute -right-3 -bottom-3 h-8 w-8 border-r border-b border-gold-bright/60"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR YOU (audience cards) -->
+  <section class="relative py-28 md:py-40">
+    <div class="mx-auto max-w-7xl px-6 md:px-10">
+      <SectionHeader
+        eyebrow="Для кого"
+        title="Інтенсив для тебе,<br/>якщо ти <em class='gradient-text-gold font-display italic'>прямо зараз</em>…"
+      />
+
+      <div class="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {audience.map((a) => (
+          <div class="group relative overflow-hidden rounded-2xl border border-ink/5 bg-cream p-8 transition hover:border-gold/40 hover:bg-white">
+            <span aria-hidden="true" class="absolute -right-4 -bottom-6 text-[8rem] leading-none text-gold/10 transition group-hover:text-gold/20" style="font-family: serif;">{a.glyph}</span>
+            <div class="relative">
+              <h3 class="font-display text-2xl leading-tight">{a.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-ink-muted">{a.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-16 flex flex-col items-center gap-5 text-center">
+        <p class="max-w-xl text-lg text-ink-muted">Це навчання допоможе підвищити дохід і впевненість у своїй практиці.</p>
+        <PaymentButton slug="intensiv" label="Придбати за 1 199 грн" variant="secondary" />
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY NEED -->
+  <section class="relative overflow-hidden py-28 md:py-40 bg-cream-dim/40">
+    <div class="mx-auto max-w-6xl px-6 md:px-10">
+      <div class="grid gap-14 md:grid-cols-[1fr_1.2fr] md:items-start md:gap-24">
+        <div>
+          <SectionHeader
+            eyebrow="Навіщо"
+            title="Чому тобі<br/>потрібен <em class='gradient-text-gold font-display italic'>саме</em> цей курс"
+          />
+          <p class="mt-8 text-base leading-relaxed text-ink-muted">
+            5 уроків. Чіткий алгоритм. Жодної «води» чи загальних фраз. Тільки те, що ти реально зможеш застосувати на наступний день після проходження.
+          </p>
+        </div>
+
+        <ul class="space-y-6">
+          {whyNeed.map((item, i) => (
+            <li class="flex items-start gap-5 border-b border-ink/10 pb-6 last:border-0 last:pb-0">
+              <span class="font-display text-3xl gradient-text-gold">{String(i + 1).padStart(2, '0')}</span>
+              <span class="text-base leading-relaxed text-ink/90">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAM -->
+  <section id="program" class="relative py-28 md:py-40">
+    <div class="mx-auto max-w-5xl px-6 md:px-10">
+      <SectionHeader
+        eyebrow="Програма"
+        title="П'ять уроків,<br/>один <em class='gradient-text-gold font-display italic'>чіткий</em> шлях"
+        align="center"
+      />
+
+      <div class="mt-16">
+        <ProgramAccordion items={program} client:load />
+      </div>
+
+      <div class="mt-14 flex justify-center">
+        <PaymentButton slug="intensiv" label="Придбати за 1 199 грн" variant="secondary" />
+      </div>
+    </div>
+  </section>
+
+  <!-- GIFT -->
+  <section class="relative overflow-hidden py-28 md:py-40 gradient-night text-cream">
+    <div class="noise-overlay absolute inset-0 opacity-[0.04]"></div>
+    <div aria-hidden="true" class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(232,201,135,0.12)_0%,transparent_60%)]"></div>
+
+    <div class="relative mx-auto max-w-4xl px-6 text-center md:px-10">
+      <div class="mb-4 inline-flex items-center gap-3 text-xs uppercase tracking-[0.4em] text-gold-bright">
+        <span class="h-px w-8 bg-gold-bright/60"></span>
+        <span>Подарунок</span>
+        <span class="h-px w-8 bg-gold-bright/60"></span>
+      </div>
+
+      <h2 class="font-display text-[clamp(2.25rem,5vw,4rem)] leading-[1.05] text-balance">
+        Урок «<em class="gradient-text-gold font-display italic">Сонце і Місяць</em>»<br/>
+        в натальній карті
+      </h2>
+
+      <p class="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-cream/80">
+        Фундамент особистості та ключ до розуміння людини. На цьому уроці ти розбереш <span class="text-cream">ядро натальної карти</span>: що формує характер, емоції, реакції та життєві сценарії.
+      </p>
+
+      <div class="mx-auto mt-10 grid max-w-3xl gap-6 text-left text-sm text-cream/70 md:grid-cols-2">
+        <div class="rounded-2xl border border-cream/10 bg-white/[0.02] p-6">
+          <div class="mb-2 text-[10px] uppercase tracking-[0.3em] text-gold-bright/80">Сонце</div>
+          <p class="leading-relaxed">Як людина проявляє себе, у чому її сила, як реалізується соціально.</p>
+        </div>
+        <div class="rounded-2xl border border-cream/10 bg-white/[0.02] p-6">
+          <div class="mb-2 text-[10px] uppercase tracking-[0.3em] text-gold-bright/80">Місяць</div>
+          <p class="leading-relaxed">У чому глибинні потреби, як відчуває любов, звідки емоційні реакції.</p>
+        </div>
+      </div>
+
+      <p class="mx-auto mt-10 max-w-xl text-sm italic text-cream/60">
+        Цей урок — фрагмент повного курсу. Ти отримуєш його у подарунок, уже в Інтенсиві.
+      </p>
+    </div>
+  </section>
+
+  <!-- OUTCOMES — editorial cream card with decorative borders -->
+  <section class="relative overflow-hidden py-28 md:py-40 bg-cream-dim/60">
+    <div aria-hidden="true" class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(232,201,135,0.18)_0%,transparent_70%)]"></div>
+
+    <div class="relative mx-auto max-w-5xl px-6 md:px-10">
+      <div class="relative overflow-hidden rounded-[2.5rem] border border-gold/30 bg-cream-soft p-10 md:p-20">
+        <!-- Ornamental corners -->
+        <div aria-hidden="true" class="absolute left-6 top-6 h-10 w-10 border-l border-t border-gold/40"></div>
+        <div aria-hidden="true" class="absolute right-6 top-6 h-10 w-10 border-r border-t border-gold/40"></div>
+        <div aria-hidden="true" class="absolute left-6 bottom-6 h-10 w-10 border-l border-b border-gold/40"></div>
+        <div aria-hidden="true" class="absolute right-6 bottom-6 h-10 w-10 border-r border-b border-gold/40"></div>
+
+        <!-- Floating glyph -->
+        <div aria-hidden="true" class="absolute right-12 top-12 text-7xl text-gold/10 animate-[float_10s_ease-in-out_infinite]" style="font-family: serif;">✦</div>
+
+        <div class="relative text-center">
+          <div class="mb-6 inline-flex items-center gap-3 text-xs uppercase tracking-[0.4em] text-gold-deep">
+            <span class="h-px w-8 bg-gold"></span>
+            <span>Твій результат</span>
+            <span class="h-px w-8 bg-gold"></span>
+          </div>
+
+          <h2 class="font-display text-[clamp(2.25rem,5vw,4rem)] leading-[1.05] text-balance">
+            Після інтенсиву ти вже<br/>
+            <em class="gradient-text-gold font-display italic">розумієш</em> базу.
+          </h2>
+
+          <p class="mx-auto mt-10 max-w-2xl text-lg leading-relaxed text-ink-muted">
+            Ознайомишся з філософією астрології та почнеш краще розуміти себе та людей навколо. Навчишся читати карту з розумінням, що означає кожен градус і символ. Побачиш приклад розбору натальної карти — і зрозумієш, чи хочеш продовжити.
+          </p>
+
+          <div class="mt-12 flex flex-wrap items-center justify-center gap-4">
+            <PaymentButton slug="intensiv" label="Придбати за 1 199 грн" variant="secondary" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS — light editorial background -->
+  <section class="relative overflow-hidden py-28 md:py-40">
+    <!-- Subtle paper texture feel -->
+    <div aria-hidden="true" class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(201,162,90,0.08),transparent_55%)]"></div>
+
+    <div class="relative mx-auto max-w-7xl px-6 md:px-10">
+      <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <SectionHeader
+          eyebrow="Відгуки"
+          title="Те, що <em class='gradient-text-gold font-display italic'>лишається</em><br/>після інтенсиву"
+        />
+        <p class="max-w-sm text-sm leading-relaxed text-ink-muted md:text-right">
+          Справжні повідомлення від випускниць. Без монтажу.
+        </p>
+      </div>
+
+      <div class="mt-16 flex gap-6 overflow-x-auto pb-8 [scrollbar-width:thin]">
+        {reviews.map((r, i) => (
+          <figure class:list={[
+            'w-[320px] shrink-0 rounded-3xl border border-ink/5 bg-cream p-8 shadow-[0_20px_50px_-20px_rgba(15,10,30,0.15)] transition hover:-translate-y-1 hover:shadow-[0_30px_60px_-20px_rgba(15,10,30,0.25)] md:w-[380px]',
+            i % 2 === 1 && 'md:translate-y-6',
+          ]}>
+            <div class="mb-5 flex items-center gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-gold-bright to-gold-deep text-sm font-semibold text-ink">
+                {r.name.charAt(0).toUpperCase()}
+              </div>
+              <div>
+                <div class="text-sm font-medium text-ink">@{r.name}</div>
+                <div class="text-[10px] uppercase tracking-[0.3em] text-gold-deep">Випускниця</div>
+              </div>
+            </div>
+            <div class="mb-2 font-display text-4xl leading-none text-gold/40">“</div>
+            <blockquote class="text-base leading-relaxed text-ink-muted">{r.text}</blockquote>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky mobile CTA -->
+  <div class="fixed inset-x-0 bottom-0 z-40 flex items-center justify-between gap-3 border-t border-ink/10 bg-cream/95 px-5 py-3 backdrop-blur md:hidden">
+    <div>
+      <div class="text-[10px] uppercase tracking-widest text-ink-muted">Вартість</div>
+      <div class="font-display text-xl">{p.priceLabel}</div>
+    </div>
+    <PaymentButton slug="intensiv" label="Придбати" size="md" variant="secondary" />
+  </div>
+</Layout>

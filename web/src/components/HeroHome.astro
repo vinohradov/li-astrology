@@ -1,0 +1,102 @@
+---
+import { site } from '@/config/site';
+---
+
+<section class="relative isolate min-h-screen overflow-hidden gradient-night text-cream">
+  <div class="noise-overlay absolute inset-0"></div>
+
+  <!-- Floating astrological glyphs -->
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div class="absolute top-[18%] left-[8%] text-6xl text-gold-bright/15 animate-[float_12s_ease-in-out_infinite]" style="font-family: serif;">✦</div>
+    <div class="absolute top-[30%] right-[14%] text-4xl text-gold-bright/10 animate-[float_9s_ease-in-out_infinite_0.5s]" style="font-family: serif;">☽</div>
+    <div class="absolute bottom-[28%] left-[22%] text-5xl text-gold-bright/12 animate-[float_14s_ease-in-out_infinite_1.2s]" style="font-family: serif;">✧</div>
+    <div class="absolute top-[62%] right-[6%] text-7xl text-gold-bright/8 animate-[float_16s_ease-in-out_infinite]" style="font-family: serif;">☉</div>
+    <div class="absolute top-[8%] right-[35%] text-3xl text-gold-bright/15 animate-[float_10s_ease-in-out_infinite_2s]" style="font-family: serif;">♆</div>
+  </div>
+
+  <!-- Radial glow behind portrait -->
+  <div aria-hidden="true" class="absolute right-0 top-0 h-[120%] w-[60%] bg-[radial-gradient(ellipse_at_center,rgba(232,201,135,0.18)_0%,transparent_60%)]"></div>
+
+  <div class="relative mx-auto flex min-h-screen max-w-7xl items-center px-6 pt-32 pb-24 md:px-10 md:pt-40 md:pb-32">
+    <div class="grid w-full gap-16 lg:grid-cols-[1.2fr_1fr] lg:items-center lg:gap-24">
+      <!-- Copy -->
+      <div class="relative z-10">
+        <div class="mb-8 flex items-center gap-3 text-xs uppercase tracking-[0.4em] text-gold-bright/80">
+          <span class="h-px w-10 bg-gold-bright/60"></span>
+          <span>{site.author}</span>
+        </div>
+
+        <h1 class="font-display text-[clamp(2.75rem,6.5vw,5.75rem)] leading-[0.98] tracking-tight text-balance">
+          Астрологія —<br />
+          це <em class="gradient-text-gold font-display italic">мова</em>,<br />
+          якою з тобою<br />
+          говорить <em class="gradient-text-gold font-display italic">світ</em>.
+        </h1>
+
+        <p class="mt-10 max-w-lg text-base leading-relaxed text-cream/70 md:text-lg">
+          Я вчу читати натальну карту без містики та езотеричних шаблонів — так, щоб ти могла спокійно розібратися в собі й у житті близьких.
+        </p>
+
+        <div class="mt-12 flex flex-wrap items-center gap-4">
+          <a
+            href="#courses"
+            class="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gold-bright px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-ink transition hover:bg-gold"
+          >
+            <span class="relative">Обрати курс</span>
+            <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+
+          <a
+            href={site.bot.url}
+            target="_blank"
+            rel="noopener"
+            class="inline-flex items-center gap-2 rounded-full border border-cream/20 px-6 py-4 text-sm font-medium uppercase tracking-[0.2em] text-cream/90 transition hover:border-cream/50 hover:text-cream"
+          >
+            Telegram-бот
+          </a>
+        </div>
+
+        <div class="mt-16 flex items-center gap-10 text-sm text-cream/60">
+          <div>
+            <div class="font-display text-3xl text-gold-bright">7</div>
+            <div class="mt-1 text-xs uppercase tracking-widest">років практики</div>
+          </div>
+          <div class="h-10 w-px bg-cream/15"></div>
+          <div>
+            <div class="font-display text-3xl text-gold-bright">3 000+</div>
+            <div class="mt-1 text-xs uppercase tracking-widest">консультацій</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portrait -->
+      <div class="relative">
+        <div class="absolute -inset-4 rounded-[2rem] bg-linear-to-br from-gold-bright/30 via-transparent to-plum-deep/50 blur-2xl"></div>
+        <div class="relative overflow-hidden rounded-[2rem] border border-cream/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.5)]">
+          <img
+            src="/images/hero_author_v2.jpg"
+            alt={site.author}
+            class="h-full w-full object-cover transition-transform duration-[2s] hover:scale-105"
+            width="800"
+            height="1000"
+          />
+          <div class="absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-plum-deep/70 to-transparent"></div>
+        </div>
+
+        <!-- Decorative corner marks -->
+        <div aria-hidden="true" class="absolute -left-3 -top-3 h-8 w-8 border-l border-t border-gold-bright/50"></div>
+        <div aria-hidden="true" class="absolute -right-3 -bottom-3 h-8 w-8 border-r border-b border-gold-bright/50"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-cream/40">
+    <div class="flex flex-col items-center gap-2 text-[10px] uppercase tracking-[0.4em]">
+      <span>Scroll</span>
+      <span class="h-10 w-px animate-pulse bg-linear-to-b from-cream/40 to-transparent"></span>
+    </div>
+  </div>
+</section>

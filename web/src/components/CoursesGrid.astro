@@ -1,0 +1,88 @@
+---
+import { products } from '@/config/site';
+import SectionHeader from './SectionHeader.astro';
+
+const order: Array<keyof typeof products> = ['intensiv', 'aspekty-basic', 'aspekty-pro', 'astro-z-0'];
+const list = order.map((k) => products[k]);
+---
+
+<section id="courses" class="relative py-28 md:py-40">
+  <div class="mx-auto max-w-7xl px-6 md:px-10">
+    <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <SectionHeader
+        eyebrow="Курси"
+        title="Свій ритм. Своя<br/><em class='gradient-text-gold font-display italic'>глибина</em>."
+      />
+      <p class="max-w-md text-base leading-relaxed text-ink-muted md:text-right">
+        Від першого знайомства з натальною картою — до професійної консультації. Обирай точку входу.
+      </p>
+    </div>
+
+    <div class="mt-16 grid gap-6 md:grid-cols-2 lg:gap-8">
+      {list.map((product, i) => (
+        <a
+          href={product.href}
+          class:list={[
+            'group relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-ink/5 bg-cream p-10 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_30px_60px_-20px_rgba(15,10,30,0.2)]',
+            i === 0 && 'lg:col-span-2',
+            product.status === 'coming-soon' && 'bg-ink text-cream',
+          ]}
+          style={`min-height: ${i === 0 ? '420px' : '360px'};`}
+        >
+          <!-- Decorative background glyph -->
+          <span
+            aria-hidden="true"
+            class:list={[
+              'pointer-events-none absolute -right-8 -bottom-16 text-[16rem] leading-none opacity-[0.04] transition-all duration-700 group-hover:scale-110 group-hover:opacity-[0.08]',
+              product.status === 'coming-soon' ? 'text-gold-bright' : 'text-ink',
+            ]}
+            style="font-family: serif;"
+          >
+            {i === 0 ? '☉' : i === 1 ? '☽' : i === 2 ? '✦' : '♆'}
+          </span>
+
+          <div class="relative">
+            <div class:list={[
+              'flex items-center gap-2 text-[10px] uppercase tracking-[0.3em]',
+              product.status === 'coming-soon' ? 'text-gold-bright/90' : 'text-gold-deep',
+            ]}>
+              <span class="inline-block h-px w-6 bg-current"></span>
+              <span>{product.status === 'coming-soon' ? 'Скоро' : 'Доступний зараз'}</span>
+            </div>
+            <h3 class="mt-6 font-display text-3xl leading-tight md:text-4xl">
+              {product.title}
+            </h3>
+            <p class:list={[
+              'mt-4 text-base leading-relaxed',
+              product.status === 'coming-soon' ? 'text-cream/70' : 'text-ink-muted',
+            ]}>
+              {product.tagline}
+            </p>
+          </div>
+
+          <div class="relative mt-10 flex items-end justify-between">
+            <div>
+              <div class="text-[10px] uppercase tracking-widest opacity-60">Вартість</div>
+              <div class:list={[
+                'font-display text-4xl',
+                product.status === 'coming-soon' ? 'text-gold-bright' : 'gradient-text-gold',
+              ]}>
+                {product.priceLabel}
+              </div>
+            </div>
+            <div class:list={[
+              'flex h-12 w-12 items-center justify-center rounded-full border transition-all duration-500 group-hover:scale-110',
+              product.status === 'coming-soon'
+                ? 'border-cream/30 group-hover:border-gold-bright'
+                : 'border-ink/20 group-hover:border-gold',
+            ]}>
+              <svg class="h-4 w-4 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 17L17 7M17 7H9M17 7V15" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

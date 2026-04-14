@@ -1,0 +1,37 @@
+---
+interface Props {
+  slug: string;
+  label: string;
+  variant?: 'primary' | 'secondary' | 'dark' | 'outline-cream';
+  size?: 'md' | 'lg';
+  class?: string;
+}
+
+const { slug, label, variant = 'primary', size = 'lg', class: className = '' } = Astro.props;
+
+const base =
+  'group relative inline-flex items-center gap-3 rounded-full font-semibold uppercase tracking-[0.2em] transition duration-300';
+
+const sizes = {
+  md: 'px-6 py-3 text-xs',
+  lg: 'px-8 py-4 text-sm',
+};
+
+const variants = {
+  primary: 'bg-gold-bright text-ink hover:bg-gold',
+  secondary: 'bg-ink text-cream hover:bg-plum-deep',
+  dark: 'bg-plum-deep text-cream hover:bg-ink',
+  'outline-cream': 'border border-cream/25 text-cream hover:border-cream/60',
+};
+---
+
+<a
+  href="#"
+  data-product={slug}
+  class:list={[base, sizes[size], variants[variant], className]}
+>
+  <span>{label}</span>
+  <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+  </svg>
+</a>
