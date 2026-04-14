@@ -8,8 +8,12 @@ export const site = {
     url: 'https://t.me/li_astrology_bot',
   },
   instagram: 'https://www.instagram.com/li_astrology_',
+  contact: {
+    email: 'alisovaskaa55@gmail.com',
+  },
   legal: {
     entity: 'ФОП Виноградов А.В.',
+    entityFull: 'Фізична особа-підприємець Виноградов Андрій Володимирович',
   },
   supabase: {
     url: 'https://plyofinxmwvwbintvqbx.supabase.co',

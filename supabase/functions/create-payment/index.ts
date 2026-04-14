@@ -183,8 +183,11 @@ serve(async (req) => {
 
     const amountUah = Math.floor(priceKopiykas / 100)
     const orderId = makeOrderId(body.source, course.slug)
+    // After WayForPay checkout, customer is redirected back here.
+    // Our Astro /payment/success/ page reads order_id + product, then offers
+    // a Telegram deep-link that the bot resolves to grant access.
     const returnUrl = body.source === 'web'
-      ? `${SITE_URL}/payment/success.html?order_id=${orderId}&product=${course.slug}`
+      ? `${SITE_URL}/payment/success/?order_id=${orderId}&product=${course.slug}`
       : `https://t.me/${TELEGRAM_BOT_USERNAME}?start=${orderId}`
     const serviceUrl = `${SUPABASE_URL}/functions/v1/wfp-callback`
 

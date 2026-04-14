@@ -1,0 +1,115 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { site, products, type ProductSlug } from '@/config/site';
+
+const rawProduct = Astro.url.searchParams.get('product') as ProductSlug | null;
+const orderId = Astro.url.searchParams.get('order_id') ?? '';
+const product = rawProduct && products[rawProduct] ? products[rawProduct] : null;
+
+// Telegram deep link: the bot reads /start <order_id> and grants access.
+const botLink = orderId
+  ? `${site.bot.url}?start=${encodeURIComponent(orderId)}`
+  : site.bot.url;
+---
+
+<Layout
+  title="Дякуємо за оплату — Li Astrology"
+  description="Оплату отримано. Відкрийте Telegram-бот, щоб отримати доступ до матеріалів."
+  noindex
+>
+  <section class="relative isolate min-h-screen overflow-hidden gradient-night text-cream">
+    <div class="noise-overlay absolute inset-0"></div>
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <div class="absolute top-[18%] left-[10%] text-6xl text-gold-bright/12 animate-[float_12s_ease-in-out_infinite]" style="font-family: serif;">✦</div>
+      <div class="absolute bottom-[20%] right-[12%] text-7xl text-gold-bright/10 animate-[float_14s_ease-in-out_infinite_1.2s]" style="font-family: serif;">☽</div>
+      <div class="absolute top-[48%] right-[30%] text-4xl text-gold-bright/12 animate-[float_9s_ease-in-out_infinite_2s]" style="font-family: serif;">✧</div>
+    </div>
+    <div aria-hidden="true" class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(232,201,135,0.16)_0%,transparent_65%)]"></div>
+
+    <div class="relative mx-auto flex min-h-screen max-w-3xl flex-col items-center justify-center px-6 py-24 text-center md:px-10">
+      <!-- Gold check mark -->
+      <div class="relative mb-10 flex h-24 w-24 items-center justify-center rounded-full border border-gold-bright/40 bg-white/5 backdrop-blur">
+        <div aria-hidden="true" class="absolute inset-[-8px] rounded-full bg-[radial-gradient(circle,rgba(232,201,135,0.35)_0%,transparent_70%)] blur-xl"></div>
+        <svg class="relative h-12 w-12 text-gold-bright" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+
+      <div class="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.4em] text-gold-bright/80">
+        <span class="h-px w-10 bg-gold-bright/60"></span>
+        <span>Оплату отримано</span>
+        <span class="h-px w-10 bg-gold-bright/60"></span>
+      </div>
+
+      <h1 class="font-display text-[clamp(2.25rem,5vw,4rem)] leading-[1.05] tracking-tight text-balance">
+        Дякую за <em class="gradient-text-gold font-display italic">довіру</em>.
+      </h1>
+
+      {product && (
+        <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-cream/75 md:text-lg">
+          Ви придбали <strong class="text-cream">{product.title}</strong>. Доступ до матеріалів — через наш Telegram-бот. Натисніть кнопку нижче, щоб активувати.
+        </p>
+      )}
+      {!product && (
+        <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-cream/75 md:text-lg">
+          Оплата пройшла успішно. Доступ до матеріалів — через наш Telegram-бот. Натисніть кнопку нижче, щоб активувати.
+        </p>
+      )}
+
+      <!-- Primary CTA -->
+      <a
+        href={botLink}
+        target="_blank"
+        rel="noopener"
+        class="group mt-12 inline-flex items-center gap-3 rounded-full bg-gold-bright px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-ink transition duration-300 hover:bg-gold"
+      >
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Відкрити доступ у Telegram</span>
+        <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+      {orderId && (
+        <p class="mt-6 text-xs uppercase tracking-[0.25em] text-cream/40">
+          Номер замовлення: <span class="font-mono text-cream/70">{orderId}</span>
+        </p>
+      )}
+
+      <!-- Steps -->
+      <div class="mx-auto mt-16 grid w-full max-w-xl gap-4 text-left">
+        <div class="flex items-start gap-4 rounded-2xl border border-cream/10 bg-white/[0.02] p-5">
+          <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold-bright/15 font-display text-sm text-gold-bright">1</div>
+          <div>
+            <div class="text-sm font-medium text-cream">Натисніть «Відкрити доступ у Telegram»</div>
+            <div class="mt-1 text-xs leading-relaxed text-cream/60">Відкриється наш бот <span class="font-mono text-cream/80">@{site.bot.username}</span>.</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 rounded-2xl border border-cream/10 bg-white/[0.02] p-5">
+          <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold-bright/15 font-display text-sm text-gold-bright">2</div>
+          <div>
+            <div class="text-sm font-medium text-cream">Натисніть «Start» у боті</div>
+            <div class="mt-1 text-xs leading-relaxed text-cream/60">Бот автоматично перевірить оплату за номером замовлення.</div>
+          </div>
+        </div>
+        <div class="flex items-start gap-4 rounded-2xl border border-cream/10 bg-white/[0.02] p-5">
+          <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold-bright/15 font-display text-sm text-gold-bright">3</div>
+          <div>
+            <div class="text-sm font-medium text-cream">Отримайте доступ до всіх матеріалів</div>
+            <div class="mt-1 text-xs leading-relaxed text-cream/60">Уроки, бонуси, методички — одразу й назавжди.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Support -->
+      <p class="mt-14 text-xs text-cream/50">
+        Виникли проблеми? Напишіть нам на
+        <a href={`mailto:${site.contact.email}?subject=${encodeURIComponent(`Проблема з доступом — замовлення ${orderId}`)}`} class="text-gold-bright underline-offset-4 hover:underline">
+          {site.contact.email}
+        </a>
+      </p>
+    </div>
+  </section>
+</Layout>

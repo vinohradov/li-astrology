@@ -1,6 +1,9 @@
 # Dependencies
 node_modules/
 
+# Private working files (customer DM screenshots, raw chat exports, etc.)
+temporary/
+
 # Environment variables (NEVER commit these!)
 .env
 .env.local
