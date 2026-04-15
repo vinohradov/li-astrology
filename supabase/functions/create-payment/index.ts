@@ -176,12 +176,6 @@ async function createMonoInvoice(params: {
     paymentType: 'debit',
   }
 
-  console.log('[mono-create] POST body', JSON.stringify({
-    ...body,
-    webHookUrl: body.webHookUrl,
-    redirectUrl: body.redirectUrl,
-  }))
-
   const res = await fetch('https://api.monobank.ua/api/merchant/invoice/create', {
     method: 'POST',
     headers: {
@@ -192,7 +186,6 @@ async function createMonoInvoice(params: {
   })
 
   const payload = await res.json()
-  console.log('[mono-create] response', res.status, JSON.stringify(payload))
   if (!res.ok || !payload.pageUrl || !payload.invoiceId) {
     throw new Error(`Mono invoice failed: ${res.status} ${JSON.stringify(payload)}`)
   }
