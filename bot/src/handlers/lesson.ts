@@ -126,14 +126,17 @@ async function showLessonList(ctx: BotContext, courseId: string, page: number) {
       const p = progress.get(lesson.id);
       const isCompleted = p?.completed ?? false;
 
-      const typeIcon = lesson.content_type === 'video' ? '🎬'
-        : lesson.content_type === 'audio' ? '🎧'
-        : lesson.content_type === 'document' ? '📄'
-        : lesson.content_type === 'mixed' ? '📦'
-        : '📖';
+      // Skip the content-type icon when the title already starts with an emoji
+      // (titles in course JSONs carry their own, more specific icon).
+      const titleHasLeadingEmoji = /^\p{Extended_Pictographic}/u.test(lesson.title);
+      const typeIcon = titleHasLeadingEmoji ? ''
+        : lesson.content_type === 'video' ? '🎬 '
+        : lesson.content_type === 'audio' ? '🎧 '
+        : lesson.content_type === 'document' ? '📄 '
+        : '📚 ';
 
       const checkmark = isCompleted ? '✅ ' : '';
-      const label = `${checkmark}${typeIcon} ${lesson.title}`;
+      const label = `${checkmark}${typeIcon}${lesson.title}`;
       const truncated = label.length > 55 ? label.slice(0, 52) + '...' : label;
       keyboard.text(truncated, `lesson:${lesson.id}`).row();
     }

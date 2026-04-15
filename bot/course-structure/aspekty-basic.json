@@ -16,19 +16,16 @@
     {
       "title": "📄 Самовчитель по аспектах",
       "compact": true,
-      "material": true,
       "messageIds": [7]
     },
     {
       "title": "📄 Аспекти Сонця і Місяця",
       "compact": true,
-      "material": true,
       "messageIds": [8]
     },
     {
       "title": "📄 Аспекти особистих планет",
       "compact": true,
-      "material": true,
       "messageIds": [9]
     }
   ]
