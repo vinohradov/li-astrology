@@ -6,7 +6,7 @@
 const Payment = {
     _processing: false,
 
-    async start(productId, provider = 'wayforpay') {
+    async start(productId, provider = 'monobank') {
         if (this._processing) return;
 
         const product = CONFIG.PRODUCTS[productId];
@@ -80,7 +80,7 @@ const Payment = {
             button.addEventListener('click', (e) => {
                 e.preventDefault();
                 const productId = button.getAttribute('data-product');
-                const provider = button.getAttribute('data-provider') || 'wayforpay';
+                const provider = button.getAttribute('data-provider') || 'monobank';
                 this.start(productId, provider);
             });
         });

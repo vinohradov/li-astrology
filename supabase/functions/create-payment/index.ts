@@ -1,5 +1,5 @@
 // Li Astrology — Create Payment Edge Function
-// Provider-agnostic entry point. Currently implements WayForPay.
+// Provider-agnostic entry point. Implements WayForPay and MonoBank acquiring.
 // Called from web frontend and from Telegram bot.
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts'
@@ -12,6 +12,7 @@ const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!
 const WAYFORPAY_MERCHANT_ACCOUNT = Deno.env.get('WAYFORPAY_MERCHANT_ACCOUNT') || 'test_merch_n1'
 const WAYFORPAY_SECRET_KEY       = Deno.env.get('WAYFORPAY_SECRET_KEY')       || 'flk3409refn54t54t*FNJRET'
 const WAYFORPAY_DOMAIN_NAME      = Deno.env.get('WAYFORPAY_DOMAIN_NAME')      || 'li-astrology.com.ua'
+const MONOBANK_TOKEN             = Deno.env.get('MONOBANK_TOKEN')             || ''
 const SITE_URL                   = Deno.env.get('SITE_URL')                   || 'https://li-astrology.com.ua'
 const TELEGRAM_BOT_USERNAME      = Deno.env.get('TELEGRAM_BOT_USERNAME')      || 'li_astrology_bot'
 
@@ -24,7 +25,7 @@ const corsHeaders = {
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY)
 
 interface CreatePaymentRequest {
-  provider: 'wayforpay' // | 'monobank' (Phase 3)
+  provider: 'wayforpay' | 'monobank'
   product_slug: string
   source: 'web' | 'bot'
   telegram_user_id?: number
@@ -144,6 +145,48 @@ async function createWfpInvoice(params: {
   return payload as { invoiceUrl: string; qrCode?: string }
 }
 
+async function createMonoInvoice(params: {
+  orderReference: string
+  amountUah: number
+  productName: string
+  redirectUrl: string
+  webHookUrl: string
+}): Promise<{ invoiceUrl: string; invoiceId: string }> {
+  if (!MONOBANK_TOKEN) throw new Error('MONOBANK_TOKEN not configured')
+
+  const amountKop = params.amountUah * 100
+  const body = {
+    amount: amountKop,
+    ccy: 980,
+    merchantPaymInfo: {
+      reference: params.orderReference,
+      destination: params.productName,
+      basketOrder: [
+        { name: params.productName, qty: 1, sum: amountKop, unit: 'шт.', code: params.orderReference },
+      ],
+    },
+    redirectUrl: params.redirectUrl,
+    webHookUrl: params.webHookUrl,
+    validity: 3600,
+    paymentType: 'debit',
+  }
+
+  const res = await fetch('https://api.monobank.ua/api/merchant/invoice/create', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Token': MONOBANK_TOKEN,
+    },
+    body: JSON.stringify(body),
+  })
+
+  const payload = await res.json()
+  if (!res.ok || !payload.pageUrl || !payload.invoiceId) {
+    throw new Error(`Mono invoice failed: ${res.status} ${JSON.stringify(payload)}`)
+  }
+  return { invoiceUrl: payload.pageUrl, invoiceId: payload.invoiceId }
+}
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders })
   if (req.method !== 'POST') {
@@ -156,8 +199,8 @@ serve(async (req) => {
     if (!body.provider || !body.product_slug || !body.source) {
       return json({ error: 'provider, product_slug and source are required' }, 400)
     }
-    if (body.provider !== 'wayforpay') {
-      return json({ error: `provider ${body.provider} not supported yet` }, 400)
+    if (body.provider !== 'wayforpay' && body.provider !== 'monobank') {
+      return json({ error: `provider ${body.provider} not supported` }, 400)
     }
     if (body.source !== 'web' && body.source !== 'bot') {
       return json({ error: 'source must be web or bot' }, 400)
@@ -189,11 +232,10 @@ serve(async (req) => {
     const returnUrl = body.source === 'web'
       ? `${SITE_URL}/payment/success/?order_id=${orderId}&product=${course.slug}`
       : `https://t.me/${TELEGRAM_BOT_USERNAME}?start=${orderId}`
-    const serviceUrl = `${SUPABASE_URL}/functions/v1/wfp-callback`
 
     const { error: insertErr } = await supabase.from('payments').insert({
       order_id: orderId,
-      provider: 'wayforpay',
+      provider: body.provider,
       status: 'pending',
       course_slug: course.slug,
       amount: amountUah,
@@ -210,20 +252,39 @@ serve(async (req) => {
       return json({ error: 'db insert failed' }, 500)
     }
 
-    const invoice = await createWfpInvoice({
+    if (body.provider === 'wayforpay') {
+      const invoice = await createWfpInvoice({
+        orderReference: orderId,
+        amount: amountUah,
+        productName: course.title,
+        customerEmail: body.customer_email,
+        customerPhone: body.customer_phone,
+        returnUrl,
+        serviceUrl: `${SUPABASE_URL}/functions/v1/wfp-callback`,
+      })
+      return json({
+        order_id: orderId,
+        invoice_url: invoice.invoiceUrl,
+        qr_code: invoice.qrCode,
+      })
+    }
+
+    // monobank
+    const mono = await createMonoInvoice({
       orderReference: orderId,
-      amount: amountUah,
+      amountUah,
       productName: course.title,
-      customerEmail: body.customer_email,
-      customerPhone: body.customer_phone,
-      returnUrl,
-      serviceUrl,
+      redirectUrl: returnUrl,
+      webHookUrl: `${SUPABASE_URL}/functions/v1/mono-callback`,
     })
+
+    await supabase.from('payments')
+      .update({ provider_order_id: mono.invoiceId })
+      .eq('order_id', orderId)
 
     return json({
       order_id: orderId,
-      invoice_url: invoice.invoiceUrl,
-      qr_code: invoice.qrCode,
+      invoice_url: mono.invoiceUrl,
     })
   } catch (err) {
     console.error('create-payment error', err)

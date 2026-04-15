@@ -1,10 +1,7 @@
 /**
  * Client-side payment handler.
- * Buttons with [data-product="{slug}"] → create WayForPay invoice → redirect.
- *
- * UX: the clicked button shows an inline spinner; other payment buttons are
- * disabled while a request is in flight. Errors surface via a non-blocking
- * toast rather than alert().
+ * Buttons with [data-product="{slug}"] → create invoice → redirect.
+ * Provider is read from [data-provider]; defaults to monobank.
  */
 
 import { site } from '@/config/site';
@@ -77,7 +74,7 @@ function markActive(active: HTMLElement, on: boolean) {
   }
 }
 
-async function start(productId: string, button: HTMLElement) {
+async function start(productId: string, provider: string, button: HTMLElement) {
   if (processing) return;
   processing = true;
   setAllDisabled(true);
@@ -91,7 +88,7 @@ async function start(productId: string, button: HTMLElement) {
         Authorization: `Bearer ${site.supabase.anonKey}`,
       },
       body: JSON.stringify({
-        provider: 'wayforpay',
+        provider,
         product_slug: productId,
         source: 'web',
       }),
@@ -102,7 +99,6 @@ async function start(productId: string, button: HTMLElement) {
       throw new Error(payload.error || `create-payment failed (${response.status})`);
     }
 
-    // Redirect to WayForPay checkout.
     window.location.href = payload.invoice_url;
   } catch (err) {
     console.error('Payment error:', err);
@@ -119,7 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       if (btn.getAttribute('aria-disabled') === 'true') return;
       const slug = btn.getAttribute('data-product');
-      if (slug) start(slug, btn);
+      const provider = btn.getAttribute('data-provider') || 'monobank';
+      if (slug) start(slug, provider, btn);
     });
   });
 });

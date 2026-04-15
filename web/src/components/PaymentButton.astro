@@ -2,12 +2,13 @@
 interface Props {
   slug: string;
   label: string;
+  provider?: 'monobank' | 'wayforpay';
   variant?: 'primary' | 'secondary' | 'dark' | 'outline-cream';
   size?: 'md' | 'lg';
   class?: string;
 }
 
-const { slug, label, variant = 'primary', size = 'lg', class: className = '' } = Astro.props;
+const { slug, label, provider = 'monobank', variant = 'primary', size = 'lg', class: className = '' } = Astro.props;
 
 const base =
   'group relative inline-flex items-center gap-3 rounded-full font-semibold uppercase tracking-[0.2em] transition duration-300';
@@ -28,6 +29,7 @@ const variants = {
 <a
   href="#"
   data-product={slug}
+  data-provider={provider}
   class:list={[base, sizes[size], variants[variant], className]}
 >
   <span>{label}</span>
