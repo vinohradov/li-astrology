@@ -16,6 +16,11 @@ const MONOBANK_TOKEN             = Deno.env.get('MONOBANK_TOKEN')             ||
 const SITE_URL                   = Deno.env.get('SITE_URL')                   || 'https://li-astrology.com.ua'
 const TELEGRAM_BOT_USERNAME      = Deno.env.get('TELEGRAM_BOT_USERNAME')      || 'li_astrology_bot'
 
+// Testing only: when set to e.g. "10", divides the final amount by 10 so we can
+// run real end-to-end payments cheaply. Leave unset in production.
+const TEST_PRICE_DIVISOR_RAW     = Deno.env.get('TEST_PRICE_DIVISOR')          || ''
+const TEST_PRICE_DIVISOR         = TEST_PRICE_DIVISOR_RAW ? Math.max(1, parseInt(TEST_PRICE_DIVISOR_RAW, 10) || 1) : 1
+
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
@@ -224,7 +229,11 @@ serve(async (req) => {
       appliedPromoCode = applied.promo.code
     }
 
-    const amountUah = Math.floor(priceKopiykas / 100)
+    let amountUah = Math.floor(priceKopiykas / 100)
+    if (TEST_PRICE_DIVISOR > 1) {
+      amountUah = Math.max(1, Math.floor(amountUah / TEST_PRICE_DIVISOR))
+      console.warn(`TEST_PRICE_DIVISOR=${TEST_PRICE_DIVISOR} active — charging ${amountUah} UAH`)
+    }
     const orderId = makeOrderId(body.source, course.slug)
     // After WayForPay checkout, customer is redirected back here.
     // Our Astro /payment/success/ page reads order_id + product, then offers
