@@ -16,6 +16,20 @@ const MONOBANK_TOKEN             = Deno.env.get('MONOBANK_TOKEN')             ||
 const SITE_URL                   = Deno.env.get('SITE_URL')                   || 'https://li-astrology.com.ua'
 const TELEGRAM_BOT_USERNAME      = Deno.env.get('TELEGRAM_BOT_USERNAME')      || 'li_astrology_bot'
 
+// Product cover images shown in Mono invoice UI (pay page + merchant cabinet).
+// Must be a public HTTPS URL. Drop files into web/public/images/courses/<slug>.jpg
+// and add the slug here to wire them up; unknown slugs fall back to the brand logo.
+const COURSE_ICON_BY_SLUG: Record<string, string> = {
+  'intensiv':      `${SITE_URL}/images/courses/intensiv.jpg`,
+  'astro-z-0':     `${SITE_URL}/images/courses/astro-z-0.jpg`,
+  'aspekty-basic': `${SITE_URL}/images/courses/aspekty-basic.jpg`,
+  'aspekty-pro':   `${SITE_URL}/images/courses/aspekty-pro.jpg`,
+}
+const COURSE_ICON_FALLBACK = `${SITE_URL}/images/li_logo_gold.png`
+function iconForSlug(slug: string): string {
+  return COURSE_ICON_BY_SLUG[slug] ?? COURSE_ICON_FALLBACK
+}
+
 // Testing only: when set to e.g. "10", divides the final amount by 10 so we can
 // run real end-to-end payments cheaply. Leave unset in production.
 const TEST_PRICE_DIVISOR_RAW     = Deno.env.get('TEST_PRICE_DIVISOR')          || ''
@@ -154,21 +168,29 @@ async function createMonoInvoice(params: {
   orderReference: string
   amountUah: number
   productName: string
+  productIcon?: string
   redirectUrl: string
   webHookUrl: string
 }): Promise<{ invoiceUrl: string; invoiceId: string }> {
   if (!MONOBANK_TOKEN) throw new Error('MONOBANK_TOKEN not configured')
 
   const amountKop = params.amountUah * 100
+  const basketItem: Record<string, unknown> = {
+    name: params.productName,
+    qty: 1,
+    sum: amountKop,
+    unit: 'шт.',
+    code: params.orderReference,
+  }
+  if (params.productIcon) basketItem.icon = params.productIcon
+
   const body = {
     amount: amountKop,
     ccy: 980,
     merchantPaymInfo: {
       reference: params.orderReference,
       destination: params.productName,
-      basketOrder: [
-        { name: params.productName, qty: 1, sum: amountKop, unit: 'шт.', code: params.orderReference },
-      ],
+      basketOrder: [basketItem],
     },
     redirectUrl: params.redirectUrl,
     webHookUrl: params.webHookUrl,
@@ -283,6 +305,7 @@ serve(async (req) => {
       orderReference: orderId,
       amountUah,
       productName: course.title,
+      productIcon: iconForSlug(course.slug),
       redirectUrl: returnUrl,
       webHookUrl: `${SUPABASE_URL}/functions/v1/mono-callback`,
     })
