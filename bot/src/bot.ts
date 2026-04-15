@@ -1,6 +1,7 @@
 import { Bot, Context, session, SessionFlavor } from 'grammy';
 import { config } from './config.js';
 import { supabase } from './db/client.js';
+import type { Locale } from './locales/index.js';
 
 export interface SessionData {
   /** Current promo code being entered for a course */
@@ -11,7 +12,12 @@ export interface SessionData {
   botMessageIds?: number[];
 }
 
-export type BotContext = Context & SessionFlavor<SessionData>;
+export interface LocaleFlavor {
+  /** Translations for the current user — set by the locale middleware. */
+  t: Locale;
+}
+
+export type BotContext = Context & SessionFlavor<SessionData> & LocaleFlavor;
 
 export function createBot(): Bot<BotContext> {
   const bot = new Bot<BotContext>(config.BOT_TOKEN);

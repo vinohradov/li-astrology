@@ -1,6 +1,5 @@
 import { Bot, InlineKeyboard } from 'grammy';
 import { BotContext } from '../bot.js';
-import { uk } from '../locales/uk.js';
 import { getLessonsByCourse, getLessonById } from '../db/lessons.js';
 import { getCompletedCount, getProgressForCourse, markLessonOpened, markLessonCompleted } from '../db/progress.js';
 import { getCourseById } from '../db/courses.js';
@@ -32,9 +31,9 @@ export function registerLessonHandler(bot: Bot<BotContext>) {
       parse_mode: 'HTML',
       link_preview_options: { is_disabled: true },
       reply_markup: new InlineKeyboard()
-        .text('Почати навчання →', `course:${courseId}`)
+        .text(ctx.t.lessons.startLearning, `course:${courseId}`)
         .row()
-        .text(uk.common.back, 'my_courses'),
+        .text(ctx.t.common.back, 'my_courses'),
     });
   });
 
@@ -47,7 +46,7 @@ export function registerLessonHandler(bot: Bot<BotContext>) {
   bot.callbackQuery(/^complete:(.+)$/, async (ctx) => {
     const lessonId = ctx.match[1];
     await markLessonCompleted(ctx.from.id, lessonId);
-    await ctx.answerCallbackQuery({ text: '✅ Урок завершено!' });
+    await ctx.answerCallbackQuery({ text: ctx.t.lessons.completedToast });
     // Re-render without resending media
     await showLesson(ctx, lessonId, true);
   });
@@ -64,9 +63,9 @@ export function registerLessonHandler(bot: Bot<BotContext>) {
       parse_mode: 'HTML',
       link_preview_options: { is_disabled: true },
       reply_markup: new InlineKeyboard()
-        .text(uk.common.back, `course:${courseId}`)
+        .text(ctx.t.common.back, `course:${courseId}`)
         .row()
-        .text(uk.common.home, 'home'),
+        .text(ctx.t.common.home, 'home'),
     });
   });
 
@@ -97,11 +96,11 @@ async function showLessonList(ctx: BotContext, courseId: string, page: number) {
   if (!course) return;
 
   if (!(await hasAccess(userId, courseId))) {
-    await cleanAndSend(ctx, 'У вас немає доступу до цього курсу.', {
+    await cleanAndSend(ctx, ctx.t.lessons.noAccess, {
       reply_markup: new InlineKeyboard()
-        .text(uk.catalog.details, `catalog_detail:${courseId}`)
+        .text(ctx.t.catalog.details, `catalog_detail:${courseId}`)
         .row()
-        .text(uk.common.home, 'home'),
+        .text(ctx.t.common.home, 'home'),
     });
     return;
   }
@@ -117,7 +116,7 @@ async function showLessonList(ctx: BotContext, courseId: string, page: number) {
   const keyboard = new InlineKeyboard();
 
   if (page === 1 && course.intro_html) {
-    keyboard.text('ℹ️ Про курс', `course_intro:${courseId}`).row();
+    keyboard.text(ctx.t.lessons.aboutCourse, `course_intro:${courseId}`).row();
   }
 
   // Build buttons: compact lessons go 2 per row, full lessons get their own row
@@ -169,10 +168,10 @@ async function showLessonList(ctx: BotContext, courseId: string, page: number) {
     keyboard.text(extra.buttonLabel, `extras:${courseId}`).row();
   }
 
-  keyboard.text(uk.common.back, 'my_courses');
+  keyboard.text(ctx.t.common.back, 'my_courses');
 
   const bar = progressBar(completed, total);
-  const header = `<b>${course.title}</b>\n\n${bar} ${completed}/${total} уроків`;
+  const header = `<b>${course.title}</b>\n\n${bar} ${ctx.t.lessons.progressLine(completed, total)}`;
 
   await cleanAndSend(ctx, header, {
     reply_markup: keyboard,
@@ -201,21 +200,21 @@ async function showLesson(ctx: BotContext, lessonId: string, skipMediaResend = f
   // Materials don't need completion tracking — just "back" button
   if (!lesson.material) {
     if (!isCompleted) {
-      keyboard.text('✅ Позначити як завершений', `complete:${lessonId}`).row();
+      keyboard.text(ctx.t.lessons.markCompleteButton, `complete:${lessonId}`).row();
     } else {
-      keyboard.text('✅ Завершено', 'noop').row();
+      keyboard.text(ctx.t.lessons.completedLabel, 'noop').row();
     }
   }
 
   const navRow: Array<{ text: string; data: string }> = [];
   if (!lesson.material) {
-    if (hasPrev) navRow.push({ text: '◄ Попередній', data: `prev_lesson:${lessonId}` });
-    if (hasNext) navRow.push({ text: 'Наступний ►', data: `next_lesson:${lessonId}` });
+    if (hasPrev) navRow.push({ text: ctx.t.lessons.prevShort, data: `prev_lesson:${lessonId}` });
+    if (hasNext) navRow.push({ text: ctx.t.lessons.nextShort, data: `next_lesson:${lessonId}` });
   }
   for (const btn of navRow) keyboard.text(btn.text, btn.data);
   if (navRow.length) keyboard.row();
 
-  keyboard.text('📋 До списку уроків', `course:${lesson.course_id}`);
+  keyboard.text(ctx.t.lessons.backToList, `course:${lesson.course_id}`);
 
   // Build text
   let text = `<b>${lesson.title}</b>`;
@@ -223,7 +222,7 @@ async function showLesson(ctx: BotContext, lessonId: string, skipMediaResend = f
 
   const urlMedia = lesson.media?.filter(m => m.url) ?? [];
   for (const m of urlMedia) {
-    text += `\n\n🎬 <a href="${m.url}">Дивитись відео</a>`;
+    text += `\n\n🎬 <a href="${m.url}">${ctx.t.lessons.watchVideo}</a>`;
   }
 
   const fileMedia = lesson.media?.filter(m => m.file_id) ?? [];

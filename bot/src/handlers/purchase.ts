@@ -1,6 +1,5 @@
 import { Bot, InlineKeyboard } from 'grammy';
 import { BotContext } from '../bot.js';
-import { uk } from '../locales/uk.js';
 import { getCourseById } from '../db/courses.js';
 import { validatePromo, calculateDiscount } from '../db/promotions.js';
 import { formatPrice } from '../utils/format.js';
@@ -22,17 +21,17 @@ export function registerPurchaseHandler(bot: Bot<BotContext>) {
         telegramUserId: userId,
       });
 
-      await cleanAndSend(ctx, uk.purchase.payViaLink, {
+      await cleanAndSend(ctx, ctx.t.purchase.payViaLink, {
         reply_markup: new InlineKeyboard()
-          .url(uk.purchase.payButton, invoiceUrl)
+          .url(ctx.t.purchase.payButton, invoiceUrl)
           .row()
-          .text(uk.common.back, `catalog_detail:${courseId}`),
+          .text(ctx.t.common.back, `catalog_detail:${courseId}`),
       });
     } catch (err) {
       console.error('create invoice failed', err);
-      await cleanAndSend(ctx, uk.purchase.error, {
+      await cleanAndSend(ctx, ctx.t.purchase.error, {
         reply_markup: new InlineKeyboard()
-          .text(uk.common.back, `catalog_detail:${courseId}`),
+          .text(ctx.t.common.back, `catalog_detail:${courseId}`),
       });
     }
   });
@@ -42,9 +41,9 @@ export function registerPurchaseHandler(bot: Bot<BotContext>) {
     const courseId = ctx.match[1];
 
     ctx.session.promoForCourse = courseId;
-    await cleanAndSend(ctx, uk.promo.enterCode, {
+    await cleanAndSend(ctx, ctx.t.promo.enterCode, {
       reply_markup: new InlineKeyboard()
-        .text(uk.common.back, `catalog_detail:${courseId}`),
+        .text(ctx.t.common.back, `catalog_detail:${courseId}`),
     });
   });
 
@@ -67,11 +66,11 @@ export function registerPurchaseHandler(bot: Bot<BotContext>) {
     const promo = await validatePromo(code, courseId);
 
     if (!promo) {
-      await cleanAndSend(ctx, uk.promo.invalid, {
+      await cleanAndSend(ctx, ctx.t.promo.invalid, {
         reply_markup: new InlineKeyboard()
-          .text(uk.catalog.buy(formatPrice(course.price_uah)), `buy:${courseId}`)
+          .text(ctx.t.catalog.buy(formatPrice(course.price_uah)), `buy:${courseId}`)
           .row()
-          .text(uk.common.back, `catalog_detail:${courseId}`),
+          .text(ctx.t.common.back, `catalog_detail:${courseId}`),
       });
       return;
     }
@@ -89,17 +88,17 @@ export function registerPurchaseHandler(bot: Bot<BotContext>) {
         promoCode: code,
       });
 
-      await cleanAndSend(ctx, uk.promo.applied(pct, formatPrice(newPrice)), {
+      await cleanAndSend(ctx, ctx.t.promo.applied(pct, formatPrice(newPrice)), {
         reply_markup: new InlineKeyboard()
-          .url(uk.purchase.payButton, invoiceUrl)
+          .url(ctx.t.purchase.payButton, invoiceUrl)
           .row()
-          .text(uk.common.home, 'home'),
+          .text(ctx.t.common.home, 'home'),
       });
     } catch (err) {
       console.error('create invoice failed', err);
-      await cleanAndSend(ctx, uk.purchase.error, {
+      await cleanAndSend(ctx, ctx.t.purchase.error, {
         reply_markup: new InlineKeyboard()
-          .text(uk.common.home, 'home'),
+          .text(ctx.t.common.home, 'home'),
       });
     }
   });

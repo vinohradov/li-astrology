@@ -1,6 +1,5 @@
 import { Bot, InlineKeyboard } from 'grammy';
 import { BotContext } from '../bot.js';
-import { uk } from '../locales/uk.js';
 import { getUserCourses } from '../db/purchases.js';
 import { getCourseById } from '../db/courses.js';
 import { getLessonCount } from '../db/lessons.js';
@@ -16,17 +15,17 @@ export function registerMyCoursesHandler(bot: Bot<BotContext>) {
     const userCourses = await getUserCourses(userId);
 
     if (userCourses.length === 0) {
-      await cleanAndSend(ctx, uk.myCourses.empty, {
+      await cleanAndSend(ctx, ctx.t.myCourses.empty, {
         reply_markup: new InlineKeyboard()
-          .text(uk.myCourses.toCatalog, 'catalog')
+          .text(ctx.t.myCourses.toCatalog, 'catalog')
           .row()
-          .text(uk.common.home, 'home'),
+          .text(ctx.t.common.home, 'home'),
       });
       return;
     }
 
     const keyboard = new InlineKeyboard();
-    const lines: string[] = ['Мої курси:\n'];
+    const lines: string[] = [ctx.t.myCourses.header];
 
     for (const uc of userCourses) {
       const course = await getCourseById(uc.course_id);
@@ -37,16 +36,16 @@ export function registerMyCoursesHandler(bot: Bot<BotContext>) {
       const bar = progressBar(completed, total);
 
       lines.push(`${course.title}`);
-      lines.push(`${bar} ${uk.myCourses.progress(completed, total)}\n`);
+      lines.push(`${bar} ${ctx.t.myCourses.progress(completed, total)}\n`);
 
       const label = completed > 0 && completed < total
-        ? `Продовжити: ${course.title}`
+        ? ctx.t.myCourses.continueCourse(course.title)
         : course.title;
 
       keyboard.text(label, `course:${course.id}`).row();
     }
 
-    keyboard.text(uk.common.home, 'home');
+    keyboard.text(ctx.t.common.home, 'home');
 
     await cleanAndSend(ctx, lines.join('\n'), {
       reply_markup: keyboard,

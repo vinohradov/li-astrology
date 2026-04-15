@@ -1,6 +1,5 @@
 import { Bot, InlineKeyboard } from 'grammy';
 import { BotContext } from '../bot.js';
-import { uk } from '../locales/uk.js';
 import { getActiveCourses, getCourseById } from '../db/courses.js';
 import { hasAccess } from '../db/purchases.js';
 import { getLessonCount } from '../db/lessons.js';
@@ -34,9 +33,9 @@ export function registerCatalogHandler(bot: Bot<BotContext>) {
       keyboard.text(label, `catalog_detail:${course.id}`).row();
     }
 
-    keyboard.text(uk.common.home, 'home');
+    keyboard.text(ctx.t.common.home, 'home');
 
-    await cleanAndSend(ctx, uk.catalog.title, {
+    await cleanAndSend(ctx, ctx.t.catalog.title, {
       reply_markup: keyboard,
     });
   });
@@ -55,24 +54,24 @@ export function registerCatalogHandler(bot: Bot<BotContext>) {
 
     let text = `<b>${course.title}</b>\n\n`;
     if (course.description) text += `${course.description}\n\n`;
-    if (lessonCount > 0) text += `Уроків: ${lessonCount}\n`;
-    text += `Ціна: ${price}`;
+    if (lessonCount > 0) text += `${ctx.t.catalog.lessonsCount(lessonCount)}\n`;
+    text += `${ctx.t.catalog.priceLabel} ${price}`;
 
     const keyboard = new InlineKeyboard();
 
     if (owned) {
-      keyboard.text(uk.catalog.goToCourse, `course:${courseId}`).row();
-      keyboard.text(`✅ ${uk.catalog.owned}`, 'noop').row();
+      keyboard.text(ctx.t.catalog.goToCourse, `course:${courseId}`).row();
+      keyboard.text(`✅ ${ctx.t.catalog.owned}`, 'noop').row();
     } else {
-      keyboard.text(uk.catalog.buy(price), `buy:${courseId}`).row();
+      keyboard.text(ctx.t.catalog.buy(price), `buy:${courseId}`).row();
       const landingUrl = COURSE_LANDING_URL[course.slug];
       if (landingUrl) {
-        keyboard.url('ℹ️ Про курс (на сайті)', landingUrl).row();
+        keyboard.url(ctx.t.catalog.aboutOnSite, landingUrl).row();
       }
-      keyboard.text(uk.catalog.promoCode, `promo:${courseId}`).row();
+      keyboard.text(ctx.t.catalog.promoCode, `promo:${courseId}`).row();
     }
 
-    keyboard.text(uk.common.back, 'catalog');
+    keyboard.text(ctx.t.common.back, 'catalog');
 
     await cleanAndSend(ctx, text, {
       reply_markup: keyboard,

@@ -1,6 +1,5 @@
 import { Bot, InlineKeyboard } from 'grammy';
 import { BotContext } from '../bot.js';
-import { uk } from '../locales/uk.js';
 import { mainMenuKeyboard } from '../utils/keyboard.js';
 import { cleanAndSend } from '../utils/chat.js';
 import { getCourseBySlug } from '../db/courses.js';
@@ -30,18 +29,18 @@ export function registerStartHandler(bot: Bot<BotContext>) {
         const owned = await hasAccess(from.id, course.id);
         if (owned) {
           await cleanAndSend(ctx, `Ви вже маєте доступ до "${course.title}"!`, {
-            reply_markup: mainMenuKeyboard(),
+            reply_markup: mainMenuKeyboard(ctx.t),
           });
         } else {
           await cleanAndSend(ctx,
             `${course.title}\n\n${course.description ?? ''}\n\nЦіна: ${formatPrice(course.price_uah)}`,
             {
               reply_markup: new InlineKeyboard()
-                .text(uk.catalog.buy(formatPrice(course.price_uah)), `buy:${course.id}`)
+                .text(ctx.t.catalog.buy(formatPrice(course.price_uah)), `buy:${course.id}`)
                 .row()
-                .text(uk.catalog.promoCode, `promo:${course.id}`)
+                .text(ctx.t.catalog.promoCode, `promo:${course.id}`)
                 .row()
-                .text(uk.common.home, 'home'),
+                .text(ctx.t.common.home, 'home'),
             },
           );
         }
@@ -54,28 +53,28 @@ export function registerStartHandler(bot: Bot<BotContext>) {
       if (handled) return;
     }
 
-    await cleanAndSend(ctx, uk.welcome(from.first_name ?? ''), {
-      reply_markup: mainMenuKeyboard(),
+    await cleanAndSend(ctx, ctx.t.welcome(from.first_name ?? ''), {
+      reply_markup: mainMenuKeyboard(ctx.t),
     });
   });
 }
 
-async function handleOrderIdDeeplink(ctx: any, orderId: string): Promise<boolean> {
+async function handleOrderIdDeeplink(ctx: BotContext, orderId: string): Promise<boolean> {
   const payment = await getPaymentByOrderId(orderId);
   if (!payment) return false;
 
-  const userId = ctx.from.id;
+  const userId = ctx.from!.id;
 
   if (payment.status === 'pending') {
-    await cleanAndSend(ctx, uk.purchase.pending, {
-      reply_markup: mainMenuKeyboard(),
+    await cleanAndSend(ctx, ctx.t.purchase.pending, {
+      reply_markup: mainMenuKeyboard(ctx.t),
     });
     return true;
   }
 
   if (payment.status !== 'paid') {
-    await cleanAndSend(ctx, uk.purchase.failed, {
-      reply_markup: mainMenuKeyboard(),
+    await cleanAndSend(ctx, ctx.t.purchase.failed, {
+      reply_markup: mainMenuKeyboard(ctx.t),
     });
     return true;
   }
@@ -85,14 +84,14 @@ async function handleOrderIdDeeplink(ctx: any, orderId: string): Promise<boolean
     const claimed = await claimPaymentForUser(orderId, userId);
     if (!claimed) {
       // Someone already claimed it — treat as unauthorized
-      await cleanAndSend(ctx, uk.purchase.alreadyClaimed, {
-        reply_markup: mainMenuKeyboard(),
+      await cleanAndSend(ctx, ctx.t.purchase.alreadyClaimed, {
+        reply_markup: mainMenuKeyboard(ctx.t),
       });
       return true;
     }
   } else if (payment.telegram_user_id !== userId) {
-    await cleanAndSend(ctx, uk.purchase.alreadyClaimed, {
-      reply_markup: mainMenuKeyboard(),
+    await cleanAndSend(ctx, ctx.t.purchase.alreadyClaimed, {
+      reply_markup: mainMenuKeyboard(ctx.t),
     });
     return true;
   }
@@ -100,8 +99,8 @@ async function handleOrderIdDeeplink(ctx: any, orderId: string): Promise<boolean
   const course = await getCourseBySlug(payment.course_slug);
   if (!course) {
     console.error('course not found for payment', payment.course_slug);
-    await cleanAndSend(ctx, uk.purchase.failed, {
-      reply_markup: mainMenuKeyboard(),
+    await cleanAndSend(ctx, ctx.t.purchase.failed, {
+      reply_markup: mainMenuKeyboard(ctx.t),
     });
     return true;
   }
@@ -113,11 +112,11 @@ async function handleOrderIdDeeplink(ctx: any, orderId: string): Promise<boolean
     amountPaid: payment.amount * 100,
   });
 
-  await cleanAndSend(ctx, uk.purchase.success(course.title), {
+  await cleanAndSend(ctx, ctx.t.purchase.success(course.title), {
     reply_markup: new InlineKeyboard()
-      .text(uk.purchase.goToCourse, `course:${course.id}`)
+      .text(ctx.t.purchase.goToCourse, `course:${course.id}`)
       .row()
-      .text(uk.common.home, 'home'),
+      .text(ctx.t.common.home, 'home'),
   });
   return true;
 }

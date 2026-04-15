@@ -2,6 +2,7 @@ import express from 'express';
 import { config } from './config.js';
 import { createBot } from './bot.js';
 import { authMiddleware } from './middleware/auth.js';
+import { localeMiddleware } from './middleware/locale.js';
 import { errorHandler } from './middleware/error.js';
 import { registerStartHandler } from './handlers/start.js';
 import { registerMenuHandler } from './handlers/menu.js';
@@ -19,6 +20,7 @@ async function main() {
 
   // Middleware
   bot.use(authMiddleware);
+  bot.use(localeMiddleware);
 
   // Handlers (order matters — more specific first)
   registerStartHandler(bot);

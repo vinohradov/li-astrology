@@ -1,6 +1,5 @@
 import { Bot, InlineKeyboard } from 'grammy';
 import { BotContext } from '../bot.js';
-import { uk } from '../locales/uk.js';
 import { config } from '../config.js';
 import { cleanAndSend } from '../utils/chat.js';
 
@@ -9,9 +8,9 @@ export function registerSupportHandler(bot: Bot<BotContext>) {
     await ctx.answerCallbackQuery();
     ctx.session.inSupportMode = true;
 
-    await cleanAndSend(ctx, uk.support.intro, {
+    await cleanAndSend(ctx, ctx.t.support.intro, {
       reply_markup: new InlineKeyboard()
-        .text(uk.common.home, 'home'),
+        .text(ctx.t.common.home, 'home'),
     });
   });
 
@@ -29,6 +28,7 @@ export function registerSupportHandler(bot: Bot<BotContext>) {
     // Delete user's message to keep chat clean
     try { await ctx.deleteMessage(); } catch {}
 
+    // Admin notification stays in Ukrainian — admins are UA-speaking.
     for (const adminId of config.ADMIN_IDS) {
       try {
         await ctx.api.sendMessage(
@@ -39,9 +39,9 @@ export function registerSupportHandler(bot: Bot<BotContext>) {
       } catch {}
     }
 
-    await cleanAndSend(ctx, uk.support.received, {
+    await cleanAndSend(ctx, ctx.t.support.received, {
       reply_markup: new InlineKeyboard()
-        .text(uk.common.home, 'home'),
+        .text(ctx.t.common.home, 'home'),
     });
   });
 }

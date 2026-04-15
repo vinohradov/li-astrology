@@ -1,6 +1,6 @@
 import { supabase } from '../db/client.js';
 import { createReminder } from '../db/reminders.js';
-import { uk } from '../locales/uk.js';
+import { getLocale } from '../locales/index.js';
 
 /**
  * Find users inactive for 3+ days who have uncompleted courses,
@@ -13,7 +13,7 @@ export async function checkInactivity() {
   // Find inactive users with purchased courses
   const { data: inactiveUsers } = await supabase
     .from('bot_users')
-    .select('id, first_name')
+    .select('id, first_name, lang')
     .eq('blocked_bot', false)
     .lt('last_active', threeDaysAgo);
 
@@ -58,18 +58,19 @@ export async function checkInactivity() {
 
     const nextLesson = (completedLessons ?? 0) + 1;
 
+    const t = getLocale((user as { lang?: string }).lang);
     await createReminder({
       userId: user.id,
       type: 'inactivity',
       payload: {
-        text: uk.reminder.inactivity(
+        text: t.reminder.inactivity(
           user.first_name ?? '',
           courseTitle,
           nextLesson,
           totalLessons ?? 0
         ),
         buttons: [
-          { text: uk.reminder.continueCourse, callback_data: `course:${uc.course_id}` },
+          { text: t.reminder.continueCourse, callback_data: `course:${uc.course_id}` },
         ],
       },
     });

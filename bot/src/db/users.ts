@@ -52,3 +52,11 @@ export async function markBlocked(userId: number) {
     .update({ blocked_bot: true })
     .eq('id', userId);
 }
+
+export async function setUserLang(userId: number, lang: 'uk' | 'ru') {
+  const { error } = await supabase
+    .from('bot_users')
+    .update({ lang })
+    .eq('id', userId);
+  if (error) console.error('setUserLang error:', error);
+}

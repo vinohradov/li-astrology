@@ -13,6 +13,8 @@ export const uk = {
     empty: 'У тебе ще немає курсів. Завітай до каталогу!',
     progress: (completed: number, total: number) => `${completed}/${total} уроків`,
     toCatalog: 'До каталогу',
+    header: 'Мої курси:\n',
+    continueCourse: (title: string) => `Продовжити: ${title}`,
   },
 
   lessons: {
@@ -23,16 +25,31 @@ export const uk = {
     next: 'Наступний урок',
     prev: 'Попередній урок',
     backToLessons: 'До списку уроків',
+    aboutCourse: 'ℹ️ Про курс',
+    startLearning: 'Почати навчання →',
+    noAccess: 'У вас немає доступу до цього курсу.',
+    watchVideo: 'Дивитись відео',
+    completedToast: '✅ Урок завершено!',
+    markCompleteButton: '✅ Позначити як завершений',
+    completedLabel: '✅ Завершено',
+    prevShort: '◄ Попередній',
+    nextShort: 'Наступний ►',
+    backToList: '📋 До списку уроків',
+    progressLine: (completed: number, total: number) => `${completed}/${total} уроків`,
   },
 
   catalog: {
     title: 'Наші курси:',
     price: (uah: number) => `${uah} грн`,
+    priceLabel: 'Ціна:',
+    lessonsCount: (n: number) => `Уроків: ${n}`,
     details: 'Детальніше',
     buy: (price: string) => `Купити за ${price}`,
     promoCode: 'У мене є промокод',
     owned: 'Вже придбано',
     goToCourse: 'Перейти до курсу',
+    aboutOnSite: 'ℹ️ Про курс (на сайті)',
+    alreadyOwned: (title: string) => `Ви вже маєте доступ до "${title}"!`,
   },
 
   purchase: {
