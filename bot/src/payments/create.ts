@@ -1,6 +1,9 @@
 import { config } from '../config.js';
 
-interface CreatePaymentParams {
+export type PaymentProvider = 'monobank' | 'wayforpay';
+
+interface CreateInvoiceParams {
+  provider?: PaymentProvider;
   courseSlug: string;
   telegramUserId: number;
   customerEmail?: string;
@@ -9,20 +12,21 @@ interface CreatePaymentParams {
   promoCode?: string;
 }
 
-interface CreatePaymentResult {
+interface CreateInvoiceResult {
   orderId: string;
   invoiceUrl: string;
   qrCode?: string;
 }
 
 /**
- * Calls the Supabase Edge Function `create-payment` to obtain a WayForPay invoice
- * for a bot-initiated purchase. The Edge Function creates the payments row and
- * the WFP invoice; we only get back the redirect URL.
+ * Calls the Supabase Edge Function `create-payment`. For bot-initiated
+ * purchases the Edge Function sets the provider's redirectUrl to the bot
+ * deep-link (t.me/<bot>?start=<orderId>) so the user returns here and the
+ * /start handler claims the payment.
  */
-export async function createWayForPayInvoice(
-  params: CreatePaymentParams,
-): Promise<CreatePaymentResult> {
+export async function createInvoice(
+  params: CreateInvoiceParams,
+): Promise<CreateInvoiceResult> {
   const url = `${config.SUPABASE_URL}/functions/v1/create-payment`;
   const res = await fetch(url, {
     method: 'POST',
@@ -31,7 +35,7 @@ export async function createWayForPayInvoice(
       Authorization: `Bearer ${config.SUPABASE_SERVICE_KEY}`,
     },
     body: JSON.stringify({
-      provider: 'wayforpay',
+      provider: params.provider ?? 'monobank',
       source: 'bot',
       product_slug: params.courseSlug,
       telegram_user_id: params.telegramUserId,

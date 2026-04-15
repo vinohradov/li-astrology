@@ -4,7 +4,7 @@ import { uk } from '../locales/uk.js';
 import { getCourseById } from '../db/courses.js';
 import { validatePromo, calculateDiscount } from '../db/promotions.js';
 import { formatPrice } from '../utils/format.js';
-import { createWayForPayInvoice } from '../payments/wayforpay.js';
+import { createInvoice } from '../payments/create.js';
 import { cleanAndSend } from '../utils/chat.js';
 
 export function registerPurchaseHandler(bot: Bot<BotContext>) {
@@ -17,7 +17,7 @@ export function registerPurchaseHandler(bot: Bot<BotContext>) {
     if (!course) return;
 
     try {
-      const { invoiceUrl } = await createWayForPayInvoice({
+      const { invoiceUrl } = await createInvoice({
         courseSlug: course.slug,
         telegramUserId: userId,
       });
@@ -83,7 +83,7 @@ export function registerPurchaseHandler(bot: Bot<BotContext>) {
     const userId = ctx.from!.id;
 
     try {
-      const { invoiceUrl } = await createWayForPayInvoice({
+      const { invoiceUrl } = await createInvoice({
         courseSlug: course.slug,
         telegramUserId: userId,
         promoCode: code,

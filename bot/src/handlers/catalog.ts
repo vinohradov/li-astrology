@@ -7,6 +7,15 @@ import { getLessonCount } from '../db/lessons.js';
 import { formatPrice } from '../utils/format.js';
 import { cleanAndSend } from '../utils/chat.js';
 
+// Maps a course slug to its marketing landing page on li-astrology.com.ua.
+// Courses without a public page (e.g. upcoming ones) are omitted so the
+// "Про курс" button is hidden for them.
+const COURSE_LANDING_URL: Record<string, string> = {
+  intensiv: 'https://li-astrology.com.ua/intensiv/',
+  'aspekty-basic': 'https://li-astrology.com.ua/aspekty/',
+  'aspekty-pro': 'https://li-astrology.com.ua/aspekty/',
+};
+
 export function registerCatalogHandler(bot: Bot<BotContext>) {
   bot.callbackQuery('catalog', async (ctx) => {
     await ctx.answerCallbackQuery();
@@ -56,6 +65,10 @@ export function registerCatalogHandler(bot: Bot<BotContext>) {
       keyboard.text(`✅ ${uk.catalog.owned}`, 'noop').row();
     } else {
       keyboard.text(uk.catalog.buy(price), `buy:${courseId}`).row();
+      const landingUrl = COURSE_LANDING_URL[course.slug];
+      if (landingUrl) {
+        keyboard.url('ℹ️ Про курс (на сайті)', landingUrl).row();
+      }
       keyboard.text(uk.catalog.promoCode, `promo:${courseId}`).row();
     }
 
