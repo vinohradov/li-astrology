@@ -1,8 +1,6 @@
 import { Bot, InlineKeyboard } from 'grammy';
 import { BotContext } from '../bot.js';
 import { getCourseById } from '../db/courses.js';
-import { validatePromo, calculateDiscount } from '../db/promotions.js';
-import { formatPrice } from '../utils/format.js';
 import { createInvoice } from '../payments/create.js';
 import { cleanAndSend } from '../utils/chat.js';
 
@@ -32,73 +30,6 @@ export function registerPurchaseHandler(bot: Bot<BotContext>) {
       await cleanAndSend(ctx, ctx.t.purchase.error, {
         reply_markup: new InlineKeyboard()
           .text(ctx.t.common.back, `catalog_detail:${courseId}`),
-      });
-    }
-  });
-
-  bot.callbackQuery(/^promo:(.+)$/, async (ctx) => {
-    await ctx.answerCallbackQuery();
-    const courseId = ctx.match[1];
-
-    ctx.session.promoForCourse = courseId;
-    await cleanAndSend(ctx, ctx.t.promo.enterCode, {
-      reply_markup: new InlineKeyboard()
-        .text(ctx.t.common.back, `catalog_detail:${courseId}`),
-    });
-  });
-
-  bot.on('message:text', async (ctx, next) => {
-    if (!ctx.session.promoForCourse) {
-      await next();
-      return;
-    }
-
-    const courseId = ctx.session.promoForCourse;
-    const code = ctx.message.text.trim();
-    ctx.session.promoForCourse = undefined;
-
-    // Delete user's message
-    try { await ctx.deleteMessage(); } catch {}
-
-    const course = await getCourseById(courseId);
-    if (!course) return;
-
-    const promo = await validatePromo(code, courseId);
-
-    if (!promo) {
-      await cleanAndSend(ctx, ctx.t.promo.invalid, {
-        reply_markup: new InlineKeyboard()
-          .text(ctx.t.catalog.buy(formatPrice(course.price_uah)), `buy:${courseId}`)
-          .row()
-          .text(ctx.t.common.back, `catalog_detail:${courseId}`),
-      });
-      return;
-    }
-
-    const discount = calculateDiscount(promo, course.price_uah);
-    const newPrice = course.price_uah - discount;
-    const pct = promo.discount_pct ?? Math.round((discount / course.price_uah) * 100);
-
-    const userId = ctx.from!.id;
-
-    try {
-      const { invoiceUrl } = await createInvoice({
-        courseSlug: course.slug,
-        telegramUserId: userId,
-        promoCode: code,
-      });
-
-      await cleanAndSend(ctx, ctx.t.promo.applied(pct, formatPrice(newPrice)), {
-        reply_markup: new InlineKeyboard()
-          .url(ctx.t.purchase.payButton, invoiceUrl)
-          .row()
-          .text(ctx.t.common.home, 'home'),
-      });
-    } catch (err) {
-      console.error('create invoice failed', err);
-      await cleanAndSend(ctx, ctx.t.purchase.error, {
-        reply_markup: new InlineKeyboard()
-          .text(ctx.t.common.home, 'home'),
       });
     }
   });

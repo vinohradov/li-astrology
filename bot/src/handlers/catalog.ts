@@ -63,12 +63,11 @@ export function registerCatalogHandler(bot: Bot<BotContext>) {
       keyboard.text(ctx.t.catalog.goToCourse, `course:${courseId}`).row();
       keyboard.text(`✅ ${ctx.t.catalog.owned}`, 'noop').row();
     } else {
-      keyboard.text(ctx.t.catalog.buy(price), `buy:${courseId}`).row();
       const landingUrl = COURSE_LANDING_URL[course.slug];
       if (landingUrl) {
         keyboard.url(ctx.t.catalog.aboutOnSite, landingUrl).row();
       }
-      keyboard.text(ctx.t.catalog.promoCode, `promo:${courseId}`).row();
+      keyboard.text(ctx.t.catalog.buy(price), `buy:${courseId}`).row();
     }
 
     keyboard.text(ctx.t.common.back, 'catalog');

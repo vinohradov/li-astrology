@@ -38,8 +38,6 @@ export function registerStartHandler(bot: Bot<BotContext>) {
               reply_markup: new InlineKeyboard()
                 .text(ctx.t.catalog.buy(formatPrice(course.price_uah)), `buy:${course.id}`)
                 .row()
-                .text(ctx.t.catalog.promoCode, `promo:${course.id}`)
-                .row()
                 .text(ctx.t.common.home, 'home'),
             },
           );

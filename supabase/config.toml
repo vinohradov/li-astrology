@@ -3,7 +3,11 @@
 # or the Supabase dashboard (Edge Functions → function → Settings).
 
 [functions.create-payment]
-verify_jwt = true
+# Both web (anon JWT) and bot (sb_secret_ API key) call this function.
+# The bot's key is not a JWT, so verify_jwt=true rejects it. The function
+# validates course slug / price / promo internally, so disabling JWT
+# verification only exposes "create an invoice for a real course".
+verify_jwt = false
 
 [functions.wfp-callback]
 # WayForPay does not send JWT — we verify its HMAC_MD5 signature inside.
