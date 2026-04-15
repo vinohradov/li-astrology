@@ -1,15 +1,11 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { site, products, type ProductSlug } from '@/config/site';
+import { site } from '@/config/site';
 
-const rawProduct = Astro.url.searchParams.get('product') as ProductSlug | null;
-const orderId = Astro.url.searchParams.get('order_id') ?? '';
-const product = rawProduct && products[rawProduct] ? products[rawProduct] : null;
-
-// Telegram deep link: the bot reads /start <order_id> and grants access.
-const botLink = orderId
-  ? `${site.bot.url}?start=${encodeURIComponent(orderId)}`
-  : site.bot.url;
+// Page is statically built — order_id + product are read client-side from
+// window.location.search (see inline <script> below) and used to patch the
+// Telegram deep-link, product label, support mailto, and order-id display.
+const botLink = site.bot.url;
 ---
 
 <Layout
@@ -45,19 +41,19 @@ const botLink = orderId
         Дякую за <em class="gradient-text-gold font-display italic">довіру</em>.
       </h1>
 
-      {product && (
-        <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-cream/75 md:text-lg">
-          Ви придбали <strong class="text-cream">{product.title}</strong>. Доступ до матеріалів — через наш Telegram-бот. Натисніть кнопку нижче, щоб активувати.
-        </p>
-      )}
-      {!product && (
-        <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-cream/75 md:text-lg">
-          Оплата пройшла успішно. Доступ до матеріалів — через наш Telegram-бот. Натисніть кнопку нижче, щоб активувати.
-        </p>
-      )}
+      <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-cream/75 md:text-lg">
+        <span id="success-product-intro" data-with-product="Ви придбали" data-without-product="Оплата пройшла успішно.">
+          Оплата пройшла успішно.
+        </span>
+        <strong id="success-product-title" class="text-cream hidden"></strong>
+        <span>
+          Доступ до матеріалів — через наш Telegram-бот. Натисніть кнопку нижче, щоб активувати.
+        </span>
+      </p>
 
       <!-- Primary CTA -->
       <a
+        id="success-bot-link"
         href={botLink}
         target="_blank"
         rel="noopener"
@@ -72,11 +68,9 @@ const botLink = orderId
         </svg>
       </a>
 
-      {orderId && (
-        <p class="mt-6 text-xs uppercase tracking-[0.25em] text-cream/40">
-          Номер замовлення: <span class="font-mono text-cream/70">{orderId}</span>
-        </p>
-      )}
+      <p id="success-order-wrap" class="mt-6 text-xs uppercase tracking-[0.25em] text-cream/40 hidden">
+        Номер замовлення: <span id="success-order-id" class="font-mono text-cream/70"></span>
+      </p>
 
       <!-- Steps -->
       <div class="mx-auto mt-16 grid w-full max-w-xl gap-4 text-left">
@@ -106,10 +100,45 @@ const botLink = orderId
       <!-- Support -->
       <p class="mt-14 text-xs text-cream/50">
         Виникли проблеми? Напишіть нам на
-        <a href={`mailto:${site.contact.email}?subject=${encodeURIComponent(`Проблема з доступом — замовлення ${orderId}`)}`} class="text-gold-bright underline-offset-4 hover:underline">
+        <a id="success-support-link" href={`mailto:${site.contact.email}`} class="text-gold-bright underline-offset-4 hover:underline">
           {site.contact.email}
         </a>
       </p>
     </div>
   </section>
 </Layout>
+
+<script is:inline define:vars={{ botUrl: site.bot.url, supportEmail: site.contact.email, productsMap: { intensiv: 'Інтенсив «Астрологія з 0»', 'aspekty-basic': 'Аспекти — базовий тариф', 'aspekty-pro': 'Аспекти — професійний тариф' } }}>
+  (() => {
+    const params = new URLSearchParams(window.location.search);
+    const orderId = params.get('order_id') || '';
+    const productSlug = params.get('product') || '';
+    const productTitle = productsMap[productSlug] || '';
+
+    const botLinkEl = document.getElementById('success-bot-link');
+    if (botLinkEl && orderId) {
+      botLinkEl.href = `${botUrl}?start=${encodeURIComponent(orderId)}`;
+    }
+
+    const titleEl = document.getElementById('success-product-title');
+    const introEl = document.getElementById('success-product-intro');
+    if (productTitle && titleEl && introEl) {
+      introEl.textContent = introEl.dataset.withProduct || '';
+      titleEl.textContent = ` ${productTitle}.`;
+      titleEl.classList.remove('hidden');
+    }
+
+    const orderWrap = document.getElementById('success-order-wrap');
+    const orderIdEl = document.getElementById('success-order-id');
+    if (orderId && orderWrap && orderIdEl) {
+      orderIdEl.textContent = orderId;
+      orderWrap.classList.remove('hidden');
+    }
+
+    const supportEl = document.getElementById('success-support-link');
+    if (supportEl && orderId) {
+      const subject = encodeURIComponent(`Проблема з доступом — замовлення ${orderId}`);
+      supportEl.href = `mailto:${supportEmail}?subject=${subject}`;
+    }
+  })();
+</script>
