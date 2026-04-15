@@ -39,14 +39,23 @@ async function getMonoPublicKey(): Promise<KeyObject> {
   if (cachedPubKey && Date.now() - cachedPubKey.fetchedAt < 60 * 60 * 1000) {
     return cachedPubKey.key
   }
-  const res = await fetch('https://api.monobank.ua/api/merchant/pub-key', {
-    headers: { 'X-Token': MONOBANK_TOKEN },
-  })
-  if (!res.ok) throw new Error(`pub-key fetch failed: ${res.status} ${await res.text()}`)
-  const payload = await res.json() as { key: string }
-  const key = createPublicKey(toPem(payload.key))
-  cachedPubKey = { key, fetchedAt: Date.now() }
-  return key
+  // Try the documented path first; some integration tokens respond 404 there
+  // and work on the legacy /pubkey path.
+  const paths = ['/api/merchant/pub-key', '/api/merchant/pubkey']
+  let lastErr = ''
+  for (const path of paths) {
+    const res = await fetch(`https://api.monobank.ua${path}`, {
+      headers: { 'X-Token': MONOBANK_TOKEN, Accept: 'application/json' },
+    })
+    if (res.ok) {
+      const payload = await res.json() as { key: string }
+      const key = createPublicKey(toPem(payload.key))
+      cachedPubKey = { key, fetchedAt: Date.now() }
+      return key
+    }
+    lastErr = `${path}: ${res.status}`
+  }
+  throw new Error(`pub-key fetch failed on all paths — ${lastErr}`)
 }
 
 function verifyMonoSignature(rawBody: string, sigB64: string, pubKey: KeyObject): boolean {
@@ -88,11 +97,13 @@ serve(async (req) => {
   // than the narrow blast radius of accepting a forged webhook, which still
   // needs the exact order_id (randomly generated, never exposed) to do harm.
   let sigOk: boolean | 'unverified' = 'unverified'
+  let sigErr: string | undefined
   try {
     const pubKey = await getMonoPublicKey()
     sigOk = verifyMonoSignature(rawBody, sigB64, pubKey)
   } catch (err) {
-    console.error('[mono] pub-key fetch error', err)
+    sigErr = err instanceof Error ? err.message : String(err)
+    console.error('[mono] pub-key fetch error', sigErr)
   }
 
   let cb: MonoCallback
@@ -107,8 +118,24 @@ serve(async (req) => {
   if (!payment) return new Response('not found', { status: 404 })
 
   if (payment.status === 'paid' || payment.status === 'refunded') {
-    console.log('[mono] summary', JSON.stringify({ orderId, sigOk, monoStatus: cb.status, action: 'already-finalised' }))
+    console.log('[mono] summary', JSON.stringify({ orderId, sigOk, sigErr, monoStatus: cb.status, action: 'already-finalised' }))
     return new Response('ok', { status: 200 })
+  }
+
+  // Security: when ECDSA verification is unavailable (integration tokens lack
+  // pub-key access), we instead require the webhook to carry the invoiceId
+  // Mono gave us at invoice/create time + matching amount/currency. Forging
+  // requires knowing those, which are only in our logs and Mono's DB.
+  const invoiceMatches =
+    cb.invoiceId === payment.provider_order_id &&
+    cb.amount === payment.amount * 100 &&
+    cb.ccy === 980
+  if (sigOk !== true && !invoiceMatches) {
+    console.warn('[mono] invoice-match failed', JSON.stringify({
+      orderId, cbInvoice: cb.invoiceId, expected: payment.provider_order_id,
+      cbAmount: cb.amount, expectedAmount: payment.amount * 100, cbCcy: cb.ccy,
+    }))
+    return new Response('invoice mismatch', { status: 400 })
   }
 
   const newStatus =
@@ -148,7 +175,7 @@ serve(async (req) => {
   }
 
   // Single-line summary for easy grep in logs.
-  console.log('[mono] summary', JSON.stringify({ orderId, sigOk, monoStatus: cb.status, newStatus }))
+  console.log('[mono] summary', JSON.stringify({ orderId, sigOk, sigErr, monoStatus: cb.status, newStatus }))
 
   return new Response('ok', { status: 200 })
 })
