@@ -8,6 +8,7 @@ import { hasAccess } from '../db/purchases.js';
 import { paginate, addPaginationButtons } from '../utils/pagination.js';
 import { progressBar } from '../utils/format.js';
 import { cleanAndSend, sendTrackedMedia } from '../utils/chat.js';
+import { COURSE_EXTRAS } from '../content/extras.js';
 
 export function registerLessonHandler(bot: Bot<BotContext>) {
 
@@ -49,6 +50,24 @@ export function registerLessonHandler(bot: Bot<BotContext>) {
     await ctx.answerCallbackQuery({ text: '✅ Урок завершено!' });
     // Re-render without resending media
     await showLesson(ctx, lessonId, true);
+  });
+
+  bot.callbackQuery(/^extras:(.+)$/, async (ctx) => {
+    await ctx.answerCallbackQuery();
+    const courseId = ctx.match[1];
+    const course = await getCourseById(courseId);
+    if (!course) return;
+    const extra = COURSE_EXTRAS[course.slug];
+    if (!extra) return;
+
+    await cleanAndSend(ctx, extra.html, {
+      parse_mode: 'HTML',
+      link_preview_options: { is_disabled: true },
+      reply_markup: new InlineKeyboard()
+        .text(uk.common.back, `course:${courseId}`)
+        .row()
+        .text(uk.common.home, 'home'),
+    });
   });
 
   bot.callbackQuery(/^next_lesson:(.+)$/, async (ctx) => {
@@ -144,6 +163,12 @@ async function showLessonList(ctx: BotContext, courseId: string, page: number) {
   flushCompact(); // flush remaining
 
   addPaginationButtons(keyboard, page, totalPages, `course:${courseId}`);
+
+  const extra = COURSE_EXTRAS[course.slug];
+  if (extra) {
+    keyboard.text(extra.buttonLabel, `extras:${courseId}`).row();
+  }
+
   keyboard.text(uk.common.back, 'my_courses');
 
   const bar = progressBar(completed, total);
