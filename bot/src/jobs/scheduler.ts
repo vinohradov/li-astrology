@@ -3,6 +3,7 @@ import { Bot } from 'grammy';
 import { BotContext } from '../bot.js';
 import { checkInactivity } from './inactivity.js';
 import { processReminders } from './send-reminders.js';
+import { tickReconcilePayments } from './reconcile-payments.js';
 
 export function startScheduler(bot: Bot<BotContext>) {
   // Send pending reminders every minute
@@ -14,6 +15,11 @@ export function startScheduler(bot: Bot<BotContext>) {
     }
   });
 
+  // Poll Mono for any pending payments whose webhook was missed. Runs every
+  // minute; idempotent because the Edge Function only touches still-pending
+  // rows and upserts user_courses.
+  cron.schedule('* * * * *', tickReconcilePayments);
+
   // Check for inactive users every 6 hours
   cron.schedule('0 */6 * * *', async () => {
     try {
@@ -23,5 +29,5 @@ export function startScheduler(bot: Bot<BotContext>) {
     }
   });
 
-  console.log('Scheduler started: reminders (1min), inactivity (6h)');
+  console.log('Scheduler started: reminders (1min), mono reconcile (1min), inactivity (6h)');
 }

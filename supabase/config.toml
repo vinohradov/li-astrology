@@ -16,3 +16,7 @@ verify_jwt = false
 [functions.mono-callback]
 # Monobank sends an X-Sign ECDSA signature in the header, not a JWT.
 verify_jwt = false
+
+[functions.reconcile-payments]
+# Called manually as a fallback when webhooks fail to arrive.
+verify_jwt = false

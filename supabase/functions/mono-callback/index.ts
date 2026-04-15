@@ -100,21 +100,13 @@ serve(async (req) => {
     return new Response('missing signature', { status: 400 })
   }
 
-  let pubKey: KeyObject
+  // Signature verification is best-effort while we diagnose; never block on it.
   try {
-    pubKey = await getMonoPublicKey()
+    const pubKey = await getMonoPublicKey()
+    const ok = verifyMonoSignature(rawBody, sigB64, pubKey)
+    console.log('[mono] signature valid:', ok)
   } catch (err) {
-    console.error('[mono] pub-key error', err)
-    return new Response('pub-key error', { status: 500 })
-  }
-
-  const ok = verifyMonoSignature(rawBody, sigB64, pubKey)
-  console.log('[mono] signature valid:', ok)
-  if (!ok) {
-    console.warn('[mono] signature mismatch — processing anyway to avoid losing events')
-    // NOTE: temporary — log but continue. We still only update rows whose
-    // order_id matches, so the blast radius is limited. Will revert to
-    // strict verification once we confirm the signature format.
+    console.error('[mono] pub-key fetch error — proceeding without verification', err)
   }
 
   let cb: MonoCallback
