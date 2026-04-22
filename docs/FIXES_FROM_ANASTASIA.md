@@ -82,13 +82,15 @@ _(was F-09, F-10, F-11 — all resolved in 2026-04-22 session, see Done section)
 
 ---
 
-## ❌ Not done
-
 ### F-13 — Post-completion nurture for `aspekty-basic` buyers
-**Date:** 2026-04-13 15:40 (long Ukrainian message "✨ Мої любі, наше навчання з теми аспектів підійшло до завершення…")
-**Asked:** when an aspekty-basic student finishes all lessons, bot sends a message congratulating + pitching the full course, with a CTA button.
-**Status:** not implemented. `bot/src/content/nurture.ts` only has INTENSIV_NURTURE_STEPS and COLD_NURTURE_STEPS. No on-completion trigger exists for aspekty-basic. The scheduler (`bot/src/jobs/nurture.ts`) is purely date-based, not event-based.
-**Action:** decide — event trigger on last-lesson-completed, or time-based 3-day nurture after purchase? Anastasia's text is ready, just needs plumbing.
+**Date:** 2026-04-13 15:40
+**Asked:** when an aspekty-basic student finishes all lessons, bot pitches the full astro-z-0 course with Anastasia's «Мої любі…» text + CTA button to the landing.
+**Verified:** done in this session. Event-triggered (not cron-scheduled): `bot/src/jobs/completion-nurture.ts` fires from the `complete:` callback (`bot/src/handlers/lesson.ts`) when the user hits 100% of a course with a `COMPLETION_NURTURE` entry. Text registered for `aspekty-basic` in `bot/src/content/nurture.ts` (UA + RU). Delivery goes through the standard `reminders` table + `send-reminders` cron — benefits from F-08 message tracking. Dedup via existing reminder-type check (one send per user-per-course).
+**Note:** fires forward only. Users who completed aspekty-basic BEFORE this deploy won't get the message automatically — same retroactive-firing quirk documented in TODO.md. One-off backfill is a separate task if needed.
+
+---
+
+## ❌ Not done
 
 ### F-14 — Rename bot: «Астрологія з 0 | навчання»
 **Date:** 2026-04-13 15:50
@@ -115,5 +117,5 @@ _(was F-09, F-10, F-11 — all resolved in 2026-04-22 session, see Done section)
 
 Remaining after 2026-04-22 session:
 1. **F-14 + F-15** 🔧 — @BotFather: rename to «Астрологія з 0 | навчання» + upload `brand/li-bot-avatar-512.png`.
-2. **F-13** — post-completion trigger for aspekty-basic buyers (event-driven, not date-driven; Anastasia's Ukrainian text ready in chat export).
-3. **F-11 confirm** — ask Anastasia whether Pro should explicitly include feedback / certificate / supervision (currently dropped in favour of her clean "Pro = 6-module Як консультувати block" narrative).
+2. **F-11 confirm** — ask Anastasia whether Pro should explicitly include feedback / certificate / supervision (currently dropped in favour of her clean "Pro = 6-module Як консультувати block" narrative).
+3. **F-13 backfill decision** — if existing aspekty-basic completers should also get the completion message, need a one-off broadcast script. Forward-only is default.

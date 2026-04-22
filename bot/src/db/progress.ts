@@ -60,3 +60,12 @@ export async function markLessonCompleted(userId: number, lessonId: string) {
       { onConflict: 'user_id,lesson_id' }
     );
 }
+
+export async function getTrackableLessonsCount(courseId: string): Promise<number> {
+  const { count } = await supabase
+    .from('lessons')
+    .select('*', { count: 'exact', head: true })
+    .eq('course_id', courseId)
+    .eq('material', false);
+  return count ?? 0;
+}

@@ -8,6 +8,7 @@ import { paginate, addPaginationButtons } from '../utils/pagination.js';
 import { progressBar } from '../utils/format.js';
 import { cleanAndSend, sendTrackedMedia } from '../utils/chat.js';
 import { COURSE_EXTRAS } from '../content/extras.js';
+import { maybeQueueCompletionNurture } from '../jobs/completion-nurture.js';
 
 export function registerLessonHandler(bot: Bot<BotContext>) {
 
@@ -47,6 +48,11 @@ export function registerLessonHandler(bot: Bot<BotContext>) {
     const lessonId = ctx.match[1];
     await markLessonCompleted(ctx.from.id, lessonId);
     await ctx.answerCallbackQuery({ text: ctx.t.lessons.completedToast });
+    // Fire event-based completion nurture if this was the last lesson.
+    // Best-effort: failures must not break the lesson re-render below.
+    maybeQueueCompletionNurture(ctx.from.id, lessonId).catch((e) =>
+      console.error('completion nurture check failed:', e)
+    );
     // Re-render without resending media
     await showLesson(ctx, lessonId, true);
   });
