@@ -75,12 +75,14 @@ _(was F-09, F-10, F-11 — all resolved in 2026-04-22 session, see Done section)
 
 ---
 
-## ❌ Not done
-
 ### F-12 — Rename lesson 1 in `astro-z-0`: «Медитації» → «Подкасти»
-**Date:** 2026-04-13 17:36 ("надо будет заменить название «Медитації» на «Подкасти»")
-**Status:** DB row `astro-z-0` position 1 title is still `🎧 Медитації`. Also `intensiv` position 1 is "Подарунки та медитації" (may or may not need renaming — Anastasia's message was specifically about the word "Медитації" as a lesson title, but she didn't specify course → worth confirming).
-**Action:** one DB update for astro-z-0, confirm intent for intensiv.
+**Date:** 2026-04-13 17:36
+**Asked:** renaming the word "Медитації" to "Подкасти" on the lesson title.
+**Verified:** done in this session — DB row `astro-z-0` position 1 title is now `🎧 Подкасти`. Local source-of-truth `bot/course-structure/astro-z-0.json` also updated so a re-seed wouldn't revert. Landing copy already synced in F-09. `intensiv` position 1 «Подарунки та медитації» left as-is (Anastasia didn't specify; confirm if it should also change).
+
+---
+
+## ❌ Not done
 
 ### F-13 — Post-completion nurture for `aspekty-basic` buyers
 **Date:** 2026-04-13 15:40 (long Ukrainian message "✨ Мої любі, наше навчання з теми аспектів підійшло до завершення…")
@@ -112,7 +114,6 @@ _(was F-09, F-10, F-11 — all resolved in 2026-04-22 session, see Done section)
 ## Suggested next batch
 
 Remaining after 2026-04-22 session:
-1. **F-12** — rename DB `astro-z-0` lesson 1 "🎧 Медитації" → "🎧 Подкасти" (1 DB update). Note: landing page already renamed to «Подарунки: аудіо-подкасти».
-2. **F-14 + F-15** 🔧 — @BotFather: rename to «Астрологія з 0 | навчання» + upload `brand/li-bot-avatar-512.png`.
-3. **F-13** — post-completion trigger for aspekty-basic buyers (event-driven, not date-driven; Anastasia's Ukrainian text ready in chat export).
-4. **F-11 confirm** — ask Anastasia whether Pro should explicitly include feedback / certificate / supervision (currently dropped in favour of her clean "Pro = 6-module Як консультувати block" narrative).
+1. **F-14 + F-15** 🔧 — @BotFather: rename to «Астрологія з 0 | навчання» + upload `brand/li-bot-avatar-512.png`.
+2. **F-13** — post-completion trigger for aspekty-basic buyers (event-driven, not date-driven; Anastasia's Ukrainian text ready in chat export).
+3. **F-11 confirm** — ask Anastasia whether Pro should explicitly include feedback / certificate / supervision (currently dropped in favour of her clean "Pro = 6-module Як консультувати block" narrative).
