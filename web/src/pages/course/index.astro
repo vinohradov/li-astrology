@@ -9,6 +9,7 @@ import { products, site } from '@/config/site';
 const basic = products['astro-z-0'];
 const pro = products['astro-z-0-pro'];
 
+const buyBasicHref = `${site.bot.url}?start=buy_astro-z-0`;
 const waitlistHref = `${site.bot.url}?start=waitlist_course`;
 
 const audience = [
@@ -148,7 +149,7 @@ const faqs = [
   { q: 'Що, якщо я вже купила Аспекти або Інтенсив?', a: 'Після оплати попередніх продуктів ти отримуєш промокод у Telegram. Введи його при покупці курсу — вартість уже пройдених матеріалів буде вирахувана.' },
   { q: 'Скільки часу потрібно на проходження?', a: 'Курс розрахований на самостійне вивчення у зручному темпі — від 2 до 6 місяців. Доступ до матеріалів залишається назавжди.' },
   { q: 'Який формат матеріалів?', a: 'Текстові уроки з прикладами + відео-розбори + медитації + домашні завдання. Усе приходить через Telegram-бот одразу після оплати.' },
-  { q: 'Коли старт?', a: 'Курс у фінальній стадії підготовки. Залиш свій контакт у листі очікування — напишемо першим, коли відкриємо продаж.' },
+  { q: 'Коли старт?', a: 'Тариф «Для себе» можна купити просто зараз — доступ до всіх матеріалів відкриється одразу в Telegram-боті. Тариф «Для профі» у фінальній підготовці (запис блоку «Як консультувати» завершуємо протягом ~2 місяців) — залиш контакт у waitlist, напишемо першою.' },
 ];
 ---
 
@@ -182,7 +183,6 @@ const faqs = [
           <div class="mb-8 inline-flex items-baseline gap-2 rounded-full border border-gold-bright/40 bg-white/5 px-5 py-2 backdrop-blur">
             <span class="text-xs uppercase tracking-widest text-gold-bright/80">Від</span>
             <span class="font-display text-xl text-cream">{basic.priceLabel}</span>
-            <span class="ml-2 rounded-full border border-gold-bright/50 px-2 py-0.5 text-[9px] uppercase tracking-[0.3em] text-gold-bright">Скоро</span>
           </div>
 
           <h1 class="font-display text-[clamp(2.75rem,6.5vw,5.75rem)] leading-[0.98] tracking-tight text-balance">
@@ -195,8 +195,8 @@ const faqs = [
           </p>
 
           <div class="mt-12 flex flex-wrap items-center gap-4">
-            <a href={waitlistHref} target="_blank" rel="noopener" class="group relative inline-flex items-center gap-3 rounded-full bg-gold-bright px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-ink transition duration-300 hover:bg-gold">
-              <span>Лист очікування</span>
+            <a href={buyBasicHref} target="_blank" rel="noopener" class="group relative inline-flex items-center gap-3 rounded-full bg-gold-bright px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-ink transition duration-300 hover:bg-gold">
+              <span>Придбати курс</span>
               <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
             <a href="#program" class="text-xs uppercase tracking-[0.3em] text-cream/60 underline-offset-[6px] hover:text-cream hover:underline">
@@ -473,8 +473,8 @@ const faqs = [
               <div class="text-[10px] uppercase tracking-widest text-ink-muted">Вартість</div>
               <div class="font-display text-4xl text-ink">{basic.priceLabel}</div>
             </div>
-            <a href={waitlistHref} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-ink/30 px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-ink transition hover:border-ink/60">
-              Лист очікування
+            <a href={buyBasicHref} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-cream transition hover:bg-plum-deep">
+              Придбати
             </a>
           </div>
         </article>
@@ -502,7 +502,11 @@ const faqs = [
             ))}
           </ul>
 
-          <div class="mt-10 flex items-end justify-between border-t border-gold-bright/30 pt-8">
+          <p class="mt-8 rounded-2xl border border-gold-bright/30 bg-white/40 px-4 py-3 text-xs leading-relaxed text-ink-muted">
+            <span class="font-semibold text-ink">Pro-тариф у фінальній підготовці.</span> Блок «Як консультувати» завершуємо запис протягом ~2 місяців. Залиш контакт — напишемо першою, коли відкриємо продаж.
+          </p>
+
+          <div class="mt-6 flex items-end justify-between border-t border-gold-bright/30 pt-8">
             <div>
               <div class="text-[10px] uppercase tracking-widest text-gold-deep">Вартість</div>
               <div class="font-display text-4xl gradient-text-gold">{pro.priceLabel}</div>
@@ -515,7 +519,7 @@ const faqs = [
       </div>
 
       <p class="mt-12 text-center text-xs uppercase tracking-[0.3em] text-ink-muted">
-        Старт продажу — скоро · Залиш контакт у Telegram, щоб отримати перше запрошення
+        Basic — доступний одразу · Pro — у waitlist, старт через ~2 місяці
       </p>
     </div>
   </section>
@@ -628,8 +632,8 @@ const faqs = [
       <div class="text-[10px] uppercase tracking-widest text-ink-muted">Від</div>
       <div class="font-display text-xl">{basic.priceLabel}</div>
     </div>
-    <a href={waitlistHref} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-cream">
-      Лист очікування
+    <a href={buyBasicHref} target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-cream">
+      Придбати
     </a>
   </div>
 </Layout>

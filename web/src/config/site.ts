@@ -69,7 +69,7 @@ export const products: Record<ProductSlug, Product> = {
     priceUah: 6000,
     priceLabel: '6 000 грн',
     href: '/course/',
-    status: 'coming-soon',
+    status: 'live',
   },
   'astro-z-0-pro': {
     slug: 'astro-z-0-pro',
