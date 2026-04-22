@@ -2,6 +2,7 @@ import { Bot, InlineKeyboard } from 'grammy';
 import { BotContext } from '../bot.js';
 import { getPendingReminders, markReminderSent, markReminderFailed } from '../db/reminders.js';
 import { markBlocked } from '../db/users.js';
+import { appendUserBotMessageId } from '../db/sessions.js';
 
 export async function processReminders(bot: Bot<BotContext>) {
   const reminders = await getPendingReminders(30);
@@ -23,9 +24,17 @@ export async function processReminders(bot: Bot<BotContext>) {
         }
       }
 
-      await bot.api.sendMessage(reminder.user_id, reminder.payload.text, {
+      const sent = await bot.api.sendMessage(reminder.user_id, reminder.payload.text, {
         reply_markup: reminder.payload.buttons ? keyboard : undefined,
       });
+
+      // Track in user's session so the next navigation click deletes it.
+      // Best-effort: failures here shouldn't block the reminder from being marked sent.
+      try {
+        await appendUserBotMessageId(reminder.user_id, sent.message_id);
+      } catch (trackErr) {
+        console.error(`Failed to track reminder message ${sent.message_id} for user ${reminder.user_id}:`, trackErr);
+      }
 
       await markReminderSent(reminder.id);
     } catch (e: any) {

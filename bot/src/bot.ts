@@ -23,11 +23,19 @@ export function createBot(): Bot<BotContext> {
   const bot = new Bot<BotContext>(config.BOT_TOKEN);
 
   // FIRST middleware: show loading state IMMEDIATELY on any callback button press
-  // This runs BEFORE session loading, so user sees instant feedback
+  // This runs BEFORE session loading, so user sees instant feedback.
+  // Skip for stale callback messages — cleanAndSend will send a NEW message
+  // at the bottom instead of editing, so "Завантаження…" on an old in-place
+  // edit would just leave a stale "⏳" stranded in chat history.
   bot.use(async (ctx, next) => {
     if (ctx.callbackQuery?.data && ctx.callbackQuery.data !== 'noop') {
-      const msgId = ctx.callbackQuery.message?.message_id;
-      if (msgId) {
+      const msg = ctx.callbackQuery.message;
+      const msgId = msg?.message_id;
+      const msgDate = msg?.date;
+      const isStale = msgDate
+        ? Math.floor(Date.now() / 1000) - msgDate > 24 * 3600
+        : false;
+      if (msgId && !isStale) {
         // Fire-and-forget: edit to loading state without awaiting session
         ctx.api.editMessageText(
           ctx.chat!.id,

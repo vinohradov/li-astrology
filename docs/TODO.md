@@ -68,6 +68,39 @@ Pending (requires a deploy + SQL migration):
       when Pro tariff launches. Not urgent — add when closer to Pro
       launch.
 
+## Bot chat cleanup — known limits
+
+- **Telegram Bot API: 48h hard limit on `deleteMessage` / `deleteMessages`**
+  in private chats. Bot messages older than 48 hours cannot be removed by
+  any means — this is a platform rule, not our bug.
+- What we do: every navigation goes through `cleanAndSend`
+  (`bot/src/utils/chat.ts`), which tracks sent message_ids in
+  `bot_sessions.value.botMessageIds` and deletes them on the next click.
+  Nurture broadcasts now track their message_id via
+  `appendUserBotMessageId` in `bot/src/db/sessions.ts`.
+- For callbacks older than 24h, `cleanAndSend` switches from "edit in place"
+  to "send new at the bottom" so the returning user doesn't see the nav
+  buried above frozen old content.
+- Residual UX gap: if a user returns after 48h, old media (audio/video)
+  can't be deleted. It stays above the new navigation in the scroll
+  history. No fix available — only mitigation is the 1/3/7-day nurture
+  sequence that tries to pull users back inside the 48h window.
+
+- [ ] On first-seen user return after >7 days, consider sending a
+      visual separator ("━━━━━━ з поверненням ━━━━━━") before navigation
+      to visually close off the dead history. Low priority — nice polish.
+
+## Nurture scheduler — known quirks
+
+- [ ] **Retroactive firing on new nurture rules.** When a new nurture
+      sequence is added, existing paid users get every step whose
+      `scheduled_at` is already in the past (e.g. a user who bought
+      Intensiv 3 weeks ago received D+1 and D+3 nurture within the same
+      minute). Prevent by either (a) stamping a "skip if older than X"
+      guard in the scheduler, or (b) only scheduling for users whose
+      trigger event is in the future at time of rule insert. Not urgent
+      since going forward new buyers land on the timeline cleanly.
+
 ## Nice-to-have
 
 - [ ] Translate course marketing copy (landing pages + course DB titles
