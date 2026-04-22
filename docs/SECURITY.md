@@ -49,10 +49,6 @@ Required secrets:
 - `TELEGRAM_BOT_USERNAME` — `li_astrology_bot`
 - `SITE_URL` — `https://li-astrology.com.ua`
 
-Optional:
-- `TEST_PRICE_DIVISOR` — divides invoice amount for testing (set to `10`
-  to charge 1/10). **Unset for production.**
-
 Supabase auto-injects `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`.
 
 View / set:

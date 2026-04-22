@@ -26,9 +26,6 @@
       - No code change needed once enabled — `mono-callback` will pick up
         the key automatically on the next cache refresh.
 
-- [ ] **Remove `TEST_PRICE_DIVISOR=10` before going live.** Run
-      `supabase secrets unset TEST_PRICE_DIVISOR` to restore full prices.
-
 - [ ] **Check Mono merchant dashboard for any webhook delivery warnings.**
       Historical webhooks returned 500 before we hardened the handler;
       Mono may have soft-deactivated retries. New invoices work fine but

@@ -32,7 +32,7 @@ Pre-launch (content not recorded yet):
 ```
 [user] buy button (bot OR web)
   → POST create-payment edge function (verify_jwt=false)
-      • validates course, applies TEST_PRICE_DIVISOR if set
+      • validates course
       • inserts payments row (status=pending, source=web|bot)
       • calls Mono /api/merchant/invoice/create with webHookUrl + redirectUrl
   → returns Mono pageUrl → user pays on pay.monobank.ua
@@ -65,16 +65,6 @@ for every `pending` monobank row, updates DB, grants access. Handles webhook mis
 - `astro-z-0` final lesson "🎧 Фінал" has custom intro text_html before the audio.
 - `astro-z-0` lesson list has a persistent "📚 Література / книги" button → `bot/src/content/extras.ts`.
 - Purchase flow: "Про курс (на сайті)" URL button above "Купити" on catalog detail. Promo code UI removed.
-
-## Test-mode price divisor
-
-Set `TEST_PRICE_DIVISOR=10` in Supabase secrets to charge 1/10 real price on every new invoice.
-Unset to return to full price. No redeploy required.
-
-```bash
-supabase secrets set TEST_PRICE_DIVISOR=10    # testing
-supabase secrets unset TEST_PRICE_DIVISOR     # production
-```
 
 ## Key URLs
 

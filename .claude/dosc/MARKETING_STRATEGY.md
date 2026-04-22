@@ -239,7 +239,6 @@ Instagram / Reels / DM
 
 ### Юридика / compliance
 - [ ] Розблокувати `/api/merchant/pub-key` у Mono (strict ECDSA замість invoice-match).
-- [ ] Забрати `TEST_PRICE_DIVISOR=10` перед запуском платного трафіку (див. `docs/TODO.md`).
 
 ---
 
