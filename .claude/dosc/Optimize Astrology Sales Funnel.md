@@ -1,4 +1,19 @@
-# Chat Conversation
+# Chat Conversation (HISTORICAL — не актуально)
+
+> ⚠️ **Архивный документ.** Это лог чата с ранним LLM-ассистентом, когда проект был на LiqPay, Интенсив стоил 490 грн, а Аспекты имели один тариф 1290 грн.
+>
+> Актуальная стратегия — `.claude/dosc/MARKETING_STRATEGY.md`.
+> Текущее состояние продуктов и платежей — `docs/STATUS.md`.
+>
+> Расхождения с текущей реальностью:
+> - **Платёжка:** LiqPay (в логе) → Mono (сейчас, primary).
+> - **Интенсив:** 490 грн (в логе) → 1199 грн.
+> - **Аспекты:** один тариф 1290 (в логе) → два тарифа, `aspekty-basic` 1290 + `aspekty-pro` 2790.
+> - **Бот:** планировался на SmartSender/SendPulse, затем на Supabase Edge Functions/Deno → фактически self-hosted grammY на Railway.
+>
+> Документ сохранён, потому что содержит полезную логику рассуждений о воронке (tripwire → OTO → nurture), которая в общих чертах всё ещё описывает стратегию. Но конкретные цифры, слаги и техрешения — устарели.
+
+---
 
 Note: _This is purely the output of the chat conversation and does not contain any raw data, codebase snippets, etc. used to generate the output._
 

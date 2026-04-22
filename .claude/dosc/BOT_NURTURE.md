@@ -1,0 +1,149 @@
+# Bot Nurture + Waitlist
+
+> Оновлено 2026-04-22. Код: `bot/src/content/nurture.ts`, `bot/src/jobs/nurture.ts`, `bot/src/db/waitlist.ts`, `bot/src/handlers/start.ts`.
+
+---
+
+## 1. Nurture-серія для покупців Інтенсиву
+
+### Мета
+
+Через 1/3/7/14 днів після оплати Інтенсиву бот шле 4 повідомлення, які:
+1. Тримають людину залученою (день 1).
+2. Дають цінність + натяк на глибину (день 3).
+3. Явно показують різницю Інтенсив → повний курс (день 7).
+4. Прямий CTA на купівлю повного курсу `astro-z-0` за 6000 грн (день 14).
+
+Ціль воронки — підняти 30-day LTV покупця Інтенсиву за рахунок конверсії у повний курс.
+
+### Як це працює технічно
+
+1. **Cron `checkNurture`** у `bot/src/jobs/nurture.ts` запускається **щогодини** (о :15 хв), див. `scheduler.ts`.
+2. Проходить по всіх покупцях Інтенсиву (`user_courses` JOIN `courses` WHERE slug='intensiv', не заблоковані).
+3. Для кожного користувача:
+    - Якщо він вже купив `astro-z-0` — пропустити (конвертація сталась).
+    - Обчислити age = days since `purchased_at`.
+    - Для кожного `NURTURE_STEPS[i]` (де `day <= age`):
+        - Перевірити, чи немає вже запису в `reminders` з `type='nurture_day<N>'` для цього user_id.
+        - Якщо немає — створити `reminder` з локалізованим текстом і (опціонально) кнопкою.
+4. Далі вже існуючий `send-reminders` cron (1 раз на хвилину) забирає reminder і шле повідомлення через Telegram API.
+5. Якщо користувач заблокував бота — `send-reminders` позначає `bot_users.blocked_bot=true`, наступні nurture-фільтруються.
+
+### Як змінити контент
+
+Відредагуй `bot/src/content/nurture.ts` — масив `NURTURE_STEPS`. Кожен елемент:
+
+```typescript
+{
+  day: 3,
+  textUk: (name) => `...`,
+  textRu: (name) => `...`,
+  button?: {
+    labelUk: '...',
+    labelRu: '...',
+    url: 'https://...',
+  },
+}
+```
+
+- `day` — через скільки днів слати.
+- `textUk` / `textRu` — функції, що повертають текст. `name` — first_name користувача.
+- `button` — опційна URL-кнопка. Для чистих engagement-повідомлень (день 1) не потрібна.
+
+**Важливо:** якщо додаш **новий** крок (наприклад, `day: 5`), він автоматично почне слатися тільки новим покупцям — існуючі покупці отримають нові повідомлення, якщо їхній age ≥ N і reminder з типом `nurture_day5` ще не створювався для них (дедуп по user+type).
+
+Якщо **видаляєш** крок — просто видали елемент з масиву. Старі reminders, які вже в черзі, відправляться, але нові — ні.
+
+Якщо **переписуєш текст** на вже існуючому кроці — зміниться тільки для тих, кому ще не відправляли (reminder не створювався). Для тих, хто вже отримав — лишиться старий текст (уже у `reminders.payload.text`).
+
+### Як зупинити серію для конкретного користувача
+
+Одна з двох опцій:
+1. Видалити всі pending reminders: `DELETE FROM reminders WHERE user_id=<id> AND type LIKE 'nurture_%' AND sent_at IS NULL`.
+2. Поставити псевдо-запис, який дедуп врахує: `INSERT INTO reminders (user_id, type, payload, scheduled_at, sent_at) VALUES (<id>, 'nurture_day14', '{"text":""}', now(), now())`.
+
+### Як глобально вимкнути серію
+
+В `bot/src/jobs/scheduler.ts` закоментувати блок `cron.schedule('15 * * * *', ...)` для nurture. Pending reminders продовжать відправлятись доки не закінчаться.
+
+Або швидше — очистити `NURTURE_STEPS = []` у content/nurture.ts і задеплоїти.
+
+### Поточна серія
+
+| Day | Кнопка | URL | Сенс |
+|---|---|---|---|
+| 1 | — | — | Engagement — питання про стихії |
+| 3 | «Подивитись програму курсу» | `/course/` | Освітній bonus + soft mention курсу |
+| 7 | «Перейти до курсу» | `/course/` | Явний pitch: Інтенсив = 10%, курс = 100% |
+| 14 | «Придбати 6 000 грн» | `t.me/bot?start=buy_astro-z-0` | Direct CTA — пряма покупка в боті |
+
+---
+
+## 2. Waitlist (зараз тільки для Pro-тарифу повного курсу)
+
+### Навіщо
+
+Лендинг `/course/` продає basic-тариф (6000) напряму, а pro-тариф (12500) — у waitlist-mode до моменту, поки не буде знято блок «Як консультувати» (~2 місяці). Кнопки "Лист очікування" на сайті шлють у бота з payload `waitlist_course`.
+
+### Як це працює
+
+1. Користувач на `/course/` натискає «Лист очікування» (hero — не має її тепер; тільки Pro-картка і mobile sticky ведуть на waitlist).
+2. Відкривається `t.me/li_astrology_bot?start=waitlist_course`.
+3. `handlers/start.ts` ловить payload `waitlist_course`:
+    - Викликає `addToWaitlist({userId, listSlug: 'astro-z-0-pro', source: 'course_landing'})`.
+    - Insert у `bot_waitlist` (UNIQUE на (user_id, list_slug) — ідемпотентно).
+    - Шле confirmation повідомлення + кнопки «Каталог» / «Головне меню».
+
+### Структура `bot_waitlist`
+
+```sql
+id                UUID PRIMARY KEY
+telegram_user_id  BIGINT → bot_users.id (cascade)
+list_slug         TEXT              -- наразі 'astro-z-0-pro'
+source            TEXT NULL         -- 'course_landing' | 'bot_nurture' | ...
+created_at        TIMESTAMPTZ
+notified_at       TIMESTAMPTZ NULL  -- виставляється коли broadcast виконаний
+UNIQUE (telegram_user_id, list_slug)
+```
+
+### Як зробити розсилку коли Pro запуститься
+
+Варіанти:
+- Швидко: admin-команда `/broadcast_waitlist <list_slug> <text>` — пройти по `bot_waitlist` WHERE list_slug=X AND notified_at IS NULL, поставити reminder для кожного, set notified_at=now().
+- Acurate: скрипт `scripts/broadcast-waitlist.ts` — аналогічно, але з підтвердженням кількості, rate-limit тощо.
+
+Admin-команда зараз не реалізована. Додамо коли ближче до запуску Pro.
+
+### Як додати нові waitlist'и в майбутньому
+
+Нова точка входу → новий `listSlug` + (опційно) новий payload. Наприклад, якщо колись Інтенсив закриємо і почнемо набирати у waitlist:
+
+```typescript
+// handlers/start.ts
+if (payload === 'waitlist_intensiv') {
+  await addToWaitlist({ userId, listSlug: 'intensiv-v2', source: 'intensiv_landing' });
+  ...
+}
+```
+
+Таблиця і логіка універсальні по `list_slug`.
+
+---
+
+## 3. Перетин nurture ↔ waitlist
+
+Зараз не перетинаються.
+Nurture веде на покупку basic-тарифу курсу (`buy_astro-z-0`), НЕ на waitlist Pro-тарифу. Це навмисно: основна маса людей після Інтенсиву не готова до 12 500 грн і питанням "чекати чи ні".
+
+Якщо колись захочемо додати крок nurture що веде у Pro-waitlist — просто додати `NURTURE_STEPS[i]` з кнопкою на `waitlist_course` payload.
+
+---
+
+## 4. Чек-лист перед запуском реклами
+
+- [ ] SQL міграція `0002_waitlist_and_nurture.sql` застосована в Supabase (див. `supabase/migrations/`).
+- [ ] Бот задеплоєний з новим кодом (Railway автоматично перебудує після `git push`).
+- [ ] Перевірити: в логах бота є рядок `Scheduler started: ... nurture (1h)`.
+- [ ] Тест waitlist: зайти по `https://t.me/li_astrology_bot?start=waitlist_course` — має прийти confirmation + кнопки.
+- [ ] Тест nurture: створити фейковий user_courses row з старою `purchased_at` (наприклад, 2 дні тому) + intensiv course_id → через годину-дві має з'явитись reminder з type='nurture_day1' → в наступну хвилину — повідомлення.
+- [ ] Перевірити, що adminIDs отримують помилки, якщо щось впаде (error-handler middleware).

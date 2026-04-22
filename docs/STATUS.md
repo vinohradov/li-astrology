@@ -1,6 +1,6 @@
 # Project Status — Li Astrology
 
-Last updated: 2026-04-15
+Last updated: 2026-04-22
 
 ## Stack
 
@@ -14,10 +14,18 @@ Last updated: 2026-04-15
 
 ## Courses (slug → UUID)
 
+Live (selling via Mono):
 - `intensiv` — `2ad83d74-35ce-4a85-afe1-44799076b22e` — "Інтенсив «Астрологія з 0»" — 1199 UAH
-- `astro-z-0` — `50626a23-7423-40d2-93d2-fd11d6d7cf23` — "Курс «Астрологія з 0»" — no landing page on site yet
 - `aspekty-basic` — `6239c8d4-a5a0-4783-ba35-7d73d1eb63c7` — "Аспекти — базовий тариф" — 1290 UAH
 - `aspekty-pro` — `1a3c5ec9-2ac9-4322-beed-ec0fb9e88c6e` — "Аспекти — професійний тариф" — 2790 UAH
+
+Sellable but landing not wired:
+- `astro-z-0` — `50626a23-7423-40d2-93d2-fd11d6d7cf23` — "Курс «Астрологія з 0»" — 6000 UAH — `is_active=true`.
+  Content fully in DB (26 rows in `lessons`: meditations, 12 lessons, Sun/Moon gift, consultation demo, bonus, methodologies, finale). Bot handles `?start=buy_astro-z-0` already (see `bot/src/handlers/start.ts:25`). Edge function `create-payment` knows the slug.
+  **Landing `/course/` is in waitlist-mode and DOES NOT link to the buy flow** — all CTAs point to `?start=waitlist_course` (not handled). This is a UI-backend mismatch currently blocking sales.
+
+Pre-launch (content not recorded yet):
+- `astro-z-0-pro` — "Курс «Астрологія з 0» — Для профі" — 12500 UAH. Shares the `/course/` landing (pro tariff card is "Рекомендуємо"). **NOT YET IN DB.** Depends on the "Як консультувати" block (6 modules) being filmed.
 
 ## Payment flow (live)
 

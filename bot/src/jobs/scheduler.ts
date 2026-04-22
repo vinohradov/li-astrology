@@ -2,6 +2,7 @@ import cron from 'node-cron';
 import { Bot } from 'grammy';
 import { BotContext } from '../bot.js';
 import { checkInactivity } from './inactivity.js';
+import { checkNurture } from './nurture.js';
 import { processReminders } from './send-reminders.js';
 import { tickReconcilePayments } from './reconcile-payments.js';
 
@@ -29,5 +30,15 @@ export function startScheduler(bot: Bot<BotContext>) {
     }
   });
 
-  console.log('Scheduler started: reminders (1min), mono reconcile (1min), inactivity (6h)');
+  // Queue nurture messages for intensiv buyers hourly. Delivery is handled
+  // by the reminders pipeline.
+  cron.schedule('15 * * * *', async () => {
+    try {
+      await checkNurture();
+    } catch (e) {
+      console.error('nurture job error:', e);
+    }
+  });
+
+  console.log('Scheduler started: reminders (1min), mono reconcile (1min), inactivity (6h), nurture (1h)');
 }

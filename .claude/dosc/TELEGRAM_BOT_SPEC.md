@@ -1,15 +1,26 @@
 # Telegram Bot Spec: Li Astrology LMS
 > Single bot (@li_astrology_bot) serving all courses as a full learning management system.
+>
+> **Status (2026-04-22): спецификация в значительной степени реализована.**
+> Актуальная реализация — `bot/` (grammY + Node + TS, Railway). Для текущего состояния см. `docs/STATUS.md` и `.claude/dosc/BOT_ARCHITECTURE.md`.
+> Этот документ сохраняется как design-спека (замысел + flows). Расхождения с фактической реализацией отмечены ниже.
 
 ---
 
 ## Architecture Decision
 
-**Model: Bot-as-LMS** (not channel-based)
+**Model: Bot-as-LMS** (not channel-based) — ✅ реализовано
 - Bot delivers lessons directly in chat (video + PDF + text)
 - Progress tracking per student per lesson
 - One bot for all courses — student sees only what they purchased
 - No external video hosting — files stored on Telegram CDN via `file_id`
+
+**Отличия от исходной спеки → фактической реализации:**
+- Runtime: изначально планировался Deno/Supabase Edge Functions → **факт: Node.js + grammY на Railway** (long polling, не webhook).
+- Таблицы: `telegram_users` / `products` / `purchases` (спека) → **факт: `bot_users` / `courses` / `user_courses` / `payments`**.
+- Платёжка: LiqPay (спека) → **факт: Mono как основной, LiqPay удалён**.
+- Слаг `kurs-aspekty` (спека) → **факт: два отдельных SKU `aspekty-basic` (1290 грн) и `aspekty-pro` (2790 грн)**.
+- Full course (`course-basic` / `course-advanced` в спеке) → **факт: `astro-z-0` / `astro-z-0-pro`, coming-soon, лендинга пока нет**.
 
 ---
 
@@ -50,13 +61,13 @@
 
 ### Flow 1: Purchase → First Access
 ```
-Student pays on li-astrology.com.ua
-  → LiqPay webhook → Supabase stores purchase
-  → Success page: [Відкрити в Telegram]
+Student pays on li-astrology.com.ua (or inside bot)
+  → Mono webhook → mono-callback Edge Function verifies and stores payment
+  → Success page (web): [Відкрити в Telegram]
   → t.me/li_astrology_bot?start={order_id}
-  → Bot: verifies order_id in purchases table
-  → Bot: creates/updates telegram_users record
-  → Bot: links purchase to Telegram user
+  → Bot: looks up payments by order_id, confirms status=paid
+  → Bot: upserts bot_users record
+  → Bot: upserts user_courses (user ↔ course access)
   → Bot: sends welcome + [До курсу] button
 ```
 
@@ -139,11 +150,12 @@ Bot checks purchases table for this telegram_user_id
   → 0 courses        → "Придбай курс на li-astrology.com.ua"
 ```
 
-Courses map to product IDs:
-- `intensiv` → 5 lessons
-- `kurs-aspekty` → lessons TBD after content export
-- `course-basic` → 12 lessons + bonus
-- `course-advanced` → 12 lessons + bonus + feedback flow
+Courses map to slugs (live + coming-soon):
+- `intensiv` → 5 lessons (LIVE)
+- `aspekty-basic` → 3 PDFs (LIVE; PDFs сейчас считаются как lessons с `material=false`)
+- `aspekty-pro` → basic + видео-разборы (LIVE)
+- `astro-z-0` → 12 lessons + bonus (coming-soon, нет лендинга)
+- `astro-z-0-pro` → 12 lessons + bonus + feedback + certificate (coming-soon)
 
 ---
 

@@ -6,6 +6,7 @@ import { getCourseBySlug } from '../db/courses.js';
 import { grantAccess, hasAccess } from '../db/purchases.js';
 import { getPaymentByOrderId, claimPaymentForUser } from '../db/payments.js';
 import { upsertUser } from '../db/users.js';
+import { addToWaitlist } from '../db/waitlist.js';
 import { formatPrice } from '../utils/format.js';
 
 export function registerStartHandler(bot: Bot<BotContext>) {
@@ -21,6 +22,25 @@ export function registerStartHandler(bot: Bot<BotContext>) {
       last_name: from.last_name,
       username: from.username,
     });
+
+    if (payload === 'waitlist_course') {
+      const { alreadyThere } = await addToWaitlist({
+        userId: from.id,
+        listSlug: 'astro-z-0-pro',
+        source: 'course_landing',
+      });
+      await cleanAndSend(
+        ctx,
+        alreadyThere ? ctx.t.waitlist.alreadyThere : ctx.t.waitlist.added,
+        {
+          reply_markup: new InlineKeyboard()
+            .text(ctx.t.waitlist.browseCatalog, 'catalog')
+            .row()
+            .text(ctx.t.common.home, 'home'),
+        },
+      );
+      return;
+    }
 
     if (payload && payload.startsWith('buy_')) {
       const slug = payload.slice(4);
