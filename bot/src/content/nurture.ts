@@ -1,10 +1,19 @@
-// Nurture series for intensiv buyers.
-// Edit copy freely — job queueing logic does not depend on text.
-// Changing `steps` here changes what gets scheduled; the matching `type` is
-// `nurture_day<N>` (see jobs/nurture.ts). Days already sent are not re-sent.
+// Nurture copy for two audiences. Job queueing logic (jobs/nurture.ts)
+// does not depend on the text — edit freely.
+//
+// INTENSIV_NURTURE_STEPS → buyers of intensiv who haven't bought astro-z-0.
+//   Reminder type: `nurture_day<N>`. Anchor: user_courses.purchased_at.
+//   Goal: upsell to full course (6000).
+//
+// COLD_NURTURE_STEPS → users who /started the bot but have zero purchases.
+//   Reminder type: `cold_nurture_day<N>`. Anchor: bot_users.created_at.
+//   Goal: convert to tripwire Intensiv (1199).
+//
+// Adding / removing / editing a step only affects users who haven't yet
+// received that step (dedup is on reminders.type per user).
 
 export interface NurtureStep {
-  /** Days after `user_courses.purchased_at`. */
+  /** Days after the anchor (purchase date or registration date). */
   day: number;
   textUk: (name: string) => string;
   textRu: (name: string) => string;
@@ -17,9 +26,12 @@ export interface NurtureStep {
 }
 
 const courseUrl = 'https://li-astrology.com.ua/course/';
+const intensivUrl = 'https://li-astrology.com.ua/intensiv/';
 const buyCourseUrl = 'https://t.me/li_astrology_bot?start=buy_astro-z-0';
+const buyIntensivUrl = 'https://t.me/li_astrology_bot?start=buy_intensiv';
 
-export const NURTURE_STEPS: NurtureStep[] = [
+/** Intensiv buyer → full course. Anchor: user_courses.purchased_at. */
+export const INTENSIV_NURTURE_STEPS: NurtureStep[] = [
   {
     day: 1,
     textUk: (name) =>
@@ -104,6 +116,68 @@ export const NURTURE_STEPS: NurtureStep[] = [
       labelUk: '🎓 Придбати «Астрологія з 0» — 6 000 грн',
       labelRu: '🎓 Приобрести «Астрология с 0» — 6 000 грн',
       url: buyCourseUrl,
+    },
+  },
+];
+
+/** Non-buyer → Intensiv tripwire. Anchor: bot_users.created_at. */
+export const COLD_NURTURE_STEPS: NurtureStep[] = [
+  {
+    day: 1,
+    textUk: (name) =>
+      `Привіт, ${name} 🌙\n\n` +
+      `Помітила тебе у боті. Раз ти тут — значить тема астрології чимось зачепила.\n\n` +
+      `Одна думка, яку більшість пропускає: Сонце — це ~10% карти. Ще є Місяць (твої справжні потреби), ` +
+      `Асцендент (як тебе бачать), доми (сфери життя), аспекти. Коли хтось каже «я Лев» — це майже нічого не говорить про людину.\n\n` +
+      `У мене два входи: Інтенсив (1199 грн, 5 уроків — легкий перший крок) і повний курс (6000 грн, 12 уроків — від нуля до професії).`,
+    textRu: (name) =>
+      `Привет, ${name} 🌙\n\n` +
+      `Заметила тебя в боте. Раз ты здесь — значит тема астрологии чем-то зацепила.\n\n` +
+      `Одна мысль, которую большинство пропускает: Солнце — это ~10% карты. Ещё есть Луна (твои настоящие потребности), ` +
+      `Асцендент (как тебя видят), дома (сферы жизни), аспекты. Когда кто-то говорит «я Лев» — это почти ничего не говорит о человеке.\n\n` +
+      `У меня два входа: Интенсив (1199 грн, 5 уроков — лёгкий первый шаг) и полный курс (6000 грн, 12 уроков — с нуля до профессии).`,
+    button: {
+      labelUk: '📚 Каталог курсів',
+      labelRu: '📚 Каталог курсов',
+      url: 'https://t.me/li_astrology_bot?start=catalog',
+    },
+  },
+
+  {
+    day: 3,
+    textUk: (name) =>
+      `${name}, маленький інсайт 🎯\n\n` +
+      `У карті є не тільки планети — ще доми (сфери життя). 2-й дім — гроші. 7-й — партнерство. 10-й — кар'єра.\n\n` +
+      `Два Тельця можуть прожити зовсім різне фінансово: в одного в 2-му домі Юпітер — магнетить капітал; в іншого Сатурн — гроші завжди через дисципліну і обмеження. Знак один, а картина протилежна.\n\n` +
+      `Карта — це система, не один знак. Якщо зацікавило — почни з Інтенсиву за 1 199 грн: 5 уроків, одразу з подарунком «Сонце і Місяць у натальній карті».`,
+    textRu: (name) =>
+      `${name}, маленький инсайт 🎯\n\n` +
+      `В карте есть не только планеты — ещё дома (сферы жизни). 2-й дом — деньги. 7-й — партнёрство. 10-й — карьера.\n\n` +
+      `Два Тельца могут прожить совсем разное финансово: у одного во 2-м доме Юпитер — магнитит капитал; у другого Сатурн — деньги всегда через дисциплину и ограничения. Знак один, картина противоположна.\n\n` +
+      `Карта — это система, не один знак. Если интересно — начни с Интенсива за 1 199 грн: 5 уроков, сразу с подарком «Солнце и Луна в натальной карте».`,
+    button: {
+      labelUk: '📘 Дивитись Інтенсив',
+      labelRu: '📘 Посмотреть Интенсив',
+      url: intensivUrl,
+    },
+  },
+
+  {
+    day: 7,
+    textUk: (name) =>
+      `${name}, остання думка з моєї сторони 🌟\n\n` +
+      `Якщо тобі колись здавалося «чому я така складна», «чому мені не даються відносини», «чому я не розумію своїх близьких» — натальна карта часто дає відповіді там, де психологія і досвід лишають питання.\n\n` +
+      `Найлегший вхід — Інтенсив за 1 199 грн. 5 уроків, подарунок про Сонце і Місяць (після нього вже можна давати свої перші розбори). Якщо після цього захочеш глибше — є повний курс.\n\n` +
+      `Після цього я більше не писатиму — просто щоб не перетворюватись на спам. Але якщо колись захочеш почати — ти знаєш де мене знайти 🌙`,
+    textRu: (name) =>
+      `${name}, последняя мысль с моей стороны 🌟\n\n` +
+      `Если тебе когда-то казалось «почему я такая сложная», «почему мне не даются отношения», «почему я не понимаю своих близких» — натальная карта часто даёт ответы там, где психология и опыт оставляют вопросы.\n\n` +
+      `Самый лёгкий вход — Интенсив за 1 199 грн. 5 уроков, подарок про Солнце и Луну (после него уже можно давать свои первые разборы). Если после этого захочешь глубже — есть полный курс.\n\n` +
+      `После этого я больше не буду писать — просто чтобы не превращаться в спам. Но если когда-нибудь захочешь начать — ты знаешь где меня найти 🌙`,
+    button: {
+      labelUk: '🌙 Спробувати Інтенсив — 1 199 грн',
+      labelRu: '🌙 Попробовать Интенсив — 1 199 грн',
+      url: buyIntensivUrl,
     },
   },
 ];

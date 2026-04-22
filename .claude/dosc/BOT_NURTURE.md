@@ -4,7 +4,28 @@
 
 ---
 
-## 1. Nurture-серія для покупців Інтенсиву
+## Огляд
+
+Дві паралельні nurture-послідовності:
+
+| Послідовність | Кого ловить | Анкер дати | Ціль конверсії | Reminder type | Кроки |
+|---|---|---|---|---|---|
+| **Intensiv → Full Course** | Купив Інтенсив, НЕ купив `astro-z-0` | `user_courses.purchased_at` | Повний курс 6000 грн | `nurture_day<N>` | 1 / 3 / 7 / 14 |
+| **Cold → Intensiv** | Зайшов у бот, нічого не купив, `created_at` ≤ 30 днів | `bot_users.created_at` | Інтенсив 1199 грн | `cold_nurture_day<N>` | 1 / 3 / 7 |
+
+Обидві запускаються одним cron-тіком у `scheduler.ts` через функцію `checkNurture()`, яка викликає `runSequence()` для кожної. Доставка — через існуючий pipeline `reminders` (send-reminders кожну хвилину).
+
+Dedup: для кожного користувача проти `reminders.type` — один крок відправляється тільки раз.
+
+**Перехід між послідовностями:**
+1. Незнайомець робить /start → потрапляє у **Cold**. Отримує день 1, 3, 7.
+2. Купує Інтенсив посередині (скажімо, у день 4 від /start) → наступні Cold-кроки пропускаються (фільтр `user_courses.count = 0`).
+3. Через день 1 після купівлі Інтенсиву стартує **Intensiv**-послідовність.
+4. Якщо купує повний курс — Intensiv-послідовність теж припиняється (фільтр `astro-z-0 not in user_courses`).
+
+---
+
+## 1. Intensiv-nurture (покупці Інтенсиву → повний курс)
 
 ### Мета
 
@@ -16,22 +37,23 @@
 
 Ціль воронки — підняти 30-day LTV покупця Інтенсиву за рахунок конверсії у повний курс.
 
+Масив: `INTENSIV_NURTURE_STEPS` у `bot/src/content/nurture.ts`.
+
 ### Як це працює технічно
 
-1. **Cron `checkNurture`** у `bot/src/jobs/nurture.ts` запускається **щогодини** (о :15 хв), див. `scheduler.ts`.
-2. Проходить по всіх покупцях Інтенсиву (`user_courses` JOIN `courses` WHERE slug='intensiv', не заблоковані).
-3. Для кожного користувача:
-    - Якщо він вже купив `astro-z-0` — пропустити (конвертація сталась).
-    - Обчислити age = days since `purchased_at`.
-    - Для кожного `NURTURE_STEPS[i]` (де `day <= age`):
-        - Перевірити, чи немає вже запису в `reminders` з `type='nurture_day<N>'` для цього user_id.
-        - Якщо немає — створити `reminder` з локалізованим текстом і (опціонально) кнопкою.
-4. Далі вже існуючий `send-reminders` cron (1 раз на хвилину) забирає reminder і шле повідомлення через Telegram API.
-5. Якщо користувач заблокував бота — `send-reminders` позначає `bot_users.blocked_bot=true`, наступні nurture-фільтруються.
+1. **Cron `checkNurture`** у `bot/src/jobs/nurture.ts` запускається **щогодини** (о :15 хв), див. `scheduler.ts`. Він всередині викликає `runSequence()` по черзі для Intensiv + Cold.
+2. **Intensiv-частина** (`fetchIntensivBuyers`): усі покупці Інтенсиву (`user_courses` JOIN `bot_users`, не заблоковані). Для кожного — виключаємо тих, хто вже купив `astro-z-0`.
+3. Для кожного кандидата:
+    - Обчислити age = days since `user_courses.purchased_at`.
+    - Для кожного `INTENSIV_NURTURE_STEPS[i]` (де `day <= age`):
+        - Перевірити, чи немає вже запису в `reminders` з `type='nurture_day<N>'` для цього user_id (дедуп).
+        - Якщо немає — створити `reminder` з локалізованим текстом і (опціонально) URL-кнопкою.
+4. Далі існуючий `send-reminders` cron (1 раз на хвилину) забирає reminder і шле повідомлення через Telegram API.
+5. Якщо користувач заблокував бота — `send-reminders` позначає `bot_users.blocked_bot=true`, наступні nurture-кандидати фільтруються.
 
 ### Як змінити контент
 
-Відредагуй `bot/src/content/nurture.ts` — масив `NURTURE_STEPS`. Кожен елемент:
+Відредагуй `bot/src/content/nurture.ts` — масив `INTENSIV_NURTURE_STEPS` (для цієї послідовності). Кожен елемент:
 
 ```typescript
 {
@@ -68,7 +90,7 @@
 
 Або швидше — очистити `NURTURE_STEPS = []` у content/nurture.ts і задеплоїти.
 
-### Поточна серія
+### Поточна серія (Intensiv → повний курс)
 
 | Day | Кнопка | URL | Сенс |
 |---|---|---|---|
@@ -79,7 +101,66 @@
 
 ---
 
-## 2. Waitlist (зараз тільки для Pro-тарифу повного курсу)
+## 2. Cold-nurture (зайшов у бот, нічого не купив → Інтенсив)
+
+### Мета
+
+Через 1/3/7 днів після `/start` бот шле 3 повідомлення для тих, хто подивився на бота, але не зробив жодної купівлі. Ціль — конверсія у tripwire-продукт (Інтенсив 1199 грн), не в повний курс — це холодна аудиторія, не готова одразу до 6000.
+
+Масив: `COLD_NURTURE_STEPS` у `bot/src/content/nurture.ts`.
+
+### Аудиторія + фільтри
+
+`fetchColdUsers()` у `jobs/nurture.ts`:
+1. `bot_users.blocked_bot = false`.
+2. `bot_users.created_at >= NOW() - 30 днів` — **MAX_AGE cutoff**. Користувачів, які реєструвались давно і нічого не робили, не будемо бомбити новими повідомленнями.
+3. `user_id` НЕ присутній у `user_courses` — тобто жодної покупки. Якщо зробили хоча б одну — вони автоматично виходять з Cold і потрапляють або у Intensiv-nurture (якщо купили Інтенсив), або просто перестають отримувати повідомлення.
+
+### Чому саме 3 кроки, а не 4
+
+Холодна аудиторія — найшвидше блокує бота при переспамі. 3 повідомлення — збалансовано: дати шанс, не бути настирливим. Останнє повідомлення (день 7) явно говорить «після цього я більше не пишу» — зменшує шанс, що користувач заблокує бота. Далі, якщо людина колись захоче, вона сама поверне.
+
+### Поточна серія (Cold → Інтенсив)
+
+| Day | Кнопка | URL | Сенс |
+|---|---|---|---|
+| 1 | «Каталог курсів» | `t.me/bot?start=catalog` | Engagement — «Сонце це 10% карти» |
+| 3 | «Дивитись Інтенсив» | `/intensiv/` | Інсайт про доми + soft pitch Інтенсиву |
+| 7 | «Спробувати Інтенсив — 1 199 грн» | `t.me/bot?start=buy_intensiv` | Фінальне звернення — direct CTA + «якщо ні — більше не писатиму» |
+
+### Як змінити контент
+
+Так само як для Intensiv-nurture — редагуй `COLD_NURTURE_STEPS` у `bot/src/content/nurture.ts`.
+
+### Як зупинити серію для конкретного користувача
+
+`DELETE FROM reminders WHERE user_id=<id> AND type LIKE 'cold_nurture_%' AND sent_at IS NULL` — видалити pending. АБО додати pseudo-sent записи для кожного кроку, якщо потрібно заблокувати майбутні сценарії:
+```sql
+INSERT INTO reminders (user_id, type, payload, scheduled_at, sent_at)
+VALUES (<id>, 'cold_nurture_day1', '{"text":""}', now(), now()),
+       (<id>, 'cold_nurture_day3', '{"text":""}', now(), now()),
+       (<id>, 'cold_nurture_day7', '{"text":""}', now(), now());
+```
+
+### Зв'язок Cold ↔ Intensiv послідовностей
+
+Якщо користувач купує Інтенсив посеред Cold-серії — наступні Cold-кроки вимикаються автоматично (`user_courses.count > 0` filter). З наступного `/start + 1 day` стартує Intensiv-nurture. Немає конфлікту, немає дублів.
+
+Приклад хронології:
+```
+T+0    /start
+T+1    cold_nurture_day1 ✉️
+T+3    cold_nurture_day3 ✉️
+T+4    купує Інтенсив
+T+5    cold_nurture_day7 — пропущено (більше не cold)
+T+5    nurture_day1 ✉️ (інтенсив + 1 день)
+T+7    nurture_day3 ✉️
+...
+```
+
+---
+
+## 3. Waitlist (зараз тільки для Pro-тарифу повного курсу)
 
 ### Навіщо
 
@@ -130,20 +211,25 @@ if (payload === 'waitlist_intensiv') {
 
 ---
 
-## 3. Перетин nurture ↔ waitlist
+## 4. Перетин nurture ↔ waitlist
 
 Зараз не перетинаються.
-Nurture веде на покупку basic-тарифу курсу (`buy_astro-z-0`), НЕ на waitlist Pro-тарифу. Це навмисно: основна маса людей після Інтенсиву не готова до 12 500 грн і питанням "чекати чи ні".
+Intensiv-nurture веде на покупку basic-тарифу курсу (`buy_astro-z-0`), НЕ на waitlist Pro-тарифу. Це навмисно: основна маса людей після Інтенсиву не готова до 12 500 грн і питанням "чекати чи ні".
 
-Якщо колись захочемо додати крок nurture що веде у Pro-waitlist — просто додати `NURTURE_STEPS[i]` з кнопкою на `waitlist_course` payload.
+Cold-nurture веде на Інтенсив (1199), теж не у waitlist — щоб не плутати холодну аудиторію.
+
+Waitlist-підписники **не виключаються** з Cold-nurture. Якщо хтось підписався на waitlist Pro-тарифу, але ще нічого не купив — Cold-nurture все одно спробує продати йому Інтенсив. Це свідома поведінка: waitlist — це інтерес до Pro (12500), а Cold пропонує доступний вхід (1199), це два різних продукти.
+
+Якщо колись захочемо додати крок nurture що веде у Pro-waitlist — просто додати `INTENSIV_NURTURE_STEPS[i]` з кнопкою на `waitlist_course` payload.
 
 ---
 
-## 4. Чек-лист перед запуском реклами
+## 5. Чек-лист перед запуском реклами
 
 - [ ] SQL міграція `0002_waitlist_and_nurture.sql` застосована в Supabase (див. `supabase/migrations/`).
 - [ ] Бот задеплоєний з новим кодом (Railway автоматично перебудує після `git push`).
 - [ ] Перевірити: в логах бота є рядок `Scheduler started: ... nurture (1h)`.
 - [ ] Тест waitlist: зайти по `https://t.me/li_astrology_bot?start=waitlist_course` — має прийти confirmation + кнопки.
-- [ ] Тест nurture: створити фейковий user_courses row з старою `purchased_at` (наприклад, 2 дні тому) + intensiv course_id → через годину-дві має з'явитись reminder з type='nurture_day1' → в наступну хвилину — повідомлення.
+- [ ] Тест Intensiv-nurture: створити фейковий user_courses row зі старою `purchased_at` (наприклад, 2 дні тому) + intensiv course_id → через годину-дві має з'явитись reminder з type='nurture_day1' → в наступну хвилину — повідомлення.
+- [ ] Тест Cold-nurture: створити бот-юзера з `created_at` 2 дні тому (або дочекатись реального /start від тест-аккаунту без покупок) → наступний tick nurture-cron має створити reminder з type='cold_nurture_day1'.
 - [ ] Перевірити, що adminIDs отримують помилки, якщо щось впаде (error-handler middleware).

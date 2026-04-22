@@ -169,15 +169,15 @@ Instagram / Reels / DM
 - Продаж із самого бота: кнопка «Купити» → `create-payment` з Mono → webhook → доступ.
 - Кнопка «Про курс (на сайті)» веде на лендинг, щоб користувач міг прочитати перед купівлею.
 
-**Що ще НЕ зроблено у боті (nurture + launch-readiness):**
+**Nurture + waitlist інфраструктура (реалізовано 2026-04-22):**
 
-- [ ] **Handler `?start=waitlist_course`** — save contact + confirmation message. БЛОКЕР для запуску реклами курсу.
-- [ ] Таблиця `bot_waitlist` (user_id, source, created_at) + логіка збереження.
-- [ ] Автоматична nurture-серія для покупців Інтенсиву (24ч / 3д / 7д / 14д). CTA серії — вступ у waitlist повного курсу (а не продаж aspekty-pro).
-- [ ] Broadcast-команда (коли активуємо продажі повного курсу — розсилка по waitlist з early-bird offer).
-- [ ] Soft-mention aspekty-basic як option для тих, хто хоче конкретно у аспекти — один раз, не пушити.
+- [x] **Handler `?start=waitlist_course`** + `bot_waitlist` таблиця. Збирає підписників на Pro-тариф повного курсу.
+- [x] **Intensiv → full course nurture** (4 кроки: день 1/3/7/14, CTA на `buy_astro-z-0`).
+- [x] **Cold nurture** для тих, хто зайшов у бот, але нічого не купив (3 кроки: день 1/3/7, CTA на Інтенсив 1199). Ціль — конверсія у tripwire. Детально: `.claude/dosc/BOT_NURTURE.md`.
 
-> Серія nurture-повідомлень зараз не працює — це основний gap з точки зору маркетингової воронки.
+**Що лишилось у цьому блоці:**
+
+- [ ] Broadcast-команда (коли активуємо продажі повного курсу Pro-тарифу — розсилка по `bot_waitlist` з early-bird offer).
 
 ---
 
