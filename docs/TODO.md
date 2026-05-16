@@ -9,6 +9,34 @@
       git remote set-url origin git@github.com:vinohradov/li-astrology.git
       ```
 
+## Repo size — move design PDFs to Git LFS
+
+**Priority: high.** Commit `0d7c11b` added `materials/design-library/` —
+~250 MB of source design PDFs — directly to git. GitHub already warns on
+two files over its 50 MB soft limit:
+
+- `materials/design-library/Аспекты солнца и луны.pdf` — 66.9 MB
+- `materials/design-library/Самоучитель по аспектам.pdf` — 57.6 MB
+
+Every clone of the repo now drags this down. Need to migrate before more
+design PDFs land.
+
+- [ ] **Migrate `materials/design-library/*.pdf` to Git LFS.**
+      Recommended path (preserves history, keeps files referenceable from
+      `PDF_DESIGN_SYSTEM.md`):
+      ```
+      git lfs install
+      git lfs track "materials/design-library/*.pdf"
+      git add .gitattributes
+      # rewrite history so existing PDFs become LFS pointers (one-time):
+      git lfs migrate import --include="materials/design-library/*.pdf" --include-ref=refs/heads/main
+      git push --force-with-lease origin main
+      ```
+      Notify any collaborators before the force-push so they can re-clone.
+      Alternative: move `design-library/` out of the repo entirely (Drive
+      / S3) and reference by URL from `PDF_DESIGN_SYSTEM.md` — lighter
+      but loses single-checkout convenience.
+
 ## Monobank
 
 - [ ] **Contact Mono support to enable full merchant API access on the
