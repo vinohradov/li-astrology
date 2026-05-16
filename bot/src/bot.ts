@@ -10,6 +10,10 @@ export interface SessionData {
   inSupportMode?: boolean;
   /** ALL bot message IDs in this chat (for cleanup) */
   botMessageIds?: number[];
+  /** Timestamp (ms epoch) of the last nav message we sent — drives the welcome-back banner */
+  lastNavAt?: number;
+  /** Cached Telegram file_id for the welcome-back banner to avoid re-uploading */
+  welcomeBannerFileId?: string;
 }
 
 export interface LocaleFlavor {
