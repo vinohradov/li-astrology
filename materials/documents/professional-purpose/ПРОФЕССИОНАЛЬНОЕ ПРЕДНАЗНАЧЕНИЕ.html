@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>ПРОФЕССИОНАЛЬНОЕ ПРЕДНАЗНАЧЕНИЕ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Symbols+2&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --plum-900: #2d1b26;
+    --plum-800: #3a2530;
+    --plum-700: #5e2a3b;
+    --plum-600: #6b2f44;
+    --mauve-500: #9c5871;
+    --mauve-400: #b07a8e;
+    --mauve-300: #d4a8b8;
+    --mauve-200: #e5c9d3;
+    --pink-100:  #f5e6eb;
+    --pink-50:   #faeef2;
+    --paper:     #ffffff;
+    --ink:       #3a2530;
+    --ink-soft:  #4a3340;
+  }
+
+  @page {
+    size: A4;
+    margin: 18mm 18mm 18mm 18mm;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, 'Helvetica Neue', sans-serif;
+    font-size: 11.5pt;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .sym {
+    font-family: 'Noto Sans Symbols 2', 'Apple Symbols', 'Segoe UI Symbol', sans-serif;
+    line-height: 1;
+  }
+
+  /* ============ COVER ============ */
+  .cover {
+    position: relative;
+    height: 261mm;            /* A4 minus margins */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    page-break-after: always;
+    overflow: hidden;
+  }
+  .cover-decor-top,
+  .cover-decor-bottom {
+    position: absolute;
+    width: 70mm;
+    height: 70mm;
+    pointer-events: none;
+  }
+  .cover-decor-top {
+    top: -20mm;
+    right: -20mm;
+    background:
+      radial-gradient(circle at 30% 70%, var(--mauve-200) 0 0.6pt, transparent 0.6pt),
+      conic-gradient(from 0deg,
+        var(--mauve-200) 0 1deg, transparent 1deg 30deg,
+        var(--mauve-200) 30deg 31deg, transparent 31deg 60deg,
+        var(--mauve-200) 60deg 61deg, transparent 61deg 90deg,
+        var(--mauve-200) 90deg 91deg, transparent 91deg 120deg,
+        var(--mauve-200) 120deg 121deg, transparent 121deg 150deg,
+        var(--mauve-200) 150deg 151deg, transparent 151deg 180deg,
+        var(--mauve-200) 180deg 181deg, transparent 181deg 210deg,
+        var(--mauve-200) 210deg 211deg, transparent 211deg 240deg,
+        var(--mauve-200) 240deg 241deg, transparent 241deg 270deg,
+        var(--mauve-200) 270deg 271deg, transparent 271deg 300deg,
+        var(--mauve-200) 300deg 301deg, transparent 301deg 330deg,
+        var(--mauve-200) 330deg 331deg, transparent 331deg 360deg);
+    -webkit-mask: radial-gradient(circle, transparent 22mm, black 23mm 35mm, transparent 35mm);
+            mask: radial-gradient(circle, transparent 22mm, black 23mm 35mm, transparent 35mm);
+    opacity: 0.55;
+  }
+  .cover-decor-bottom {
+    bottom: -25mm;
+    left: -25mm;
+    background:
+      conic-gradient(from 45deg,
+        var(--mauve-200) 0 1deg, transparent 1deg 45deg,
+        var(--mauve-200) 45deg 46deg, transparent 46deg 90deg,
+        var(--mauve-200) 90deg 91deg, transparent 91deg 135deg,
+        var(--mauve-200) 135deg 136deg, transparent 136deg 180deg,
+        var(--mauve-200) 180deg 181deg, transparent 181deg 225deg,
+        var(--mauve-200) 225deg 226deg, transparent 226deg 270deg,
+        var(--mauve-200) 270deg 271deg, transparent 271deg 315deg,
+        var(--mauve-200) 315deg 316deg, transparent 316deg 360deg);
+    -webkit-mask: radial-gradient(circle, transparent 18mm, black 19mm 32mm, transparent 32mm);
+            mask: radial-gradient(circle, transparent 18mm, black 19mm 32mm, transparent 32mm);
+    opacity: 0.45;
+  }
+
+  .cover .pill-top { margin-bottom: 22pt; }
+
+  h1.cover-title {
+    font-weight: 800;
+    color: var(--plum-900);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    font-size: 30pt;
+    line-height: 1.1;
+    margin: 0 0 10pt 0;
+    max-width: 150mm;
+  }
+  .cover-sub {
+    color: var(--mauve-500);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 12pt;
+    margin: 0 0 32pt 0;
+  }
+
+  /* CSS-only zodiac wheel */
+  .wheel {
+    position: relative;
+    width: 78mm;
+    height: 78mm;
+    margin: 6pt auto 28pt auto;
+  }
+  .wheel::before, .wheel::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    border: 0.7pt solid var(--mauve-300);
+  }
+  .wheel::before { inset: 0; }
+  .wheel::after  { inset: 12mm; border-color: var(--mauve-200); }
+  .wheel .center-mark {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 12pt; height: 12pt;
+    margin: -6pt 0 0 -6pt;
+    border-radius: 50%;
+    background: var(--mauve-300);
+    opacity: 0.7;
+  }
+  .wheel .z {
+    position: absolute;
+    top: 50%; left: 50%;
+    font-family: 'Noto Sans Symbols 2', 'Apple Symbols', 'Segoe UI Symbol', sans-serif;
+    font-size: 16pt;
+    color: var(--mauve-500);
+    line-height: 1;
+    width: 18pt;
+    height: 18pt;
+    margin: -9pt 0 0 -9pt;
+    text-align: center;
+  }
+  .wheel .z[data-i="0"]  { transform: translate(0, -33mm); }
+  .wheel .z[data-i="1"]  { transform: rotate(30deg)  translate(0, -33mm) rotate(-30deg); }
+  .wheel .z[data-i="2"]  { transform: rotate(60deg)  translate(0, -33mm) rotate(-60deg); }
+  .wheel .z[data-i="3"]  { transform: rotate(90deg)  translate(0, -33mm) rotate(-90deg); }
+  .wheel .z[data-i="4"]  { transform: rotate(120deg) translate(0, -33mm) rotate(-120deg); }
+  .wheel .z[data-i="5"]  { transform: rotate(150deg) translate(0, -33mm) rotate(-150deg); }
+  .wheel .z[data-i="6"]  { transform: rotate(180deg) translate(0, -33mm) rotate(-180deg); }
+  .wheel .z[data-i="7"]  { transform: rotate(210deg) translate(0, -33mm) rotate(-210deg); }
+  .wheel .z[data-i="8"]  { transform: rotate(240deg) translate(0, -33mm) rotate(-240deg); }
+  .wheel .z[data-i="9"]  { transform: rotate(270deg) translate(0, -33mm) rotate(-270deg); }
+  .wheel .z[data-i="10"] { transform: rotate(300deg) translate(0, -33mm) rotate(-300deg); }
+  .wheel .z[data-i="11"] { transform: rotate(330deg) translate(0, -33mm) rotate(-330deg); }
+  /* radial guide lines */
+  .wheel .spoke {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 0.5pt;
+    height: 39mm;
+    background: var(--mauve-200);
+    transform-origin: top center;
+    opacity: 0.7;
+  }
+  .wheel .spoke[data-i="0"]  { transform: rotate(0deg); }
+  .wheel .spoke[data-i="1"]  { transform: rotate(30deg); }
+  .wheel .spoke[data-i="2"]  { transform: rotate(60deg); }
+  .wheel .spoke[data-i="3"]  { transform: rotate(90deg); }
+  .wheel .spoke[data-i="4"]  { transform: rotate(120deg); }
+  .wheel .spoke[data-i="5"]  { transform: rotate(150deg); }
+  .wheel .spoke[data-i="6"]  { transform: rotate(180deg); }
+  .wheel .spoke[data-i="7"]  { transform: rotate(210deg); }
+  .wheel .spoke[data-i="8"]  { transform: rotate(240deg); }
+  .wheel .spoke[data-i="9"]  { transform: rotate(270deg); }
+  .wheel .spoke[data-i="10"] { transform: rotate(300deg); }
+  .wheel .spoke[data-i="11"] { transform: rotate(330deg); }
+
+  .cover-author {
+    margin-top: 6pt;
+    font-size: 11pt;
+    color: var(--ink-soft);
+  }
+  .cover-author strong { color: var(--plum-800); font-weight: 700; }
+  .cover-handle {
+    margin-top: 4pt;
+    font-size: 11pt;
+    color: var(--mauve-500);
+    letter-spacing: 0.04em;
+  }
+
+  /* ============ CONTENT PAGES ============ */
+
+  /* Header pill (reused) */
+  .topbar {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 22pt 0;
+  }
+  .pill-top {
+    background: var(--plum-700);
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 9pt 22pt;
+    border-radius: 999px;
+    font-size: 10.5pt;
+    white-space: nowrap;
+  }
+
+  /* In-page title (top of content pages) */
+  h1.doc-title {
+    text-align: center;
+    font-weight: 800;
+    color: var(--plum-900);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: 19pt;
+    margin: 6pt 0 4pt 0;
+    line-height: 1.2;
+  }
+  .doc-subtitle {
+    text-align: center;
+    color: var(--mauve-500);
+    font-weight: 600;
+    font-size: 11.5pt;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0 0 18pt 0;
+  }
+
+  /* Section header */
+  h2.section {
+    text-align: center;
+    font-weight: 800;
+    color: var(--plum-900);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-size: 15pt;
+    margin: 8pt 0 6pt 0;
+    page-break-after: avoid;
+  }
+  .section-mark {
+    text-align: center;
+    color: var(--mauve-400);
+    font-size: 14pt;
+    line-height: 1;
+    margin: 22pt 0 4pt 0;
+    letter-spacing: 0.6em;
+  }
+  .section-note {
+    text-align: center;
+    font-style: italic;
+    color: var(--mauve-500);
+    font-size: 10.5pt;
+    margin: 0 auto 14pt auto;
+    max-width: 130mm;
+  }
+
+  /* Body paragraphs */
+  p.lead {
+    text-align: justify;
+    hyphens: auto;
+    margin: 0 0 10pt 0;
+  }
+  p.body {
+    text-align: justify;
+    hyphens: auto;
+    margin: 0 0 8pt 0;
+  }
+
+  /* Item pill (sign/planet with glyph + name) */
+  .item {
+    margin: 14pt 0 14pt 0;
+    page-break-inside: avoid;
+  }
+  .item-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10pt;
+    background: var(--pink-100);
+    border-radius: 14pt;
+    padding: 8pt 22pt;
+    margin: 0 auto 10pt auto;
+    width: 62%;
+    min-width: 200pt;
+  }
+  .item-label .glyph {
+    font-family: 'Noto Sans Symbols 2', 'Apple Symbols', 'Segoe UI Symbol', sans-serif;
+    color: var(--mauve-500);
+    font-size: 16pt;
+    line-height: 1;
+  }
+  .item-label .name {
+    font-weight: 800;
+    color: var(--plum-900);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 12pt;
+  }
+  .item-text {
+    text-align: justify;
+    hyphens: auto;
+    margin: 0;
+  }
+
+  /* Section transition row: 12 glyphs in a horizontal sash */
+  .glyph-sash {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 18pt auto 14pt auto;
+    max-width: 130mm;
+    color: var(--mauve-400);
+    font-family: 'Noto Sans Symbols 2', 'Apple Symbols', 'Segoe UI Symbol', sans-serif;
+    font-size: 13pt;
+    line-height: 1;
+    padding: 6pt 0;
+    border-top: 0.6pt solid var(--mauve-200);
+    border-bottom: 0.6pt solid var(--mauve-200);
+  }
+  .glyph-sash span { display: inline-block; }
+
+  /* Callout box */
+  .callout {
+    background: var(--pink-50);
+    border-radius: 12pt;
+    padding: 14pt 18pt;
+    margin: 14pt 0;
+    page-break-inside: avoid;
+  }
+  .callout p { margin: 0 0 6pt 0; text-align: justify; hyphens: auto; }
+  .callout p:last-child { margin-bottom: 0; }
+
+  /* Outro pitch box */
+  .outro {
+    background: var(--pink-50);
+    border-radius: 14pt;
+    padding: 18pt 22pt;
+    margin: 14pt 0 0 0;
+    page-break-inside: avoid;
+    position: relative;
+  }
+  .outro p { text-align: justify; hyphens: auto; margin: 0 0 8pt 0; }
+  .outro p:last-child { margin-bottom: 0; }
+  .outro-mark {
+    text-align: center;
+    color: var(--mauve-500);
+    font-size: 12pt;
+    letter-spacing: 0.5em;
+    margin-bottom: 6pt;
+    font-family: 'Noto Sans Symbols 2', 'Apple Symbols', 'Segoe UI Symbol', sans-serif;
+  }
+
+  /* Divider */
+  .divider {
+    width: 60pt;
+    height: 1.5pt;
+    background: var(--mauve-300);
+    border: 0;
+    margin: 16pt auto;
+    border-radius: 2pt;
+    position: relative;
+  }
+  .divider::before,
+  .divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 4pt;
+    height: 4pt;
+    background: var(--mauve-300);
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+  .divider::before { left: -10pt; }
+  .divider::after  { right: -10pt; }
+
+  /* Footer handle */
+  .handle {
+    margin-top: 26pt;
+    text-align: center;
+    color: var(--mauve-500);
+    font-size: 9.5pt;
+    letter-spacing: 0.06em;
+  }
+  .handle .star {
+    display: inline-block;
+    margin: 0 8pt;
+    color: var(--mauve-300);
+  }
+
+  strong, b { color: var(--plum-800); font-weight: 700; }
+  em { color: var(--plum-700); }
+</style>
+</head>
+<body>
+
+<!-- ================= COVER PAGE ================= -->
+<section class="cover">
+  <div class="cover-decor-top"></div>
+  <div class="cover-decor-bottom"></div>
+
+  <div class="pill-top">БОНУСНЫЙ МАТЕРИАЛ</div>
+
+  <h1 class="cover-title">Профессиональное<br>предназначение</h1>
+  <div class="cover-sub">10 дом в натальной карте</div>
+
+  <div class="wheel" aria-hidden="true">
+    <span class="spoke" data-i="0"></span>
+    <span class="spoke" data-i="1"></span>
+    <span class="spoke" data-i="2"></span>
+    <span class="spoke" data-i="3"></span>
+    <span class="spoke" data-i="4"></span>
+    <span class="spoke" data-i="5"></span>
+    <span class="spoke" data-i="6"></span>
+    <span class="spoke" data-i="7"></span>
+    <span class="spoke" data-i="8"></span>
+    <span class="spoke" data-i="9"></span>
+    <span class="spoke" data-i="10"></span>
+    <span class="spoke" data-i="11"></span>
+    <span class="z" data-i="0">♈</span>
+    <span class="z" data-i="1">♉</span>
+    <span class="z" data-i="2">♊</span>
+    <span class="z" data-i="3">♋</span>
+    <span class="z" data-i="4">♌</span>
+    <span class="z" data-i="5">♍</span>
+    <span class="z" data-i="6">♎</span>
+    <span class="z" data-i="7">♏</span>
+    <span class="z" data-i="8">♐</span>
+    <span class="z" data-i="9">♑</span>
+    <span class="z" data-i="10">♒</span>
+    <span class="z" data-i="11">♓</span>
+    <span class="center-mark"></span>
+  </div>
+
+  <div class="cover-author"><strong>Автор:</strong> Анастасия Лисовская</div>
+  <div class="cover-handle">@li_astrology_</div>
+</section>
+
+<!-- ================= CONTENT ================= -->
+
+<div class="topbar">
+  <div class="pill-top">БОНУСНЫЙ МАТЕРИАЛ · 10 ДОМ</div>
+</div>
+
+<h1 class="doc-title">Профессиональное предназначение</h1>
+<div class="doc-subtitle">10 дом в натальной карте</div>
+
+<p class="lead">
+  Десятый дом в натальной карте — один из наиболее значимых: он играет важную роль в определении профессионального призвания и общественного положения человека. Этот дом многогранен и охватывает множество аспектов, связанных с достижениями в карьере.
+</p>
+<p class="lead">
+  А знак, в котором он находится, задаёт особый тон всей профессиональной сфере — и понимание этого нюанса помогает выстроить собственный путь к целям осознанно и в гармонии со своей природой, так, чтобы это приносило реальные результаты и ощущение, что вы на своём месте.
+</p>
+
+<hr class="divider">
+
+<div class="section-mark"><span class="sym">♈ ♉ ♊ ♋ ♌ ♍ ♎ ♏ ♐ ♑ ♒ ♓</span></div>
+<h2 class="section">Знак зодиака 10 дома</h2>
+<p class="section-note">
+  подсказывает, какая манера поведения будет наиболее эффективна именно для вас — в профессиональном росте, завоевании авторитета и достижении желаемого положения в обществе.
+</p>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">♈</span><span class="name">Овен</span></div>
+  <p class="item-text">Рекомендуется действовать смело и без промедления — это ваш главный профессиональный принцип. Не ждите разрешения или идеальных условий: берите инициативу в свои руки, проявляйте самостоятельность, упорство и прямолинейность, конкурируйте с другими за власть. Излишняя осторожность, скромность и медлительность здесь работают против вас. В профессиональных делах вам важно устанавливать свои правила.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">♉</span><span class="name">Телец</span></div>
+  <p class="item-text">Демонстрируйте надёжность и основательность — именно эти качества формируют вашу репутацию и притягивают нужных людей. Будьте последовательны в своих действиях и держите слово — потому что доверие, которое вы завоевываете, со временем становится вашим главным профессиональным капиталом. Проявляйте практичность, опирайтесь на факты и конкретные результаты, избегайте поспешных решений. Двигайтесь к своим целям уверенно и без суеты — и успех придёт как естественное следствие такого подхода к рабочим делам.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">♊</span><span class="name">Близнецы</span></div>
+  <p class="item-text">Ваша репутация строится на умении общаться, адаптироваться и гибко мыслить — именно интеллект и разносторонность открывают вам профессиональные двери и притягивают нужных людей. Развивайте навыки коммуникации и не бойтесь менять направление — в вашем случае разнообразие опыта вас только обогащает. Опирайтесь на факты, идеи и живой обмен мнениями, избегайте замкнутости и информационного застоя. Формулируйте свои мысли чётко и убедительно — потому что именно работа словом работает на ваш авторитет сильнее всего остального. Двигайтесь к успеху через связи, обмен знаниями и постоянное обучение — и профессиональное признание придёт как естественное следствие вашей открытости миру и готовности соображать быстрее, чем другие.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">♋</span><span class="name">Рак</span></div>
+  <p class="item-text">Ваша профессиональная репутация строится на заботе, чуткости и умении создавать вокруг себя атмосферу доверия и тепла — именно эти качества сделают вас незаменимым в любом коллективе. Будьте тем человеком, который помнит о людях, замечает их состояние и умеет поддержать в нужный момент — потому что эмоциональная связь, которую вы выстраиваете, становится вашим главным профессиональным преимуществом. Проявляйте искреннюю вовлечённость в дело, которым занимаетесь. Двигайтесь к успеху через служение, через создание чего-то важного для других — и профессиональное признание придёт как естественное следствие того, сколько тепла и чуткости вы вкладываете в своё дело.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">♌</span><span class="name">Лев</span></div>
+  <p class="item-text">Ваша репутация строится на яркости, уверенности и умении вдохновлять окружающих — именно эти качества выделяют вас из толпы и притягивают к вам внимание тех, кто способен помочь открыть нужные двери. Будьте тем человеком, который не боится занимать пространство, смело высказываться и брать на себя роль лидера. Проявляйте щедрость и великодушие по отношению к своим коллегам и клиентам, хвалите, отмечайте чужие заслуги. Двигайтесь к успеху через самовыражение, через создание того, что несёт на себе печать вашей личности, и делайте это с размахом и достоинством, не соглашаясь на серость и посредственность.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">♍</span><span class="name">Дева</span></div>
+  <p class="item-text">Ваша репутация строится на мастерстве, внимании к деталям и умении делать своё дело безупречно — именно эти качества формируют о вас впечатление человека, на которого можно положиться. Будьте тем специалистом, который не останавливается на достаточно хорошем результате и всегда находит способ сделать лучше — потому что качество и скрупулёзность, которую вы демонстрируете, со временем становится вашим главным профессиональным преимуществом. Проявляйте уверенность в своей компетентности — не преуменьшайте своих знаний и не обесценивайте свой труд. Опирайтесь на анализ, конкретные факты, избегайте спешки и поверхностного подхода.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">♎</span><span class="name">Весы</span></div>
+  <p class="item-text">Ваша репутация строится на умении выстраивать гармоничные отношения, находить баланс и принимать взвешенные решения. Будьте тем, кто умеет объединять людей, сглаживать противоречия и находить решения, устраивающие всех — потому что дар дипломатии, которым вы обладаете, со временем становится вашим главным профессиональным преимуществом. Проявляйте эстетическое чутьё и культуру во всём, что делаете — в манере общения, в оформлении результатов своего труда, в том, как вы преподносите себя и свои идеи. Опирайтесь на справедливость и партнёрство, избегайте односторонности и резких суждений — потому что ваша сила именно в способности видеть картину целиком.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">♏</span><span class="name">Скорпион</span></div>
+  <p class="item-text">Ваша репутация строится на проницательности и умении работать со сложными случаями. Будьте тем, кто не боится заглядывать в суть вещей, докапываться до истины и работать с кризисными ситуациями там, где другие теряются — потому что ваша способность действовать в условиях неопределённости и давления со временем становится вашим главным профессиональным преимуществом. Проявляйте стратегическое мышление и умение видеть скрытые мотивы и закономерности. Опирайтесь на интуицию и внутреннюю силу, избегайте поверхностных решений и стремитесь занимать достаточно влиятельное положение. Двигайтесь к успеху через трансформацию — своей области, своей организации, людей вокруг себя.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">♐</span><span class="name">Стрелец</span></div>
+  <p class="item-text">Ваша репутация строится на широте взглядов, вдохновляющем энтузиазме и умении видеть картину целиком. Будьте тем, кто задаёт направление, расширяет горизонты и привносит в своё дело смысл и философию. Проявляйте честность и прямоту в профессиональных отношениях — говорите правду даже тогда, когда это неудобно. Опирайтесь на знания, философию и широкий кругозор, избегайте мелочности и узкого мышления — постоянно учитесь, путешествуйте, выходите за пределы привычного. Двигайтесь к успеху через расширение — своей экспертности, своего влияния, своего понимания мира. В принятии профессиональных решений опирайтесь на свою мудрость и относитесь ко многим ситуациям в этой сфере с философской точки зрения.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">♑</span><span class="name">Козерог</span></div>
+  <p class="item-text">Ваша репутация строится на дисциплине, целеустремлённости и умении брать на себя большую ответственность. Будьте тем, кто не ищет лёгких путей, способен выдерживать давление и последовательно идёт к своей цели невзирая на препятствия. Проявляйте зрелость и стратегическое мышление в каждом решении — не разменивайтесь на сиюминутное и не жертвуйте долгосрочным результатом ради краткосрочной выгоды. Опирайтесь на структуру, планирование и реальные достижения, избегайте самонадеянности и пустых обещаний — потому что ваш авторитет строится не на словах, а на том, что вы реально создали и довели до конца.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">♒</span><span class="name">Водолей</span></div>
+  <p class="item-text">Ваша репутация строится на оригинальности, независимости мышления и умении прогнозировать тренды будущего — именно эти качества формируют о вас впечатление человека, который всегда на шаг впереди и способен предложить то, чего ещё никто не предлагал. Будьте тем, кто не боится идти против течения, отстаивать нестандартные идеи и менять правила игры — потому что ваша способность мыслить за пределами общепринятого со временем становится вашим главным профессиональным преимуществом. Проявляйте искреннюю причастность к чему-то большему, чем личный успех — работайте ради идеи, ради сообщества, ради изменений, которые важны не только вам. Избегайте консервативности и сопротивления переменам. Двигайтесь к успеху через объединение людей вокруг прогрессивных идей, через готовность быть непохожим и при этом оставаться верным своим принципам.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">♓</span><span class="name">Рыбы</span></div>
+  <p class="item-text">Ваша репутация строится на тонкости восприятия, сострадании и умении чувствовать то, что невозможно измерить и объяснить словами. Будьте тем, кто не боится работать с невидимым — с интуицией, с образами, с человеческой болью и мечтами — потому что ваша способность соприкасаться с тонкими материями со временем может стать вашим главным профессиональным преимуществом. Проявляйте творческую открытость и готовность служить чему-то большему, чем личная выгода. Опирайтесь на своё воображение, вдохновение и чуткость, избегайте цинизма и механического подхода к людям. Двигайтесь к успеху через исцеление, творчество и служение — через готовность отдавать лучшее тем, кто в этом нуждается, и профессиональное признание придёт как естественное следствие вашей способности касаться сердец.</p>
+</div>
+
+<div class="glyph-sash" aria-hidden="true">
+  <span class="sym">♈</span><span class="sym">♉</span><span class="sym">♊</span><span class="sym">♋</span>
+  <span class="sym">♌</span><span class="sym">♍</span><span class="sym">♎</span><span class="sym">♏</span>
+  <span class="sym">♐</span><span class="sym">♑</span><span class="sym">♒</span><span class="sym">♓</span>
+</div>
+
+<div class="section-mark"><span class="sym">☉ ☽ ☿ ♀ ♂ ♃ ♄ ♅ ♆ ♇</span></div>
+<h2 class="section">Планеты в 10 доме</h2>
+<p class="section-note">
+  если в 10 доме есть планеты, то их анализ подскажет дополнительные возможности профессиональной реализации.
+</p>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">☉</span><span class="name">Солнце</span></div>
+  <p class="item-text">Ваша личность сама по себе является вашим главным инструментом — люди пойдут не столько за вашей компетентностью, сколько за вами как человеком. Стремитесь к позициям, где вы видны — руководящие роли, публичные выступления. Попытка оставаться в тени будет работать против вашей природы и гасить вашу энергию. Развивайте личный бренд и не стесняйтесь быть лицом своего дела. Берите на себя лидерство, ведите себя открыто и с достоинством, не уклоняясь от ответственности. Позвольте себе быть заметным и помните — чем осознаннее вы относитесь к своей репутации и своему вкладу в мир, тем выше и прочнее ваше социальное положение.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">☽</span><span class="name">Луна</span></div>
+  <p class="item-text">Такое положение делает вашу профессиональную жизнь глубоко связанной с эмоциями, интуицией и отношениями с людьми — ваша карьера не просто то, чем вы занимаетесь, это то, чем вы живёте изнутри. Доверяйте своей интуиции в карьерных решениях. Выбирайте дело, которое отзывается в душе, потому что без эмоциональной связи с работой вы быстро потеряете энергию и смысл. Имейте в виду, что люди хотят видеть не только ваш профессионализм, но и вашу человечность, вашу живую реакцию и искреннюю вовлечённость.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">☿</span><span class="name">Меркурий</span></div>
+  <p class="item-text">Такое положение делает ваш интеллект, коммуникацию и умение работать с информацией главным двигателем вашей карьеры. Ваше слово работает на ваш авторитет — умение убедительно говорить, грамотно изъясняться и логично выстраивать аргументы становится вашим главным профессиональным инструментом. Не недооценивайте силу своего голоса, потому что именно через него вас будут замечать, запоминать и продвигать: пишите, выступайте, преподавайте, консультируйте, участвуйте в дискуссиях. Любая форма передачи знаний и идей работает на вашу репутацию и открывает новые профессиональные возможности.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">♀</span><span class="name">Венера</span></div>
+  <p class="item-text">Такое положение делает вашу привлекательность, эстетическое чутьё и умение выстраивать гармоничные отношения главной движущей силой в продвижении вас по карьерной лестнице — ваше профессиональное признание приходит через красоту, обаяние и способность создавать вокруг себя приятную и вдохновляющую атмосферу. Вкладывайте в свой профессиональный образ осознанно — то, как вы выглядите, как говорите, как оформляете результаты своего труда, напрямую влияет на вашу репутацию и карьерные возможности. Поэтому смело используйте своё обаяние и умение располагать к себе людей в переговорах, презентациях и публичных выступлениях.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">♂</span><span class="name">Марс</span></div>
+  <p class="item-text">Такое положение делает вашу энергию, решительность и готовность быстро действовать главным двигателем карьерного успеха. Ваша способность действовать под давлением и в условиях высокой нагрузки будет работать на ваш авторитет — там, где другие теряются от стресса и неопределённости, вам нужно собраться и показывать лучшие результаты. Поэтому смело проявляйте инициативу — предлагайте идеи, запускайте проекты, берите на себя роль лидера. Ставьте чёткие профессиональные задачи и идите к ним с полной отдачей.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">♃</span><span class="name">Юпитер</span></div>
+  <p class="item-text">Ваша способность видеть картину целиком, мыслить стратегически и предлагать решения с долгосрочной перспективой будет работать на ваш профессиональный авторитет. Не бойтесь масштаба — ставьте большие цели, беритесь за крупные проекты и не останавливайтесь на том, что вам кажется достаточным. Развивайте экспертность и открыто делитесь знаниями — преподавайте, наставляйте, пишите, выступайте. Потому что чем больше вы отдаёте, тем больше будет возвращаться к вам в виде признания и возможностей. Используйте международные связи и возможности за пределами привычного круга — ведь ваш профессиональный успех часто приходит оттуда, откуда вы не ожидали, через людей и культуры, далёкие от вашей привычной среды.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">♄</span><span class="name">Сатурн</span></div>
+  <p class="item-text">С таким положением рекомендуется строить карьеру основательно и на долгую перспективу — то, что вы создаёте профессионально, должно иметь прочный фундамент и выдерживать проверку временем. Имейте в виду, что ваша репутация формируется медленно, честно, годами последовательного труда, но становится настолько устойчивой, что потом её трудно пошатнуть. Выстраивайте долгосрочные карьерные стратегии и не торопите результат — ваш путь требует времени, и попытка срезать углы или добиться быстрого успеха будет работать против вашей природы. Развивайте профессиональную дисциплину и внутренние стандарты качества — не позволяйте себе работать вполсилы или соглашаться на меньшее, чем вы способны дать.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">♅</span><span class="name">Уран</span></div>
+  <p class="item-text">Там, где другие совершенствуют существующее, вам нужно переизобретать само устройство вещей и предлагать решения, которые меняют правила игры целиком. Вам нужно предвидеть то, чего ещё нет, и создавать то, чего ещё никто не создавал. Позвольте себе подходить к своей профессии нестандартно, оригинально, с юмором — не загоняйте свою карьеру в традиционные рамки. Работайте в передовых и развивающихся областях — технологии, инновации, социальные изменения.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">♆</span><span class="name">Нептун</span></div>
+  <p class="item-text">Такое положение делает вдохновение, интуицию и способность соприкасаться с чем-то более тонким и невидимым главной движущей силой вашей карьеры — ваше профессиональное признание приходит через творчество, служение и умение создавать то, что касается души и остаётся в сердцах людей надолго. Используйте свою редкую способность чувствовать и улавливать то, что ещё не оформилось в слова и образы. Выбирайте дело, которое глубоко резонирует с вашей душой, — такое положение не даёт сил для работы ради денег или статуса, но открывает безграничный поток энергии, когда вы служите чему-то большему, чем личная выгода. Развивайте творческое и образное мышление как профессиональный инструмент — визуализация, метафора, интуитивное понимание ситуации и способность создавать атмосферу являются вашими настоящими рабочими инструментами, которые стоит оттачивать так же серьёзно, как другие оттачивают технические навыки.</p>
+</div>
+
+<div class="item">
+  <div class="item-label"><span class="glyph">♇</span><span class="name">Плутон</span></div>
+  <p class="item-text">Ваше профессиональное признание приходит через готовность идти в самую суть вещей, работать с тем, что требует коренных изменений, и не бояться ни власти, ни разрушения устаревшего. Развивайте стратегическое мышление и умение работать со структурами власти — вам надо развивать понимание того, как устроена власть изнутри, и это знание будет вашим огромным преимуществом. Позвольте себе несколько раз полностью сменить профессиональное направление — и чтобы каждый новый цикл карьерного пути оказывался глубже и мощнее предыдущего. В работе чаще используйте свою скрытую мощь, серьёзность намерений и способность видеть насквозь то, что другие тщательно скрывают. Это будет создавать вам репутацию человека, с которым считаются, которого уважают и иногда побаиваются, что в профессиональном мире откроет вам множество дверей.</p>
+</div>
+
+<div class="callout">
+  <p>Если планет несколько, то необходимо провести анализ, какая из них сильнее, и грамотно синтезировать все эти показатели.</p>
+</div>
+
+<hr class="divider">
+
+<h2 class="section">Обучение астрологии</h2>
+
+<div class="outro">
+  <div class="outro-mark"><span class="sym">✦ ✦ ✦</span></div>
+  <p>Именно этому мастерству мы будем обучаться на курсе <strong>«Астрология: от нуля до профессионала»</strong>.</p>
+  <p>Там вы научитесь полноценно расшифровывать профессиональное призвание человека не только через знак, дом или планеты, но и через управители, диспозиторы, аспекты, градусы и их особенности и ряд других ключевых элементов, которые делают картину объёмной и максимально понятной для вас и ваших клиентов.</p>
+</div>
+
+<div class="handle">
+  <span class="star sym">✦</span><strong>@li_astrology_</strong><span class="star sym">✦</span>
+</div>
+
+</body>
+</html>
