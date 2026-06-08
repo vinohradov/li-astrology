@@ -93,6 +93,38 @@ Pending (requires a deploy + SQL migration):
       when Pro tariff launches. Not urgent — add when closer to Pro
       launch.
 
+## Marketing, analytics & SEO
+
+**Done 2026-06-08** (details in `STATUS.md` → "Analytics, tracking & SEO"):
+Meta Pixel + GA4 + checkout/purchase events, JSON-LD, robots/sitemap/llms.txt,
+apex→www canonical migration, Google Search Console verified. All in `web/`.
+
+- [x] Meta Pixel `1880056772659898` live + confirmed firing (200).
+- [x] Google Search Console verified (URL-prefix www, HTML-tag).
+- [ ] **Submit `sitemap.xml` in Search Console** (Sitemaps → `sitemap.xml`) if not done.
+- [ ] **Connect IG @li_astrology_ (wife's) to Andrii's Meta Business Portfolio**
+      before running ad campaigns. Business Settings → Accounts → Instagram →
+      Add. Not needed for the pixel (which tracks the website independently).
+- [ ] **Confirm GA4 property `G-X0MBT0NMFG` still belongs to us.** Reused from the
+      dead legacy config; if it's a stale/foreign property, create a new GA4 property
+      and swap the one line in `web/src/config/site.ts`.
+- [ ] **Lead magnet via bot** — give away the "Професійне призначення" (10th-house)
+      PDF for a subscription. First cold-audience touchpoint per `MARKETING_PLAN.md`
+      (its blocker #1). Source guide: `materials/documents/professional-purpose/`.
+- [ ] **Branded OG share image (1200×630)** to replace the current logo/hero OG.
+      Can be rendered with the Remotion tooling (see below).
+
+### Remotion video tooling — `tools/remotion-bumper/`
+Created 2026-06-08 for Instagram Reels assets (code-driven, 1080×1920).
+- `Bumper` composition — branded intro/outro sting + CTA end-card.
+- `LeadMagnet` composition — 4-scene lead-magnet ad Reel for the "Професійне
+  призначення" guide (hook → curiosity → guide cover → CTA).
+- Brand tokens in `src/brand.ts`; copy in `src/*-copy.ts`. Render:
+  `cd tools/remotion-bumper && npx remotion render <Bumper|LeadMagnet> out/x.mp4`.
+- Strategy: Remotion = branded motion-graphics only; Anastasia's face-cam Reels
+  (CapCut) remain the real cold-IG conversion driver. Full Reel shoot script was
+  handed to the user for Anastasia. `tools/` is untracked (not committed).
+
 ## Bot chat cleanup — known limits
 
 - **Telegram Bot API: 48h hard limit on `deleteMessage` / `deleteMessages`**
