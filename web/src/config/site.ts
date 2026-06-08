@@ -2,7 +2,7 @@ export const site = {
   name: 'Li Astrology',
   author: 'Анастасія Лісовська',
   domain: 'li-astrology.com.ua',
-  url: 'https://li-astrology.com.ua',
+  url: 'https://www.li-astrology.com.ua',
   bot: {
     username: 'li_astrology_bot',
     url: 'https://t.me/li_astrology_bot',
@@ -14,6 +14,9 @@ export const site = {
     // Meta (Facebook/Instagram) Pixel id. Empty string disables the pixel.
     metaPixel: '1880056772659898',
   },
+  // Google Search Console verification token (the `content` value from the
+  // "HTML tag" method). Empty string renders no tag.
+  googleSiteVerification: '',
   contact: {
     email: 'alisovaskaa55@gmail.com',
   },

@@ -1,4 +1,4 @@
-# Li Astrology — https://li-astrology.com.ua
+# Li Astrology — https://www.li-astrology.com.ua
 
 # Allow all standard search engines, except payment result pages.
 User-agent: *
@@ -34,4 +34,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://li-astrology.com.ua/sitemap.xml
+Sitemap: https://www.li-astrology.com.ua/sitemap.xml
