@@ -16,7 +16,7 @@ export const site = {
   },
   // Google Search Console verification token (the `content` value from the
   // "HTML tag" method). Empty string renders no tag.
-  googleSiteVerification: '',
+  googleSiteVerification: '0UNDqC25UNcTd-g3yxEZ1-A343SdaVdIjSb5_JJk0Pg',
   contact: {
     email: 'alisovaskaa55@gmail.com',
   },
