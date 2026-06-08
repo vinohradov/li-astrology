@@ -1,0 +1,40 @@
+---
+// Loads Google Analytics 4 and the Meta Pixel.
+// Each loads only when its id is set in site.analytics, so the site is safe
+// to ship with either one blank. Event tracking lives in scripts/payment.ts
+// (checkout) and the success page (purchase); both read window.gtag / window.fbq.
+import { site } from '@/config/site';
+
+const { ga4, metaPixel } = site.analytics;
+---
+
+{
+  ga4 && (
+    <>
+      <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ga4}`} />
+      <script is:inline define:vars={{ ga4 }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', ga4);
+      </script>
+    </>
+  )
+}
+
+{
+  metaPixel && (
+    <script is:inline define:vars={{ metaPixel }}>
+      {`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');`}
+      fbq('init', metaPixel);
+      fbq('track', 'PageView');
+    </script>
+  )
+}

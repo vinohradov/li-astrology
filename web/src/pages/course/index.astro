@@ -150,11 +150,31 @@ const faqs = [
   { q: 'Який формат матеріалів?', a: 'Текстові уроки з прикладами + відео-розбори + аудіо-подкасти + методички + домашні завдання. Усе приходить через Telegram-бот одразу після оплати.' },
   { q: 'Коли старт?', a: 'Тариф «Для себе» можна купити просто зараз — доступ до всіх матеріалів відкриється одразу в Telegram-боті. Тариф «Професійний» у фінальній підготовці (запис блоку «Як консультувати» завершуємо протягом ~2 місяців) — залиш контакт у waitlist, напишемо першою.' },
 ];
+
+const courseSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: 'Курс «Астрологія з 0»',
+  description:
+    'Повний курс астрології від нуля до синтезу натальної карти. 12 уроків + бонус. Тариф для себе та для професійного консультування.',
+  inLanguage: 'uk',
+  provider: { '@type': 'EducationalOrganization', name: 'Li Astrology', url: 'https://li-astrology.com.ua' },
+  offers: {
+    '@type': 'Offer',
+    name: products['astro-z-0'].title,
+    price: String(products['astro-z-0'].priceUah),
+    priceCurrency: 'UAH',
+    availability: 'https://schema.org/InStock',
+    category: 'online course',
+  },
+  hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online' },
+};
 ---
 
 <Layout
   title="Курс «Астрологія з 0» — Li Astrology"
   description="Повний курс астрології від нуля до синтезу натальної карти. 12 уроків + бонус. Два тарифи: для себе та для професійного консультування. Від Анастасії Лісовської."
+  jsonLd={courseSchema}
 >
   <!-- HERO -->
   <section class="relative isolate min-h-screen overflow-hidden gradient-night text-cream">

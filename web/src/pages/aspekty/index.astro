@@ -151,11 +151,41 @@ const reviews: InstagramReviewData[] = [
     ],
   },
 ];
+
+const courseSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: 'Аспекти натальної карти',
+  description:
+    'Навчися трактувати аспекти у натальній карті. Базовий самовчитель та професійний тариф з відео-розборами.',
+  inLanguage: 'uk',
+  provider: { '@type': 'EducationalOrganization', name: 'Li Astrology', url: 'https://li-astrology.com.ua' },
+  offers: [
+    {
+      '@type': 'Offer',
+      name: products['aspekty-basic'].title,
+      price: String(products['aspekty-basic'].priceUah),
+      priceCurrency: 'UAH',
+      availability: 'https://schema.org/InStock',
+      category: 'online course',
+    },
+    {
+      '@type': 'Offer',
+      name: products['aspekty-pro'].title,
+      price: String(products['aspekty-pro'].priceUah),
+      priceCurrency: 'UAH',
+      availability: 'https://schema.org/InStock',
+      category: 'online course',
+    },
+  ],
+  hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online' },
+};
 ---
 
 <Layout
   title="Аспекти натальної карти — Li Astrology"
   description="Навчися трактувати аспекти у натальній карті. Два тарифи: базовий самовчитель та професійний з відео-розборами. Від Анастасії Лісовської."
+  jsonLd={courseSchema}
 >
   <!-- HERO -->
   <section class="relative isolate min-h-screen overflow-hidden gradient-night text-cream">

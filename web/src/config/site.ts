@@ -8,6 +8,12 @@ export const site = {
     url: 'https://t.me/li_astrology_bot',
   },
   instagram: 'https://www.instagram.com/li_astrology_',
+  analytics: {
+    // Google Analytics 4 measurement id. Empty string disables GA.
+    ga4: 'G-X0MBT0NMFG',
+    // Meta (Facebook/Instagram) Pixel id. Empty string disables the pixel.
+    metaPixel: '1880056772659898',
+  },
   contact: {
     email: 'alisovaskaa55@gmail.com',
   },

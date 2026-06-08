@@ -108,12 +108,31 @@ const botLink = site.bot.url;
   </section>
 </Layout>
 
-<script is:inline define:vars={{ botUrl: site.bot.url, supportEmail: site.contact.email, productsMap: { intensiv: 'Інтенсив «Астрологія з 0»', 'aspekty-basic': 'Аспекти — базовий тариф', 'aspekty-pro': 'Аспекти — професійний тариф' } }}>
+<script is:inline define:vars={{ botUrl: site.bot.url, supportEmail: site.contact.email, productsMap: { intensiv: 'Інтенсив «Астрологія з 0»', 'aspekty-basic': 'Аспекти — базовий тариф', 'aspekty-pro': 'Аспекти — професійний тариф' }, pricesMap: { intensiv: 1199, 'aspekty-basic': 1290, 'aspekty-pro': 2790, 'astro-z-0': 6000, 'astro-z-0-pro': 12500 } }}>
   (() => {
     const params = new URLSearchParams(window.location.search);
     const orderId = params.get('order_id') || '';
     const productSlug = params.get('product') || '';
     const productTitle = productsMap[productSlug] || '';
+
+    // Conversion tracking — fire once we know the order succeeded.
+    const price = pricesMap[productSlug];
+    if (window.gtag) {
+      window.gtag('event', 'purchase', {
+        transaction_id: orderId,
+        currency: 'UAH',
+        value: price,
+        items: [{ item_id: productSlug, item_name: productTitle || productSlug, price }],
+      });
+    }
+    if (window.fbq) {
+      window.fbq('track', 'Purchase', {
+        currency: 'UAH',
+        value: price,
+        content_ids: [productSlug],
+        content_name: productTitle || productSlug,
+      });
+    }
 
     const botLinkEl = document.getElementById('success-bot-link');
     if (botLinkEl && orderId) {

@@ -131,11 +131,30 @@ const reviews: InstagramReviewData[] = [
     ],
   },
 ];
+
+const courseSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Course',
+  name: products.intensiv.title,
+  description:
+    'Легкий перший крок у світ натальної карти: 5 уроків + бонус. Доступ назавжди.',
+  inLanguage: 'uk',
+  provider: { '@type': 'EducationalOrganization', name: 'Li Astrology', url: 'https://li-astrology.com.ua' },
+  offers: {
+    '@type': 'Offer',
+    price: String(products.intensiv.priceUah),
+    priceCurrency: 'UAH',
+    availability: 'https://schema.org/InStock',
+    category: 'online course',
+  },
+  hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'online' },
+};
 ---
 
 <Layout
   title="Інтенсив «Астрологія з 0» — Li Astrology"
   description="Легкий перший крок у світ натальної карти. 5 уроків + бонус від Анастасії Лісовської. Доступ назавжди за 1 199 грн."
+  jsonLd={courseSchema}
 >
   <!-- HERO -->
   <section class="relative isolate min-h-screen overflow-hidden gradient-night text-cream">

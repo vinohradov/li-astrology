@@ -4,9 +4,36 @@
  * Provider is read from [data-provider]; defaults to monobank.
  */
 
-import { site } from '@/config/site';
+import { site, products, type ProductSlug } from '@/config/site';
+
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+    fbq?: (...args: unknown[]) => void;
+  }
+}
 
 let processing = false;
+
+// Fire checkout-intent events when a user clicks a buy button. Safe no-op if
+// GA / the pixel are not loaded.
+function trackCheckout(productId: string) {
+  const product = products[productId as ProductSlug];
+  const value = product?.priceUah;
+  const name = product?.title || productId;
+
+  window.gtag?.('event', 'begin_checkout', {
+    currency: 'UAH',
+    value,
+    items: [{ item_id: productId, item_name: name, price: value }],
+  });
+  window.fbq?.('track', 'InitiateCheckout', {
+    currency: 'UAH',
+    value,
+    content_ids: [productId],
+    content_name: name,
+  });
+}
 
 const SPINNER_HTML = `
   <svg class="wfp-spinner h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -116,7 +143,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (btn.getAttribute('aria-disabled') === 'true') return;
       const slug = btn.getAttribute('data-product');
       const provider = btn.getAttribute('data-provider') || 'monobank';
-      if (slug) start(slug, provider, btn);
+      if (slug) {
+        trackCheckout(slug);
+        start(slug, provider, btn);
+      }
     });
   });
 });
