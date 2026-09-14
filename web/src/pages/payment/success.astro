@@ -10,7 +10,7 @@ const botLink = site.bot.url;
 
 <Layout
   title="Дякуємо за оплату — Li Astrology"
-  description="Оплату отримано. Відкрийте Telegram-бот, щоб отримати доступ до матеріалів."
+  description="Оплату отримано. Відкрийте кабінет на сайті або Telegram-бот, щоб отримати доступ до матеріалів."
   noindex
 >
   <section class="relative isolate min-h-screen overflow-hidden gradient-night text-cream">
@@ -47,26 +47,38 @@ const botLink = site.bot.url;
         </span>
         <strong id="success-product-title" class="text-cream hidden"></strong>
         <span>
-          Доступ до матеріалів — через наш Telegram-бот. Натисніть кнопку нижче, щоб активувати.
+          Навчайтесь у кабінеті на сайті або в Telegram-боті — прогрес спільний. Оберіть, де активувати доступ:
         </span>
       </p>
 
-      <!-- Primary CTA -->
+      <!-- CTAs: cabinet (primary) + Telegram bot (secondary) -->
+      <div class="mt-12 flex w-full flex-col items-center justify-center gap-4 sm:flex-row">
+      <a
+        id="success-cabinet-link"
+        href="/cabinet/"
+        class="group inline-flex items-center gap-3 rounded-full bg-gold-bright px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-ink transition duration-300 hover:bg-gold"
+      >
+        <span class="whitespace-nowrap">Відкрити кабінет</span>
+        <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
       <a
         id="success-bot-link"
         href={botLink}
         target="_blank"
         rel="noopener"
-        class="group mt-12 inline-flex items-center gap-3 rounded-full bg-gold-bright px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-ink transition duration-300 hover:bg-gold"
+        class="group inline-flex items-center gap-3 rounded-full border border-cream/30 px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-cream transition duration-300 hover:border-cream/70"
       >
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <span>Відкрити доступ у Telegram</span>
+        <span class="whitespace-nowrap">Відкрити в Telegram</span>
         <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
+      </div>
 
       <p id="success-order-wrap" class="mt-6 text-xs uppercase tracking-[0.25em] text-cream/40 hidden">
         Номер замовлення: <span id="success-order-id" class="font-mono text-cream/70"></span>
@@ -77,15 +89,15 @@ const botLink = site.bot.url;
         <div class="flex items-start gap-4 rounded-2xl border border-cream/10 bg-white/[0.02] p-5">
           <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold-bright/15 font-display text-sm text-gold-bright">1</div>
           <div>
-            <div class="text-sm font-medium text-cream">Натисніть «Відкрити доступ у Telegram»</div>
-            <div class="mt-1 text-xs leading-relaxed text-cream/60">Відкриється наш бот <span class="font-mono text-cream/80">@{site.bot.username}</span>.</div>
+            <div class="text-sm font-medium text-cream">Кабінет на сайті</div>
+            <div class="mt-1 text-xs leading-relaxed text-cream/60">Увійдіть через Telegram одним натиском — курс активується автоматично.</div>
           </div>
         </div>
         <div class="flex items-start gap-4 rounded-2xl border border-cream/10 bg-white/[0.02] p-5">
           <div class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold-bright/15 font-display text-sm text-gold-bright">2</div>
           <div>
-            <div class="text-sm font-medium text-cream">Натисніть «Start» у боті</div>
-            <div class="mt-1 text-xs leading-relaxed text-cream/60">Бот автоматично перевірить оплату за номером замовлення.</div>
+            <div class="text-sm font-medium text-cream">Або Telegram-бот</div>
+            <div class="mt-1 text-xs leading-relaxed text-cream/60">Натисніть «Start» у боті <span class="font-mono text-cream/80">@{site.bot.username}</span> — він перевірить оплату за номером замовлення.</div>
           </div>
         </div>
         <div class="flex items-start gap-4 rounded-2xl border border-cream/10 bg-white/[0.02] p-5">
@@ -137,6 +149,11 @@ const botLink = site.bot.url;
     const botLinkEl = document.getElementById('success-bot-link');
     if (botLinkEl && orderId) {
       botLinkEl.href = `${botUrl}?start=${encodeURIComponent(orderId)}`;
+    }
+
+    const cabinetLinkEl = document.getElementById('success-cabinet-link');
+    if (cabinetLinkEl && orderId) {
+      cabinetLinkEl.href = `/cabinet/?claim=${encodeURIComponent(orderId)}&product=${encodeURIComponent(productSlug)}`;
     }
 
     const titleEl = document.getElementById('success-product-title');

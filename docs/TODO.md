@@ -37,6 +37,21 @@ design PDFs land.
       / S3) and reference by URL from `PDF_DESIGN_SYSTEM.md` — lighter
       but loses single-checkout convenience.
 
+## Cabinet go-live (branch `feat/cabinet`, built 2026-09-14)
+
+Plan + checklist: `.claude/dosc/CABINET_IMPLEMENTATION_PLAN.md` §10.
+- [ ] **BotFather → `/setdomain`** → `@li_astrology_bot` → `www.li-astrology.com.ua`.
+      Without it the login widget shows "Bot domain invalid".
+- [ ] **Merge `feat/cabinet` → `main`** (deploys the site: cabinet pages, success
+      page CTA, header/footer "Кабінет" links, shared checkout helper).
+- [ ] **`fly deploy` the bot** (from `bot/`) — adds the `/start lesson_<id>` deep
+      link used by lesson media cards. `fly auth login` first.
+- [ ] After merge: log in on www with Telegram, open a lesson, and do one real
+      purchase from the cabinet to confirm access + Telegram confirmation.
+- [ ] Supabase Auth → URL Configuration → Site URL → `https://www.li-astrology.com.ua`
+      (still `http://localhost:3000`; cosmetic for our flow).
+- [ ] Phase 4: media hosting (Bunny + Storage) — needs original files.
+
 ## Monobank
 
 - [ ] **Contact Mono support to enable full merchant API access on the

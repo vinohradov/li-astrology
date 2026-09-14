@@ -1,0 +1,81 @@
+/** Cabinet UI copy (Ukrainian). Wording follows bot/src/locales/uk.ts so both channels read the same.
+ *  Add a `ru` object with the same keys when the site gets a Russian version. */
+export const t = {
+  brand: 'Li Astrology',
+  nav: {
+    myCourses: 'Мої курси',
+    settings: 'Налаштування',
+    logout: 'Вийти',
+    toSite: 'На сайт',
+  },
+  login: {
+    title: 'Особистий кабінет',
+    text: 'Увійдіть через Telegram — той самий акаунт, що й у боті. Ваші курси та прогрес зʼявляться автоматично.',
+    claimHint: (orderId: string) => `Увійдіть, щоб активувати замовлення ${orderId}.`,
+    loading: 'Входимо…',
+    widgetBlocked:
+      'Кнопка входу не завантажилась. Вимкніть блокувальник реклами для цього сайту або спробуйте інший браузер.',
+    error: 'Не вдалося увійти. Спробуйте ще раз.',
+    expired: 'Сесія входу застаріла. Натисніть кнопку ще раз.',
+  },
+  home: {
+    myCourses: 'Мої курси',
+    empty: 'У вас ще немає курсів. Оберіть перший нижче 👇',
+    otherCourses: 'Інші курси',
+    continue: 'Продовжити',
+    start: 'Почати навчання',
+    open: 'Відкрити курс',
+    details: 'Детальніше',
+    buy: 'Купити',
+    program: 'Програма',
+    processing: 'Обробка…',
+    buyError: 'Не вдалося створити платіж. Спробуйте ще раз.',
+    progress: (completed: number, total: number) => `${completed}/${total} уроків`,
+    loadError: 'Не вдалося завантажити курси. Оновіть сторінку.',
+  },
+  course: {
+    about: 'ℹ️ Про курс',
+    notFound: 'Курс не знайдено.',
+    locked: 'Цей курс ще не придбано. Програма доступна для ознайомлення.',
+    back: '← Мої курси',
+    extras: '📚 Література / книги',
+  },
+  lesson: {
+    markComplete: '✅ Позначити як завершений',
+    completed: '✅ Завершено',
+    completedToast: '✅ Урок завершено!',
+    prev: '◄ Попередній',
+    next: 'Наступний ►',
+    backToList: '📋 До списку уроків',
+    noAccess: 'У вас немає доступу до цього уроку.',
+    notFound: 'Урок не знайдено.',
+    video: 'Відео',
+    audio: 'Аудіо',
+    document: 'Матеріал',
+    inBot: 'Цей файл поки доступний у Telegram-боті. Скоро він зʼявиться тут.',
+    openInBot: 'Відкрити в боті',
+  },
+  settings: {
+    title: 'Налаштування',
+    account: 'Telegram-акаунт',
+    lang: 'Мова бота',
+    langHint: 'Впливає на повідомлення та кнопки в Telegram-боті.',
+    saved: 'Збережено',
+  },
+  claim: {
+    checking: 'Перевіряємо оплату…',
+    pending: 'Оплата ще обробляється банком. Сторінка оновиться автоматично.',
+    granted: (title: string) => `Курс «${title}» додано до ваших курсів ✨`,
+    failed: 'Оплата не пройшла або скасована. Якщо це помилка — зверніться в підтримку.',
+    claimedByOther:
+      'Це замовлення вже активоване іншим акаунтом. Якщо це помилка — зверніться в підтримку.',
+    notFound: (email: string) => `Замовлення не знайдено. Перевірте посилання або напишіть на ${email}.`,
+    timeout: (email: string) =>
+      `Оплата ще обробляється. Оновіть сторінку за хвилину або напишіть на ${email}.`,
+    error: 'Не вдалося перевірити замовлення. Оновіть сторінку.',
+  },
+  common: {
+    loading: 'Завантаження…',
+    retry: 'Спробувати ще раз',
+  },
+} as const;

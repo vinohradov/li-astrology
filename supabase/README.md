@@ -51,8 +51,19 @@ Bot:  inline "Buy" → create-payment (telegram_user_id known) → WFP link →
       wfp-callback → payments.status=paid + user_courses + Telegram notify
 ```
 
+## Current migrations & functions (2026-09-14)
+
+Migrations, in order: `0001_payments`, `0002_waitlist_and_nurture`, `0003_rls_lockdown`,
+`0004_cabinet_auth`. 0003+ were applied through the Management API with the CLI
+login token — see `.claude/dosc/CABINET_IMPLEMENTATION_PLAN.md` §2.
+
+Functions (all deployed with `supabase functions deploy <name> --no-verify-jwt --use-api`):
+`create-payment`, `mono-callback`, `wfp-callback`, `reconcile-payments`,
+`tg-auth` (Telegram Login → session), `claim-order` (bind a web order to the
+logged-in user; verifies the session itself).
+
 ## Troubleshooting
 
 - **Function logs**: [Functions dashboard](https://supabase.com/dashboard/project/plyofinxmwvwbintvqbx/functions)
 - **Payments table**: [Table Editor](https://supabase.com/dashboard/project/plyofinxmwvwbintvqbx/editor) → `payments`
-- **Bot logs**: Railway project dashboard
+- **Bot logs**: `fly logs -a li-astrology-bot` (bot runs on Fly.io)

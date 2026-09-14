@@ -185,7 +185,7 @@ async function showLessonList(ctx: BotContext, courseId: string, page: number) {
   });
 }
 
-async function showLesson(ctx: BotContext, lessonId: string, skipMediaResend = false) {
+export async function showLesson(ctx: BotContext, lessonId: string, skipMediaResend = false) {
   const userId = ctx.from!.id;
   const lesson = await getLessonById(lessonId);
   if (!lesson) return;

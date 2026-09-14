@@ -4,36 +4,9 @@
  * Provider is read from [data-provider]; defaults to monobank.
  */
 
-import { site, products, type ProductSlug } from '@/config/site';
-
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-    fbq?: (...args: unknown[]) => void;
-  }
-}
+import { createInvoice, trackCheckout } from '@/lib/checkout';
 
 let processing = false;
-
-// Fire checkout-intent events when a user clicks a buy button. Safe no-op if
-// GA / the pixel are not loaded.
-function trackCheckout(productId: string) {
-  const product = products[productId as ProductSlug];
-  const value = product?.priceUah;
-  const name = product?.title || productId;
-
-  window.gtag?.('event', 'begin_checkout', {
-    currency: 'UAH',
-    value,
-    items: [{ item_id: productId, item_name: name, price: value }],
-  });
-  window.fbq?.('track', 'InitiateCheckout', {
-    currency: 'UAH',
-    value,
-    content_ids: [productId],
-    content_name: name,
-  });
-}
 
 const SPINNER_HTML = `
   <svg class="wfp-spinner h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -108,25 +81,7 @@ async function start(productId: string, provider: string, button: HTMLElement) {
   markActive(button, true);
 
   try {
-    const response = await fetch(`${site.supabase.url}/functions/v1/create-payment`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${site.supabase.anonKey}`,
-      },
-      body: JSON.stringify({
-        provider,
-        product_slug: productId,
-        source: 'web',
-      }),
-    });
-
-    const payload = await response.json().catch(() => ({}));
-    if (!response.ok || !payload.invoice_url) {
-      throw new Error(payload.error || `create-payment failed (${response.status})`);
-    }
-
-    window.location.href = payload.invoice_url;
+    window.location.href = await createInvoice({ slug: productId, provider });
   } catch (err) {
     console.error('Payment error:', err);
     showToast('Не вдалося створити платіж. Спробуйте ще раз.');

@@ -1,0 +1,66 @@
+---
+import '@/styles/global.css';
+import Analytics from '@/components/Analytics.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title}</title>
+
+    <Analytics />
+
+    <link rel="icon" type="image/svg+xml" href="/images/li_logo_symbol.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap"
+    />
+    <style is:global>
+      .lesson-html {
+        font-size: 1rem;
+        line-height: 1.75;
+        color: var(--color-ink);
+        overflow-wrap: anywhere;
+      }
+      .lesson-html b,
+      .lesson-html strong {
+        font-weight: 600;
+      }
+      .lesson-html a {
+        color: var(--color-gold-deep);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .lesson-html blockquote {
+        border-left: 2px solid var(--color-gold);
+        padding-left: 1rem;
+        color: var(--color-ink-muted);
+      }
+      .lesson-html .tg-spoiler {
+        background: var(--color-ink);
+        color: transparent;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+      .lesson-html .tg-spoiler:hover,
+      .lesson-html .tg-spoiler:focus {
+        color: var(--color-cream);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-cream-soft text-ink antialiased">
+    <slot />
+  </body>
+</html>

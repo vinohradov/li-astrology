@@ -1,0 +1,8 @@
+---
+import CabinetLayout from '@/layouts/CabinetLayout.astro';
+import CourseView from '@/components/cabinet/CourseView';
+---
+
+<CabinetLayout title="Курс — Кабінет Li Astrology">
+  <CourseView client:only="react" />
+</CabinetLayout>

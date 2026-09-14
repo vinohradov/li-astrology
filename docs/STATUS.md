@@ -1,6 +1,6 @@
 # Project Status — Li Astrology
 
-Last updated: 2026-06-08
+Last updated: 2026-09-14
 
 ## Stack
 
@@ -8,7 +8,7 @@ Last updated: 2026-06-08
 |---|---|---|
 | Marketing site | Astro + Tailwind | `web/` — **the only deployed site**; GitHub Pages via `.github/workflows/deploy.yml` (triggers on `web/**` only, builds `web/dist`). Serves on `www.li-astrology.com.ua` (apex 301→www). |
 | Legacy static site | Plain HTML/CSS/JS | `index.html`, `intensiv/`, `kurs-aspekty/`, `js/` — **NOT served / dead** (legacy ~Jan 2026). Don't edit for live changes; verify against the live www domain. Routes differ from live (legacy `/kurs-aspekty/` vs live `/aspekty/`). |
-| Telegram bot | grammY + Node + TypeScript | `bot/` — deployed to Railway on `git push` via Dockerfile/nixpacks |
+| Telegram bot | grammY + Node + TypeScript | `bot/` — deployed to **Fly.io** app `li-astrology-bot` (`bot/fly.toml`) with `fly deploy` from `bot/` |
 | Backend DB + Edge Functions | Supabase (project `plyofinxmwvwbintvqbx`) | `supabase/functions/`, `supabase/migrations/` |
 | Payments | MonoBank acquiring (primary) + WayForPay (scaffolding, unused) | `supabase/functions/create-payment`, `mono-callback`, `wfp-callback`, `reconcile-payments` |
 
@@ -47,6 +47,17 @@ Pre-launch (content not recorded yet):
 Safety net: `reconcile-payments` edge function runs every minute from the bot scheduler
 (`bot/src/jobs/reconcile-payments.ts`). Polls Mono's `/api/merchant/invoice/status`
 for every `pending` monobank row, updates DB, grants access. Handles webhook misses.
+
+## Cabinet (personal account) — branch `feat/cabinet`, 2026-09-14
+
+Plan/checklist: `.claude/dosc/CABINET_IMPLEMENTATION_PLAN.md`. Phases 0–3 built. Backend live; the site part ships on merge to `main` (go-live steps in `docs/TODO.md`).
+
+- Routes: `/cabinet/` (my courses, other courses with buy, order claim), `/cabinet/course/?slug=`, `/cabinet/lesson/?id=`, `/cabinet/settings/`. React islands in `web/src/components/cabinet/`, static pages, `noindex`.
+- Auth: Telegram Login Widget → `tg-auth` edge function → Supabase Auth session (telegram_id in `app_metadata`, linked via `bot_users.auth_uid`).
+- Data: same tables as the bot (purchases + progress shared both ways) behind RLS from `0004_cabinet_auth.sql`.
+- Payments: success page «Відкрити кабінет» → `/cabinet/?claim=<order_id>` → `claim-order`. Buying inside the cabinet sends `telegram_user_id`, so `mono-callback` grants access directly.
+- Media: still Telegram file_ids; lesson pages show per-file cards that deep-link into the bot. Hosting = Phase 4.
+- Tests: `tools/cabinet-tests/`.
 
 ## i18n
 

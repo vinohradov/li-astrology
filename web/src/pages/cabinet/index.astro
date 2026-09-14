@@ -1,0 +1,8 @@
+---
+import CabinetLayout from '@/layouts/CabinetLayout.astro';
+import CabinetHome from '@/components/cabinet/CabinetHome';
+---
+
+<CabinetLayout title="Кабінет — Li Astrology">
+  <CabinetHome client:only="react" />
+</CabinetLayout>

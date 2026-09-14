@@ -8,6 +8,8 @@ import { getPaymentByOrderId, claimPaymentForUser } from '../db/payments.js';
 import { upsertUser } from '../db/users.js';
 import { addToWaitlist } from '../db/waitlist.js';
 import { formatPrice } from '../utils/format.js';
+import { getLessonById } from '../db/lessons.js';
+import { showLesson } from './lesson.js';
 
 export function registerStartHandler(bot: Bot<BotContext>) {
   bot.command('start', async (ctx) => {
@@ -62,6 +64,15 @@ export function registerStartHandler(bot: Bot<BotContext>) {
             },
           );
         }
+        return;
+      }
+    }
+
+    // Deep link from the website cabinet: open that lesson here (e.g. to get its media).
+    if (payload && payload.startsWith('lesson_')) {
+      const lesson = await getLessonById(payload.slice('lesson_'.length));
+      if (lesson && (lesson.is_free_preview || (await hasAccess(from.id, lesson.course_id)))) {
+        await showLesson(ctx, lesson.id);
         return;
       }
     }
