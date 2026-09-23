@@ -15,6 +15,7 @@ export async function checkInactivity() {
     .from('bot_users')
     .select('id, first_name, lang')
     .eq('blocked_bot', false)
+    .not('started_bot_at', 'is', null)
     .lt('last_active', threeDaysAgo);
 
   if (!inactiveUsers || inactiveUsers.length === 0) return;

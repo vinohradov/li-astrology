@@ -1,0 +1,916 @@
+/*
+ * Component styles. All values reference tokens.css.
+ *
+ * Each section below is one component. Components are independent —
+ * you can use any subset in any document.
+ */
+
+/* ═══════════════════════════════════════════════════════════════════
+ * pill-top
+ * Top-of-page burgundy/mauve pill badge (e.g., "БОНУСНЫЙ МАТЕРИАЛ").
+ * Source: every cover and most content pages in design-library/.
+ * Variants: .pill-top.dark (default), .pill-top.light (white on accent-soft)
+ * ═══════════════════════════════════════════════════════════════════ */
+.pill-top {
+  display: block;
+  background: var(--accent);
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--tracked-caps);
+  padding: 11pt 18pt;
+  border-radius: 18pt;        /* 2nd ТЗ §3: ~25px ≈ 19pt soft pill (not full circle) */
+  font-size: var(--fs-pill);
+  text-align: center;
+  width: 60%;                 /* 2nd ТЗ §3: 55–65% width */
+  min-width: 220pt;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.pill-top--row {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 22pt 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * doc-title + doc-subtitle
+ * Big centered title + mauve uppercase strapline.
+ * Source: every cover and most content pages.
+ * ═══════════════════════════════════════════════════════════════════ */
+.doc-title {
+  text-align: center;
+  font-weight: 800;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: var(--tracked-titles);
+  font-size: var(--fs-section);
+  margin: 6pt 0 4pt 0;
+  line-height: var(--lh-tight);
+}
+.doc-subtitle {
+  text-align: center;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: var(--fs-tiny);
+  letter-spacing: var(--tracked-caps);
+  text-transform: uppercase;
+  margin: 0 0 var(--space-section) 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * cover
+ * Full-page cover layout. Holds pill-top, doc-title, doc-subtitle,
+ * a centered illustration slot, author + handle. Page bleed handled
+ * by .cover-bg-* images.
+ * ═══════════════════════════════════════════════════════════════════ */
+.cover {
+  position: relative;
+  height: 253mm;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  page-break-after: always;
+  overflow: hidden;
+}
+.cover-title {
+  font-weight: 800;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: var(--tracked-titles);
+  font-size: 24pt;
+  line-height: var(--lh-tight);
+  margin: 0 0 12pt 0;
+  max-width: 120mm;        /* keeps title in central column, away from side decorations */
+}
+.cover-sub {
+  color: var(--accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracked-caps);
+  font-size: var(--fs-small);
+  margin: 0 0 36pt 0;
+}
+.cover-author {
+  margin-top: 6pt;
+  font-size: var(--fs-small);
+  color: var(--ink);
+}
+.cover-author strong { font-weight: 700; }
+.cover-handle {
+  margin-top: 4pt;
+  font-size: var(--fs-small);
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * cover-bg-*
+ * Full-bleed cover background images, extracted from
+ * design-library/Кармические узлы.pdf.
+ * Use ONE of these — they're alternatives, not stackable.
+ * ═══════════════════════════════════════════════════════════════════ */
+.cover-bg-network,
+.cover-bg-gradient {
+  position: absolute;
+  inset: -22mm -18mm;     /* bleed past page margins */
+  z-index: 0;
+  pointer-events: none;
+}
+.cover-bg-network {
+  background-image: url('./assets/cover-bg-network.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.55;          /* soften so it doesn't fight the title */
+}
+.cover-bg-gradient {
+  background-image: url('./assets/cover-bg-pink-gradient.png');
+  background-size: cover;
+  background-position: center;
+}
+.cover > * { position: relative; z-index: 1; }  /* keep content above bg */
+
+/* ═══════════════════════════════════════════════════════════════════
+ * cover-wheel
+ * The half zodiac wheel illustration, positioned to bleed off the
+ * right edge of the cover (as in Кармические узлы.pdf p1).
+ * ═══════════════════════════════════════════════════════════════════ */
+.cover-wheel {
+  position: absolute;
+  top: 50%;
+  right: -42mm;            /* mostly off-page bleed */
+  transform: translateY(-50%);
+  width: 75mm;
+  height: auto;
+  z-index: 0;
+  opacity: 0.5;            /* subtle so it reads as decoration, not a competing element */
+  pointer-events: none;
+}
+.cover-wheel.left {
+  right: auto;
+  left: -42mm;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * section
+ * Centered uppercase section header with a small glyph row above and
+ * an italic mauve note below (optional).
+ * Source: every section break in design-library.
+ * ═══════════════════════════════════════════════════════════════════ */
+.section-mark {
+  text-align: center;
+  color: var(--accent);
+  font-size: var(--fs-subhead);
+  line-height: 1;
+  margin: var(--space-section) 0 6pt 0;
+  letter-spacing: 0.6em;
+  opacity: 0.85;
+}
+.section {
+  text-align: center;
+  font-weight: 700;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: var(--tracked-caps);
+  font-size: var(--fs-section);
+  margin: 8pt 0 6pt 0;
+  page-break-after: avoid;
+}
+.section-note {
+  text-align: center;
+  font-style: italic;
+  color: var(--accent);
+  font-size: var(--fs-tiny);
+  margin: 0 auto var(--space-block) auto;
+  max-width: 130mm;
+  line-height: 1.55;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * item-label + item-text
+ * A "term" pill (glyph + name) followed by a body paragraph.
+ * Used for sign / planet entries.
+ * Variants:
+ *   .item-label         — solid card bg (light) with mauve text
+ *   .item-label--filled — solid accent bg with white text
+ * ═══════════════════════════════════════════════════════════════════ */
+.item {
+  margin: 18pt 0 16pt 0;
+  page-break-inside: avoid;
+}
+.item-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12pt;
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  padding: 10pt 22pt;
+  margin: 0 auto 12pt auto;
+  width: 58%;
+  min-width: 200pt;
+}
+.item-label .glyph {
+  font-family: var(--font-sym);
+  color: var(--accent);
+  font-size: var(--fs-glyph);
+  line-height: 1;
+}
+.item-label .name {
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: var(--tracked-caps);
+  font-size: var(--fs-small);
+}
+.item-label--filled {
+  background: var(--accent);
+}
+.item-label--filled .glyph,
+.item-label--filled .name {
+  color: var(--paper);
+}
+.item-text {
+  text-align: justify;
+  hyphens: auto;
+  margin: 0;
+  color: var(--ink);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * lead
+ * Body paragraph used in intros / non-card body text.
+ * ═══════════════════════════════════════════════════════════════════ */
+.lead {
+  text-align: left;          /* per Anastasia's ТЗ §2 — body is left-aligned, not justified */
+  hyphens: auto;
+  margin: 0 0 var(--space-paragraph) 0;
+}
+.lead--justify {
+  text-align: justify;       /* opt-in modifier if a doc explicitly wants justified body */
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * inline-note
+ * Italic intro paragraph in accent color, immediately under a heading.
+ * Source: Кармические узлы.pdf p2 below "КАРМИЧЕСКИЕ УЗЛЫ..." pill.
+ * ═══════════════════════════════════════════════════════════════════ */
+.inline-note {
+  text-align: justify;
+  font-style: italic;
+  color: var(--accent);
+  margin: 0 0 var(--space-paragraph) 0;
+  font-size: var(--fs-small);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * glyph-sash
+ * Horizontal row of zodiac / planet glyphs between sections, between
+ * thin hairline rules.
+ * ═══════════════════════════════════════════════════════════════════ */
+.glyph-sash {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 22pt auto 16pt auto;
+  max-width: 130mm;
+  color: var(--accent);
+  font-family: var(--font-sym);
+  font-size: 12pt;
+  line-height: 1;
+  padding: 8pt 0;
+  border-top: var(--hairline) solid var(--accent-soft);
+  border-bottom: var(--hairline) solid var(--accent-soft);
+  opacity: 0.85;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * callout
+ * Light card / callout box — Anastasia's #F2ECEC fill. Used for
+ * highlight notes, "Например:" examples, secondary info.
+ * (Not present in Кармические узлы, but specified in brief.)
+ * ═══════════════════════════════════════════════════════════════════ */
+.callout {
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  padding: 16pt 22pt;
+  margin: 18pt 0;
+  page-break-inside: avoid;
+}
+.callout > :first-child { margin-top: 0; }
+.callout > :last-child  { margin-bottom: 0; }
+.callout .label {
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: var(--tracked-caps);
+  font-size: var(--fs-tiny);
+  margin: 0 0 6pt 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * outro
+ * Final pitch box at end of bonus / lesson materials.
+ * Same look as .callout, with optional star-row top mark.
+ * ═══════════════════════════════════════════════════════════════════ */
+.outro {
+  background: var(--card-bg);
+  border-radius: 16pt;
+  padding: 22pt 26pt;
+  margin: 18pt 0 0 0;
+  page-break-inside: avoid;
+}
+.outro > :first-child { margin-top: 0; }
+.outro > :last-child  { margin-bottom: 0; }
+.outro p {
+  text-align: justify;
+  hyphens: auto;
+  margin: 0 0 10pt 0;
+}
+.outro-mark {
+  text-align: center;
+  color: var(--accent);
+  font-size: 12pt;
+  letter-spacing: 0.5em;
+  margin-bottom: 8pt;
+  font-family: var(--font-sym);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * bullet-list-rail
+ * Bulleted list where dots are connected by a vertical mauve line.
+ * Source: Аспекты солнца и луны.pdf p5, Стихии и кресты.pdf p2.
+ * ═══════════════════════════════════════════════════════════════════ */
+.bullet-list-rail {
+  position: relative;
+  list-style: none;
+  margin: 14pt 0;
+  padding: 0 0 0 22pt;
+}
+.bullet-list-rail::before {
+  content: '';
+  position: absolute;
+  left: 6pt;
+  top: 8pt;
+  bottom: 8pt;
+  width: var(--hairline);
+  background: var(--accent);
+  opacity: 0.85;
+}
+.bullet-list-rail li {
+  position: relative;
+  padding: 4pt 0 4pt 14pt;
+  text-align: left;
+}
+.bullet-list-rail li::before {
+  content: '';
+  position: absolute;
+  left: -5pt;
+  top: 11pt;
+  width: 6pt;
+  height: 6pt;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * bullet-term-list
+ * Bulleted list with BOLD UPPERCASE accent term — em-dash — body.
+ * Source: Anastasia's brief §3.3.
+ * ═══════════════════════════════════════════════════════════════════ */
+.bullet-term-list {
+  list-style: none;
+  margin: 14pt 0;
+  padding: 0;
+}
+.bullet-term-list li {
+  position: relative;
+  padding: 4pt 0 4pt 18pt;
+  text-align: left;
+}
+.bullet-term-list li::before {
+  content: '';
+  position: absolute;
+  left: 4pt;
+  top: 11pt;
+  width: 6pt;
+  height: 6pt;
+  background: var(--accent);
+  border-radius: 50%;
+}
+.bullet-term-list .term {
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: var(--tracked-caps);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * entity-table
+ * Two-column reference table: entity (glyph + name) | description.
+ * Used for sign tables, planet tables, аспект tables, anywhere there's
+ * a vocabulary list with longer descriptive content per row.
+ * Source: design-library/Кармические узлы.pdf p3 ("ИНТЕРПРЕТАЦИЯ УЗЛОВ").
+ *
+ * Variants:
+ *   .entity-table              — default (light beige header)
+ *   .entity-table--filled-head — solid dusty-pink header w/ white text
+ * ═══════════════════════════════════════════════════════════════════ */
+.entity-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 18pt 0;
+  font-size: var(--fs-small);
+}
+.entity-table thead th {
+  background: var(--card-bg);
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: var(--tracked-caps);
+  font-size: var(--fs-tiny);
+  font-weight: 700;
+  padding: 12pt 16pt;
+  text-align: left;
+  border: 0;
+}
+.entity-table thead th:first-child {
+  text-align: center;
+  border-top-left-radius: var(--card-radius);
+  border-bottom-left-radius: var(--card-radius);
+}
+.entity-table thead th:last-child {
+  border-top-right-radius: var(--card-radius);
+  border-bottom-right-radius: var(--card-radius);
+}
+.entity-table thead th.entity-col { width: 22%; }
+
+.entity-table tbody tr {
+  page-break-inside: avoid;
+}
+.entity-table tbody td {
+  padding: 12pt 16pt;
+  vertical-align: top;
+  border-bottom: var(--hairline) solid var(--rule);
+}
+.entity-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.entity-table .entity-cell {
+  text-align: center;
+  vertical-align: middle;
+}
+.entity-table .entity-cell .glyph {
+  font-family: var(--font-sym);
+  color: var(--accent);
+  font-size: 22pt;
+  line-height: 1;
+  display: block;
+  margin-bottom: 6pt;
+}
+.entity-table .entity-cell .name {
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: var(--tracked-caps);
+  font-size: var(--fs-tiny);
+  display: block;
+}
+.entity-table .content-cell {
+  text-align: justify;
+  hyphens: auto;
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+/* Solid header variant */
+.entity-table--filled-head thead th {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * planet-decor
+ * Photoreal planet image (Venus / Moon / Saturn) with thin dashed
+ * orbital ring + two node dots. Free placement per §6.4.
+ *
+ * Usage:
+ *   <div class="planet-decor" data-planet="venus|moon|saturn">
+ *     <img class="planet-img" src="./assets/planet-venus.png">
+ *     <div class="orbital-ring"><span class="node left"></span>
+ *                               <span class="node right"></span></div>
+ *   </div>
+ *
+ * Position via the .planet-decor--{center|right-bleed|bottom-bleed}
+ * modifier classes.
+ * ═══════════════════════════════════════════════════════════════════ */
+.planet-decor {
+  position: relative;
+  width: 60mm;
+  height: 60mm;
+  margin: 28pt auto;
+  page-break-inside: avoid;
+}
+.planet-decor .planet-img {
+  position: absolute;
+  inset: 10%;
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+.planet-decor .orbital-ring {
+  position: absolute;
+  inset: 0;
+  border: var(--hairline) dashed var(--rule);
+  border-radius: 50%;
+}
+.planet-decor .orbital-ring .node {
+  position: absolute;
+  width: 4.5pt;
+  height: 4.5pt;
+  background: var(--node);
+  border-radius: 50%;
+}
+.planet-decor .orbital-ring .node.left  { top: 50%; left:  -2.25pt; margin-top: -2.25pt; }
+.planet-decor .orbital-ring .node.right { top: 50%; right: -2.25pt; margin-top: -2.25pt; }
+
+.planet-decor--right-bleed {
+  margin-left: auto;
+  margin-right: -25mm;     /* crop off right edge per §6.4 */
+}
+.planet-decor--left-bleed {
+  margin-left: -25mm;
+  margin-right: auto;
+}
+.planet-decor--large {
+  width: 80mm;
+  height: 80mm;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * MINIMAL VARIANTS — Anastasia's 2026-05-19 ТЗ for
+ * "Профессиональное предназначение". Plain frames, white bg, no decoration.
+ * Use these when the customer wants a Word-document-like minimalist look
+ * instead of the Канва-style decorated components above.
+ * ═══════════════════════════════════════════════════════════════════ */
+
+/* Italic subtitle — regular case, centered, italic, dark ink.
+   Use immediately under .doc-title. */
+.doc-subtitle--italic {
+  text-align: center;
+  color: var(--ink);
+  font-weight: 400;
+  font-style: italic;
+  font-size: var(--fs-body);
+  letter-spacing: 0;
+  text-transform: none;
+  margin: 0 0 22pt 0;
+}
+
+/* Bordered callout frame (key thesis box).
+   White bg + thin border. */
+.callout-frame {
+  background: var(--paper);
+  border: 0.7pt solid var(--ink);
+  border-radius: 0;
+  padding: 14pt 20pt;
+  margin: 18pt 0;
+  page-break-inside: avoid;
+}
+.callout-frame p {
+  text-align: left;
+  margin: 0 0 8pt 0;
+  font-weight: 400;
+}
+.callout-frame p:last-child { margin-bottom: 0; }
+
+/* Bordered final block — same look as callout-frame, used as outro.
+   Course name uses bold + underline (per §5). */
+.outro-frame {
+  background: var(--paper);
+  border: 0.7pt solid var(--ink);
+  border-radius: 0;
+  padding: 18pt 22pt;
+  margin: 20pt 0 0 0;
+  page-break-inside: avoid;
+}
+.outro-frame p {
+  text-align: left;
+  margin: 0 0 10pt 0;
+  font-weight: 400;
+}
+.outro-frame p:last-child { margin-bottom: 0; }
+.outro-frame .course-name {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Simple 2-column table — thin borders, white bg, bold left column in
+   regular case, plain right column. Per §4.
+   Use this INSTEAD of .entity-table when the customer wants the
+   no-decoration Word-style look. */
+.simple-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 18pt 0;
+  font-size: var(--fs-small);
+}
+.simple-table th,
+.simple-table td {
+  border: 0.7pt solid var(--ink);
+  padding: 10pt 14pt;
+  text-align: left;
+  vertical-align: top;
+  background: var(--paper);
+}
+.simple-table thead th {
+  font-weight: 700;
+  background: var(--paper);
+}
+.simple-table tbody td:first-child {
+  font-weight: 700;
+  width: 22%;
+}
+.simple-table tbody tr {
+  page-break-inside: avoid;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * mid-doc-pill
+ * Same dusty-pink pill as `pill-top`, but used as an in-body section
+ * header (centered, mid-page). Often multi-line.
+ * Source: ZET.pdf p2 ("КАК СКАЧАТЬ ZET", "КАК УСТАНОВИТЬ НА WINDOWS"),
+ *         урок 5.pdf p1 (top "УРОК 5: Личные планеты"),
+ *         урок 8.pdf p1 ("УРОК 8. ДОМА. ОБСТОЯТЕЛЬСТВА ЖИЗНИ" — 2 lines).
+ * ═══════════════════════════════════════════════════════════════════ */
+.mid-doc-pill {
+  display: block;
+  background: var(--accent);
+  color: var(--paper);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--tracked-caps);
+  padding: 10pt 26pt;
+  border-radius: var(--pill-radius);
+  font-size: 11pt;
+  text-align: center;
+  margin: 20pt auto 14pt auto;
+  width: fit-content;
+  max-width: 80%;
+  line-height: 1.35;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * sign-pill-with-ruler
+ * Centered pill (light card bg) with a bold uppercase sign/planet name
+ * on top, and a small subtitle line beneath (e.g. "планета управитель
+ * — Марс, 1-й дом").
+ * Source: урок 2 (2).pdf p1+ ("ОВЕН" / "ТЕЛЕЦ" / "БЛИЗНЕЦЫ" pills with
+ *         planet ruler subtitle).
+ * ═══════════════════════════════════════════════════════════════════ */
+.sign-pill {
+  display: block;
+  background: var(--card-bg);
+  border-radius: 14pt;
+  padding: 10pt 22pt;
+  margin: 16pt auto 12pt auto;
+  width: 62%;
+  min-width: 220pt;
+  text-align: center;
+}
+.sign-pill .name {
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: var(--tracked-caps);
+  font-size: 12pt;
+  display: block;
+  margin-bottom: 4pt;
+}
+.sign-pill .ruler {
+  font-size: 10pt;
+  color: var(--ink);
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * two-col-list
+ * Two columns of bulleted lists side-by-side, each with a centered
+ * bold mauve header above. Typical: "Плюсы:" / "Минусы:" / "Таланты:".
+ * Source: урок 2 (2).pdf p1+ (every zodiac sign page).
+ * ═══════════════════════════════════════════════════════════════════ */
+.two-col-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24pt;
+  margin: 14pt 0;
+  page-break-inside: avoid;
+}
+.two-col-list .col h4 {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 11pt;
+  margin: 0 0 8pt 0;
+  text-align: center;
+}
+.two-col-list .col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.two-col-list .col ul li {
+  position: relative;
+  padding: 3pt 0 3pt 16pt;
+  font-size: var(--fs-small);
+}
+.two-col-list .col ul li::before {
+  content: '';
+  position: absolute;
+  left: 4pt;
+  top: 9pt;
+  width: 5pt;
+  height: 5pt;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * definition-list
+ * Glossary-style block: bold uppercase term + parenthetical hint —
+ * regular body description. Items separated by space, not bullets.
+ * Source: урок 3.pdf p1 ("ЗНАКИ (как?) — это 12 типов энергии…",
+ *         "ПЛАНЕТЫ (кто? что?) — функции психики…", etc.).
+ * ═══════════════════════════════════════════════════════════════════ */
+.definition-list {
+  margin: 14pt 0;
+}
+.definition-list .def {
+  margin: 0 0 10pt 0;
+  text-align: justify;
+  hyphens: auto;
+}
+.definition-list .def-term {
+  font-weight: 700;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.definition-list .def-hint {
+  font-weight: 600;
+  color: var(--accent);
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * numbered-list-badge
+ * Numbered list where each item has a small solid mauve square badge
+ * containing a white digit, followed by body text.
+ * Source: ZET.pdf p2 (installation steps).
+ * ═══════════════════════════════════════════════════════════════════ */
+.numbered-list-badge {
+  list-style: none;
+  padding: 0;
+  margin: 14pt 0;
+  counter-reset: step;
+}
+.numbered-list-badge li {
+  position: relative;
+  padding: 3pt 0 6pt 22pt;
+  text-align: left;
+  counter-increment: step;
+}
+.numbered-list-badge li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 4pt;
+  width: 14pt;
+  height: 14pt;
+  line-height: 14pt;
+  background: var(--accent);
+  color: var(--paper);
+  font-weight: 700;
+  font-size: 9pt;
+  text-align: center;
+  border-radius: 2pt;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * key-value-list
+ * Compact attribute list: bold mauve label + colon + plain body value,
+ * one per line, no bullets.
+ * Source: урок 5.pdf p1 (bottom card: "Металл: …", "Цвета: …", "День: …").
+ * ═══════════════════════════════════════════════════════════════════ */
+.key-value-list {
+  margin: 14pt 0;
+  line-height: 1.7;
+}
+.key-value-list .kv-row { display: block; }
+.key-value-list .kv-key {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * subhead-label
+ * Left-aligned bold mauve uppercase label ending in a colon, used to
+ * introduce a list or block directly below it. Lighter than `.section`.
+ * Source: урок 4.pdf p2 ("ЛУННЫЕ ФУНКЦИИ ПСИХИКИ:"),
+ *         урок 5.pdf p1 ("МЕРКУРИАНСКИЕ ФУНКЦИИ ПСИХИКИ:",
+ *                        "ПРИМЕРЫ, КОГДА СМОТРИМ В КАРТЕ МЕРКУРИЙ:").
+ * ═══════════════════════════════════════════════════════════════════ */
+.subhead-label {
+  font-weight: 700;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 11pt;
+  margin: 14pt 0 8pt 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * subhead-aspect
+ * Left-aligned bold mauve UPPERCASE H3-style header. Used inside an
+ * already-sectioned page to name a sub-block (aspect names, modes…).
+ * Source: Аспекты_к_другим_личным_планетам_.pdf p2
+ *         ("ТРИН / СЕКСТИЛЬ", "СОЕДИНЕНИЕ / КВАДРАТ / ОППОЗИЦИЯ"),
+ *         Аспекты солнца и луны.pdf p5 (same pattern).
+ * ═══════════════════════════════════════════════════════════════════ */
+.subhead-aspect {
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12pt;
+  margin: 18pt 0 8pt 0;
+  page-break-after: avoid;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * callout--centered  (modifier)
+ * Variant of `.callout` with bold, centered text. Used for short
+ * emphatic statements rather than long info paragraphs.
+ * Source: урок 3.pdf p1 ("Суть астрологии состоит в том…"),
+ *         Стихии и кресты .pdf p2 ("Та стихия, которая наберёт
+ *         больше баллов — и будет ведущей").
+ * ═══════════════════════════════════════════════════════════════════ */
+.callout--centered {
+  text-align: center;
+  padding: 18pt 24pt;
+}
+.callout--centered p {
+  text-align: center !important;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+ * divider
+ * Centered hairline rule with two dot caps.
+ * ═══════════════════════════════════════════════════════════════════ */
+.divider {
+  width: 60pt;
+  height: 1.2pt;
+  background: var(--accent-soft);
+  border: 0;
+  margin: 22pt auto;
+  border-radius: 2pt;
+  position: relative;
+}
+.divider::before,
+.divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 4pt;
+  height: 4pt;
+  background: var(--accent-soft);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.divider::before { left: -10pt; }
+.divider::after  { right: -10pt; }
+
+/* ═══════════════════════════════════════════════════════════════════
+ * handle
+ * Final-page footer with @li_astrology_ between two star marks.
+ * ═══════════════════════════════════════════════════════════════════ */
+.handle {
+  margin-top: 28pt;
+  text-align: center;
+  color: var(--accent);
+  font-size: 9.5pt;
+  letter-spacing: 0.12em;
+}
+.handle .star {
+  display: inline-block;
+  margin: 0 8pt;
+  color: var(--accent-soft);
+  font-family: var(--font-sym);
+}
+.handle strong { color: var(--accent); font-weight: 700; }

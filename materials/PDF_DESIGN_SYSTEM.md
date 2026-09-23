@@ -2,14 +2,21 @@
 
 > Living doc for the styled-PDF work in `materials/`. Read this first before
 > touching any document in this folder or building a new one.
+>
+> 🟣 **For design tokens and visual rules, [`PDF_BUILDER_RULES.md`](PDF_BUILDER_RULES.md) is now authoritative.**
+> Anastasia provided a canonical spec (cherry / dusty-pink / beige
+> Компенсаторика palette) on 2026-05-19. Whenever a token in this doc
+> conflicts with the rules doc, the rules doc wins.
 
 ---
 
 ## 0. TL;DR
 
 - We have a set of beautifully designed Russian-language astrology PDFs in
-  `materials/design-library/` (covers + lesson materials). They share a
-  coherent mauve / burgundy / pink design language.
+  `materials/design-library/` (covers + lesson materials). The current
+  canonical design language is captured in
+  [`PDF_BUILDER_RULES.md`](PDF_BUILDER_RULES.md) — dusty cherry/pink,
+  Montserrat, pill headers, light beige cards.
 - The end goal is a **pipeline**: drop a plain `.txt` (or `.docx`) into
   `materials/templates/`, run an analyzer that maps each block to a known
   **design component**, surface gaps for human review, then render to a PDF
@@ -108,28 +115,36 @@ cd materials/documents/professional-purpose
 
 ## 3. Design tokens
 
+> **Source of truth: [`PDF_BUILDER_RULES.md`](PDF_BUILDER_RULES.md) §1–§2.**
+> The table below is the implementation mapping — names used in the
+> reference HTML's `:root`. If a value here drifts from the rules doc,
+> update this table.
+
 ### 3.1 Color palette
-| Role               | Hex       | Used for                                      |
-|--------------------|-----------|-----------------------------------------------|
-| `--plum-900`       | `#2d1b26` | H1/H2 titles, brand-dark text                 |
-| `--plum-800`       | `#3a2530` | Body strong, `<strong>`                       |
-| `--plum-700`       | `#5e2a3b` | Top pill background, `<em>`                   |
-| `--plum-600`       | `#6b2f44` | Reserved (deeper accents)                     |
-| `--mauve-500`      | `#9c5871` | Sub-headers, glyphs, subtitle, footer         |
-| `--mauve-400`      | `#b07a8e` | Section glyph rows                            |
-| `--mauve-300`      | `#d4a8b8` | Dividers, dotted ends, wheel ring             |
-| `--mauve-200`      | `#e5c9d3` | Cover decoration, spokes, secondary lines     |
-| `--pink-100`       | `#f5e6eb` | Item-pill background                          |
-| `--pink-50`        | `#faeef2` | Callout / outro box background                |
-| `--ink`            | `#3a2530` | Body                                          |
-| `--ink-soft`       | `#4a3340` | Author meta                                   |
+| Var               | Hex       | Customer role (rules §1)                |
+|-------------------|-----------|------------------------------------------|
+| `--ink`           | `#3D1F2D` | Headings + main body text                |
+| `--ink-soft`      | `#5A3340` | Author meta, secondary body              |
+| `--accent`        | `#B8878F` | Pills, bullets, glyphs, accent text      |
+| `--accent-soft`   | `#D4B0B5` | Dividers, wheel ring, decorative spokes  |
+| `--accent-deep`   | `#9C6E76` | Reserved hover-tone equivalent           |
+| `--card-bg`       | `#F2ECEC` | Card / callout / outro background        |
+| `--paper`         | `#FFFFFF` | Page background                          |
+| `--hairline`      | `#C5B5B0` | Orbital rings, very faint borders        |
+| `--node`          | `#707070` | Orbital nodes (dots on planet rings)     |
+
+> **Earlier inferred mauve/burgundy tokens are deprecated.** They were
+> extracted from older PDFs in `design-library/` (урок 1.pdf, etc.).
+> The current canonical palette is the dusty-pink / cherry family above.
+> A mapping from old to new lives in
+> [`PDF_BUILDER_RULES.md`](PDF_BUILDER_RULES.md) §7.
 
 ### 3.2 Typography
-- **Body:** Inter 400/500/600/700/800 (Google Fonts).
+- **Body:** Montserrat 400/500/600/700/800 + italic 400/500 (Google Fonts).
 - **Symbols / glyphs:** Noto Sans Symbols 2 → fallback Apple Symbols → Segoe UI Symbol.
-- **Body size:** 11.5pt, line-height 1.55, `text-align: justify; hyphens: auto;`.
-- **Titles:** uppercase, letter-spacing 0.02–0.06em depending on size.
-- **Page:** A4, margins 18mm all sides (cover) / 18mm all sides (content).
+- **Body size:** 11pt, line-height 1.6, `text-align: justify; hyphens: auto;`.
+- **Titles:** uppercase, letter-spacing 0.04em (cover) → 0.18em (small caps).
+- **Page:** A4, margins 22mm top/bottom · 18mm sides.
 
 ---
 
@@ -348,6 +363,25 @@ purely content.
 ## 9. Session log
 
 > Append-only. Newest first.
+
+### 2026-05-19 — Customer rules applied + palette swap
+- **Added** [`PDF_BUILDER_RULES.md`](PDF_BUILDER_RULES.md) as the
+  authoritative spec (cherry / dusty-pink / beige, Montserrat).
+- **Re-rendered** `documents/professional-purpose/*.pdf` against the new
+  rules: dusty-pink pills (`#B8878F` white caps), light-beige cards
+  (`#F2ECEC`), Montserrat throughout, item pills shifted to a
+  card-with-dusty-pink-term style.
+- **Deprecated** the older mauve/burgundy tokens in §3.1.
+- **Added** CSS placeholder for the §6 photoreal planet decoration
+  (Mars-style rocky sphere with dashed orbital ring + 2 nodes).
+- **Couldn't implement yet:**
+  - Per-page page-number circle (Chrome CLI ignores
+    `--print-to-pdf-header-template` / `--print-to-pdf-footer-template`;
+    needs Puppeteer / Playwright wrapper).
+  - Author signature at top of every page (same limitation).
+  - Photorealistic planet textures (need real asset pipeline).
+  All three are tracked in
+  [`PDF_BUILDER_RULES.md`](PDF_BUILDER_RULES.md) §8.
 
 ### 2026-05-16 — Folder restructure
 - **Renamed** `course_pdfs/` → `materials/`.

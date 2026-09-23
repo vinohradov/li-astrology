@@ -19,6 +19,7 @@ export function registerAdminCommands(bot: Bot<BotContext>) {
       .from('bot_users')
       .select('*', { count: 'exact', head: true })
       .eq('blocked_bot', false)
+      .not('started_bot_at', 'is', null)
       .gte('last_active', new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString());
 
     await ctx.reply(
@@ -41,7 +42,8 @@ export function registerAdminCommands(bot: Bot<BotContext>) {
     const { data: users } = await supabase
       .from('bot_users')
       .select('id')
-      .eq('blocked_bot', false);
+      .eq('blocked_bot', false)
+      .not('started_bot_at', 'is', null);
 
     if (!users || users.length === 0) {
       await ctx.reply('Немає активних користувачів.');

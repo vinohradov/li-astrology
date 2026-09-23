@@ -44,3 +44,17 @@ temp/
 
 # Netlify
 .netlify/
+
+# Raw source footage / large media (keep out of git)
+context/*.MOV
+context/*.mov
+context/*.mp4
+
+# Python virtualenvs
+venv/
+.venv/
+
+# Generated outputs
+tools/pdf-pipeline/inventory/
+tools/remotion-bumper/out/
+tools/remotion-bumper/public/footage.mp4

@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Component Library — Visual Showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Noto+Sans+Symbols+2&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./tokens.css">
+<link rel="stylesheet" href="./components.css">
+<style>
+  body {
+    padding: 18mm;
+    background: #fafafa;
+  }
+  .showcase-group {
+    background: var(--paper);
+    margin: 12pt 0 24pt 0;
+    padding: 18pt 22pt;
+    border-radius: 6pt;
+    box-shadow: 0 0 0 0.5pt #e6e6e6;
+  }
+  .showcase-group h3 {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    color: var(--accent);
+    text-transform: lowercase;
+    letter-spacing: 0;
+    font-size: 10pt;
+    margin: 0 0 14pt 0;
+  }
+  .showcase-group h3 .desc {
+    color: #888;
+    font-family: var(--font-body);
+    font-weight: 400;
+    margin-left: 8pt;
+  }
+  .showcase-group .frame {
+    background: var(--paper);
+    border: var(--hairline) solid #eee;
+    padding: 18pt;
+    border-radius: 4pt;
+    margin: 8pt 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="showcase-group">
+  <h3>pill-top <span class="desc">— top of page badge</span></h3>
+  <div class="frame">
+    <div class="pill-top--row"><div class="pill-top">БОНУСНЫЙ МАТЕРИАЛ</div></div>
+    <div class="pill-top--row"><div class="pill-top">УРОК 1 · ВВОДНЫЙ</div></div>
+    <div class="pill-top--row"><div class="pill-top">БОНУСНЫЙ МАТЕРИАЛ · 10 ДОМ</div></div>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>doc-title + doc-subtitle <span class="desc">— page top heading</span></h3>
+  <div class="frame">
+    <h1 class="doc-title">Профессиональное предназначение</h1>
+    <div class="doc-subtitle">10 дом в натальной карте</div>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>section + section-mark + section-note <span class="desc">— section break</span></h3>
+  <div class="frame">
+    <div class="section-mark"><span class="sym">♈ ♉ ♊ ♋ ♌ ♍ ♎ ♏ ♐ ♑ ♒ ♓</span></div>
+    <h2 class="section">Знак зодиака 10 дома</h2>
+    <p class="section-note">подсказывает, какая манера поведения будет наиболее эффективна именно для вас.</p>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>item-label (default — light card)</h3>
+  <div class="frame">
+    <div class="item">
+      <div class="item-label"><span class="glyph">♈</span><span class="name">Овен</span></div>
+      <p class="item-text">Действовать смело и без промедления — это ваш главный профессиональный принцип. Не ждите разрешения или идеальных условий: берите инициативу в свои руки.</p>
+    </div>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>item-label--filled <span class="desc">— solid accent variant</span></h3>
+  <div class="frame">
+    <div class="item">
+      <div class="item-label item-label--filled"><span class="glyph">☉</span><span class="name">Солнце</span></div>
+      <p class="item-text">Ваша личность сама по себе — главный инструмент. Люди пойдут за вами как за человеком.</p>
+    </div>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>glyph-sash <span class="desc">— horizontal divider with glyph row</span></h3>
+  <div class="frame">
+    <div class="glyph-sash">
+      <span class="sym">♈</span><span class="sym">♉</span><span class="sym">♊</span><span class="sym">♋</span>
+      <span class="sym">♌</span><span class="sym">♍</span><span class="sym">♎</span><span class="sym">♏</span>
+      <span class="sym">♐</span><span class="sym">♑</span><span class="sym">♒</span><span class="sym">♓</span>
+    </div>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>inline-note <span class="desc">— italic intro paragraph in accent</span></h3>
+  <div class="frame">
+    <p class="inline-note">Эти периоды могут открывать новые возможности и важные встречи. Обратите внимание на то, как меняются ваши приоритеты.</p>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>callout <span class="desc">— light card box</span></h3>
+  <div class="frame">
+    <div class="callout">
+      <p class="label">Например:</p>
+      <p>Если планет несколько, то необходимо провести анализ, какая из них сильнее, и грамотно синтезировать все эти показатели.</p>
+    </div>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>bullet-list-rail <span class="desc">— bulleted list with vertical mauve rail</span></h3>
+  <div class="frame">
+    <ul class="bullet-list-rail">
+      <li>1/ танцевальные импровизации</li>
+      <li>1/ медитации на тему отношений с родителями</li>
+      <li>1/3/ выступления</li>
+      <li>2/ сепарироваться от родителей, психоанализ отношений с ними</li>
+      <li>3/ устраивать дома праздник, фотосессии для себя и близких</li>
+    </ul>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>bullet-term-list <span class="desc">— bold accent term — body</span></h3>
+  <div class="frame">
+    <ul class="bullet-term-list">
+      <li><span class="term">Принятие</span> — спокойное согласие с тем, что есть, без сопротивления.</li>
+      <li><span class="term">Компенсация</span> — поиск замещения через противоположные качества.</li>
+      <li><span class="term">Проработка</span> — осознанное проживание и трансформация.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>entity-table <span class="desc">— 2-col reference table (glyph + name | description)</span></h3>
+  <div class="frame">
+    <table class="entity-table">
+      <thead>
+        <tr>
+          <th class="entity-col">Планета</th>
+          <th>Что даёт</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="entity-cell"><span class="glyph">☉</span><span class="name">Солнце</span></td>
+          <td class="content-cell">Ваша личность сама по себе — главный инструмент. Стремитесь к позициям, где вы видны: руководящие роли, публичные выступления.</td>
+        </tr>
+        <tr>
+          <td class="entity-cell"><span class="glyph">☽</span><span class="name">Луна</span></td>
+          <td class="content-cell">Карьера, глубоко связанная с эмоциями и людьми. Доверяйте интуиции в выборе пути.</td>
+        </tr>
+        <tr>
+          <td class="entity-cell"><span class="glyph">♀</span><span class="name">Венера</span></td>
+          <td class="content-cell">Привлекательность и эстетическое чутьё ведут вверх по карьерной лестнице. Признание приходит через красоту и обаяние.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>planet-decor <span class="desc">— photoreal planet + orbital ring</span></h3>
+  <div class="frame" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12pt;">
+    <div class="planet-decor" data-planet="venus">
+      <img class="planet-img" src="./assets/planet-venus.png">
+      <div class="orbital-ring"><span class="node left"></span><span class="node right"></span></div>
+    </div>
+    <div class="planet-decor" data-planet="moon">
+      <img class="planet-img" src="./assets/planet-moon.png">
+      <div class="orbital-ring"><span class="node left"></span><span class="node right"></span></div>
+    </div>
+    <div class="planet-decor" data-planet="saturn">
+      <img class="planet-img" src="./assets/planet-saturn.png">
+      <div class="orbital-ring"><span class="node left"></span><span class="node right"></span></div>
+    </div>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>outro <span class="desc">— course pitch box at end of doc</span></h3>
+  <div class="frame">
+    <div class="outro">
+      <div class="outro-mark"><span class="sym">✦ ✦ ✦</span></div>
+      <p>Именно этому мастерству мы будем обучаться на курсе <strong>«Астрология: от нуля до профессионала»</strong>.</p>
+      <p>Там вы научитесь полноценно расшифровывать профессиональное призвание человека.</p>
+    </div>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>mid-doc-pill <span class="desc">— in-body section header (ZET, урок 5, урок 8)</span></h3>
+  <div class="frame">
+    <div class="mid-doc-pill">КАК СКАЧАТЬ ZET</div>
+    <div class="mid-doc-pill">УРОК 8. ДОМА.<br>ОБСТОЯТЕЛЬСТВА ЖИЗНИ</div>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>sign-pill <span class="desc">— pill with name + ruler subtitle (урок 2)</span></h3>
+  <div class="frame">
+    <div class="sign-pill">
+      <span class="name">Овен</span>
+      <span class="ruler">планета управитель — Марс, 1-й дом</span>
+    </div>
+    <div class="sign-pill">
+      <span class="name">Близнецы</span>
+      <span class="ruler">планета управитель — Меркурий, 3-й дом</span>
+    </div>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>two-col-list <span class="desc">— Плюсы / Минусы side-by-side (урок 2)</span></h3>
+  <div class="frame">
+    <div class="two-col-list">
+      <div class="col">
+        <h4>Плюсы:</h4>
+        <ul>
+          <li>общение и обучение</li>
+          <li>капитал связей</li>
+          <li>логично и ловко</li>
+          <li>быстро и просто</li>
+          <li>мультизадачность</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>Минусы:</h4>
+        <ul>
+          <li>суетливость</li>
+          <li>ложь, лукавство</li>
+          <li>назойливость</li>
+          <li>отсутствие концентрации</li>
+          <li>мелкое воровство</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>definition-list <span class="desc">— glossary: bold caps term (parens) — body (урок 3)</span></h3>
+  <div class="frame">
+    <div class="definition-list">
+      <p class="def"><span class="def-term">Знаки</span> <span class="def-hint">(как?)</span> — это 12 типов энергии, которые создают образ планеты, формируют её имидж и стиль.</p>
+      <p class="def"><span class="def-term">Планеты</span> <span class="def-hint">(кто? что?)</span> — функции психики, архетипы, действующие лица в карте.</p>
+      <p class="def"><span class="def-term">Дома</span> <span class="def-hint">(где?)</span> — сферы жизни.</p>
+      <p class="def"><span class="def-term">Аспекты</span> <span class="def-hint">(меняет/добавляет качеств планете)</span> — взаимоотношения, в которых состоят планеты.</p>
+    </div>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>numbered-list-badge <span class="desc">— numbered steps with mauve square badges (ZET)</span></h3>
+  <div class="frame">
+    <ol class="numbered-list-badge">
+      <li>Идём на сайт <strong>http://astrozet.net/downloads.html</strong>.</li>
+      <li>Нажимаем на ссылку, которая выделена красной рамкой.</li>
+      <li>Далее можно следовать инструкции, что представлена на сайте.</li>
+      <li>Скачайте дистрибутив ZET 9 Lite.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>key-value-list <span class="desc">— attribute list (урок 5)</span></h3>
+  <div class="frame">
+    <div class="callout">
+      <div class="key-value-list">
+        <div class="kv-row"><span class="kv-key">Металл:</span> ртуть, алюминий.</div>
+        <div class="kv-row"><span class="kv-key">Цвета:</span> голубой, зелёный, многоцветный.</div>
+        <div class="kv-row"><span class="kv-key">День:</span> среда.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>subhead-label <span class="desc">— bold caps colon-header (урок 4, урок 5)</span></h3>
+  <div class="frame">
+    <p class="subhead-label">Лунные функции психики:</p>
+    <ul class="bullet-list-rail">
+      <li>всё, что скрыто от внешних глаз</li>
+      <li>отношение к дому и семье</li>
+      <li>наши способности к адаптации</li>
+    </ul>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>subhead-aspect <span class="desc">— left-aligned mauve H3-style (Аспекты)</span></h3>
+  <div class="frame">
+    <h3 class="subhead-aspect">Трин / Секстиль</h3>
+    <p>Этот аспект даёт талант быть простым и открытым, быть конкретным и понятным, общительным, лёгким на подъём.</p>
+    <h3 class="subhead-aspect">Соединение</h3>
+    <p>Ощущение эмоциональной безопасности и спокойствия неразрывны с функциями Меркурия.</p>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>callout--centered <span class="desc">— short emphatic statement (урок 3, Стихии)</span></h3>
+  <div class="frame">
+    <div class="callout callout--centered">
+      <p>Та стихия, которая наберёт больше баллов — и будет ведущей.</p>
+    </div>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>divider</h3>
+  <div class="frame">
+    <hr class="divider">
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>handle <span class="desc">— end-of-doc footer</span></h3>
+  <div class="frame">
+    <div class="handle"><span class="star">✦</span><strong>@li_astrology_</strong><span class="star">✦</span></div>
+  </div>
+</div>
+
+<div class="showcase-group">
+  <h3>cover <span class="desc">— full cover (mini preview)</span></h3>
+  <div class="frame" style="padding:0;overflow:hidden;border-radius:4pt;">
+    <div class="cover" style="height:200mm;transform:scale(0.7);transform-origin:top left;width:142.86%;">
+      <div class="cover-bg-network"></div>
+      <img class="cover-wheel" src="./assets/zodiac-wheel-half.png">
+      <div class="pill-top">БОНУСНЫЙ МАТЕРИАЛ</div>
+      <h1 class="cover-title">Профессиональное<br>предназначение</h1>
+      <div class="cover-sub">10 дом в натальной карте</div>
+      <div class="cover-author"><strong>Автор:</strong> Анастасия Лисовская</div>
+      <div class="cover-handle">@li_astrology_</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

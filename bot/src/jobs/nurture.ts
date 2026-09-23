@@ -14,9 +14,9 @@ import {
 
 const INTENSIV_SLUG = 'intensiv';
 const CONVERSION_SLUG = 'astro-z-0';
-const COLD_MAX_AGE_DAYS = 30; // skip stale bot_users older than this
+const COLD_MAX_AGE_DAYS = 30; // skip people who started the bot more than this many days ago
 
-interface Audience {
+export interface Audience {
   userId: number;
   firstName: string | null;
   lang: string;
@@ -89,7 +89,7 @@ async function runSequence(
   return queued;
 }
 
-async function fetchIntensivBuyers(): Promise<Audience[]> {
+export async function fetchIntensivBuyers(): Promise<Audience[]> {
   const { data: intensiv } = await supabase
     .from('courses')
     .select('id')
@@ -105,9 +105,10 @@ async function fetchIntensivBuyers(): Promise<Audience[]> {
 
   const { data: rows } = await supabase
     .from('user_courses')
-    .select('user_id, purchased_at, bot_users!inner(id, first_name, lang, blocked_bot)')
+    .select('user_id, purchased_at, bot_users!inner(id, first_name, lang, blocked_bot, started_bot_at)')
     .eq('course_id', intensiv.id)
-    .eq('bot_users.blocked_bot', false);
+    .eq('bot_users.blocked_bot', false)
+    .not('bot_users.started_bot_at', 'is', null);
 
   if (!rows) return [];
 
@@ -132,16 +133,20 @@ async function fetchIntensivBuyers(): Promise<Audience[]> {
   return out;
 }
 
-async function fetchColdUsers(): Promise<Audience[]> {
+export async function fetchColdUsers(): Promise<Audience[]> {
   const cutoff = new Date(
     Date.now() - COLD_MAX_AGE_DAYS * 86_400_000,
   ).toISOString();
 
+  // Only people who actually pressed Start in the bot; website-only sign-ups
+  // (tg-auth rows, started_bot_at NULL) get no automatic bot messages. The
+  // sequence is anchored on the bot start, not on the row's creation.
   const { data: users } = await supabase
     .from('bot_users')
-    .select('id, first_name, lang, created_at')
+    .select('id, first_name, lang, started_bot_at')
     .eq('blocked_bot', false)
-    .gte('created_at', cutoff);
+    .not('started_bot_at', 'is', null)
+    .gte('started_bot_at', cutoff);
 
   if (!users || users.length === 0) return [];
 
@@ -159,6 +164,6 @@ async function fetchColdUsers(): Promise<Audience[]> {
       userId: u.id,
       firstName: u.first_name ?? null,
       lang: u.lang ?? 'uk',
-      anchor: new Date(u.created_at),
+      anchor: new Date(u.started_bot_at),
     }));
 }

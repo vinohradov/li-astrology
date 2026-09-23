@@ -40,16 +40,24 @@ design PDFs land.
 ## Cabinet go-live (branch `feat/cabinet`, built 2026-09-14)
 
 Plan + checklist: `.claude/dosc/CABINET_IMPLEMENTATION_PLAN.md` §10.
-- [ ] **BotFather → `/setdomain`** → `@li_astrology_bot` → `www.li-astrology.com.ua`.
+- [x] **BotFather → `/setdomain`** → `@li_astrology_bot` → `www.li-astrology.com.ua` (done 2026-09-14).
       Without it the login widget shows "Bot domain invalid".
-- [ ] **Merge `feat/cabinet` → `main`** (deploys the site: cabinet pages, success
+- [x] **Merge `feat/cabinet` → `main`** — pushed `8f68ac8` 2026-09-14, live (deploys the site: cabinet pages, success
       page CTA, header/footer "Кабінет" links, shared checkout helper).
-- [ ] **`fly deploy` the bot** (from `bot/`) — adds the `/start lesson_<id>` deep
+- [x] **`fly deploy` the bot** — release v3, 2026-09-14 (from `bot/`) — adds the `/start lesson_<id>` deep
       link used by lesson media cards. `fly auth login` first.
 - [ ] After merge: log in on www with Telegram, open a lesson, and do one real
       purchase from the cabinet to confirm access + Telegram confirmation.
 - [ ] Supabase Auth → URL Configuration → Site URL → `https://www.li-astrology.com.ua`
       (still `http://localhost:3000`; cosmetic for our flow).
+- [x] Decided 2026-09-14: D1 Resend, D2 signups + Turnstile, D3 no bot nurture for website-only sign-ups.
+- [ ] **Resend account + DNS records at uadns.com** (SPF, DKIM, DMARC) → then Supabase SMTP (plan §6b 3B.1).
+- [ ] **Cloudflare Turnstile site key** for www.li-astrology.com.ua (plan §6b 3B.1).
+- [x] D4 decided 2026-09-14: email login first, then media. Files exported with the owner's Telegram account.
+- [x] Bot messages only for people who started the bot (plan §6c) — live 2026-09-14, bot release v4.
+- [ ] **my.telegram.org → create app → `api_id` + `api_hash`** into `tools/media-migrate/.env` (plan §7 Step 4.1).
+      Needed only for Phase 4; the ~27 GB download can run in the background while email login is built.
+- [ ] **Bunny Stream account + library** (plan §7 Step 4.1).
 - [ ] Phase 4: media hosting (Bunny + Storage) — needs original files.
 
 ## Monobank

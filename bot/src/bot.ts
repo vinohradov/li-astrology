@@ -14,6 +14,8 @@ export interface SessionData {
   lastNavAt?: number;
   /** Cached Telegram file_id for the welcome-back banner to avoid re-uploading */
   welcomeBannerFileId?: string;
+  /** bot_users.started_bot_at has been set for this chat (avoids a write per update) */
+  startedBotMarked?: boolean;
 }
 
 export interface LocaleFlavor {

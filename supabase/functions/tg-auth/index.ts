@@ -140,22 +140,26 @@ serve(async (req) => {
   }
 
   try {
-    // Same fields the bot writes in upsertUser; lang and blocked_bot are left untouched.
-    const { data: botUser, error: upsertErr } = await supabase
+    // Same fields the bot writes in upsertUser; lang, blocked_bot and started_bot_at are
+    // left untouched (started_bot_at is set only by the bot on the user's first update, so
+    // website-only sign-ups never enter the bot's messaging audiences).
+    const profile = {
+      first_name: body.first_name ?? null,
+      last_name: body.last_name ?? null,
+      username: body.username ?? null,
+      last_active: new Date().toISOString(),
+    }
+    const { error: insertErr } = await supabase
       .from('bot_users')
-      .upsert(
-        {
-          id,
-          first_name: body.first_name ?? null,
-          last_name: body.last_name ?? null,
-          username: body.username ?? null,
-          last_active: new Date().toISOString(),
-        },
-        { onConflict: 'id' },
-      )
+      .upsert({ id, ...profile }, { onConflict: 'id', ignoreDuplicates: true })
+    if (insertErr) throw insertErr
+    const { data: botUser, error: updateErr } = await supabase
+      .from('bot_users')
+      .update(profile)
+      .eq('id', id)
       .select('id, auth_uid')
       .single()
-    if (upsertErr) throw upsertErr
+    if (updateErr) throw updateErr
 
     const user = await ensureAuthUser({ ...body, id }, botUser?.auth_uid ?? null)
 

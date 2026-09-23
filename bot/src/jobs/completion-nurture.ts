@@ -51,9 +51,10 @@ export async function maybeQueueCompletionNurture(
 
   const { data: user } = await supabase
     .from('bot_users')
-    .select('first_name, lang')
+    .select('first_name, lang, started_bot_at')
     .eq('id', userId)
     .maybeSingle();
+  if (!user?.started_bot_at) return; // website-only learner: no bot messages
 
   const name = user?.first_name ?? '';
   const lang = user?.lang ?? 'uk';

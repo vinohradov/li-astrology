@@ -1,0 +1,103 @@
+/*
+ * Design tokens — single source of truth.
+ *
+ * Extracted 2026-05-19 from materials/design-library/ via
+ * tools/pdf-pipeline/. Provenance in materials/components/tokens.json.
+ *
+ * RULE: components/components.css must reference these vars only.
+ *       Don't hardcode colors / sizes anywhere else.
+ */
+
+:root {
+  /* ──────── Palette (Anastasia's 2nd ТЗ — 2026-05-19, authoritative) ─ */
+  --ink:         #1A0A0A;  /* very dark cherry-burgundy, body + dark headings */
+  --accent:      #9E7E82;  /* muted pink-lilac — pills, accents, italic emphasis */
+  --card-bg:     #F2EEEE;  /* very light pink-grey — callout backgrounds */
+  --paper:       #ffffff;
+
+  /* ──────── Palette (extracted from design-library/, for non-text vector decoration) ─ */
+  --ink-warm:    #4c272f;  /* warmer wine, was canonical body in Кармические */
+  --accent-warm: #b291a0;  /* warmer mauve, was canonical accent */
+  --accent-soft: #ceb8c2;  /* rare — light decorative stroke */
+  --accent-deep: #881621;  /* rare emphasis red — confirm before using */
+  --rule:        #d1d3d4;  /* hairlines, orbital rings */
+  --node:        #707070;  /* orbital node dots on planet rings */
+
+  /* ──────── Typography ───────────────────────────────────────────── */
+  --font-body:   'PT Serif', Georgia, 'Times New Roman', serif;
+  --font-sym:    'Noto Sans Symbols 2', 'Apple Symbols', 'Segoe UI Symbol', sans-serif;
+
+  --fs-body:     12pt;     /* per 2nd ТЗ §2: 11–12pt */
+  --fs-small:    11pt;
+  --fs-tiny:     10pt;
+  --fs-section:  16pt;     /* per 2nd ТЗ §2: 15–16pt for main section heads */
+  --fs-subhead:  13pt;     /* per 2nd ТЗ §2: 13pt for subsection heads */
+  --fs-pill:     14pt;     /* per 2nd ТЗ §3: 16–18pt for page title pill */
+  --fs-title:    18pt;
+  --fs-glyph:    16pt;
+
+  --lh-body:     1.5;      /* per 2nd ТЗ §10: line-height 1.5 */
+  --lh-tight:    1.2;
+
+  --tracked-caps:   0.18em;  /* uppercase letter-spacing for headers + pills */
+  --tracked-titles: 0.04em;
+
+  /* ──────── Strokes & geometry ───────────────────────────────────── */
+  --hairline:        0.5pt;  /* canonical 1px equivalent from extraction */
+  --pill-radius:     50pt;
+  --card-radius:     14pt;
+  --orbit-dash:      3pt;
+
+  /* ──────── Spacing ──────────────────────────────────────────────── */
+  --space-section:   30pt;  /* between major sections per §4 */
+  --space-block:     14pt;
+  --space-paragraph: 10pt;
+
+  /* ──────── Page ─────────────────────────────────────────────────── */
+  --page-margin-side:   18mm;
+  --page-margin-top:    22mm;
+  --page-margin-bottom: 22mm;
+}
+
+/* Base reset & body */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+}
+
+@page {
+  size: A4;
+  margin: var(--page-margin-top) var(--page-margin-side)
+          var(--page-margin-bottom) var(--page-margin-side);
+
+  /* Per 2nd ТЗ §11 — page number, centered bottom.
+     The styled pill version requires Puppeteer (Chrome CLI @page margin
+     boxes expand to full width, so a constrained pill is not possible
+     here). Render as plain centered accent-colour digit for now. */
+  @bottom-center {
+    content: counter(page);
+    font-family: 'PT Serif', Georgia, serif;
+    font-weight: 700;
+    font-size: 10pt;
+    color: #9E7E82;
+  }
+}
+
+.sym {
+  font-family: var(--font-sym);
+  line-height: 1;
+}
+
+strong, b { color: var(--ink); font-weight: 700; }
+em        { color: var(--ink); font-style: italic; }

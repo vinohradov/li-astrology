@@ -9,7 +9,11 @@ export async function processReminders(bot: Bot<BotContext>) {
   if (reminders.length === 0) return;
 
   for (const reminder of reminders) {
-    if (!reminder.user_id) continue;
+    // No user, or a website-only (email) learner with a negative id: nothing to send to.
+    if (!reminder.user_id || reminder.user_id <= 0) {
+      await markReminderFailed(reminder.id);
+      continue;
+    }
 
     try {
       const keyboard = new InlineKeyboard();

@@ -36,6 +36,19 @@ export async function upsertUser(user: {
   if (error) console.error('upsertUser error:', error);
 }
 
+/**
+ * Record that this person actually uses the bot (first update only). Website logins
+ * also create bot_users rows (tg-auth), and bot audiences filter on this column.
+ */
+export async function markStartedBot(userId: number) {
+  const { error } = await supabase
+    .from('bot_users')
+    .update({ started_bot_at: new Date().toISOString() })
+    .eq('id', userId)
+    .is('started_bot_at', null);
+  if (error) console.error('markStartedBot error:', error);
+}
+
 export async function getUser(userId: number): Promise<BotUser | null> {
   const { data } = await supabase
     .from('bot_users')
