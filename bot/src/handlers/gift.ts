@@ -22,7 +22,7 @@ import { ru } from '../locales/index.js';
 const __filename = fileURLToPath(import.meta.url);
 const ASSETS = resolve(dirname(__filename), '..', '..', 'assets', 'gift');
 
-// One PDF per language; `uk` falls back to `ru` until a Ukrainian render exists.
+// One PDF per language (materials/documents/professional-purpose/, rendered via headless Chrome).
 const GIFT_FILES: Record<string, string> = {
   ru: resolve(ASSETS, 'professional-purpose.ru.pdf'),
   uk: resolve(ASSETS, 'professional-purpose.uk.pdf'),
