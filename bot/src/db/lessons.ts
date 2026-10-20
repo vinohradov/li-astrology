@@ -7,7 +7,14 @@ export interface Lesson {
   title: string;
   content_type: string;
   text_html: string | null;
-  media: Array<{ type: string; file_id?: string; url?: string }>;
+  media: Array<{
+    type: string;
+    file_id?: string;
+    url?: string;
+    /** Shown as the file caption (bot) / card title (cabinet). From course-structure/lesson-copy.json. */
+    title?: string;
+    duration_s?: number;
+  }>;
   tg_message_id: number | null;
   is_free_preview: boolean;
   compact: boolean;

@@ -55,6 +55,7 @@ export const t = {
     inBot: 'Цей файл поки доступний у Telegram-боті. Скоро він зʼявиться тут.',
     openInBot: 'Відкрити в боті',
     openFile: 'Відкрити',
+    minutes: (n: number) => `${n} хв`,
   },
   settings: {
     title: 'Налаштування',

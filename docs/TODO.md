@@ -62,7 +62,7 @@ Plan + checklist: `.claude/dosc/CABINET_IMPLEMENTATION_PLAN.md` §10.
       confirmation.
 - [ ] Supabase Auth → URL Configuration → Site URL → `https://www.li-astrology.com.ua`
       (still `http://localhost:3000`; cosmetic for our flow).
-- [ ] Phase 4: media hosting (Bunny + Storage) — needs original files.
+- [ ] Phase 4: media hosting — files are on disk (`DownloadsTelegram DesktopChatExport_2026-10-07`, all 115 items verified 2026-10-20). **Blocked on Bunny**: all keys in `tools/media-migrate/.env` return 401 (trial likely expired) — log in to dash.bunny.net, add credit, re-check keys, then run `upload.mjs` + `link.mjs --apply` (see `tools/media-migrate/README.md`).
 
 ## Monobank
 

@@ -26,6 +26,10 @@ type Props = { item: MediaItem; lessonId: string; index: number; ordinal: number
 export default function MediaBlock({ item, lessonId, index, ordinal }: Props) {
   const typeLabel = t.lesson[item.type] ?? t.lesson.document;
   const title = item.title ?? `${typeLabel} ${ordinal}`;
+  const minutes = item.duration_s ? Math.round(item.duration_s / 60) : 0;
+  const duration = minutes ? (
+    <span className="ml-2 whitespace-nowrap text-xs font-normal text-ink-muted">{t.lesson.minutes(minutes)}</span>
+  ) : null;
   const kind = mediaKind(item);
   const hosted = kind === 'bunny' || kind === 'file';
 
@@ -64,7 +68,7 @@ export default function MediaBlock({ item, lessonId, index, ordinal }: Props) {
             </div>
           )}
         </div>
-        <figcaption className="px-5 py-3 text-sm font-medium">{title}</figcaption>
+        <figcaption className="px-5 py-3 text-sm font-medium">{title}{duration}</figcaption>
       </figure>
     );
   }
@@ -81,7 +85,7 @@ export default function MediaBlock({ item, lessonId, index, ordinal }: Props) {
         <div className="rounded-2xl border border-ink/10 bg-cream p-5">
           <div className="flex items-center gap-4">
             {icon}
-            <div className="min-w-0 flex-1 font-medium">{title}</div>
+            <div className="min-w-0 flex-1 font-medium">{title}{duration}</div>
           </div>
           {signedUrl ? (
             <audio controls preload="none" src={signedUrl} className="mt-4 w-full" />
@@ -94,7 +98,7 @@ export default function MediaBlock({ item, lessonId, index, ordinal }: Props) {
     return (
       <div className="flex flex-col gap-4 rounded-2xl border border-ink/10 bg-cream p-5 sm:flex-row sm:items-center">
         {icon}
-        <div className="min-w-0 flex-1 font-medium">{title}</div>
+        <div className="min-w-0 flex-1 font-medium">{title}{duration}</div>
         {signedUrl ? (
           <a href={signedUrl} target="_blank" rel="noopener noreferrer" className={buttonClass('primary', 'sm')}>
             {t.lesson.openFile}
@@ -110,7 +114,7 @@ export default function MediaBlock({ item, lessonId, index, ordinal }: Props) {
     <div className="flex flex-col gap-4 rounded-2xl border border-ink/10 bg-cream p-5 sm:flex-row sm:items-center">
       {icon}
       <div className="min-w-0 flex-1">
-        <div className="font-medium">{title}</div>
+        <div className="font-medium">{title}{duration}</div>
         {kind !== 'url' && <div className="mt-1 text-sm text-ink-muted">{t.lesson.inBot}</div>}
       </div>
       {kind === 'url' ? (
