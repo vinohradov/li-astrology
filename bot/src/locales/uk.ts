@@ -53,6 +53,7 @@ export const uk = {
     nextShort: 'Наступний ►',
     backToList: '📋 До списку уроків',
     progressLine: (completed: number, total: number) => `${completed}/${total} уроків`,
+    minutes: (n: number) => `${n} хв`,
   },
 
   catalog: {

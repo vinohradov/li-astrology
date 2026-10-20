@@ -110,13 +110,18 @@ export async function cleanAndSend(
 export async function sendTrackedMedia(
   ctx: BotContext,
   type: 'video' | 'audio' | 'document',
-  fileId: string
+  fileId: string,
+  caption?: string
 ): Promise<void> {
   try {
+    // Caption is plain text from lesson-copy.json; escape so a «<» can't break HTML mode.
+    const options = caption
+      ? { caption: `<b>${escapeHtml(caption)}</b>`, parse_mode: 'HTML' as const }
+      : {};
     let sent;
-    if (type === 'video') sent = await ctx.api.sendVideo(ctx.chat!.id, fileId);
-    else if (type === 'audio') sent = await ctx.api.sendAudio(ctx.chat!.id, fileId);
-    else sent = await ctx.api.sendDocument(ctx.chat!.id, fileId);
+    if (type === 'video') sent = await ctx.api.sendVideo(ctx.chat!.id, fileId, options);
+    else if (type === 'audio') sent = await ctx.api.sendAudio(ctx.chat!.id, fileId, options);
+    else sent = await ctx.api.sendDocument(ctx.chat!.id, fileId, options);
 
     if (sent) {
       if (!ctx.session.botMessageIds) ctx.session.botMessageIds = [];
@@ -125,6 +130,10 @@ export async function sendTrackedMedia(
   } catch (e) {
     console.error('Failed to send media:', e);
   }
+}
+
+function escapeHtml(str: string): string {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
 /**

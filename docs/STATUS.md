@@ -48,9 +48,9 @@ Safety net: `reconcile-payments` edge function runs every minute from the bot sc
 (`bot/src/jobs/reconcile-payments.ts`). Polls Mono's `/api/merchant/invoice/status`
 for every `pending` monobank row, updates DB, grants access. Handles webhook misses.
 
-## Cabinet (personal account) — branch `feat/cabinet`, 2026-09-14
+## Cabinet (personal account) — live since 2026-09-14
 
-Plan/checklist: `.claude/dosc/CABINET_IMPLEMENTATION_PLAN.md`. Phases 0–3 built. Backend live; the site part ships on merge to `main` (go-live steps in `docs/TODO.md`).
+Plan/checklist: `.claude/dosc/CABINET_IMPLEMENTATION_PLAN.md`. Phases 0–3 built and live (backend + site on `main`, commit `8f68ac8`). Real Telegram login on www confirmed 2026-10-02. Remaining go-live checks in `docs/TODO.md`. Phase 4 (media) code is on `main` since 2026-10-20 (`media-url` edge function, `tools/media-migrate/`, Bunny player in `MediaBlock`); it activates per item once `lessons.media[i].bunny_video_id` / `storage_path` are set by `link.mjs`. Media titles/durations and Ukrainian lesson texts live in `bot/course-structure/lesson-copy.json` (applied by `bot/scripts/lesson-copy.ts`).
 
 - Routes: `/cabinet/` (my courses, other courses with buy, order claim), `/cabinet/course/?slug=`, `/cabinet/lesson/?id=`, `/cabinet/settings/`. React islands in `web/src/components/cabinet/`, static pages, `noindex`.
 - Auth: Telegram Login Widget → `tg-auth` edge function → Supabase Auth session (telegram_id in `app_metadata`, linked via `bot_users.auth_uid`).

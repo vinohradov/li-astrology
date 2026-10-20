@@ -11,6 +11,7 @@ import 'dotenv/config';
 import fs from 'fs';
 import path from 'path';
 import { createClient } from '@supabase/supabase-js';
+import { applyLessonCopy } from './lesson-copy.js';
 
 const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_SERVICE_KEY!);
 
@@ -205,7 +206,8 @@ async function main() {
     }
   }
 
-  console.log('\nImport complete!');
+  console.log('\nImport complete! Applying course-structure/lesson-copy.json…');
+  await applyLessonCopy({ apply: true, slugs: [structure.courseSlug], client: supabase });
 }
 
 main().catch(e => {

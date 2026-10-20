@@ -263,7 +263,14 @@ export async function showLesson(ctx: BotContext, lessonId: string, skipMediaRes
   // Send media files below the navigation message
   for (const m of fileMedia) {
     if (m.file_id) {
-      await sendTrackedMedia(ctx, m.type as 'video' | 'audio' | 'document', m.file_id);
+      await sendTrackedMedia(ctx, m.type as 'video' | 'audio' | 'document', m.file_id, mediaCaption(ctx, m));
     }
   }
+}
+
+/** «Стихії в натальній карті · 22 хв» — title from lesson-copy.json plus duration when known. */
+function mediaCaption(ctx: BotContext, m: { title?: string; duration_s?: number }): string | undefined {
+  if (!m.title) return undefined;
+  const minutes = m.duration_s ? Math.round(m.duration_s / 60) : 0;
+  return minutes ? `${m.title} · ${ctx.t.lessons.minutes(minutes)}` : m.title;
 }

@@ -29,3 +29,7 @@ verify_jwt = false
 # The caller's session token is verified inside with auth.getUser(); the gateway
 # verify_jwt check does not support the project's asymmetric JWT signing keys.
 verify_jwt = false
+
+[functions.media-url]
+# Same as claim-order: session verified inside, then course access is checked.
+verify_jwt = false
