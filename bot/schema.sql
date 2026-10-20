@@ -10,6 +10,8 @@ CREATE TABLE IF NOT EXISTS bot_users (
   phone         TEXT,
   email         TEXT,
   lang          TEXT DEFAULT 'uk',
+  source        TEXT,            -- first-touch attribution, see migrations/0005
+  source_at     TIMESTAMPTZ,
   created_at    TIMESTAMPTZ DEFAULT now(),
   last_active   TIMESTAMPTZ DEFAULT now(),
   blocked_bot   BOOLEAN DEFAULT false

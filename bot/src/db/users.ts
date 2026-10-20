@@ -8,6 +8,9 @@ export interface BotUser {
   phone: string | null;
   email: string | null;
   lang: string;
+  /** First-touch attribution, e.g. `gift:ig_bio`, `buy:intensiv`, `direct`. */
+  source: string | null;
+  source_at: string | null;
   created_at: string;
   last_active: string;
   blocked_bot: boolean;
@@ -44,6 +47,19 @@ export async function getUser(userId: number): Promise<BotUser | null> {
     .single();
 
   return data;
+}
+
+/**
+ * First-touch attribution: records where a user came from (e.g. `gift:ig_bio`,
+ * `buy:intensiv`, `direct`). Only the first non-null value sticks.
+ */
+export async function setUserSource(userId: number, source: string) {
+  const { error } = await supabase
+    .from('bot_users')
+    .update({ source, source_at: new Date().toISOString() })
+    .eq('id', userId)
+    .is('source', null);
+  if (error) console.error('setUserSource error:', error);
 }
 
 export async function markBlocked(userId: number) {

@@ -1,0 +1,108 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { site } from '@/config/site';
+
+// Lead-magnet landing. The only job of this page is to get the visitor into
+// the Telegram bot via `?start=gift__<source>`, where <source> is derived
+// client-side from utm_* params (see inline script). The bot sends the PDF
+// and the cold nurture takes over.
+//
+// Tracking: ViewContent on load, Lead (Meta) + generate_lead (GA4) on the CTA
+// click. "Lead" here means "clicked through to Telegram" — the actual bot
+// /start is counted in the DB (bot_users.source = 'gift:<source>').
+const botStartBase = `${site.bot.url}?start=gift`;
+
+const bullets = [
+  'Як знак 10-го дому задає твою манеру досягати цілей — і чому «робити як усі» не працює',
+  'Яка сфера дає відчуття «я на своєму місці», а яка — вічне вигорання',
+  'Що показують планети в 10-му домі: де твій капітал уваги, статусу й визнання',
+];
+---
+
+<Layout
+  title="Безкоштовний гайд «Професійне призначення» — Li Astrology"
+  description="Гайд про 10-й дім у натальній карті: як знайти сферу, де ти на своєму місці. Безкоштовно, у Telegram за 10 секунд."
+>
+  <section class="relative isolate min-h-screen overflow-hidden gradient-night text-cream">
+    <div class="noise-overlay absolute inset-0"></div>
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <div class="absolute top-[14%] left-[8%] text-6xl text-gold-bright/12 animate-[float_12s_ease-in-out_infinite]" style="font-family: serif;">✦</div>
+      <div class="absolute bottom-[18%] right-[10%] text-7xl text-gold-bright/10 animate-[float_14s_ease-in-out_infinite_1.2s]" style="font-family: serif;">☽</div>
+      <div class="absolute top-[52%] right-[28%] text-4xl text-gold-bright/12 animate-[float_9s_ease-in-out_infinite_2s]" style="font-family: serif;">✧</div>
+    </div>
+    <div aria-hidden="true" class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(232,201,135,0.16)_0%,transparent_65%)]"></div>
+
+    <div class="relative mx-auto flex min-h-screen max-w-3xl flex-col items-center justify-center px-6 py-24 text-center md:px-10">
+      <div class="mb-6 flex items-center gap-3 text-xs uppercase tracking-[0.4em] text-gold-bright/80">
+        <span class="h-px w-10 bg-gold-bright/60"></span>
+        <span>Подарунок</span>
+        <span class="h-px w-10 bg-gold-bright/60"></span>
+      </div>
+
+      <h1 class="font-display text-[clamp(2.25rem,5vw,4rem)] leading-[1.05] tracking-tight text-balance">
+        Професійне <em class="gradient-text-gold font-display italic">призначення</em><br />
+        за натальною картою
+      </h1>
+
+      <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-cream/75 md:text-lg">
+        Гайд про 10-й дім — ту частину карти, що відповідає за кар'єру, статус і відчуття
+        «я на своєму місці». Безкоштовно, одразу в Telegram.
+      </p>
+
+      <ul class="mx-auto mt-10 max-w-xl space-y-4 text-left text-sm leading-relaxed text-cream/85 md:text-base">
+        {bullets.map((b) => (
+          <li class="flex gap-3">
+            <span aria-hidden="true" class="mt-1 shrink-0 text-gold-bright">✦</span>
+            <span>{b}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div class="mt-12 flex w-full flex-col items-center justify-center gap-4">
+        <a
+          id="gift-cta"
+          href={botStartBase}
+          class="group inline-flex items-center gap-3 rounded-full bg-gold-bright px-8 py-4 text-sm font-semibold uppercase tracking-[0.2em] text-ink transition duration-300 hover:bg-gold"
+        >
+          Отримати гайд у Telegram
+          <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">→</span>
+        </a>
+        <p class="text-xs text-cream/55">
+          Відкриється бот @{site.bot.username}. Жодних форм і пошти — файл приходить одразу.
+        </p>
+      </div>
+
+      <p class="mt-14 max-w-xl text-xs leading-relaxed text-cream/45">
+        Гайд написаний російською мовою — як і відеоуроки курсів. Інтерфейс бота доступний
+        українською та російською.
+      </p>
+
+      <p class="mt-6 text-xs text-cream/45">
+        Автор — <span class="text-cream/70">{site.author}</span>, практикуючий астролог.
+        <a href="/" class="underline decoration-gold-bright/40 underline-offset-4 hover:text-cream">Про школу</a>
+      </p>
+    </div>
+  </section>
+
+  <script define:vars={{ botStartBase }}>
+    // Build the deep-link source from utm_* so the bot can attribute the user.
+    // Telegram start payloads allow only [A-Za-z0-9_-], max 64 chars.
+    const params = new URLSearchParams(window.location.search);
+    const parts = ['utm_source', 'utm_medium', 'utm_campaign']
+      .map((k) => (params.get(k) || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 16))
+      .filter(Boolean);
+    const source = parts.join('_').slice(0, 48);
+    const href = source ? `${botStartBase}__${source}` : botStartBase;
+
+    const cta = document.getElementById('gift-cta');
+    if (cta) cta.setAttribute('href', href);
+
+    if (window.fbq) window.fbq('track', 'ViewContent', { content_name: 'gift_professional_purpose' });
+    if (window.gtag) window.gtag('event', 'view_item', { item_name: 'gift_professional_purpose', source });
+
+    cta?.addEventListener('click', () => {
+      if (window.fbq) window.fbq('track', 'Lead', { content_name: 'gift_professional_purpose', source });
+      if (window.gtag) window.gtag('event', 'generate_lead', { item_name: 'gift_professional_purpose', source });
+    });
+  </script>
+</Layout>

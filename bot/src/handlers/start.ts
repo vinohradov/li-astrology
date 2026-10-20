@@ -5,11 +5,22 @@ import { cleanAndSend } from '../utils/chat.js';
 import { getCourseBySlug } from '../db/courses.js';
 import { grantAccess, hasAccess } from '../db/purchases.js';
 import { getPaymentByOrderId, claimPaymentForUser } from '../db/payments.js';
-import { upsertUser } from '../db/users.js';
+import { upsertUser, setUserSource } from '../db/users.js';
 import { addToWaitlist } from '../db/waitlist.js';
 import { formatPrice } from '../utils/format.js';
 import { getLessonById } from '../db/lessons.js';
 import { showLesson } from './lesson.js';
+import { handleGift, isGiftPayload } from './gift.js';
+
+/** Classify a /start payload into a coarse first-touch source for analytics. */
+function sourceFromPayload(payload: string | undefined): string {
+  if (!payload) return 'direct';
+  if (payload.startsWith('buy_')) return `buy:${payload.slice(4)}`;
+  if (payload === 'waitlist_course') return 'waitlist';
+  if (payload.startsWith('lesson_')) return 'cabinet';
+  if (payload.startsWith('web-') || payload.startsWith('bot-')) return 'purchase';
+  return `other:${payload.slice(0, 32)}`;
+}
 
 export function registerStartHandler(bot: Bot<BotContext>) {
   bot.command('start', async (ctx) => {
@@ -24,6 +35,13 @@ export function registerStartHandler(bot: Bot<BotContext>) {
       last_name: from.last_name,
       username: from.username,
     });
+
+    if (payload && isGiftPayload(payload)) {
+      await handleGift(ctx, payload);
+      return;
+    }
+
+    await setUserSource(from.id, sourceFromPayload(payload));
 
     if (payload === 'waitlist_course') {
       const { alreadyThere } = await addToWaitlist({
