@@ -9,6 +9,17 @@
       git remote set-url origin git@github.com:vinohradov/li-astrology.git
       ```
 
+## Public repo still has course content in history
+
+`temporary/` (full Telegram exports of the four paid course channels + three
+screenshots) was tracked in this **public** repo. Untracked 2026-10-02 (commit
+`ff9b538`, branch `feat/cabinet-phase-4`), but every older commit still has the files.
+
+- [ ] **Purge `temporary/` from history** (`git filter-repo --path temporary --invert-paths`)
+      and force-push — do it in the same pass as the LFS migration below. Keep the local
+      copies: `tools/media-migrate/` reads `temporary/telegram_chat_history`, and after the
+      purge this disk is the only place they exist — back them up first.
+
 ## Repo size — move design PDFs to Git LFS
 
 **Priority: high.** Commit `0d7c11b` added `materials/design-library/` —
@@ -37,17 +48,18 @@ design PDFs land.
       / S3) and reference by URL from `PDF_DESIGN_SYSTEM.md` — lighter
       but loses single-checkout convenience.
 
-## Cabinet go-live (branch `feat/cabinet`, built 2026-09-14)
+## Cabinet go-live (built 2026-09-14, on `main` + deployed same day)
 
 Plan + checklist: `.claude/dosc/CABINET_IMPLEMENTATION_PLAN.md` §10.
-- [ ] **BotFather → `/setdomain`** → `@li_astrology_bot` → `www.li-astrology.com.ua`.
-      Without it the login widget shows "Bot domain invalid".
-- [ ] **Merge `feat/cabinet` → `main`** (deploys the site: cabinet pages, success
-      page CTA, header/footer "Кабінет" links, shared checkout helper).
-- [ ] **`fly deploy` the bot** (from `bot/`) — adds the `/start lesson_<id>` deep
-      link used by lesson media cards. `fly auth login` first.
-- [ ] After merge: log in on www with Telegram, open a lesson, and do one real
-      purchase from the cabinet to confirm access + Telegram confirmation.
+- [x] **BotFather → `/setdomain`** → `@li_astrology_bot` → `www.li-astrology.com.ua`
+      (widget renders the login button for www, checked 2026-10-02).
+- [x] **Cabinet on `main`** (commit `8f68ac8`, Pages deploy succeeded 2026-09-14;
+      `/cabinet/` and the header "Кабінет" link are live).
+- [x] Log in on www with Telegram and open a lesson (done by Andrii 2026-10-02).
+- [x] **Bot redeployed** with the `/start lesson_<id>` deep link — "Відкрити в
+      боті" on a lesson card opens that lesson (checked by Andrii 2026-10-02).
+- [ ] Do one real purchase from the cabinet to confirm access + Telegram
+      confirmation.
 - [ ] Supabase Auth → URL Configuration → Site URL → `https://www.li-astrology.com.ua`
       (still `http://localhost:3000`; cosmetic for our flow).
 - [ ] Phase 4: media hosting (Bunny + Storage) — needs original files.

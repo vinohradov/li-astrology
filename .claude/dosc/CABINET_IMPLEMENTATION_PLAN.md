@@ -8,10 +8,11 @@
 > files to touch, the exact contract, and a "Verify" block. After each step, tick the
 > checkbox in §10 and add one line to the log in §11. Do not skip Phase 0.
 >
-> **Status 2026-09-14:** Phases 0–3 implemented on branch `feat/cabinet`. Backend (migrations
-> 0003/0004, edge functions `tg-auth` + `claim-order`, secret fix) is **live**; the website part
-> goes live when the branch is merged to `main`. Remaining go-live steps are in §10. Regression
-> tests live in `tools/cabinet-tests/`. Next build work: Phase 4 (media).
+> **Status 2026-10-02:** Phases 0–3 implemented and **live** — backend (migrations 0003/0004,
+> edge functions `tg-auth` + `claim-order`, secret fix) and the website (on `main`, commit
+> `8f68ac8`, deployed 2026-09-14). Real widget login on www confirmed 2026-10-02. Remaining
+> go-live checks are in §10. Regression tests live in `tools/cabinet-tests/`. Next build work:
+> Phase 4 (media).
 
 ---
 
@@ -512,19 +513,19 @@ Verify: every one of the 115 items renders in the cabinet AND still sends in the
 - [x] 0.3 SECURITY.md / TODO.md updated
 
 **Phase 1 — Auth**
-- [ ] Manual: BotFather `/setdomain` = www.li-astrology.com.ua
+- [x] Manual: BotFather `/setdomain` = www.li-astrology.com.ua
 - [x] `disable_signup` ON (set in dashboard by the user)
 - [x] 1.1 migration `0004_cabinet_auth.sql` applied (+ last_active trigger)
 - [x] 1.2 `tg-auth` deployed (`--no-verify-jwt --use-api`), config.toml entry
 - [x] 1.3 supabase-js + `lib/supabase.ts`, `lib/auth.ts`, `TelegramLogin.tsx`, `CabinetLayout.astro`, `/cabinet/` page
-- [ ] 1.4 server-side 26/26 pass (`tools/cabinet-tests/rls_auth_test.py`); **real widget login on www pending** BotFather /setdomain + merge
+- [x] 1.4 server-side 26/26 pass (`tools/cabinet-tests/rls_auth_test.py`); real widget login on www done 2026-10-02
 - [x] `TG_AUTH_DEV_SECRET` never implemented
 
 **Phase 2 — Cabinet UI**
 - [x] 2.1 `cabinet-api.ts` + types
 - [x] 2.2 `/cabinet/`, `/cabinet/course/`, `/cabinet/lesson/`, `/cabinet/settings/`
 - [x] 2.3 `tg-html.ts`
-- [x] 2.4 `MediaBlock.tsx` placeholders; bot `lesson_<id>` deep link (code done — **needs `fly deploy`**)
+- [x] 2.4 `MediaBlock.tsx` placeholders; bot `lesson_<id>` deep link (deployed, confirmed working 2026-10-02)
 - [ ] 2.5 (opt) extras to DB
 - [x] 2.6 progress numbers match the bot (3/11 intensiv for owner, UI + DB); mark-complete writes the shared row
 
@@ -533,8 +534,8 @@ Verify: every one of the 115 items renders in the cabinet AND still sends in the
 - [x] 3.2 success page CTA
 - [x] 3.3 claim flow + polling
 - [x] 3.4 cabinet buy with `telegram_user_id` (home cards + locked course page)
-- [x] 3.5 header/footer links (on branch), docs updated
-- [ ] 3.6 API 14/14 pass with synthetic payment rows (`claim_order_test.py`); **real purchase on www pending** merge
+- [x] 3.5 header/footer links (live on `main`), docs updated
+- [ ] 3.6 API 14/14 pass with synthetic payment rows (`claim_order_test.py`); **real purchase on www still pending**
 
 **Phase 4 — Media** (prep items in §7)
 
@@ -542,6 +543,11 @@ Verify: every one of the 115 items renders in the cabinet AND still sends in the
 
 ## 11. Log
 
+- 2026-10-02 — Audio/PDF host decided: **Bunny Storage**, not Supabase Storage (six PDFs are 60–70 MB). Storage zone `li-astrology-files` (Frankfurt) + pull zone `li-astrology-files.b-cdn.net` with token authentication. `upload.mjs` sends audio/documents there as `<type>/<file_unique_id>.<ext>`; `link.mjs` writes `storage_path`; `media-url` (redeployed, secrets `BUNNY_FILES_HOST` + `BUNNY_FILES_TOKEN_KEY` set) signs the pull-zone URL with the HMAC-SHA256 token (`HS256-` + base64url(HMAC(key, path + expires))); `MediaBlock.tsx` renders an audio player / "Відкрити" link. Tested with dummy files: storage upload, 403 without/with a bad or expired token, 200 with a signed one; test files deleted. The function's 200 paths are still untested end to end (needs a linked item).
+- 2026-10-02 — `media-url` **deployed** (`--no-verify-jwt --use-api`) with secrets `BUNNY_LIBRARY_ID` + `BUNNY_TOKEN_KEY`. Checked live as the owner account: 401 without/with a bad token, 405 on GET, 400 bad body, 404 `not_found` (unknown lesson, index out of range), 403 `no_access` (course not owned), 404 `not_hosted` (owned, no `bunny_video_id` yet). The 200 path is untested until a video is uploaded and linked. All 115 `lessons.media` items match the saved exports by `file_id`. Work is on branch `feat/cabinet-phase-4` (local).
+- 2026-10-02 — Phase 4 video path built, **not deployed**: Bunny Stream library `768384` created (720/480/360p, H.264, embed + CDN token auth, allowed domain www); `tools/media-migrate/{upload,link}.mjs` (upload tested against the library with a dummy file, then deleted); edge function `media-url` (video only, `verify_jwt = false`, session + course access checked inside, needs secrets `BUNNY_LIBRARY_ID` + `BUNNY_TOKEN_KEY`); `MediaBlock.tsx` plays `bunny_video_id` items in an iframe and falls back to the bot card. Still to do: finish the Telegram export, upload, deploy `media-url` + secrets, push the site, `link.mjs --apply`. Audio/PDF hosting undecided.
+- 2026-10-02 — Phase 4 source decided: originals exist **only in Telegram** (open question 1 → Plan B). No MTProto script needed: the four private course channels + per-lesson message ids are already recorded (`temporary/telegram_chat_history/*_enriched.json`, `bot/course-structure/*.json`), so a Telegram Desktop "Export chat history" per channel gives the files and `tools/media-migrate/check-export.mjs` verifies them and writes a `file_id`-keyed manifest. Sizes: 52 videos 25.8 GB / 17.4 h, 47 documents 0.69 GB, 16 audio 0.36 GB; 28 files are shared between courses (~15.6 GB unique). Six PDFs are 60–70 MB — over the 50 MB per-file cap of Supabase's free plan, so decide the audio/PDF host (Bunny Storage vs paid Supabase) before building `media-url`.
+- 2026-10-02 — Go-live check: cabinet is on `main` (`8f68ac8`) and deployed (`/cabinet/` 200, header link live); BotFather /setdomain confirmed (widget renders the login button for www); Andrii logged in on www with Telegram, opened a lesson, and "Відкрити в боті" landed in that lesson (so the bot is redeployed with the `lesson_<id>` deep link). Still open: one real purchase from the cabinet, Phase 4.
 - 2026-09-14 — Test side effect found and reverted: an early `claim_order_test.py` reused the owner's paid April `web-aspekty-pro` order and re-granted aspekty-pro (row deleted; no payment rows changed). Test now only reuses orders for courses already owned. **Note:** like the bot's `/start <order_id>`, `claim-order` re-grants any `paid` order bound to the caller — to revoke access, set the payment to `refunded` as well as deleting `user_courses`.
 - 2026-09-14 — **Phases 0–3 implemented** (branch `feat/cabinet`). Live: 0003 RLS lockdown, 0004 cabinet auth, `tg-auth`, `claim-order`, `TELEGRAM_BOT_TOKEN` secret fixed. Tests: RLS/auth 26/26, claim-order 14/14, headless UI suite all OK (desktop + 390 px, no console errors). Found + fixed stale bot-token secret. Go-live blockers: BotFather /setdomain, merge to main, `fly deploy` for lesson deep link.
 - 2026-09-14 — Confirmed Management API access via CLI token (SQL + auth config); signup toggle made optional by RLS guard.

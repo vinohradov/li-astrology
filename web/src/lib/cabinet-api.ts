@@ -127,6 +127,22 @@ export function courseStats(outline: LessonOutline[], progress: Map<string, Prog
   return { total: trackable.length, completed, nextLessonId: next?.id ?? null };
 }
 
+/** Signed player URL for a hosted lessons.media item (supabase/functions/media-url);
+ *  null when it can't be played here, so the caller falls back to the bot. */
+export async function getMediaUrl(lessonId: string, index: number): Promise<string | null> {
+  const { data } = await supabase.auth.getSession();
+  const token = data.session?.access_token;
+  if (!token) return null;
+  const res = await fetch(`${functionsUrl}/media-url`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}`, apikey: site.supabase.anonKey },
+    body: JSON.stringify({ lesson_id: lessonId, index }),
+  });
+  if (!res.ok) return null;
+  const body = await res.json().catch(() => ({}));
+  return typeof body.url === 'string' ? body.url : null;
+}
+
 export type ClaimResult =
   | { status: 'granted'; course_slug: string; course_title: string; course_id: string }
   | { status: 'pending' | 'failed' | 'claimed_by_other' | 'not_found' | 'error' };

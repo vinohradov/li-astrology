@@ -48,9 +48,9 @@ Safety net: `reconcile-payments` edge function runs every minute from the bot sc
 (`bot/src/jobs/reconcile-payments.ts`). Polls Mono's `/api/merchant/invoice/status`
 for every `pending` monobank row, updates DB, grants access. Handles webhook misses.
 
-## Cabinet (personal account) — branch `feat/cabinet`, 2026-09-14
+## Cabinet (personal account) — live since 2026-09-14
 
-Plan/checklist: `.claude/dosc/CABINET_IMPLEMENTATION_PLAN.md`. Phases 0–3 built. Backend live; the site part ships on merge to `main` (go-live steps in `docs/TODO.md`).
+Plan/checklist: `.claude/dosc/CABINET_IMPLEMENTATION_PLAN.md`. Phases 0–3 built and live (backend + site on `main`, commit `8f68ac8`). Real Telegram login on www confirmed 2026-10-02. Remaining go-live checks in `docs/TODO.md`; next build work is Phase 4 (media).
 
 - Routes: `/cabinet/` (my courses, other courses with buy, order claim), `/cabinet/course/?slug=`, `/cabinet/lesson/?id=`, `/cabinet/settings/`. React islands in `web/src/components/cabinet/`, static pages, `noindex`.
 - Auth: Telegram Login Widget → `tg-auth` edge function → Supabase Auth session (telegram_id in `app_metadata`, linked via `bot_users.auth_uid`).

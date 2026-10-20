@@ -115,7 +115,7 @@ function LessonPage({ telegramId }: CabinetCtx) {
       {media.length > 0 && (
         <div className="space-y-3">
           {media.map(({ item, index, ordinal }) => (
-            <MediaBlock key={index} item={item} lessonId={lesson.id} ordinal={ordinal} />
+            <MediaBlock key={index} item={item} lessonId={lesson.id} index={index} ordinal={ordinal} />
           ))}
         </div>
       )}
